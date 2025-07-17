@@ -111,6 +111,14 @@ const Header = () => {
                 </li>
                 <li className="w-full">
                   <Link
+                    href="/rules-regulation"
+                    className="w-full block text-center py-3"
+                  >
+                    Rules & Regulation
+                  </Link>
+                </li>
+                <li className="w-full">
+                  <Link
                     href="/frequently-asked-questions"
                     className="w-full block text-center py-3"
                   >
