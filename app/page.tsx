@@ -7,14 +7,14 @@ import { useStartCountdown } from "@/hooks/useStartCountdown";
 import { Button } from "@/components/ui/button";
 import { ChevronRightIcon } from "lucide-react";
 
-const page = () => {
+const Page = () => {
   // Target date: August 30, 2025, GMT+8 (midnight)
   const { hasStarted, timeLeft, isExpired } = useStartCountdown(
     "2025-08-30T00:00:00+08:00", // Count down to August 30
     "2025-08-10T00:00:00+08:00" // Optional: Start countdown on August 10
   );
 
-  const { hasStarted: started, timeLeft: timeUntilRegistration } =
+  const { timeLeft: timeUntilRegistration } =
     useStartCountdown(
       "2025-08-10T00:00:00+08:00" // Count down to August 10
     );
@@ -138,5 +138,5 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
 ``;

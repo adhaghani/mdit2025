@@ -19,7 +19,7 @@ const variantStyles: Record<Variant, string> = {
   p: "leading-7 ",
   blockquote: " border-l-2 pl-6 italic",
   li: "my-6 ml-6 list-disc ",
-};``
+};
 
 const styleVariants: Record<StyleVariant, string> = {
   lead: "text-xl text-muted-foreground",
