@@ -1,14 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, Merriweather, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import { GridPattern } from "@/components/magicui/grid-pattern";
+import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
+});
+
+const sourceCodePro = Source_Code_Pro({
+  variable: "--font-source-code-pro",
   subsets: ["latin"],
 });
 
@@ -23,11 +34,56 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="icon"
+          href="/mdit2025_16.png"
+          sizes="16x16"
+          type="image/png"
+        />
+        <link
+          rel="icon"
+          href="/mdit2025_32.png"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link
+          rel="icon"
+          href="/mdit2025_48.png"
+          sizes="48x48"
+          type="image/png"
+        />
+        <link
+          rel="icon"
+          href="/mdit2025_64.png"
+          sizes="64x64"
+          type="image/png"
+        />
+        <link rel="apple-touch-icon" href="/mdit2025_64.png" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${outfit.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          disableTransitionOnChange
+        >
+          <div className="fixed h-[100vh] w-[100vw] left-0 top-0 -z-10">
+            <GridPattern
+              x={-1}
+              y={-1}
+              strokeDasharray={"4 2"}
+              className={cn(
+                "[mask-image:radial-gradient(70vw_circle_at_center,white,transparent)]"
+              )}
+            />
+          </div>
+          <Header />
+          <main className="max-w-7xl mx-auto px-4 py-2 mt-18">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
