@@ -1,10 +1,19 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Text } from "@/components/ui/text";
+import { useStartCountdown } from "@/hooks/useStartCountdown";
 import { Button } from "@/components/ui/button";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const { hasStarted, timeLeft, isExpired } = useStartCountdown(
+    "2025-08-30T00:00:00+08:00", // Count down to August 30
+    "2025-08-10T00:00:00+08:00" // Optional: Start countdown on August 10
+  );
 
   return (
     <footer className="max-w-7xl pb-4 mt-auto mx-auto px-4">
@@ -26,14 +35,12 @@ const Footer = () => {
                 <Text as="h4" className="font-bold text-lg">
                   MDIT 2025
                 </Text>
-                <Text as="p" styleVariant="muted">
-                  Malaysia Data Innovation Talent 2025
-                </Text>
               </div>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Building the future of technology through innovation,
-              collaboration, and excellence.
+            <p className="text-muted-foreground text-justify text-sm leading-relaxed">
+              MDIT 2025 is a national intervarsity program held in collaboration
+              with Faculty of Computer Science and Mathematics Universiti
+              Teknologi MARA, Department of Statistics Malaysia and INSTAT Club.
             </p>
           </div>
 
@@ -131,13 +138,33 @@ const Footer = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="space-y-4">
-            <Text as="h3">Register Now</Text>
+          <div className="space-y-2">
+            <Text as="h3">
+              {isExpired
+                ? "Registration has closed"
+                : hasStarted
+                ? "Registration is open"
+                : "Registration will open soon."}
+            </Text>
             <Text as="p">
-              Register now to MDIT 2025 and be the best amongst the best!
+              {isExpired
+                ? "Stay tuned for future events!"
+                : hasStarted
+                ? "Register now to MDIT 2025 and be the best amongst the best!"
+                : "Prepare your team, sharpen your skills, and get ready to innovate!"}
             </Text>
 
-            <Button className="w-full">Register Now</Button>
+            <Button
+              size="sm"
+              className="flex items-center gap-2 w-full"
+              disabled={isExpired || !hasStarted}
+            >
+              {isExpired
+                ? "Registeration Closed"
+                : hasStarted
+                ? "Register Now"
+                : "Coming Soon"}
+            </Button>
           </div>
         </div>
 

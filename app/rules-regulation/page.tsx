@@ -13,34 +13,17 @@ import { Button } from "@/components/ui/button";
 const page = () => {
   return (
     <>
-      <div className="text-center space-y-2 py-20 max-w-sm mx-auto">
+      <div className="text-center space-y-2 py-20 max-w-md mx-auto">
         <Text as="h1" className="text-primary">
-          FAQs
+          Rules & Regulation
         </Text>
         <Text as="p">
-          Some of the Frequently Asked Questions we received from our
-          participants
+          Rules and Regulation you need to know before participating in MDIT
+          2025 Datathon
         </Text>
       </div>
-      <div className="pb-20">
-        <Accordion type="single" collapsible className="w-full">
-          {FAQ.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="max-w-3xl mx-auto"
-            >
-              <AccordionTrigger className="text-left">
-                <Text as="h2" className="text-lg font-semibold">
-                  {faq.question}
-                </Text>
-              </AccordionTrigger>
-              <AccordionContent>
-                <Text as="p">{faq.answer}</Text>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+      <div className="pb-20 text-center">
+        akan diletak disini, perlukan list lengkap
       </div>
       <div className="pb-4">
         <Text as="h2" className="text-center">

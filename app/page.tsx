@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useStartCountdown } from "@/hooks/useStartCountdown";
 import { Button } from "@/components/ui/button";
 import { ChevronRightIcon } from "lucide-react";
+import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 
 const Page = () => {
   // Target date: August 30, 2025, GMT+8 (midnight)
@@ -14,19 +15,18 @@ const Page = () => {
     "2025-08-10T00:00:00+08:00" // Optional: Start countdown on August 10
   );
 
-  const { timeLeft: timeUntilRegistration } =
-    useStartCountdown(
-      "2025-08-10T00:00:00+08:00" // Count down to August 10
-    );
+  const { timeLeft: timeUntilRegistration } = useStartCountdown(
+    "2025-08-10T00:00:00+08:00" // Count down to August 10
+  );
 
   return (
     <>
       <div className="relative text-center min-h-fit py-18 flex flex-col item-center justify-center gap-4">
         <Text
           as="h1"
-          className="absolute inset-0 !text-8xl flex items-center justify-center text-primary/30 z-0"
+          className="absolute inset-0 !text-9xl flex items-center justify-center text-primary/30 z-0"
         >
-          2025
+          <CountingNumber number={2025} />
         </Text>
         <Text as="h1" className="relative z-10">
           MDIT
@@ -44,7 +44,7 @@ const Page = () => {
             ? "Registration has closed"
             : hasStarted
             ? "Countdown until Registration closed"
-            : "Countdown until Registration starts"}
+            : "Countdown until Registration begin"}
         </Text>
         <div className="flex justify-center w-fit mx-auto  rounded-lg items-center gap-4 flex-wrap">
           <div className="text-center space-y-2">
@@ -56,7 +56,7 @@ const Page = () => {
                     hasStarted ? timeLeft.days : timeUntilRegistration.days
                   }
                   format={{ minimumIntegerDigits: 2 }}
-                  className="lg:text-5xl md:text-3xl text-xl font-bold text-primary"
+                  className="lg:text-5xl md:text-3xl text-xl font-bold w-[21px] md:w-[40px] lg:w-[55px] text-primary"
                 />
               </CardContent>
             </Card>
@@ -72,7 +72,7 @@ const Page = () => {
                     hasStarted ? timeLeft.hours : timeUntilRegistration.hours
                   }
                   format={{ minimumIntegerDigits: 2 }}
-                  className="lg:text-5xl md:text-3xl text-xl font-bold text-primary"
+                  className="lg:text-5xl md:text-3xl text-xl font-bold w-[21px] md:w-[40px] lg:w-[55px] text-primary"
                 />
               </CardContent>
             </Card>
@@ -91,7 +91,7 @@ const Page = () => {
                       : timeUntilRegistration.minutes
                   }
                   format={{ minimumIntegerDigits: 2 }}
-                  className="lg:text-5xl md:text-3xl text-xl font-bold text-primary"
+                  className="lg:text-5xl md:text-3xl text-xl w-[21px] md:w-[40px] lg:w-[55px] font-bold text-primary"
                 />
               </CardContent>
             </Card>
@@ -109,7 +109,7 @@ const Page = () => {
                       : timeUntilRegistration.seconds
                   }
                   format={{ minimumIntegerDigits: 2 }}
-                  className="lg:text-5xl text-xl font-bold text-primary"
+                  className="lg:text-5xl md:text-3xl text-xl font-bold w-[21px] lg:w-[55px] md:w-[40px] text-primary"
                 />
               </CardContent>
             </Card>
@@ -129,7 +129,7 @@ const Page = () => {
             Registration Closed
           </Button>
         ) : null}
-        <Button size={"lg"} variant="secondary">
+        <Button size={"lg"} variant="outline">
           Learn More
           <ChevronRightIcon className="size-5" />
         </Button>
