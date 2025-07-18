@@ -23,7 +23,6 @@ import {
   HelpCircle,
   FileText,
   Users,
-  Calendar,
   Trophy,
 } from "lucide-react";
 
@@ -90,8 +89,8 @@ const FrequentlyAskedQuestionsPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.2}>
           <Text as="p" styleVariant="muted" className="max-w-2xl mx-auto">
-            Can't find what you're looking for? Use the search function below or
-            browse by category. If you still need help, don't hesitate to
+            Could not find what you are looking for? Use the search function below or
+            browse by category. If you still need help, don not hesitate to
             contact our support team.
           </Text>
         </BlurFade>
@@ -122,7 +121,7 @@ const FrequentlyAskedQuestionsPage = () => {
           </div>
           {searchTerm && (
             <Text as="p" styleVariant="muted" className="mt-2 text-center">
-              Found {filteredFAQs.length} result(s) for "{searchTerm}"
+              Found {filteredFAQs.length} result(s) for: {searchTerm}
             </Text>
           )}
         </div>
@@ -183,8 +182,8 @@ const FrequentlyAskedQuestionsPage = () => {
                   No FAQs found
                 </Text>
                 <Text as="p" styleVariant="muted" className="mb-4">
-                  We couldn't find any FAQs matching your search term "
-                  {searchTerm}".
+                  We could not find any FAQs matching your search term:
+                  {searchTerm}.
                 </Text>
                 <Button onClick={clearSearch} variant="outline">
                   Clear Search
@@ -309,7 +308,7 @@ const FrequentlyAskedQuestionsPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.75}>
           <Text as="p" styleVariant="muted" className="mb-6 max-w-2xl mx-auto">
-            Now that you have all the information you need, it's time to
+            Now that you have all the information you need, it is time to
             register your team and start your data innovation journey!
           </Text>
         </BlurFade>

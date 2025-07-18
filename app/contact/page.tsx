@@ -56,6 +56,7 @@ const ContactPage = () => {
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       setSubmitStatus("error");
+      console.error("Error submitting form:", error);
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setSubmitStatus("idle"), 5000);
@@ -67,7 +68,7 @@ const ContactPage = () => {
       icon: MailIcon,
       title: "Email Us",
       content: "info@mdit2025.my",
-      description: "Send us an email and we'll respond within 24 hours",
+      description: "Send us an email and we will respond within 24 hours",
       link: "mailto:info@mdit2025.my",
     },
     {
@@ -88,7 +89,7 @@ const ContactPage = () => {
       icon: ClockIcon,
       title: "Office Hours",
       content: "Mon - Fri: 9:00 AM - 5:00 PM",
-      description: "We're here to help during business hours",
+      description: "We are here to help during business hours",
       link: null,
     },
   ];
@@ -104,7 +105,7 @@ const ContactPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.15}>
           <Text as="p" className="text-lg">
-            Have questions about MDIT 2025? We're here to help! Reach out to us
+            Have questions about MDIT 2025? We are here to help! Reach out to us
             through any of the channels below.
           </Text>
         </BlurFade>
@@ -163,7 +164,7 @@ const ContactPage = () => {
                 Send us a Message
               </CardTitle>
               <Text as="p" styleVariant="muted">
-                Fill out the form below and we'll get back to you as soon as
+                Fill out the form below and we will get back to you as soon as
                 possible.
               </Text>
             </CardHeader>
@@ -256,8 +257,8 @@ const ContactPage = () => {
                 {submitStatus === "success" && (
                   <div className="p-4 bg-green-50 border border-green-200 rounded-md">
                     <Text as="p" className="text-green-800 text-sm">
-                      ✅ Thank you! Your message has been sent successfully.
-                      We'll get back to you soon.
+                      ✅ Thank you! Your message has been sent successfully. We
+                      will get back to you soon.
                     </Text>
                   </div>
                 )}
@@ -308,7 +309,7 @@ const ContactPage = () => {
                   </Text>
                   <Text as="p" styleVariant="muted" className="text-sm">
                     Having trouble with team registration, payment, or account
-                    setup? We're here to help.
+                    setup? We are here to help.
                   </Text>
                 </div>
                 <div>
@@ -400,7 +401,7 @@ const ContactPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.75}>
           <Text as="p" styleVariant="muted" className="mb-6 max-w-2xl mx-auto">
-            Don't miss out on Malaysia's premier data innovation competition.
+            Do not miss out on Malaysia premier data innovation competition.
             Register your team today!
           </Text>
         </BlurFade>

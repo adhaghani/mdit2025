@@ -37,7 +37,7 @@ const RulesRegulationPage = () => {
       rules: [
         "Registration fee: RM150.00 per team (non-refundable)",
         "Complete online registration form must be submitted",
-        "All team members' student IDs must be provided",
+        "All team members student IDs must be provided",
         "Valid university enrollment verification required",
         "Team leader must provide active contact information",
         "Registration deadline: August 30, 2025, 11:59 PM",
@@ -296,7 +296,7 @@ const RulesRegulationPage = () => {
           <Text as="p" className="text-center max-w-2xl mx-auto mb-8">
             Our team has prepared comprehensive documentation to answer most
             questions. However, if you need clarification on any rule or
-            requirement, please don't hesitate to{" "}
+            requirement, please don&apos;t hesitate to{" "}
             <Link href="/contact" className="underline text-primary">
               contact us
             </Link>

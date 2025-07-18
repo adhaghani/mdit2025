@@ -8,15 +8,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   CalendarIcon,
   MapPinIcon,
-  MonitorSmartphoneIcon,
   UsersIcon,
   TrophyIcon,
-  ClockIcon,
   CheckIcon,
   GraduationCapIcon,
   DollarSignIcon,
-  BookOpenIcon,
-  ComputerIcon,
   PresentationIcon,
   AwardIcon,
 } from "lucide-react";
@@ -52,7 +48,7 @@ const EventDetailsPage = () => {
     {
       name: "MS. NURUL AISYAH",
       title: "Head of Analytics, Grab Malaysia",
-      bio: "Nurul leads data science teams at Grab Malaysia, focusing on predictive analytics and machine learning solutions for Southeast Asia's super app ecosystem.",
+      bio: "Nurul leads data science teams at Grab Malaysia, focusing on predictive analytics and machine learning solutions for Southeast Asia super app ecosystem.",
     },
   ];
 
@@ -119,7 +115,7 @@ const EventDetailsPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.15}>
           <Text as="h2" className="text-2xl font-semibold">
-            Malaysia's Premier Data Innovation Competition
+            Premier Data Innovation Competition
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.2}>

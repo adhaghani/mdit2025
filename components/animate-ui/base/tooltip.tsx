@@ -1,51 +1,51 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { Tooltip as TooltipPrimitive } from '@base-ui-components/react/tooltip';
+import * as React from "react";
+import { Tooltip as TooltipPrimitive } from "@base-ui-components/react/tooltip";
 import {
   AnimatePresence,
   type HTMLMotionProps,
   motion,
   type Transition,
-} from 'motion/react';
+} from "motion/react";
 
-import { cn } from '/lib/utils';
+import { cn } from "@/lib/utils";
 
 type TooltipContextType = {
   isOpen: boolean;
 };
 
 const TooltipContext = React.createContext<TooltipContextType | undefined>(
-  undefined,
+  undefined
 );
 
 const useTooltip = (): TooltipContextType => {
   const context = React.useContext(TooltipContext);
   if (!context) {
-    throw new Error('useTooltip must be used within a Tooltip');
+    throw new Error("useTooltip must be used within a Tooltip");
   }
   return context;
 };
 
 type Side = React.ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Positioner
->['side'];
+>["side"];
 
 type Align = React.ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Positioner
->['align'];
+>["align"];
 
 const getInitialPosition = (side: Side) => {
   switch (side) {
-    case 'top':
+    case "top":
       return { y: 15 };
-    case 'bottom':
+    case "bottom":
       return { y: -15 };
-    case 'left':
-    case 'inline-start':
+    case "left":
+    case "inline-start":
       return { x: 15 };
-    case 'right':
-    case 'inline-end':
+    case "right":
+    case "inline-end":
       return { x: -15 };
   }
 };
@@ -62,7 +62,7 @@ type TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root>;
 
 function Tooltip(props: TooltipProps) {
   const [isOpen, setIsOpen] = React.useState(
-    props?.open ?? props?.defaultOpen ?? false,
+    props?.open ?? props?.defaultOpen ?? false
   );
 
   React.useEffect(() => {
@@ -73,12 +73,12 @@ function Tooltip(props: TooltipProps) {
     (
       open: boolean,
       event: Event | undefined,
-      reason: Parameters<NonNullable<TooltipProps['onOpenChange']>>[2],
+      reason: Parameters<NonNullable<TooltipProps["onOpenChange"]>>[2]
     ) => {
       setIsOpen(open);
       props.onOpenChange?.(open, event, reason);
     },
-    [props],
+    [props]
   );
 
   return (
@@ -105,7 +105,7 @@ type TooltipContentProps = React.ComponentProps<
 > & {
   transition?: Transition;
   popupProps?: typeof TooltipPrimitive.Popup;
-  motionProps?: HTMLMotionProps<'div'>;
+  motionProps?: HTMLMotionProps<"div">;
   positionerClassName?: string;
   arrow?: boolean;
 };
@@ -115,9 +115,9 @@ function TooltipContent({
   popupProps,
   motionProps,
   positionerClassName,
-  side = 'top',
+  side = "top",
   sideOffset = 10,
-  transition = { type: 'spring', stiffness: 300, damping: 25 },
+  transition = { type: "spring", stiffness: 300, damping: 25 },
   arrow = true,
   children,
   ...props
@@ -133,15 +133,15 @@ function TooltipContent({
             data-slot="tooltip-positioner"
             side={side}
             sideOffset={sideOffset}
-            className={cn('z-50', positionerClassName)}
+            className={cn("z-50", positionerClassName)}
             {...props}
           >
             <TooltipPrimitive.Popup
               data-slot="tooltip-popup"
               {...popupProps}
               className={cn(
-                'relative bg-primary text-primary-foreground shadow-md w-fit rounded-md px-3 py-1.5 text-sm text-balance',
-                className,
+                "relative bg-primary text-primary-foreground shadow-md w-fit rounded-md px-3 py-1.5 text-sm text-balance",
+                className
               )}
               render={
                 <motion.div

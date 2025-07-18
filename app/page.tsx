@@ -4,15 +4,11 @@ import NumberFlow from "@number-flow/react";
 import {
   CalendarIcon,
   MapPinIcon,
-  MonitorSmartphoneIcon,
   UsersIcon,
   TrophyIcon,
-  StarIcon,
   ArrowRightIcon,
-  CheckIcon,
   GraduationCapIcon,
   AwardIcon,
-  ClockIcon,
   DollarSignIcon,
   BookOpenIcon,
   PresentationIcon,
@@ -22,7 +18,6 @@ import {
   BrainIcon,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ABOUT_MDIT_HOME } from "@/components/constant";
 import { useStartCountdown } from "@/hooks/useStartCountdown";
 import { Button } from "@/components/ui/button";
 import { ChevronRightIcon } from "lucide-react";
@@ -36,7 +31,6 @@ import {
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 import Image from "next/image";
 import Link from "next/link";
-import { GridPattern } from "@/components/magicui/grid-pattern";
 
 const Page = () => {
   // Target date: August 30, 2025, GMT+8 (midnight)
@@ -150,7 +144,7 @@ const Page = () => {
                 as="h2"
                 className="text-2xl md:text-3xl lg:text-4xl font-bold max-w-4xl mx-auto"
               >
-                Malaysia's Premier Data Innovation Competition
+                Malaysia&apos;s Premier Data Innovation Competition
               </Text>
             </BlurFade>
             <BlurFade inView delay={0.2}>
@@ -641,7 +635,7 @@ const Page = () => {
             styleVariant="muted"
             className="text-center mb-8 max-w-2xl mx-auto"
           >
-            Don't miss this opportunity to be part of Malaysia's most
+            Don&apos;t miss this opportunity to be part of Malaysia&apos;s most
             prestigious data science competition. Register your team now and
             start your journey toward data excellence!
           </Text>
@@ -854,7 +848,7 @@ const Page = () => {
           >
             Our media partners help us reach talented students across Malaysia
             and spread awareness about the importance of data science and
-            innovation in today's digital world.
+            innovation in today&apos;s digital world.
           </Text>
         </BlurFade>
         <Card className="p-8">
