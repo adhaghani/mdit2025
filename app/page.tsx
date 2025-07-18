@@ -22,6 +22,7 @@ import { useStartCountdown } from "@/hooks/useStartCountdown";
 import { Button } from "@/components/ui/button";
 import { ChevronRightIcon } from "lucide-react";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import { Marquee } from "@/components/magicui/marquee";
 import {
   Tooltip,
   TooltipContent,
@@ -112,6 +113,80 @@ const Page = () => {
       description: "Final presentations and awards ceremony",
       icon: TrophyIcon,
       status: "upcoming",
+    },
+  ];
+
+  const Image_src_2024 = [
+    {
+      src: "/assets/mdit2024/DSC_0088.jpg",
+      alt: "MDIT 2024 Image 1",
+    },
+    {
+      src: "/assets/mdit2024/DSC_0148.jpg",
+      alt: "MDIT 2024 Image 2",
+    },
+    {
+      src: "/assets/mdit2024/DSC_0180.jpg",
+      alt: "MDIT 2024 Image 3",
+    },
+    {
+      src: "/assets/mdit2024/DSC_0198.jpg",
+      alt: "MDIT 2024 Image 4",
+    },
+    {
+      src: "/assets/mdit2024/DSC_0216.jpg",
+      alt: "MDIT 2024 Image 5",
+    },
+    {
+      src: "/assets/mdit2024/DSC_0248.jpg",
+      alt: "MDIT 2024 Image 6",
+    },
+    {
+      src: "/assets/mdit2024/DSC_0290.jpg",
+      alt: "MDIT 2024 Image 7",
+    },
+  ];
+
+  const Image_src_2023 = [
+    {
+      src: "/assets/mdit2023/DSC_0127.jpg",
+      alt: "MDIT 2023 Image 1",
+    },
+    {
+      src: "/assets/mdit2023/DSC_0133.jpg",
+      alt: "MDIT 2023 Image 2",
+    },
+    {
+      src: "/assets/mdit2023/DSC_0141.jpg",
+      alt: "MDIT 2023 Image 3",
+    },
+    {
+      src: "/assets/mdit2023/DSC_0143.jpg",
+      alt: "MDIT 2023 Image 4",
+    },
+    {
+      src: "/assets/mdit2023/DSC_0168.jpg",
+      alt: "MDIT 2023 Image 5",
+    },
+    {
+      src: "/assets/mdit2023/DSC_0194.jpg",
+      alt: "MDIT 2023 Image 6",
+    },
+    {
+      src: "/assets/mdit2023/DSC_0221.jpg",
+      alt: "MDIT 2023 Image 7",
+    },
+    {
+      src: "/assets/mdit2023/DSC_0239.jpg",
+      alt: "MDIT 2023 Image 8",
+    },
+    {
+      src: "/assets/mdit2023/DSC_0255.jpg",
+      alt: "MDIT 2023 Image 9",
+    },
+    {
+      src: "/assets/mdit2023/DSC_0256.jpg",
+      alt: "MDIT 2023 Image 10",
     },
   ];
 
@@ -915,6 +990,108 @@ const Page = () => {
             </TooltipProvider>
           </CardContent>
         </Card>
+      </div>
+
+      {/* MDIT 2024 Memories */}
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+        <BlurFade delay={0.2}>
+          <Text
+            as="h2"
+            className="text-3xl font-bold text-center mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent"
+          >
+            MDIT 2024 Memories
+          </Text>
+          <Text
+            as="p"
+            className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto"
+          >
+            Relive the excitement and innovation from last year&apos;s Malaysian
+            Data Innovation Tournament. See the passion, dedication, and
+            brilliant minds that made MDIT 2024 an unforgettable experience.
+          </Text>
+        </BlurFade>
+
+        <BlurFade delay={0.4}>
+          <Marquee className="flex gap-4 rounded-lg">
+            {Image_src_2024.map((image, index) => (
+              <Image
+                key={index}
+                className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                src={image.src}
+                alt={image.alt}
+                quality={100}
+                width={500}
+                height={200}
+              />
+            ))}
+          </Marquee>
+        </BlurFade>
+        <BlurFade delay={0.4}>
+          <Marquee reverse className="flex gap-4 rounded-lg">
+            {Image_src_2024.map((image, index) => (
+              <Image
+                key={index}
+                className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                src={image.src}
+                alt={image.alt}
+                quality={100}
+                width={500}
+                height={200}
+              />
+            ))}
+          </Marquee>
+        </BlurFade>
+      </div>
+
+      {/* MDIT 2023 Memories */}
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+        <BlurFade delay={0.2}>
+          <Text
+            as="h2"
+            className="text-3xl font-bold text-center mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent"
+          >
+            MDIT 2023 Memories
+          </Text>
+          <Text
+            as="p"
+            className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto"
+          >
+            Relive the excitement and innovation from last year&apos;s Malaysian
+            Data Innovation Tournament. See the passion, dedication, and
+            brilliant minds that made MDIT 2023 an unforgettable experience.
+          </Text>
+        </BlurFade>
+
+        <BlurFade delay={0.4}>
+          <Marquee className="flex gap-4 rounded-lg [--duration:50s]">
+            {Image_src_2023.map((image, index) => (
+              <Image
+                key={index}
+                className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                src={image.src}
+                alt={image.alt}
+                quality={100}
+                width={500}
+                height={200}
+              />
+            ))}
+          </Marquee>
+        </BlurFade>
+        <BlurFade delay={0.4}>
+          <Marquee reverse className="flex gap-4 rounded-lg [--duration:50s]">
+            {Image_src_2023.map((image, index) => (
+              <Image
+                key={index}
+                className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                src={image.src}
+                alt={image.alt}
+                quality={100}
+                width={500}
+                height={200}
+              />
+            ))}
+          </Marquee>
+        </BlurFade>
       </div>
     </>
   );
