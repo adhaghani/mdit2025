@@ -104,3 +104,53 @@ export const PROGRAM_TIMELINE = [
     details: "Winners are announced and the event concludes.",
   },
 ];
+
+export const ABOUT_MDIT_HOME = [
+  {
+    Title: "Objective of MDIT",
+    Content:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur sint facilis accusantium similique eveniet in corporis ut inventore quisquam.",
+  },
+  {
+    Title: "Objective of MDIT",
+    Content:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur sint facilis accusantium similique eveniet in corporis ut inventore quisquam.",
+  },
+  {
+    Title: "Objective of MDIT",
+    Content:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur sint facilis accusantium similique eveniet in corporis ut inventore quisquam.",
+  },
+  {
+    Title: "Objective of MDIT",
+    Content:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur sint facilis accusantium similique eveniet in corporis ut inventore quisquam.",
+  },
+];
+
+export const FOOTER_QUICK_LINK = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "Event Details",
+    href: "/event-details",
+  },
+  {
+    title: "Contact Us",
+    href: "/contact",
+  },
+  {
+    title: "Contact Us",
+    href: "/contact",
+  },
+  {
+    title: "Rules & Regulation",
+    href: "/rules-regulation",
+  },
+  {
+    title: "FAQ",
+    href: "/frequently-asked-questions",
+  },
+];
