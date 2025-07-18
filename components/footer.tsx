@@ -59,10 +59,10 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/event-details"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
-                  About
+                  Event Details
                 </Link>
               </li>
               <li>
@@ -70,7 +70,15 @@ const Footer = () => {
                   href="/contact"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
-                  Contact
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/rules-regulation"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Rules & Regulation
                 </Link>
               </li>
               <li>
