@@ -14,31 +14,94 @@ import {
 export const FAQ = [
   {
     question: "What is MDIT 2025?",
-    answer: "MDIT 2025 is the Malaysia Data Innovation Talent event, aimed at",
+    answer:
+      "MDIT 2025 (Malaysia Data Innovation Talent) is a national inter-varsity datathon competition aimed at fostering innovation and collaboration among students in the fields of computer science and mathematics. This competition motivates participants to think critically about data studies and become skilled in precise and transparent analysis.",
   },
   {
-    question: "What is MDIT 2025?",
-    answer: "MDIT 2025 is the Malaysia Data Innovation Talent event, aimed at",
+    question: "Who can participate in MDIT 2025?",
+    answer:
+      "MDIT 2025 is open to all university students currently enrolled in Malaysian institutions. This includes both undergraduate and postgraduate students, as well as international students studying in Malaysia. Teams must consist of 3-4 members, all from the same university.",
   },
   {
-    question: "What is MDIT 2025?",
-    answer: "MDIT 2025 is the Malaysia Data Innovation Talent event, aimed at",
+    question: "What is the registration fee and when is the deadline?",
+    answer:
+      "The registration fee is RM150.00 per team (non-refundable). Registration opens on August 15, 2025, and closes on August 30, 2025, at 11:59 PM. Limited slots are available on a first-come, first-served basis.",
   },
   {
-    question: "What is MDIT 2025?",
-    answer: "MDIT 2025 is the Malaysia Data Innovation Talent event, aimed at",
+    question: "What are the team requirements?",
+    answer:
+      "Teams must have 3-4 members maximum, with at least 3 members required to participate. All team members must be from the same university. Mixed-year teams are allowed (undergraduate and postgraduate students can team up). Each participant can only be part of one team.",
   },
   {
-    question: "What is MDIT 2025?",
-    answer: "MDIT 2025 is the Malaysia Data Innovation Talent event, aimed at",
+    question: "When does the competition take place?",
+    answer:
+      "The competition period runs from September 6, 2025, to October 18, 2025. The final presentations for finalists will be held on October 17, 2025, with the winner announcement and closing ceremony on October 18, 2025.",
   },
   {
-    question: "What is MDIT 2025?",
-    answer: "MDIT 2025 is the Malaysia Data Innovation Talent event, aimed at",
+    question: "What programming languages and tools can we use?",
+    answer:
+      "Teams may use any programming language or analytical tools they prefer. Popular choices include Python, R, SQL, Java, and various data science libraries. Virtual environments are encouraged for reproducibility, and version control (Git) is strongly recommended.",
   },
   {
-    question: "What is MDIT 2025?",
-    answer: "MDIT 2025 is the Malaysia Data Innovation Talent event, aimed at",
+    question: "Will datasets be provided or do we need to find our own?",
+    answer:
+      "Datasets will be provided at the start of the competition. Teams must use only the provided dataset - external data sources are strictly prohibited. This ensures fairness and focuses the competition on analytical skills rather than data collection.",
+  },
+  {
+    question: "What should be included in our final submission?",
+    answer:
+      "Final submissions must include: complete code with proper comments, a PDF report (maximum 20 pages), documentation for reproducibility, and presentation slides if you reach the finals. The complete submission package must be under 100MB in file size.",
+  },
+  {
+    question: "How will teams be judged?",
+    answer:
+      "Teams will be evaluated based on: Technical Innovation (25%), Data Analysis Quality (25%), Practical Application (20%), Presentation & Communication (15%), and Code Quality & Documentation (15%). The top 10 teams will be selected as finalists for live pitching.",
+  },
+  {
+    question: "Is there a prize pool?",
+    answer:
+      "Yes! MDIT 2025 features a substantial prize pool for winning teams. Specific prize amounts and categories will be announced closer to the competition date. All finalists will receive recognition and certificates.",
+  },
+  {
+    question: "Do I need to be physically present for the competition?",
+    answer:
+      "The competition is conducted in a hybrid format - both online and physical participation. The initial competition phase can be completed remotely, but finalists may need to attend the final presentation in person. Specific venue details will be announced later.",
+  },
+  {
+    question: "What technical support is available during the competition?",
+    answer:
+      "Technical support is available during business hours (Mon-Fri, 9:00 AM - 5:00 PM). For urgent matters during the competition period, emergency WhatsApp support (+60 12-345 6789) is available 24/7 from September 6-October 18, 2025.",
+  },
+  {
+    question: "Can international students participate?",
+    answer:
+      "Yes, international students currently enrolled in Malaysian universities are eligible to participate. However, all team members must be from the same Malaysian institution.",
+  },
+  {
+    question: "What happens if we submit late?",
+    answer:
+      "Late submissions will not be accepted under any circumstances. The deadline is October 18, 2025, at 11:59 PM. We strongly recommend submitting well before the deadline to avoid any technical issues.",
+  },
+  {
+    question: "How do we register and what documents are needed?",
+    answer:
+      "Registration is done through our online platform (details will be announced). You'll need to provide: complete team information, all team members' student IDs, valid university enrollment verification, and team leader's active contact information.",
+  },
+  {
+    question: "Can we change team members after registration?",
+    answer:
+      "Team changes after registration are generally not allowed to maintain fairness. In exceptional circumstances, please contact our support team immediately. Any changes must be approved by the organizing committee.",
+  },
+  {
+    question: "Who are the organizers and partners?",
+    answer:
+      "MDIT 2025 is organized by the INSTATS club of Universiti Teknologi MARA (UiTM) Shah Alam, with support from the Faculty of Computer Science and Mathematics UiTM Shah Alam, and in collaboration with the Department of Statistics Malaysia (DOSM).",
+  },
+  {
+    question:
+      "What should I do if I encounter technical issues during submission?",
+    answer:
+      "Contact our technical support team immediately through the contact page or emergency WhatsApp line. Document the issue with screenshots if possible. For last-minute submission issues, our emergency support line is available 24/7 during competition dates.",
   },
 ];
 
@@ -109,22 +172,17 @@ export const ABOUT_MDIT_HOME = [
   {
     Title: "Objective of MDIT",
     Content:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur sint facilis accusantium similique eveniet in corporis ut inventore quisquam.",
+      "This competition aims to ignite the minds of participants, motivating them to think critically about data studies and become skilled in precise and transparent data analysis. In addition, it provides an exciting platform to educate the public about the important field of statistics and its wide-ranging influence.",
   },
   {
-    Title: "Objective of MDIT",
+    Title: "Goals of MDIT",
     Content:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur sint facilis accusantium similique eveniet in corporis ut inventore quisquam.",
+      "The goal of MDIT 2025 is to create a society that values responsible data and information management. Participants will use their diverse talents to develop innovative dashboards that effectively communicate statistical insights to the community.",
   },
   {
-    Title: "Objective of MDIT",
+    Title: "What will Participants Gain?",
     Content:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur sint facilis accusantium similique eveniet in corporis ut inventore quisquam.",
-  },
-  {
-    Title: "Objective of MDIT",
-    Content:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur sint facilis accusantium similique eveniet in corporis ut inventore quisquam.",
+      "Participants will gain valuable experience in data science and analytics, enhancing their skills in data visualization, statistical analysis, and problem-solving. They will also have the opportunity to network with industry professionals and showcase their talents on a national platform.",
   },
 ];
 

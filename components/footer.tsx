@@ -60,7 +60,7 @@ const Footer = () => {
             </BlurFade>
             <ul className="space-y-2">
               {FOOTER_QUICK_LINK.map((link, index) => (
-                <li key={link.href} id={`link-${index + 1}`}>
+                <li key={link.href} id={`${index + 1}`}>
                   <BlurFade inView delay={0.09 * (index + 1)}>
                     <Link
                       href={link.href}
