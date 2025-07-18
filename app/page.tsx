@@ -253,7 +253,22 @@ const Page = () => {
               <Text as="h4">Team Requirement</Text>
             </CardTitle>
           </CardHeader>
-          <CardContent>4</CardContent>
+          <CardContent className="grid grid-cols-1 md:grid-cols-3">
+            <div>
+              <Text as="h4">Team Size</Text>
+              <Text as="p">4 members per team with a minimum of 3 members</Text>
+            </div>
+            <div>
+              <Text as="h4">Eligibility</Text>
+              <Text as="p">
+                Open to all University Students across Malaysia
+              </Text>
+            </div>
+            <div>
+              <Text as="h4">Registration Fee</Text>
+              <Text as="p">100% Free, limited slots are available</Text>
+            </div>
+          </CardContent>
         </Card>
         <Button className="ml-auto">
           View More Details <ChevronRightIcon />

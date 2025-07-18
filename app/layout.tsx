@@ -81,7 +81,7 @@ export default function RootLayout({
             />
           </div>
           <Header />
-          <main className="max-w-7xl mx-auto px-4 py-2 mt-18">{children}</main>
+          <main className=" max-w-7xl mx-auto px-4 py-2 mt-18">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

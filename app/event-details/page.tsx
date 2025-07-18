@@ -22,9 +22,15 @@ const page = () => {
         </Text>
       </div>
       <div className="text-center space-y-2 py-20 max-w-md mx-auto">
-        <Text as="h1">Timeline</Text>
+        <Text as="h1">Prize</Text>
         <Text as="p" styleVariant="muted">
-          Timeline of the program
+          Prizes offered for the winners of MDIT x DOSM Datathon 2025
+        </Text>
+      </div>
+      <div className="text-center space-y-2 py-20 max-w-md mx-auto">
+        <Text as="h1">Requirements</Text>
+        <Text as="p" styleVariant="muted">
+          requirements for the participants to join MDIT x DOSM Datathon 2025
         </Text>
       </div>
       <div className="text-center space-y-2 py-20 max-w-md mx-auto">
