@@ -1,12 +1,6 @@
 import React from "react";
 import { Text } from "@/components/ui/text";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/animate-ui/radix/accordion";
-import { FAQ } from "@/components/constant";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "@/components/magicui/blur-fade";

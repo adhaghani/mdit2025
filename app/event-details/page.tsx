@@ -1,16 +1,9 @@
 import { Text } from "@/components/ui/text";
 import { PROGRAM_TIMELINE } from "@/components/constant";
-import {
-  PreviewCard,
-  PreviewCardTrigger,
-  PreviewCardContent,
-  type PreviewCardProps,
-  type PreviewCardContentProps,
-} from "@/components/animate-ui/base/preview-card";
 
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
+
 import {
   Dialog,
   DialogTrigger,
@@ -173,7 +166,7 @@ const page = () => {
         </BlurFade>
         <BlurFade delay={0.25} inView>
           <Text as="p" styleVariant="muted">
-            The Judges whom will be evaluating the participants' projects
+            The Judges whom will be evaluating the participants projects
           </Text>
         </BlurFade>
       </div>

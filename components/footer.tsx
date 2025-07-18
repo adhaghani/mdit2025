@@ -11,7 +11,7 @@ import { FOOTER_QUICK_LINK } from "./constant";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const { hasStarted, timeLeft, isExpired } = useStartCountdown(
+  const { hasStarted, isExpired } = useStartCountdown(
     "2025-08-30T00:00:00+08:00", // Count down to August 30
     "2025-08-10T00:00:00+08:00" // Optional: Start countdown on August 10
   );

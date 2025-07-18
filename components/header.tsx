@@ -5,10 +5,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
-  SheetClose,
+
   SheetContent,
-  SheetDescription,
-  SheetFooter,
+
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -19,7 +18,7 @@ import Image from "next/image";
 import { Text } from "@/components/ui/text";
 
 const Header = () => {
-  const { hasStarted, timeLeft, isExpired } = useStartCountdown(
+  const { hasStarted,  isExpired } = useStartCountdown(
     "2025-08-30T00:00:00+08:00", // Count down to August 30
     "2025-08-10T00:00:00+08:00" // Optional: Start countdown on August 10
   );
