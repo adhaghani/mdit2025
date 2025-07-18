@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <header className="max-w-7xl z-50 h-14 fixed top-4 left-[50%] translate-x-[-50%] w-full mx-auto px-4">
       <div className="flex justify-between h-full items-center bg-black/20 backdrop-blur-lg gap-4 border rounded-lg shadow-sm px-4 py-2 ">
-        <div className=" flex items-center justify-center gap-2">
+        <Link href={"/"} className=" flex items-center justify-center gap-2">
           <Image
             src="/mdit.svg"
             alt="MDIT 2025 Logo"
@@ -36,7 +36,7 @@ const Header = () => {
             className="w-10 h-10"
           />
           <Text as="h4">MDIT 2025</Text>
-        </div>
+        </Link>
         <ul className="hidden md:flex items-center gap-4  justify-end">
           <li>
             <Link href="/">Home</Link>
