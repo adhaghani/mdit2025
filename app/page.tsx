@@ -165,28 +165,24 @@ const Page = () => {
       alt: "MDIT 2023 Image 4",
     },
     {
-      src: "/assets/mdit2023/DSC_0168.jpg",
+      src: "/assets/mdit2023/DSC_0194.jpg",
       alt: "MDIT 2023 Image 5",
     },
     {
-      src: "/assets/mdit2023/DSC_0194.jpg",
+      src: "/assets/mdit2023/DSC_0221.jpg",
       alt: "MDIT 2023 Image 6",
     },
     {
-      src: "/assets/mdit2023/DSC_0221.jpg",
+      src: "/assets/mdit2023/DSC_0239.jpg",
       alt: "MDIT 2023 Image 7",
     },
     {
-      src: "/assets/mdit2023/DSC_0239.jpg",
+      src: "/assets/mdit2023/DSC_0255.jpg",
       alt: "MDIT 2023 Image 8",
     },
     {
-      src: "/assets/mdit2023/DSC_0255.jpg",
-      alt: "MDIT 2023 Image 9",
-    },
-    {
       src: "/assets/mdit2023/DSC_0256.jpg",
-      alt: "MDIT 2023 Image 10",
+      alt: "MDIT 2023 Image 9",
     },
   ];
 
