@@ -58,15 +58,14 @@ const Page = () => {
           <div className="text-center space-y-12 max-w-4xl mx-auto">
             {/* Logo Section */}
             <BlurFade inView delay={0.1}>
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl" />
+              <div className="relative pt-5">
                 <div className="relative bg-card/80 backdrop-blur-sm border rounded-full p-8 mx-auto w-fit">
                   <Image
                     src="/mdit.svg"
                     alt="MDIT 2025 Logo"
                     width={80}
                     height={80}
-                    className="mx-auto filter brightness-0 dark:brightness-100"
+                    className="mx-auto filter "
                   />
                 </div>
               </div>
@@ -167,7 +166,7 @@ const Page = () => {
                       },
                       {
                         icon: Users2Icon,
-                        text: "200+ Expected Teams",
+                        text: "60+ Expected Teams",
                         color: "text-green-500",
                       },
                       {
@@ -200,24 +199,9 @@ const Page = () => {
             <BlurFade inView delay={0.4}>
               <div className="space-y-6">
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    size="lg"
-                    disabled
-                    className="text-lg px-8 py-4 bg-primary/20 hover:bg-primary/30 border border-primary/40"
-                  >
+                  <Button size="lg" disabled className="text-lg px-8 py-4">
                     <CalendarIcon className="mr-2 h-5 w-5" />
                     Registration Opens August 15
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="text-lg px-8 py-4 border-primary/40 hover:bg-primary/10"
-                    asChild
-                  >
-                    <Link href="mailto:info@mdit2025.com">
-                      Get Notified
-                      <ArrowRightIcon className="ml-2 h-5 w-5" />
-                    </Link>
                   </Button>
                 </div>
 
@@ -240,7 +224,7 @@ const Page = () => {
   const statistics = [
     { label: "Total Prize Pool", value: "RM 11,000", icon: TrophyIcon },
     { label: "Universities", value: "50+", icon: GraduationCapIcon },
-    { label: "Expected Teams", value: "200+", icon: Users2Icon },
+    { label: "Expected Teams", value: "60+", icon: Users2Icon },
     { label: "Competition Days", value: "43", icon: CalendarIcon },
   ];
 
