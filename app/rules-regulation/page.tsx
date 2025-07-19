@@ -150,10 +150,10 @@ const RulesRegulationPage = () => {
       </div>
 
       {/* Rules Sections */}
-      <div className="space-y-8 my-20">
+      <div className=" my-20 grid grid-cols-1 lg:grid-cols-2 gap-4">
         {sections.map((section, index) => (
           <BlurFade key={index} inView delay={0.1 + index * 0.05}>
-            <Card>
+            <Card className="h-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-xl">
                   <div className="p-2 bg-primary/10 rounded-lg">

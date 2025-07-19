@@ -48,7 +48,7 @@ const Page = () => {
   const statistics = [
     { label: "Total Prize Pool", value: "RM 11,000", icon: TrophyIcon },
     { label: "Universities", value: "50+", icon: GraduationCapIcon },
-    { label: "Expected Teams", value: "200+", icon: Users2Icon },
+    { label: "Expected Teams", value: "60+", icon: Users2Icon },
     { label: "Competition Days", value: "43", icon: CalendarIcon },
   ];
 
