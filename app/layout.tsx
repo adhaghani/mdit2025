@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 import { GridPattern } from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/next";
+import ConditionalLayout from "@/components/conditional-layout";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -155,9 +156,7 @@ export default function RootLayout({
               )}
             />
           </div>
-          <Header />
-          <main className=" max-w-7xl mx-auto px-4 py-2 mt-18">{children}</main>
-          <Footer />
+          <ConditionalLayout>{children}</ConditionalLayout>
         </ThemeProvider>
       </body>
     </html>

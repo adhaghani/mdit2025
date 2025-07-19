@@ -34,6 +34,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Page = () => {
+  // Website launch countdown - show coming soon until August 1, 2025
+  const { hasStarted: SiteIsNotLive, timeLeft: launchCountdown } =
+    useStartCountdown(
+      "2025-08-01T00:00:00+08:00" // Website goes live on August 1, 2025
+    );
+
   // Target date: August 30, 2025, GMT+8 (midnight)
   const { hasStarted, timeLeft, isExpired } = useStartCountdown(
     "2025-08-30T00:00:00+08:00", // Count down to August 30
@@ -43,6 +49,192 @@ const Page = () => {
   const { timeLeft: timeUntilRegistration } = useStartCountdown(
     "2025-08-10T00:00:00+08:00" // Count down to August 10
   );
+
+  // If website is not live yet, show coming soon page
+  if (SiteIsNotLive) {
+    return (
+      <div className="min-h-screen relative overflow-hidden">
+        <div className="relative z-10 min-h-screen flex items-center justify-center px-4">
+          <div className="text-center space-y-12 max-w-4xl mx-auto">
+            {/* Logo Section */}
+            <BlurFade inView delay={0.1}>
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl" />
+                <div className="relative bg-card/80 backdrop-blur-sm border rounded-full p-8 mx-auto w-fit">
+                  <Image
+                    src="/mdit.svg"
+                    alt="MDIT 2025 Logo"
+                    width={80}
+                    height={80}
+                    className="mx-auto filter brightness-0 dark:brightness-100"
+                  />
+                </div>
+              </div>
+            </BlurFade>
+
+            {/* Title Section */}
+            <div className="space-y-6">
+              <BlurFade inView delay={0.15}>
+                <Text
+                  as="h1"
+                  className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-primary via-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight"
+                >
+                  MDIT 2025
+                </Text>
+              </BlurFade>
+
+              <BlurFade inView delay={0.2}>
+                <Text
+                  as="h2"
+                  className="text-xl md:text-3xl lg:text-4xl font-semibold text-foreground/80 max-w-3xl mx-auto"
+                >
+                  Malaysia&apos;s Premier Data Innovation Competition
+                </Text>
+              </BlurFade>
+
+              <BlurFade inView delay={0.25}>
+                <Text
+                  as="p"
+                  className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+                >
+                  Something extraordinary is coming. Get ready for the most
+                  prestigious datathon in Malaysia.
+                </Text>
+              </BlurFade>
+            </div>
+
+            {/* Countdown Section */}
+            <BlurFade inView delay={0.3}>
+              <div className="space-y-8">
+                <Text
+                  as="h3"
+                  className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent"
+                >
+                  Website Launches In
+                </Text>
+
+                <div className="grid grid-cols-4 gap-4 md:gap-8 max-w-2xl mx-auto">
+                  {[
+                    { value: launchCountdown.days, label: "Days" },
+                    { value: launchCountdown.hours, label: "Hours" },
+                    { value: launchCountdown.minutes, label: "Minutes" },
+                    { value: launchCountdown.seconds, label: "Seconds" },
+                  ].map((item, index) => (
+                    <div key={index} className="text-center space-y-3">
+                      <Card className="relative group hover:scale-105 transition-all duration-300 border-primary/20 bg-card/50 backdrop-blur-sm">
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-lg" />
+                        <CardContent className="p-4 md:p-6 relative">
+                          <NumberFlow
+                            value={item.value}
+                            format={{ minimumIntegerDigits: 2 }}
+                            className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </CardContent>
+                      </Card>
+                      <Text
+                        as="p"
+                        className="text-sm md:text-base text-muted-foreground font-medium uppercase tracking-wider"
+                      >
+                        {item.label}
+                      </Text>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </BlurFade>
+
+            {/* Features Preview */}
+            <BlurFade inView delay={0.35}>
+              <Card className="bg-card/30 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-500">
+                <CardContent className="p-6 md:p-8">
+                  <Text
+                    as="h4"
+                    className="text-xl font-bold mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent"
+                  >
+                    What Awaits You
+                  </Text>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {[
+                      {
+                        icon: TrophyIcon,
+                        text: "RM11,000 Prize Pool",
+                        color: "text-yellow-500",
+                      },
+                      {
+                        icon: GraduationCapIcon,
+                        text: "50+ Universities",
+                        color: "text-blue-500",
+                      },
+                      {
+                        icon: Users2Icon,
+                        text: "200+ Expected Teams",
+                        color: "text-green-500",
+                      },
+                      {
+                        icon: CalendarIcon,
+                        text: "6 Weeks Competition",
+                        color: "text-purple-500",
+                      },
+                    ].map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-4 group"
+                      >
+                        <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                          <item.icon className={`h-6 w-6 ${item.color}`} />
+                        </div>
+                        <Text
+                          as="p"
+                          className="text-base md:text-lg font-medium"
+                        >
+                          {item.text}
+                        </Text>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </BlurFade>
+
+            {/* Call to Action */}
+            <BlurFade inView delay={0.4}>
+              <div className="space-y-6">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    size="lg"
+                    disabled
+                    className="text-lg px-8 py-4 bg-primary/20 hover:bg-primary/30 border border-primary/40"
+                  >
+                    <CalendarIcon className="mr-2 h-5 w-5" />
+                    Registration Opens August 15
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="text-lg px-8 py-4 border-primary/40 hover:bg-primary/10"
+                    asChild
+                  >
+                    <Link href="mailto:info@mdit2025.com">
+                      Get Notified
+                      <ArrowRightIcon className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <Text as="p" className="text-sm text-muted-foreground">
+                    Official launch on August 1, 2025
+                  </Text>
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-1000" />
+                </div>
+              </div>
+            </BlurFade>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // Key statistics
   const statistics = [
