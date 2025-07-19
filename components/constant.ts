@@ -9,6 +9,12 @@ import {
   CrownIcon,
   AlignJustifyIcon,
   ListCheckIcon,
+  CalendarIcon,
+  TrophyIcon,
+  GraduationCapIcon,
+  AwardIcon,
+  Users2Icon,
+  BrainIcon,
 } from "lucide-react";
 
 export const FAQ = [
@@ -200,10 +206,6 @@ export const FOOTER_QUICK_LINK = [
     href: "/contact",
   },
   {
-    title: "Contact Us",
-    href: "/contact",
-  },
-  {
     title: "Rules & Regulation",
     href: "/rules-regulation",
   },
@@ -211,4 +213,142 @@ export const FOOTER_QUICK_LINK = [
     title: "FAQ",
     href: "/frequently-asked-questions",
   },
+];
+
+export const MDIT2024_IMAGE = [
+  {
+    src: "/assets/mdit2024/DSC_0088.jpg",
+    alt: "MDIT 2024 Image 1",
+  },
+  {
+    src: "/assets/mdit2024/DSC_0148.jpg",
+    alt: "MDIT 2024 Image 2",
+  },
+  {
+    src: "/assets/mdit2024/DSC_0180.jpg",
+    alt: "MDIT 2024 Image 3",
+  },
+  {
+    src: "/assets/mdit2024/DSC_0198.jpg",
+    alt: "MDIT 2024 Image 4",
+  },
+  {
+    src: "/assets/mdit2024/DSC_0216.jpg",
+    alt: "MDIT 2024 Image 5",
+  },
+  {
+    src: "/assets/mdit2024/DSC_0248.jpg",
+    alt: "MDIT 2024 Image 6",
+  },
+  {
+    src: "/assets/mdit2024/DSC_0290.jpg",
+    alt: "MDIT 2024 Image 7",
+  },
+];
+
+export const MDIT2023_IMAGE = [
+  {
+    src: "/assets/mdit2023/DSC_0127.jpg",
+    alt: "MDIT 2023 Image 1",
+  },
+  {
+    src: "/assets/mdit2023/DSC_0133.jpg",
+    alt: "MDIT 2023 Image 2",
+  },
+  {
+    src: "/assets/mdit2023/DSC_0141.jpg",
+    alt: "MDIT 2023 Image 3",
+  },
+  {
+    src: "/assets/mdit2023/DSC_0143.jpg",
+    alt: "MDIT 2023 Image 4",
+  },
+  {
+    src: "/assets/mdit2023/DSC_0194.jpg",
+    alt: "MDIT 2023 Image 5",
+  },
+  {
+    src: "/assets/mdit2023/DSC_0221.jpg",
+    alt: "MDIT 2023 Image 6",
+  },
+  {
+    src: "/assets/mdit2023/DSC_0239.jpg",
+    alt: "MDIT 2023 Image 7",
+  },
+  {
+    src: "/assets/mdit2023/DSC_0255.jpg",
+    alt: "MDIT 2023 Image 8",
+  },
+  {
+    src: "/assets/mdit2023/DSC_0256.jpg",
+    alt: "MDIT 2023 Image 9",
+  },
+];
+
+export const KEY_STATISTICS = [
+  { label: "Total Prize Pool", value: "RM 11,000", icon: TrophyIcon },
+  { label: "Universities", value: "50+", icon: GraduationCapIcon },
+  { label: "Expected Teams", value: "60+", icon: Users2Icon },
+  { label: "Competition Days", value: "43", icon: CalendarIcon },
+];
+
+export const COMPETITION_HIGHLIGHTS = [
+  {
+    icon: TrophyIcon,
+    title: "Massive Prize Pool",
+    description: "RM11,000 in total prizes with RM3,500 for first place",
+    color: "text-yellow-600",
+    bgColor: "bg-yellow-50",
+  },
+  {
+    icon: BrainIcon,
+    title: "Real-World Datasets",
+    description: "Work with actual government data from DOSM",
+    color: "text-blue-600",
+    bgColor: "bg-blue-50",
+  },
+  {
+    icon: PresentationIcon,
+    title: "Industry Exposure",
+    description: "Present to experts from PwC, DOSM, and UiTM",
+    color: "text-green-600",
+    bgColor: "bg-green-50",
+  },
+  {
+    icon: AwardIcon,
+    title: "National Recognition",
+    description: "Prestigious competition with certificates and trophies",
+    color: "text-purple-600",
+    bgColor: "bg-purple-50",
+  },
+];
+
+// Judge interface for type safety
+interface Judge {
+  name: string;
+  title: string;
+  bio: string;
+}
+
+export const EVENT_JUDGES: Judge[] = [
+  // {
+  //   name: "AHMAD ADHA BIN MOHD GHANI",
+  //   title: "PwC Trust Ambassador, PwC Malaysia",
+  //   bio: "Ahmad Adha is a seasoned professional with extensive experience in data analytics and business intelligence, currently serving as a PwC Trust Ambassador with over 10 years of experience in transforming data into actionable insights.",
+  // },
+  // {
+  //   name: "DR. SARAH LIAM",
+  //   title: "Senior Data Scientist, Department of Statistics Malaysia",
+  //   bio: "Dr. Sarah leads the data innovation initiatives at DOSM with a PhD in Applied Statistics and 15 years of experience in government data systems and policy-making through data-driven insights.",
+  // },
+  // {
+  //   name: "PROF. AHMAD HASSAN",
+  //   title: "Dean, Faculty of Computer Science and Mathematics, UiTM",
+  //   bio: "Professor Ahmad Hassan is an expert in machine learning and data mining with over 20 years of academic experience and numerous publications in top-tier journals.",
+  // },
+  // {
+  //   name: "MS. NURUL AISYAH",
+  //   title: "Head of Analytics, Grab Malaysia",
+  //   bio: "Nurul leads data science teams at Grab Malaysia, focusing on predictive analytics and machine learning solutions for Southeast Asia super app ecosystem.",
+  // },
 ];

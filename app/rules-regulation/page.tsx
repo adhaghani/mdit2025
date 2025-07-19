@@ -184,7 +184,7 @@ const RulesRegulationPage = () => {
         {importantNotes.map((note, index) => (
           <BlurFade key={index} inView delay={0.3 + index * 0.1}>
             <Card
-              className={`${
+              className={`h-full ${
                 note.type === "warning"
                   ? "border-red-200 bg-red-50/50"
                   : "border-blue-200 bg-blue-50/50"

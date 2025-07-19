@@ -26,32 +26,9 @@ import {
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { EVENT_JUDGES } from "@/components/constant";
 
 const EventDetailsPage = () => {
-  // Judge information
-  const judges = [
-    {
-      name: "AHMAD ADHA BIN MOHD GHANI",
-      title: "PwC Trust Ambassador, PwC Malaysia",
-      bio: "Ahmad Adha is a seasoned professional with extensive experience in data analytics and business intelligence, currently serving as a PwC Trust Ambassador with over 10 years of experience in transforming data into actionable insights.",
-    },
-    {
-      name: "DR. SARAH LIAM",
-      title: "Senior Data Scientist, Department of Statistics Malaysia",
-      bio: "Dr. Sarah leads the data innovation initiatives at DOSM with a PhD in Applied Statistics and 15 years of experience in government data systems and policy-making through data-driven insights.",
-    },
-    {
-      name: "PROF. AHMAD HASSAN",
-      title: "Dean, Faculty of Computer Science and Mathematics, UiTM",
-      bio: "Professor Ahmad Hassan is an expert in machine learning and data mining with over 20 years of academic experience and numerous publications in top-tier journals.",
-    },
-    {
-      name: "MS. NURUL AISYAH",
-      title: "Head of Analytics, Grab Malaysia",
-      bio: "Nurul leads data science teams at Grab Malaysia, focusing on predictive analytics and machine learning solutions for Southeast Asia super app ecosystem.",
-    },
-  ];
-
   // Competition benefits
   const benefits = [
     {
@@ -447,58 +424,70 @@ const EventDetailsPage = () => {
           </Text>
         </BlurFade>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {judges.map((judge, index) => (
-            <BlurFade key={index} inView delay={0.2 + index * 0.05}>
-              <Dialog>
-                <Card className="h-full hover:shadow-lg transition-shadow">
-                  <CardContent>
-                    <div className="relative aspect-square border rounded-lg mb-4 bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
-                      <DialogTrigger asChild>
-                        <Button
-                          size="sm"
-                          className="absolute top-2 right-2"
-                          variant="secondary"
-                        >
-                          View Details
-                        </Button>
-                      </DialogTrigger>
-                    </div>
-                    <Text as="h4" className="font-semibold mb-1">
-                      {judge.name}
-                    </Text>
-                    <Text as="p" styleVariant="muted" className="text-sm">
-                      {judge.title}
-                    </Text>
-                  </CardContent>
-                </Card>
-                <DialogContent className="max-w-2xl">
-                  <DialogHeader>
-                    <DialogTitle>Judge #{index + 1}</DialogTitle>
-                  </DialogHeader>
-                  <div className="flex flex-col sm:flex-row gap-5">
-                    <div className="relative flex-1 aspect-video sm:aspect-square border rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
-                      <Text as="p" styleVariant="muted">
-                        Professional Photo
-                      </Text>
-                    </div>
-                    <div className="flex-1">
-                      <Text as="h3" className="text-lg font-semibold mb-2">
+        {EVENT_JUDGES && EVENT_JUDGES.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {EVENT_JUDGES.map((judge, index) => (
+              <BlurFade key={index} inView delay={0.2 + index * 0.05}>
+                <Dialog>
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent>
+                      <div className="relative aspect-square border rounded-lg mb-4 bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
+                        <DialogTrigger asChild>
+                          <Button
+                            size="sm"
+                            className="absolute top-2 right-2"
+                            variant="secondary"
+                          >
+                            View Details
+                          </Button>
+                        </DialogTrigger>
+                      </div>
+                      <Text as="h4" className="font-semibold mb-1">
                         {judge.name}
                       </Text>
-                      <Text as="p" styleVariant="muted" className="mb-4">
+                      <Text as="p" styleVariant="muted" className="text-sm">
                         {judge.title}
                       </Text>
-                      <Text as="p" className="text-justify leading-relaxed">
-                        {judge.bio}
-                      </Text>
+                    </CardContent>
+                  </Card>
+                  <DialogContent className="max-w-2xl">
+                    <DialogHeader>
+                      <DialogTitle>Judge #{index + 1}</DialogTitle>
+                    </DialogHeader>
+                    <div className="flex flex-col sm:flex-row gap-5">
+                      <div className="relative flex-1 aspect-video sm:aspect-square border rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
+                        <Text as="p" styleVariant="muted">
+                          Professional Photo
+                        </Text>
+                      </div>
+                      <div className="flex-1">
+                        <Text as="h3" className="text-lg font-semibold mb-2">
+                          {judge.name}
+                        </Text>
+                        <Text as="p" styleVariant="muted" className="mb-4">
+                          {judge.title}
+                        </Text>
+                        <Text as="p" className="text-justify leading-relaxed">
+                          {judge.bio}
+                        </Text>
+                      </div>
                     </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </BlurFade>
-          ))}
-        </div>
+                  </DialogContent>
+                </Dialog>
+              </BlurFade>
+            ))}
+          </div>
+        ) : (
+          <BlurFade inView delay={0.25}>
+            <Card className="w-full">
+              <CardContent className="w-full">
+                <Text as="h3" className="text-center">
+                  Judges will be announced soon!
+                </Text>
+              </CardContent>
+            </Card>
+          </BlurFade>
+        )}
       </div>
 
       {/* Timeline Section */}

@@ -7,15 +7,11 @@ import {
   UsersIcon,
   TrophyIcon,
   ArrowRightIcon,
-  GraduationCapIcon,
-  AwardIcon,
   DollarSignIcon,
   BookOpenIcon,
-  PresentationIcon,
   TargetIcon,
   LightbulbIcon,
   Users2Icon,
-  BrainIcon,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useStartCountdown } from "@/hooks/useStartCountdown";
@@ -32,6 +28,12 @@ import {
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  MDIT2023_IMAGE,
+  MDIT2024_IMAGE,
+  KEY_STATISTICS,
+  COMPETITION_HIGHLIGHTS,
+} from "@/components/constant";
 
 const Page = () => {
   // Target date: August 30, 2025, GMT+8 (midnight)
@@ -43,46 +45,6 @@ const Page = () => {
   const { timeLeft: timeUntilRegistration } = useStartCountdown(
     "2025-08-10T00:00:00+08:00" // Count down to August 10
   );
-
-  // Key statistics
-  const statistics = [
-    { label: "Total Prize Pool", value: "RM 11,000", icon: TrophyIcon },
-    { label: "Universities", value: "50+", icon: GraduationCapIcon },
-    { label: "Expected Teams", value: "60+", icon: Users2Icon },
-    { label: "Competition Days", value: "43", icon: CalendarIcon },
-  ];
-
-  // Competition highlights
-  const highlights = [
-    {
-      icon: TrophyIcon,
-      title: "Massive Prize Pool",
-      description: "RM11,000 in total prizes with RM3,500 for first place",
-      color: "text-yellow-600",
-      bgColor: "bg-yellow-50",
-    },
-    {
-      icon: BrainIcon,
-      title: "Real-World Datasets",
-      description: "Work with actual government data from DOSM",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50",
-    },
-    {
-      icon: PresentationIcon,
-      title: "Industry Exposure",
-      description: "Present to experts from PwC, DOSM, and UiTM",
-      color: "text-green-600",
-      bgColor: "bg-green-50",
-    },
-    {
-      icon: AwardIcon,
-      title: "National Recognition",
-      description: "Prestigious competition with certificates and trophies",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50",
-    },
-  ];
 
   // Competition phases
   const phases = [
@@ -113,76 +75,6 @@ const Page = () => {
       description: "Final presentations and awards ceremony",
       icon: TrophyIcon,
       status: "upcoming",
-    },
-  ];
-
-  const Image_src_2024 = [
-    {
-      src: "/assets/mdit2024/DSC_0088.jpg",
-      alt: "MDIT 2024 Image 1",
-    },
-    {
-      src: "/assets/mdit2024/DSC_0148.jpg",
-      alt: "MDIT 2024 Image 2",
-    },
-    {
-      src: "/assets/mdit2024/DSC_0180.jpg",
-      alt: "MDIT 2024 Image 3",
-    },
-    {
-      src: "/assets/mdit2024/DSC_0198.jpg",
-      alt: "MDIT 2024 Image 4",
-    },
-    {
-      src: "/assets/mdit2024/DSC_0216.jpg",
-      alt: "MDIT 2024 Image 5",
-    },
-    {
-      src: "/assets/mdit2024/DSC_0248.jpg",
-      alt: "MDIT 2024 Image 6",
-    },
-    {
-      src: "/assets/mdit2024/DSC_0290.jpg",
-      alt: "MDIT 2024 Image 7",
-    },
-  ];
-
-  const Image_src_2023 = [
-    {
-      src: "/assets/mdit2023/DSC_0127.jpg",
-      alt: "MDIT 2023 Image 1",
-    },
-    {
-      src: "/assets/mdit2023/DSC_0133.jpg",
-      alt: "MDIT 2023 Image 2",
-    },
-    {
-      src: "/assets/mdit2023/DSC_0141.jpg",
-      alt: "MDIT 2023 Image 3",
-    },
-    {
-      src: "/assets/mdit2023/DSC_0143.jpg",
-      alt: "MDIT 2023 Image 4",
-    },
-    {
-      src: "/assets/mdit2023/DSC_0194.jpg",
-      alt: "MDIT 2023 Image 5",
-    },
-    {
-      src: "/assets/mdit2023/DSC_0221.jpg",
-      alt: "MDIT 2023 Image 6",
-    },
-    {
-      src: "/assets/mdit2023/DSC_0239.jpg",
-      alt: "MDIT 2023 Image 7",
-    },
-    {
-      src: "/assets/mdit2023/DSC_0255.jpg",
-      alt: "MDIT 2023 Image 8",
-    },
-    {
-      src: "/assets/mdit2023/DSC_0256.jpg",
-      alt: "MDIT 2023 Image 9",
     },
   ];
 
@@ -360,7 +252,7 @@ const Page = () => {
           </Text>
         </BlurFade>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {statistics.map((stat, index) => (
+          {KEY_STATISTICS.map((stat, index) => (
             <BlurFade key={index} inView delay={0.15 + index * 0.05}>
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
@@ -401,7 +293,7 @@ const Page = () => {
           </Text>
         </BlurFade>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {highlights.map((highlight, index) => (
+          {COMPETITION_HIGHLIGHTS.map((highlight, index) => (
             <BlurFade key={index} inView delay={0.2 + index * 0.05}>
               <Card
                 className={`h-full hover:shadow-lg transition-shadow ${highlight.bgColor}`}
@@ -826,7 +718,7 @@ const Page = () => {
         </BlurFade>
         <Card className="p-8">
           <CardContent>
-            <TooltipProvider>
+            <TooltipProvider delayDuration={0}>
               <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
                 <Tooltip>
                   <TooltipTrigger>
@@ -924,7 +816,7 @@ const Page = () => {
         </BlurFade>
         <Card className="p-8">
           <CardContent>
-            <TooltipProvider>
+            <TooltipProvider delayDuration={0}>
               <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
                 <Tooltip>
                   <TooltipTrigger>
@@ -989,7 +881,7 @@ const Page = () => {
       </div>
 
       {/* MDIT 2024 Memories */}
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+      <div className="container mx-auto py-16">
         <BlurFade delay={0.2}>
           <Text
             as="h2"
@@ -1007,40 +899,54 @@ const Page = () => {
           </Text>
         </BlurFade>
 
-        <BlurFade delay={0.4}>
-          <Marquee className="flex gap-4 rounded-lg">
-            {Image_src_2024.map((image, index) => (
-              <Image
-                key={index}
-                className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                src={image.src}
-                alt={image.alt}
-                quality={100}
-                width={500}
-                height={200}
-              />
-            ))}
-          </Marquee>
+        <BlurFade delay={0.4} className="my-3">
+          <Card>
+            <CardContent className="relative">
+              <Marquee className="flex gap-4 rounded-lg">
+                {MDIT2024_IMAGE.map((image, index) => (
+                  <Image
+                    key={index}
+                    className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                    src={image.src}
+                    alt={image.alt}
+                    quality={100}
+                    width={500}
+                    height={200}
+                  />
+                ))}
+              </Marquee>
+              {/* Gradient mask for seamless fade effect */}
+              <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+              <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+            </CardContent>
+          </Card>
         </BlurFade>
         <BlurFade delay={0.4}>
-          <Marquee reverse className="flex gap-4 rounded-lg">
-            {Image_src_2024.map((image, index) => (
-              <Image
-                key={index}
-                className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                src={image.src}
-                alt={image.alt}
-                quality={100}
-                width={500}
-                height={200}
-              />
-            ))}
-          </Marquee>
+          <Card>
+            <CardContent className="relative">
+              <Marquee reverse className="flex gap-4 rounded-lg">
+                {MDIT2024_IMAGE.map((image, index) => (
+                  <Image
+                    key={index}
+                    className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                    src={image.src}
+                    alt={image.alt}
+                    quality={100}
+                    width={500}
+                    height={200}
+                  />
+                ))}
+              </Marquee>
+              {/* Gradient mask for seamless fade effect */}
+              <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+              <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+            </CardContent>
+          </Card>
         </BlurFade>
       </div>
 
       {/* MDIT 2023 Memories */}
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+      <div className="container mx-auto py-16">
         <BlurFade delay={0.2}>
           <Text
             as="h2"
@@ -1058,35 +964,52 @@ const Page = () => {
           </Text>
         </BlurFade>
 
-        <BlurFade delay={0.4}>
-          <Marquee className="flex gap-4 rounded-lg [--duration:50s]">
-            {Image_src_2023.map((image, index) => (
-              <Image
-                key={index}
-                className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                src={image.src}
-                alt={image.alt}
-                quality={100}
-                width={500}
-                height={200}
-              />
-            ))}
-          </Marquee>
+        <BlurFade delay={0.4} className="my-3">
+          <Card>
+            <CardContent className="relative">
+              <Marquee className="flex gap-4 rounded-lg [--duration:50s]">
+                {MDIT2023_IMAGE.map((image, index) => (
+                  <Image
+                    key={index}
+                    className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                    src={image.src}
+                    alt={image.alt}
+                    quality={100}
+                    width={500}
+                    height={200}
+                  />
+                ))}
+              </Marquee>
+              {/* Gradient mask for seamless fade effect */}
+              <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+              <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+            </CardContent>
+          </Card>
         </BlurFade>
         <BlurFade delay={0.4}>
-          <Marquee reverse className="flex gap-4 rounded-lg [--duration:50s]">
-            {Image_src_2023.map((image, index) => (
-              <Image
-                key={index}
-                className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                src={image.src}
-                alt={image.alt}
-                quality={100}
-                width={500}
-                height={200}
-              />
-            ))}
-          </Marquee>
+          <Card>
+            <CardContent className="relative">
+              <Marquee
+                reverse
+                className="flex gap-4 rounded-lg [--duration:50s]"
+              >
+                {MDIT2023_IMAGE.map((image, index) => (
+                  <Image
+                    key={index}
+                    className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                    src={image.src}
+                    alt={image.alt}
+                    quality={100}
+                    width={500}
+                    height={200}
+                  />
+                ))}
+              </Marquee>
+              {/* Gradient mask for seamless fade effect */}
+              <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+              <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+            </CardContent>
+          </Card>
         </BlurFade>
       </div>
     </>
