@@ -37,7 +37,7 @@ const Page = () => {
   // Website launch countdown - show coming soon until August 1, 2025
   const { hasStarted: SiteIsNotLive, timeLeft: launchCountdown } =
     useStartCountdown(
-      "2025-08-01T00:00:00+08:00" // Website goes live on August 1, 2025
+      "2025-08-15T00:00:00+08:00" // Website goes live on August 15, 2025
     );
 
   // Target date: August 30, 2025, GMT+8 (midnight)

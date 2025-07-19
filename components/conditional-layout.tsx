@@ -14,8 +14,8 @@ export default function ConditionalLayout({
   const [siteIsLive, setSiteIsLive] = useState(false);
 
   useEffect(() => {
-    // Check if the current date is after August 1, 2025
-    const launchDate = new Date("2025-08-01T00:00:00+08:00");
+    // Check if the current date is after August 15, 2025
+    const launchDate = new Date("2025-08-15T00:00:00+08:00");
     const now = new Date();
     setSiteIsLive(now >= launchDate);
   }, []);
