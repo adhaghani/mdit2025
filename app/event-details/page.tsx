@@ -452,7 +452,7 @@ const EventDetailsPage = () => {
             <BlurFade key={index} inView delay={0.2 + index * 0.05}>
               <Dialog>
                 <Card className="h-full hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
+                  <CardContent>
                     <div className="relative aspect-square border rounded-lg mb-4 bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
                       <DialogTrigger asChild>
                         <Button
