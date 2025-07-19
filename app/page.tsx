@@ -120,8 +120,8 @@ const Page = () => {
                     { value: launchCountdown.seconds, label: "Seconds" },
                   ].map((item, index) => (
                     <div key={index} className="text-center space-y-3">
-                      <Card className="relative group hover:scale-105 transition-all duration-300 border-primary/20 bg-card/50 backdrop-blur-sm">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-lg" />
+                      <Card className="relative group hover:scale-105 transition-all duration-300">
+                        <div className="absolute inset-0  rounded-lg" />
                         <CardContent className="p-4 md:p-6 relative">
                           <NumberFlow
                             value={item.value}
@@ -208,7 +208,7 @@ const Page = () => {
                 <div className="flex items-center justify-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                   <Text as="p" className="text-sm text-muted-foreground">
-                    Official launch on August 1, 2025
+                    Official Website will be released on August 1, 2025
                   </Text>
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-1000" />
                 </div>
