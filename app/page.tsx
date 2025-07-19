@@ -208,7 +208,8 @@ const Page = () => {
                 <div className="flex items-center justify-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                   <Text as="p" className="text-sm text-muted-foreground">
-                    Official Website will be released on August 1, 2025
+                    Official Website will be released somewhere close to the
+                    registration date, August 15, 2025
                   </Text>
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-1000" />
                 </div>
