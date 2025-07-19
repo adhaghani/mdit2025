@@ -451,11 +451,15 @@ const EventDetailsPage = () => {
           {judges.map((judge, index) => (
             <BlurFade key={index} inView delay={0.2 + index * 0.05}>
               <Dialog>
-                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
+                <Card className="h-full hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="relative aspect-square border rounded-lg mb-4 bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
                       <DialogTrigger asChild>
-                        <Button size="sm" variant="secondary">
+                        <Button
+                          size="sm"
+                          className="absolute top-2 right-2"
+                          variant="secondary"
+                        >
                           View Details
                         </Button>
                       </DialogTrigger>
@@ -470,7 +474,7 @@ const EventDetailsPage = () => {
                 </Card>
                 <DialogContent className="max-w-2xl">
                   <DialogHeader>
-                    <DialogTitle>{judge.name}</DialogTitle>
+                    <DialogTitle>Judge #{index + 1}</DialogTitle>
                   </DialogHeader>
                   <div className="flex flex-col sm:flex-row gap-5">
                     <div className="relative flex-1 aspect-video sm:aspect-square border rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">

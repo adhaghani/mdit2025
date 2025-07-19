@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { GridPattern } from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/next";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -135,6 +136,7 @@ export default function RootLayout({
         />
         <link rel="apple-touch-icon" href="/mdit2025_64.png" />
       </head>
+      <Analytics />
       <body
         className={`${outfit.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased`}
       >
