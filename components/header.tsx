@@ -14,7 +14,7 @@ import { MoreHorizontalIcon } from "lucide-react";
 import { useStartCountdown } from "@/hooks/useStartCountdown";
 import Image from "next/image";
 import { Text } from "@/components/ui/text";
-
+import { ModeToggle } from "./mode-toggle";
 const Header = () => {
   const { hasStarted, isExpired } = useStartCountdown(
     "2025-08-30T00:00:00+08:00", // Count down to August 30
@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <header className="max-w-7xl z-50 h-14 fixed top-4 left-[50%] translate-x-[-50%] w-full mx-auto px-4">
-      <div className="flex justify-between h-full items-center bg-black/20 backdrop-blur-lg gap-4 border rounded-lg shadow-sm px-4 py-2 ">
+      <div className="flex justify-between h-full items-center bg-light/20 dark:bg-black/20 backdrop-blur-lg gap-4 border rounded-lg shadow-sm px-4 py-2 ">
         <Link href={"/"} className=" flex items-center justify-center gap-2">
           <Image
             src="/mdit.svg"
@@ -42,13 +42,17 @@ const Header = () => {
             <Link href="/event-details">Details</Link>
           </li>
           <li>
-            <Link href="/contact">Contact Us</Link>
+            <Link href="/contact">Contact</Link>
           </li>
+
           <li>
-            <Link href="/rules-regulation">Rules & Regulation</Link>
+            <Link href="/rules-regulation">Rules</Link>
           </li>
           <li>
             <Link href="/frequently-asked-questions">FAQs</Link>
+          </li>
+          <li>
+            <ModeToggle />
           </li>
           <li>
             <Link href={isExpired || !hasStarted ? "#" : "/register"}>
@@ -146,6 +150,9 @@ const Header = () => {
               </ul>
             </SheetContent>
           </Sheet>
+          <div className="flex">
+            <ModeToggle />
+          </div>
           <div className="hidden sm:flex">
             <Link href={isExpired || !hasStarted ? "#" : "/register"}>
               <Button

@@ -143,6 +143,7 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
+          enableSystem
           disableTransitionOnChange
         >
           <div className="fixed h-[100vh] w-[100vw] left-0 top-0 -z-10">
