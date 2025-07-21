@@ -117,60 +117,175 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 7, 15),
     event: "Registration Opens",
     details: "Registration for MDIT 2025 opens.",
+    extendedDetails: {
+      time: "12:00 AM GMT+8",
+      location: "Online Platform",
+      description:
+        "Teams can begin their registration process through the official MDIT website. Early registration is encouraged as slots are limited and allocated on a first-come, first-served basis.",
+      requirements: [
+        "Complete team registration form",
+        "Payment of RM150 registration fee",
+        "Upload required documents",
+      ],
+    },
   },
   {
     icon: DoorClosedIcon,
     date: new Date(2025, 7, 30),
     event: "Registration Closes",
     details: "Registration for MDIT 2025 closes.",
+    extendedDetails: {
+      time: "11:59 PM GMT+8",
+      location: "Online Platform",
+      description:
+        "Final deadline for team registration. No late registrations will be accepted after this date.",
+      requirements: [
+        "Final payment confirmation",
+        "Complete documentation",
+        "Team member verification",
+      ],
+    },
   },
   {
     icon: SparklesIcon,
-    date: new Date(2025, 8, 1),
-    event: "Opening Ceremony",
-    details: "Opening ceremony for MDIT 2025.",
+    date: new Date(2025, 8, 6),
+    event: "Opening Ceremony & Competition Briefing",
+    details:
+      "Covers competition briefing and pitching essentials to guide your team toward an effective project presentation.",
+    extendedDetails: {
+      time: "To be Announced",
+      location: "Online Platform",
+      description:
+        "Official launch of MDIT 2025 featuring keynote speeches, competition briefing.It will covers competition briefing and pitching essentials to guide your team toward an effective project presentation.",
+      requirements: [
+        "Team attendance (minimum 1 representative)",
+        "Stable internet connection for online participants",
+        "Notebook for taking notes",
+      ],
+    },
+  },
+  {
+    icon: SparklesIcon,
+    date: new Date(2025, 8, 6),
+    event: "Software Workshops",
+    details:
+      "Learn to enhance your project using statistical and data visualization tools.",
+    extendedDetails: {
+      time: "TBA",
+      location: "Online Platform",
+      description:
+        "Online Software Workshops, team will be guided on using various statistical and data visualization tools effectively. This will help teams enhance their projects with advanced analytical techniques and visualization methods.",
+      requirements: [
+        "Team attendance (minimum 1 representative)",
+        "Stable internet connection for online participants",
+        "Notebook for taking notes",
+      ],
+    },
   },
   {
     icon: PlayIcon,
-    date: new Date(2025, 8, 8),
-    event: "Competition Begins",
-    details: "The competition officially starts.",
+    date: new Date(2025, 8, 21),
+    event: "Preliminary Round Begins",
+    details:
+      "Submission window is now open for your team to upload their report, dashboard, and video.",
+    extendedDetails: {
+      time: "9:00 AM GMT+8",
+      location: "Online Platform",
+      description:
+        "Teams can start submitting their preliminary reports, dashboards, and presentation videos. This phase allows teams to showcase their initial findings and solutions.",
+      requirements: [
+        "Complete technical report (PDF)",
+        "Data dashboard/visualization",
+        "Presentation Video",
+      ],
+    },
   },
   {
     icon: PauseIcon,
-    date: new Date(2025, 8, 21),
-    event: "Competition Ends",
-    details: "The competition concludes.",
+    date: new Date(2025, 9, 15),
+    event: "Submission Period Ended",
+    details:
+      "All your submitted materials will now proceed to the evaluation phase.",
+    extendedDetails: {
+      time: "11:59 PM GMT+8",
+      location: "Online",
+      description:
+        "The competition concludes. All teams must ensure their final submissions are uploaded before the deadline. No late submissions will be accepted.",
+      requirements: [
+        "Complete technical report (PDF)",
+        "Data dashboard/visualization",
+        "5-minute presentation video",
+      ],
+    },
   },
   {
     icon: AlignJustifyIcon,
-    date: new Date(2025, 8, 22),
-    event: "Finalist Shortlisting Begins",
+    date: new Date(2025, 9, 16),
+    event: "Evaluation Period Begins",
     details: "Shortlisting of groups begins.",
+    extendedDetails: {
+      time: "9:00 AM GMT+8",
+      location: "Judge Panel Review",
+      description:
+        "Expert judges begin comprehensive evaluation of all submissions based on technical excellence, innovation, presentation quality, and practical applicability.",
+      requirements: [
+        "Judge panel coordination",
+        "Scoring rubric application",
+        "Detailed feedback preparation",
+      ],
+    },
   },
   {
     icon: ListCheckIcon,
-    date: new Date(2025, 9, 3),
-    event: "Finalist Shortlisting Ends",
+    date: new Date(2025, 9, 16),
+    event: "Top 10 Finalists Announced",
     details: "Shortlisting of groups is completed.",
-  },
-  {
-    icon: MegaphoneIcon,
-    date: new Date(2025, 9, 3),
-    event: "Announcement of top 10 Finalist",
-    details: "Announcement of the top 10 finalists.",
+    extendedDetails: {
+      time: "6:00 PM GMT+8",
+      location: "Online Announcement",
+      description:
+        "The top 10 finalist teams are announced and will be invited to present their solutions live to the expert panel during the final presentation session.",
+      requirements: [
+        "Official notification to finalists",
+        "Final presentation guidelines",
+        "Travel coordination for physical attendance",
+      ],
+    },
   },
   {
     icon: PresentationIcon,
     date: new Date(2025, 9, 17),
-    event: "Live Pitching for Finalist",
-    details: "Finalists present their pitches live to 4 judges.",
+    event: "Final Presentations",
+    details: "Finalists present their pitches live to expert judges.",
+    extendedDetails: {
+      time: "9:00 AM - 5:00 PM GMT+8",
+      location: "To be Announced",
+      description:
+        "Finalist teams deliver 15-minute presentations followed by 10-minute Q&A sessions with industry experts, government officials, and academic leaders.",
+      requirements: [
+        "Physical attendance required",
+        "Presentation slides",
+        "Demo-ready solutions",
+        "Professional attire",
+      ],
+    },
   },
   {
     icon: CrownIcon,
     date: new Date(2025, 9, 18),
-    event: "Winner Announcement and Closing Ceremony",
+    event: "Awards Ceremony & Closing",
     details: "Winners are announced and the event concludes.",
+    extendedDetails: {
+      time: "2:00 PM - 6:00 PM GMT+8",
+      location: "To be Announced",
+      description:
+        "Grand finale featuring winner announcements, prize distribution, networking sessions, and celebration dinner. Recognition of all participants and appreciation for sponsors and partners.",
+      requirements: [
+        "Attendance for prize collection",
+        "Networking opportunities",
+        "Group photos and media sessions",
+      ],
+    },
   },
 ];
 
@@ -287,9 +402,9 @@ export const MDIT2023_IMAGE = [
 
 export const KEY_STATISTICS = [
   { label: "Total Prize Pool", value: "RM 11,000", icon: TrophyIcon },
-  { label: "Universities", value: "50+", icon: GraduationCapIcon },
-  { label: "Expected Teams", value: "60+", icon: Users2Icon },
-  { label: "Competition Days", value: "43", icon: CalendarIcon },
+  { label: "Universities", value: "10+", icon: GraduationCapIcon },
+  { label: "Expected Teams", value: "80+", icon: Users2Icon },
+  { label: "Competition Days", value: "12", icon: CalendarIcon },
 ];
 
 export const COMPETITION_HIGHLIGHTS = [
@@ -297,29 +412,38 @@ export const COMPETITION_HIGHLIGHTS = [
     icon: TrophyIcon,
     title: "Massive Prize Pool",
     description: "RM11,000 in total prizes with RM3,500 for first place",
-    color: "text-yellow-600",
-    bgColor: "bg-yellow-50",
+    color: " text-yellow-600 dark:text-yellow-400",
+    bgColor: " bg-yellow-50 dark:bg-yellow-900/30",
   },
   {
     icon: BrainIcon,
     title: "Real-World Datasets",
-    description: "Work with actual government data from DOSM",
-    color: "text-blue-600",
-    bgColor: "bg-blue-50",
+    description:
+      "Opportunity to push yourself to work with Open Data provided by DOSM such as OpenDOSM, e-Statistik, StatsDW IDL facility",
+    color: " text-blue-600 dark:text-blue-400",
+    bgColor: " bg-blue-50 dark:bg-blue-900/30",
   },
   {
     icon: PresentationIcon,
     title: "Industry Exposure",
-    description: "Present to experts from PwC, DOSM, and UiTM",
-    color: "text-green-600",
-    bgColor: "bg-green-50",
+    description: "Present to experts from Maybank, SAS and DOSM",
+    color: " text-green-600 dark:text-green-400",
+    bgColor: " bg-green-50 dark:bg-green-900/30",
   },
   {
     icon: AwardIcon,
     title: "National Recognition",
     description: "Prestigious competition with certificates and trophies",
-    color: "text-purple-600",
-    bgColor: "bg-purple-50",
+    color: " text-purple-600 dark:text-purple-400",
+    bgColor: " bg-purple-50 dark:bg-purple-900/30",
+  },
+  {
+    icon: CrownIcon,
+    title: "Collaborative Under Pressure",
+    description:
+      "manage conflict, manage responsibilities, handle time constraints, and deliver your work under pressure.",
+    color: " text-purple-600 dark:text-purple-400",
+    bgColor: " bg-purple-50 dark:bg-purple-900/30",
   },
 ];
 

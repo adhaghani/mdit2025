@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 import { GridPattern } from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/next";
+import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -147,13 +148,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="fixed h-[100vh] w-[100vw] left-0 top-0 -z-10">
-            <GridPattern
-              x={-1}
-              y={-1}
-              strokeDasharray={"4 2"}
-              className={cn(
-                "[mask-image:radial-gradient(80vw_circle_at_center,white,transparent)]"
-              )}
+            <FlickeringGrid
+              className="relative inset-0 z-0"
+              squareSize={5}
+              gridGap={10}
+              color="#8b5cf6"
+              maxOpacity={0.12}
+              flickerChance={0.1}
             />
           </div>
           <Header />

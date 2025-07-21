@@ -15,6 +15,8 @@ import {
   DollarSignIcon,
   PresentationIcon,
   AwardIcon,
+  GitGraphIcon,
+  InfoIcon,
 } from "lucide-react";
 import {
   Dialog,
@@ -23,6 +25,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/animate-ui/radix/dialog";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/animate-ui/radix/hover-card";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -56,27 +63,30 @@ const EventDetailsPage = () => {
   // Requirements
   const requirements = [
     {
+      icon: GraduationCapIcon,
       title: "Educational Background",
       items: [
-        "Currently enrolled as Diploma/Undergraduate student",
-        "From any Malaysian university or institution",
-        "All disciplines welcome (STEM and non-STEM)",
+        "Currently enrolled as Diploma/Undergraduate program",
+        "From any Malaysian university or institution (IPTA/IPTS), including international students",
+        "Student from all academic disciplines (STEM and non-STEM) are encouraged to participate",
       ],
     },
     {
+      icon: GitGraphIcon,
       title: "Technical Skills",
       items: [
-        "Basic programming knowledge (any language)",
-        "Understanding of data analysis concepts",
-        "Willingness to learn new tools and technologies",
+        "Fundamental understanding of data analysis and visualization concepts",
+        "Familiarity with any basic statistical tools (SPSS, SAS, Excel etc.)",
+        "Openness to learn and apply new tools or technologies during the competition",
       ],
     },
     {
+      icon: UsersIcon,
       title: "Team Composition",
       items: [
-        "3-4 members per team (minimum 3, maximum 4)",
-        "All members from the same institution",
-        "Diverse skill sets recommended",
+        "Each team must consist of 4 members with 1 advisor",
+        "All team members must be from the same institution",
+        "Teams with a mix of technical, analytical, and communication skills are highly encouraged",
       ],
     },
   ];
@@ -215,34 +225,6 @@ const EventDetailsPage = () => {
         </div>
       </div>
 
-      {/* Competition Benefits */}
-      <div className="my-20">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-12">
-            Why Participate in MDIT 2025?
-          </Text>
-        </BlurFade>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((benefit, index) => (
-            <BlurFade key={index} inView delay={0.15 + index * 0.05}>
-              <Card className="h-full hover:shadow-lg transition-shadow">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-fit">
-                    <benefit.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-lg">{benefit.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    {benefit.description}
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
-          ))}
-        </div>
-      </div>
-
       {/* Event Details */}
       <div className="my-20">
         <BlurFade inView delay={0.1}>
@@ -323,59 +305,13 @@ const EventDetailsPage = () => {
             </Card>
           </BlurFade>
         </div>
-
-        <BlurFade inView delay={0.3}>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <UsersIcon className="text-blue-600" />
-                <Text as="h4">Team Requirements & Eligibility</Text>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <Text as="h4" className="font-semibold mb-2">
-                  Team Size
-                </Text>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  • 3-4 members maximum
-                  <br />
-                  • Minimum 3 members required
-                  <br />• All from same institution
-                </Text>
-              </div>
-              <div>
-                <Text as="h4" className="font-semibold mb-2">
-                  Eligibility
-                </Text>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  • Malaysian university students
-                  <br />
-                  • Diploma/Undergraduate level
-                  <br />• International students welcome
-                </Text>
-              </div>
-              <div>
-                <Text as="h4" className="font-semibold mb-2">
-                  Requirements
-                </Text>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  • Valid student ID
-                  <br />
-                  • Enrollment verification
-                  <br />• Team leader contact info
-                </Text>
-              </div>
-            </CardContent>
-          </Card>
-        </BlurFade>
       </div>
 
       {/* Detailed Requirements */}
       <div className="my-20">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-12">
-            Participant Requirements
+            Eligibility & Team Requirements
           </Text>
         </BlurFade>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -383,7 +319,8 @@ const EventDetailsPage = () => {
             <BlurFade key={index} inView delay={0.15 + index * 0.05}>
               <Card className="h-full">
                 <CardHeader>
-                  <CardTitle className="text-lg text-primary">
+                  <CardTitle className="text-lg">
+                    <req.icon className="inline-block mr-2 h-5 w-5 text-primary" />
                     {req.title}
                   </CardTitle>
                 </CardHeader>
@@ -480,7 +417,7 @@ const EventDetailsPage = () => {
         ) : (
           <BlurFade inView delay={0.25}>
             <Card className="w-full">
-              <CardContent className="w-full">
+              <CardContent className="w-full py-32">
                 <Text as="h3" className="text-center">
                   Judges will be announced soon!
                 </Text>
@@ -504,42 +441,250 @@ const EventDetailsPage = () => {
             className="text-center mb-12 max-w-2xl mx-auto"
           >
             Stay informed about all important dates and milestones throughout
-            the competition period.
+            the competition period.{" "}
+            <span className="hidden md:inline">
+              Hover over each event for detailed information.
+            </span>
+            <span className="md:hidden">
+              Tap on any event to view more details.
+            </span>
           </Text>
         </BlurFade>
 
         <div className="flex flex-col gap-8 max-w-4xl mx-auto">
           {PROGRAM_TIMELINE.map((item, index) => (
             <BlurFade key={index} inView delay={0.1 + index * 0.05}>
-              <div className="flex flex-row items-start gap-6">
-                {/* Date */}
-                <div className="min-w-[120px] text-right">
-                  <Text as="p" className="font-semibold">
-                    {new Date(item.date).toLocaleDateString("en-MY", {
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    {new Date(item.date).getFullYear()}
-                  </Text>
-                </div>
-                {/* Timeline */}
-                <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg"></div>
-                  {index < PROGRAM_TIMELINE.length - 1 && (
-                    <div className="w-0.5 h-16 bg-border mt-2"></div>
-                  )}
-                </div>
-                {/* Content */}
-                <div className="flex-1 pb-8">
-                  <Text as="h4" className="font-semibold mb-2">
-                    {item.event}
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    {item.details}
-                  </Text>
-                </div>
+              {/* Desktop: HoverCard */}
+              <div className="hidden md:block">
+                <HoverCard>
+                  <HoverCardTrigger asChild>
+                    <div className="flex flex-row items-start gap-6 cursor-pointer hover:bg-muted/30 p-4 rounded-lg transition-colors group">
+                      {/* Date */}
+                      <div className="min-w-[120px] text-right">
+                        <Text as="p" className="font-semibold">
+                          {new Date(item.date).toLocaleDateString("en-MY", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </Text>
+                        <Text as="p" styleVariant="muted" className="text-sm">
+                          {new Date(item.date).getFullYear()}
+                        </Text>
+                      </div>
+                      {/* Timeline */}
+                      <div className="flex flex-col items-center">
+                        <div className="w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg"></div>
+                        {index < PROGRAM_TIMELINE.length - 1 && (
+                          <div className="w-0.5 h-16 bg-border mt-2"></div>
+                        )}
+                      </div>
+                      {/* Content */}
+                      <div className="flex-1 pb-8">
+                        <div className="flex items-center gap-2 mb-2">
+                          <item.icon className="h-4 w-4 text-primary" />
+                          <Text as="h4" className="font-semibold">
+                            {item.event}
+                          </Text>
+                          <InfoIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors ml-auto" />
+                        </div>
+                        <Text as="p" styleVariant="muted" className="text-sm">
+                          {item.details}
+                        </Text>
+                        <Text
+                          as="p"
+                          className="text-xs text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          Hover for more details
+                        </Text>
+                      </div>
+                    </div>
+                  </HoverCardTrigger>
+                  <HoverCardContent side="right" className="w-96 p-4">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <item.icon className="h-5 w-5 text-primary" />
+                        <Text as="h4" className="font-semibold">
+                          {item.event}
+                        </Text>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <Text
+                            as="p"
+                            className="font-medium text-muted-foreground text-sm"
+                          >
+                            Time:
+                          </Text>
+                          <Text as="p" className="text-sm">
+                            {item.extendedDetails.time}
+                          </Text>
+                        </div>
+                        <div>
+                          <Text
+                            as="p"
+                            className="font-medium text-muted-foreground text-sm"
+                          >
+                            Location:
+                          </Text>
+                          <Text as="p" className="text-sm">
+                            {item.extendedDetails.location}
+                          </Text>
+                        </div>
+                      </div>
+
+                      <div>
+                        <Text
+                          as="p"
+                          className="font-medium text-muted-foreground text-sm mb-2"
+                        >
+                          Description:
+                        </Text>
+                        <Text as="p" className="text-sm leading-relaxed">
+                          {item.extendedDetails.description}
+                        </Text>
+                      </div>
+
+                      <div>
+                        <Text
+                          as="p"
+                          className="font-medium text-muted-foreground text-sm mb-2"
+                        >
+                          Requirements:
+                        </Text>
+                        <ul className="text-sm space-y-1">
+                          {item.extendedDetails.requirements.map(
+                            (req, reqIndex) => (
+                              <li
+                                key={reqIndex}
+                                className="flex items-start gap-2"
+                              >
+                                <CheckIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                <span>{req}</span>
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    </div>
+                  </HoverCardContent>
+                </HoverCard>
+              </div>
+
+              {/* Mobile: Dialog */}
+              <div className="md:hidden">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="flex flex-row items-start gap-4 cursor-pointer hover:bg-muted/30 p-4 rounded-lg transition-colors active:bg-muted/50">
+                      {/* Date */}
+                      <div className="min-w-[100px] text-right">
+                        <Text as="p" className="font-semibold text-sm">
+                          {new Date(item.date).toLocaleDateString("en-MY", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </Text>
+                        <Text as="p" styleVariant="muted" className="text-xs">
+                          {new Date(item.date).getFullYear()}
+                        </Text>
+                      </div>
+                      {/* Timeline */}
+                      <div className="flex flex-col items-center">
+                        <div className="w-3 h-3 bg-primary rounded-full border-2 border-background shadow-lg"></div>
+                        {index < PROGRAM_TIMELINE.length - 1 && (
+                          <div className="w-0.5 h-12 bg-border mt-1"></div>
+                        )}
+                      </div>
+                      {/* Content */}
+                      <div className="flex-1 pb-6">
+                        <div className="flex items-center gap-2 mb-1">
+                          <item.icon className="h-4 w-4 text-primary" />
+                          <Text as="h4" className="font-semibold text-sm">
+                            {item.event}
+                          </Text>
+                          <InfoIcon className="h-4 w-4 text-primary ml-auto" />
+                        </div>
+                        <Text as="p" styleVariant="muted" className="text-xs">
+                          {item.details}
+                        </Text>
+                        <Text
+                          as="p"
+                          className="text-xs text-primary mt-1 font-medium"
+                        >
+                          Tap for details
+                        </Text>
+                      </div>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-lg">
+                    <DialogHeader>
+                      <DialogTitle className="flex items-center gap-2">
+                        <item.icon className="h-5 w-5 text-primary" />
+                        {item.event}
+                      </DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4 mt-4">
+                      <div className="grid grid-cols-1 gap-3">
+                        <div>
+                          <Text
+                            as="p"
+                            className="font-medium text-muted-foreground text-sm"
+                          >
+                            Time:
+                          </Text>
+                          <Text as="p" className="text-sm">
+                            {item.extendedDetails.time}
+                          </Text>
+                        </div>
+                        <div>
+                          <Text
+                            as="p"
+                            className="font-medium text-muted-foreground text-sm"
+                          >
+                            Location:
+                          </Text>
+                          <Text as="p" className="text-sm">
+                            {item.extendedDetails.location}
+                          </Text>
+                        </div>
+                      </div>
+
+                      <div>
+                        <Text
+                          as="p"
+                          className="font-medium text-muted-foreground text-sm mb-2"
+                        >
+                          Description:
+                        </Text>
+                        <Text as="p" className="text-sm leading-relaxed">
+                          {item.extendedDetails.description}
+                        </Text>
+                      </div>
+
+                      <div>
+                        <Text
+                          as="p"
+                          className="font-medium text-muted-foreground text-sm mb-2"
+                        >
+                          Requirements:
+                        </Text>
+                        <ul className="text-sm space-y-2">
+                          {item.extendedDetails.requirements.map(
+                            (req, reqIndex) => (
+                              <li
+                                key={reqIndex}
+                                className="flex items-start gap-2"
+                              >
+                                <CheckIcon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                                <span>{req}</span>
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </BlurFade>
           ))}

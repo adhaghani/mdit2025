@@ -36,7 +36,8 @@ const Footer = () => {
               </BlurFade>
               <BlurFade inView delay={0.2}>
                 <Text as="h4" className="font-bold text-lg">
-                  MDIT 2025
+                  MDIT x<br />
+                  DOSM Datathon 2025
                 </Text>
               </BlurFade>
             </div>
@@ -45,10 +46,10 @@ const Footer = () => {
                 as="p"
                 className="text-muted-foreground text-justify text-sm"
               >
-                MDIT 2025 is a national inter-varsity program held in
-                collaboration with Faculty of Computer Science and Mathematics
-                Universiti Teknologi MARA, Department of Statistics Malaysia and
-                INSTAT Club.
+                MDIT x DOSM Datathon 2025 is a national inter-varsity program
+                held in collaboration with Faculty of Computer Science and
+                Mathematics Universiti Teknologi MARA, Department of Statistics
+                Malaysia and INSTAT Club.
               </Text>
             </BlurFade>
           </div>
@@ -172,7 +173,7 @@ const Footer = () => {
         <div className="mt-10 pt-6 border-t border-border">
           <BlurFade inView delay={0.1}>
             <Text as="p" styleVariant="muted" className="text-center">
-              © {currentYear} MDIT 2025. All rights reserved.
+              © {currentYear} MDIT x DOSM Datathon 2025. All rights reserved.
             </Text>
           </BlurFade>
         </div>

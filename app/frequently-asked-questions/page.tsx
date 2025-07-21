@@ -73,6 +73,22 @@ const FrequentlyAskedQuestionsPage = () => {
     setSearchTerm("");
   };
 
+  const isReleased = false;
+
+  if (!isReleased) {
+    return (
+      <div className="text-center py-64">
+        <Text as="h1" className="text-2xl font-bold mb-4">
+          Frequently Asked Question Page Coming Soon
+        </Text>
+        <Text as="p" className="text-lg text-muted-foreground">
+          The FAQ section for MDIT 2025 will be released soon. Please check back
+          later for updates.
+        </Text>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* Header Section */}
@@ -89,9 +105,9 @@ const FrequentlyAskedQuestionsPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.2}>
           <Text as="p" styleVariant="muted" className="max-w-2xl mx-auto">
-            Could not find what you are looking for? Use the search function below or
-            browse by category. If you still need help, don not hesitate to
-            contact our support team.
+            Could not find what you are looking for? Use the search function
+            below or browse by category. If you still need help, don not
+            hesitate to contact our support team.
           </Text>
         </BlurFade>
       </div>

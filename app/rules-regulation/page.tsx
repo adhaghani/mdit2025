@@ -124,6 +124,22 @@ const RulesRegulationPage = () => {
     },
   ];
 
+  const isReleased = false;
+
+  if (!isReleased) {
+    return (
+      <div className="text-center py-64">
+        <Text as="h1" className="text-2xl font-bold mb-4">
+          Rules & Regulations Coming Soon
+        </Text>
+        <Text as="p" className="text-lg text-muted-foreground">
+          The rules and regulations for MDIT 2025 will be released soon. Please
+          check back later for updates.
+        </Text>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* Header Section */}

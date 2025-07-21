@@ -51,28 +51,32 @@ const Page = () => {
     {
       phase: "Registration",
       date: "Aug 15-30, 2025",
-      description: "Team registration and payment",
+      description:
+        "Complete team registration and confirm participation via payment.",
       icon: UsersIcon,
       status: "upcoming",
     },
     {
-      phase: "Workshops",
+      phase: "Briefing & Workshops",
       date: "Sep 6-20, 2025",
-      description: "Online training and skill development",
+      description:
+        "Overview of competition structure, themes, and deliverables, followed by a workshop to enhance data and presentation skills.",
       icon: BookOpenIcon,
       status: "upcoming",
     },
     {
-      phase: "Competition",
+      phase: "Preliminary round",
       date: "Sep 21 - Oct 15, 2025",
-      description: "Data analysis and solution development",
+      description:
+        "Project Development, Report submission, and online video presentation.",
       icon: LightbulbIcon,
       status: "upcoming",
     },
     {
-      phase: "Finals",
+      phase: "Final Round ",
       date: "Oct 17-18, 2025",
-      description: "Final presentations and awards ceremony",
+      description:
+        "Shortlisted teams will pitch their projects physically to expert judges, demonstrating analytical clarity and impact",
       icon: TrophyIcon,
       status: "upcoming",
     },
@@ -90,10 +94,23 @@ const Page = () => {
           >
             <Text
               as="h1"
-              className="absolute inset-0 !text-9xl flex items-center justify-center text-primary/30 z-0"
+              className="absolute inset-0 !text-9xl translate-y-16 flex items-center justify-center text-primary/30 z-0"
             >
               <CountingNumber number={2025} />
             </Text>
+          </BlurFade>
+
+          <BlurFade
+            inView
+            delay={0.15}
+            className="grid place-items-center p-5 bg-primary/30 w-fit mx-auto rounded-full"
+          >
+            <Image
+              alt="Logo of MDIT"
+              src={"/mdit.svg"}
+              width={100}
+              height={100}
+            />
           </BlurFade>
 
           <div className="relative z-10 space-y-6">
@@ -116,7 +133,7 @@ const Page = () => {
                 styleVariant="muted"
                 className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
               >
-                Join 200+ talented students from across Malaysia in this
+                Join 100+ talented students from across Malaysia in this
                 prestigious national datathon. Work with real government
                 datasets and compete for RM11,000 in prizes.
               </Text>
@@ -244,109 +261,33 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Statistics Section */}
-      <div className="py-20 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg my-20">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-12">
-            Competition at a Glance
-          </Text>
-        </BlurFade>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {KEY_STATISTICS.map((stat, index) => (
-            <BlurFade key={index} inView delay={0.15 + index * 0.05}>
-              <Card className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-fit">
-                    <stat.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <Text
-                    as="h3"
-                    className="text-2xl font-bold text-primary mb-2"
-                  >
-                    {stat.value}
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    {stat.label}
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
-          ))}
-        </div>
-      </div>
-
-      {/* Competition Highlights */}
-      <div className="my-20">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Why Join MDIT 2025?
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center  mb-12 max-w-2xl mx-auto"
-          >
-            Discover the unique opportunities and benefits that make MDIT 2025
-            the most prestigious data science competition in Malaysia.
-          </Text>
-        </BlurFade>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {COMPETITION_HIGHLIGHTS.map((highlight, index) => (
-            <BlurFade key={index} inView delay={0.2 + index * 0.05}>
-              <Card
-                className={`h-full hover:shadow-lg transition-shadow ${highlight.bgColor}`}
-              >
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-4 bg-white rounded-full shadow-sm w-fit">
-                    <highlight.icon className={`h-8 w-8 ${highlight.color}`} />
-                  </div>
-                  <CardTitle className={`text-lg ${highlight.color}`}>
-                    {highlight.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <Text
-                    as="p"
-                    styleVariant="muted"
-                    className={`text-sm text-black`}
-                  >
-                    {highlight.description}
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
-          ))}
-        </div>
-      </div>
-
       {/* About MDIT Section */}
       <div className="my-20">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
-            About MDIT 2025
+            About MDIT x DOSM Datathon 2025
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
           <div className="max-w-4xl mx-auto space-y-6">
             <Text as="p" className="text-lg leading-relaxed text-center">
-              The Malaysia Data Innovation and Technology (MDIT) Datathon 2025
-              is a premier national competition that brings together the
-              brightest minds from universities across Malaysia to tackle
-              real-world data challenges.
+              The Malaysia Data Innovation Talent x DOSM Datathon 2025 is a
+              premier national competition that brings together the brightest
+              minds from universities across Malaysia to tackle real-world data
+              challenges.
             </Text>
             <Text as="p" className="text-lg leading-relaxed text-center">
               Organized in collaboration with the Department of Statistics
-              Malaysia (DOSM) and Universiti Teknologi MARA (UiTM), this
-              competition provides participants with the opportunity to work
-              with authentic government datasets and develop innovative
-              solutions that can impact policy-making and national development.
+              Malaysia (DOSM) and Statistics Association (inStats) at UiTM Shah
+              Alam,this competition encourages participants to utilize official
+              government datasets alongside other open data sources to develop
+              innovative, data-driven solutions that address real-world national
+              challenges.
             </Text>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <BlurFade inView delay={0.2}>
                 <div className="text-center">
-                  <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
+                  <div className="mx-auto mb-4 p-4 bg-primary/20 rounded-full w-fit">
                     <TargetIcon className="h-8 w-8 text-primary" />
                   </div>
                   <Text as="h4" className="font-semibold mb-2">
@@ -361,7 +302,7 @@ const Page = () => {
               </BlurFade>
               <BlurFade inView delay={0.25}>
                 <div className="text-center">
-                  <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
+                  <div className="mx-auto mb-4 p-4 bg-primary/20 rounded-full w-fit">
                     <LightbulbIcon className="h-8 w-8 text-primary" />
                   </div>
                   <Text as="h4" className="font-semibold mb-2">
@@ -376,7 +317,7 @@ const Page = () => {
               </BlurFade>
               <BlurFade inView delay={0.3}>
                 <div className="text-center">
-                  <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
+                  <div className="mx-auto mb-4 p-4 bg-primary/20 rounded-full w-fit">
                     <Users2Icon className="h-8 w-8 text-primary" />
                   </div>
                   <Text as="h4" className="font-semibold mb-2">
@@ -393,11 +334,215 @@ const Page = () => {
         </BlurFade>
       </div>
 
+      {/* Competition Highlights */}
+      <div className="my-20">
+        <BlurFade inView delay={0.1}>
+          <Text as="h2" className="text-center mb-6">
+            Why Join MDIT x DOSM Datathon 2025?
+          </Text>
+        </BlurFade>
+        <BlurFade inView delay={0.15}>
+          <Text
+            as="p"
+            styleVariant="muted"
+            className="text-center  mb-12 max-w-2xl mx-auto"
+          >
+            Discover the unique opportunities and benefits that make MDIT 2025
+            the most prestigious data science competition in Malaysia.
+          </Text>
+        </BlurFade>
+        <div className="space-y-6">
+          {/* Top row - 3 columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {COMPETITION_HIGHLIGHTS.slice(0, 3).map((highlight, index) => (
+              <BlurFade key={index} inView delay={0.2 + index * 0.05}>
+                <Card
+                  className={`h-full hover:shadow-lg border-0 transition-shadow ${highlight.bgColor}`}
+                >
+                  <CardHeader className="text-center">
+                    <div className="mx-auto mb-4 p-4 bg-white dark:bg-white/20 rounded-full w-fit">
+                      <highlight.icon
+                        className={`h-8 w-8 ${highlight.color}`}
+                      />
+                    </div>
+                    <CardTitle className={`text-lg ${highlight.color}`}>
+                      {highlight.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <Text
+                      as="p"
+                      styleVariant="muted"
+                      className={`text-sm text-muted-foreground`}
+                    >
+                      {highlight.description}
+                    </Text>
+                  </CardContent>
+                </Card>
+              </BlurFade>
+            ))}
+          </div>
+          {/* Bottom row - 2 columns centered */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
+            {COMPETITION_HIGHLIGHTS.slice(3, 5).map((highlight, index) => (
+              <BlurFade key={index + 3} inView delay={0.2 + (index + 3) * 0.05}>
+                <Card
+                  className={`h-full hover:shadow-lg border-0 transition-shadow ${highlight.bgColor}`}
+                >
+                  <CardHeader className="text-center">
+                    <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
+                      <highlight.icon
+                        className={`h-8 w-8 ${highlight.color}`}
+                      />
+                    </div>
+                    <CardTitle className={`text-lg ${highlight.color}`}>
+                      {highlight.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <Text
+                      as="p"
+                      styleVariant="muted"
+                      className={`text-sm text-muted-foreground`}
+                    >
+                      {highlight.description}
+                    </Text>
+                  </CardContent>
+                </Card>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Competition Phases */}
       <div className="my-20">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
-            Competition Journey
+            Competition Phases
+          </Text>
+        </BlurFade>
+        <BlurFade inView delay={0.15}>
+          <Text
+            as="p"
+            styleVariant="muted"
+            className="text-center  mb-12 max-w-2xl mx-auto"
+          >
+            Explore the key phases of the MDIT x DOSM Datathon 2025, designed to
+            guide participants from registration to the final round.
+          </Text>
+        </BlurFade>
+        <div className=" mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {phases.map((phase, index) => {
+              const colors = [
+                {
+                  bg: "bg-emerald-100 dark:bg-emerald-900/30",
+                  icon: "text-emerald-600",
+                },
+                {
+                  bg: "bg-indigo-100 dark:bg-indigo-900/30",
+                  icon: "text-indigo-600",
+                },
+                {
+                  bg: "bg-rose-100 dark:bg-rose-900/30",
+                  icon: "text-rose-600",
+                },
+                {
+                  bg: "bg-amber-100 dark:bg-amber-900/30",
+                  icon: "text-amber-600",
+                },
+              ];
+              const colorScheme = colors[index % colors.length];
+
+              return (
+                <BlurFade key={index} inView delay={0.2 + index * 0.05}>
+                  <Card className="relative h-full hover:shadow-lg transition-shadow">
+                    <CardHeader className="text-center">
+                      <div
+                        className={`mx-auto mb-4 p-3 ${colorScheme.bg} rounded-full w-fit`}
+                      >
+                        <phase.icon className={`h-6 w-6 ${colorScheme.icon}`} />
+                      </div>
+                      <CardTitle className="text-lg">{phase.phase}</CardTitle>
+                      <Text
+                        as="p"
+                        className={`text-sm font-semibold ${colorScheme.icon}`}
+                      >
+                        {phase.date}
+                      </Text>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                      <Text as="p" styleVariant="muted" className="text-sm">
+                        {phase.description}
+                      </Text>
+                    </CardContent>
+                    {index < phases.length - 1 && (
+                      <div className="hidden lg:block absolute top-1/2 -right-7 transform -translate-y-1/2">
+                        <ArrowRightIcon
+                          className={`size-8 ${colorScheme.icon}/50`}
+                        />
+                      </div>
+                    )}
+                  </Card>
+                </BlurFade>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Section */}
+      <div className="py-20 bg-gradient-to-r from-slate-100/50 to-gray-100/50 dark:from-slate-800/30 dark:to-gray-800/30 rounded-lg my-20">
+        <BlurFade inView delay={0.1}>
+          <Text as="h2" className="text-center mb-12">
+            Competition at a Glance
+          </Text>
+        </BlurFade>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          {KEY_STATISTICS.map((stat, index) => {
+            const colors = [
+              { bg: "bg-blue-100 dark:bg-blue-900/30", text: "text-blue-600" },
+              {
+                bg: "bg-purple-100 dark:bg-purple-900/30",
+                text: "text-purple-600",
+              },
+              { bg: "bg-teal-100 dark:bg-teal-900/30", text: "text-teal-600" },
+              { bg: "bg-red-100 dark:bg-red-900/30", text: "text-red-600" },
+            ];
+            const colorScheme = colors[index % colors.length];
+
+            return (
+              <BlurFade key={index} inView delay={0.15 + index * 0.05}>
+                <Card className="text-center hover:shadow-lg transition-shadow bg-background border-2">
+                  <CardContent className="p-6">
+                    <div
+                      className={`mx-auto mb-4 p-3 ${colorScheme.bg} rounded-full w-fit`}
+                    >
+                      <stat.icon className={`h-6 w-6 ${colorScheme.text}`} />
+                    </div>
+                    <Text
+                      as="h3"
+                      className={`text-2xl font-bold ${colorScheme.text} mb-2`}
+                    >
+                      {stat.value}
+                    </Text>
+                    <Text as="p" styleVariant="muted" className="text-sm">
+                      {stat.label}
+                    </Text>
+                  </CardContent>
+                </Card>
+              </BlurFade>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Organizers Section */}
+      <div className="mt-20 mb-10">
+        <BlurFade inView delay={0.1}>
+          <Text as="h2" className="text-center mb-6">
+            Organizing Partners
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
@@ -406,49 +551,282 @@ const Page = () => {
             styleVariant="muted"
             className="text-center mb-12 max-w-2xl mx-auto"
           >
-            Follow the complete journey from registration to the final awards
-            ceremony. Each phase is designed to build your skills and challenge
-            your creativity.
+            MDIT 2025 is proudly organized in collaboration with leading
+            institutions committed to advancing data science education and
+            innovation in Malaysia.
           </Text>
         </BlurFade>
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {phases.map((phase, index) => (
-              <BlurFade key={index} inView delay={0.2 + index * 0.05}>
-                <Card className="relative h-full hover:shadow-lg transition-shadow">
-                  <CardHeader className="text-center">
-                    <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-fit">
-                      <phase.icon className="h-6 w-6 text-primary" />
+        <Card className="p-8">
+          <CardContent>
+            <TooltipProvider delayDuration={0}>
+              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/uitm.svg"
+                        alt="UiTM Logo"
+                        width={140}
+                        height={120}
+                        className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 transition-transform duration-300"
+                      />
                     </div>
-                    <CardTitle className="text-lg">{phase.phase}</CardTitle>
-                    <Text as="p" className="text-sm font-semibold text-primary">
-                      {phase.date}
-                    </Text>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <Text as="p" styleVariant="muted" className="text-sm">
-                      {phase.description}
-                    </Text>
-                  </CardContent>
-                  {index < phases.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2">
-                      <ArrowRightIcon className="h-6 w-6 text-primary/30" />
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Universiti Teknologi MARA (UiTM)
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/dosm.svg"
+                        alt="Department of Statistics Malaysia"
+                        width={120}
+                        height={120}
+                        className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 transition-transform duration-300"
+                      />
                     </div>
-                  )}
-                </Card>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Department of Statistics Malaysia (DOSM)
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/instats.svg"
+                        alt="InStats UiTM"
+                        width={120}
+                        height={120}
+                        className="w-24 h-24 sm:w-24 sm:h-24 hover:scale-105 transition-transform"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    InStats UiTM Shah Alam
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </TooltipProvider>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Sponsors Section */}
+      <div className="my-20">
+        <BlurFade inView delay={0.1}>
+          <Text as="h2" className="text-center mb-6">
+            Official Sponsors
+          </Text>
+        </BlurFade>
+        <BlurFade inView delay={0.15}>
+          <Text
+            as="p"
+            styleVariant="muted"
+            className="text-center mb-12 max-w-2xl mx-auto"
+          >
+            We are grateful to our sponsors who make MDIT 2025 possible by
+            supporting innovation and excellence in data science education
+            across Malaysia.
+          </Text>
+        </BlurFade>
+        <Card className="p-8">
+          <CardContent>
+            <TooltipProvider delayDuration={0}>
+              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/instats.svg"
+                        alt="Platinum Sponsor"
+                        width={120}
+                        height={120}
+                        className="w-28 h-28 sm:w-32 sm:h-32 relative z-10 transition-transform duration-300"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Platinum Sponsor
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/instats.svg"
+                        alt="Gold Sponsor"
+                        width={120}
+                        height={120}
+                        className="w-24 h-24 sm:w-28 sm:h-28 relative z-10 transition-transform duration-300"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Gold Sponsor
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/instats.svg"
+                        alt="Silver Sponsor"
+                        width={120}
+                        height={120}
+                        className="w-24 h-24 sm:w-28 sm:h-28 relative z-10 transition-transform duration-300"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Silver Sponsor
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/instats.svg"
+                        alt="Bronze Sponsor"
+                        width={120}
+                        height={120}
+                        className="w-20 h-20 sm:w-24 sm:h-24 relative z-10 transition-transform duration-300"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Bronze Sponsor
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/instats.svg"
+                        alt="Technology Partner"
+                        width={120}
+                        height={120}
+                        className="w-20 h-20 sm:w-24 sm:h-24 relative z-10 transition-transform duration-300"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Technology Partner
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </TooltipProvider>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Media Partners Section */}
+      <div className="my-20">
+        <BlurFade inView delay={0.1}>
+          <Text as="h2" className="text-center mb-6">
+            Media Partners
+          </Text>
+        </BlurFade>
+        <BlurFade inView delay={0.15}>
+          <Text
+            as="p"
+            styleVariant="muted"
+            className="text-center mb-12 max-w-2xl mx-auto"
+          >
+            Our media partners help us reach talented students across Malaysia
+            and spread awareness about the importance of data science and
+            innovation in today&apos;s digital world.
+          </Text>
+        </BlurFade>
+        <Card className="p-8">
+          <CardContent>
+            <TooltipProvider delayDuration={0}>
+              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/instats.svg"
+                        alt="Media Partner 1"
+                        width={120}
+                        height={120}
+                        className="w-24 h-24 sm:w-28 sm:h-28 relative z-10 transition-transform duration-300"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Media Partner 1
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Image
+                        src="/instats.svg"
+                        alt="Media Partner 2"
+                        width={120}
+                        height={120}
+                        className="w-24 h-24 sm:w-28 sm:h-28 relative z-10 transition-transform duration-300"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Media Partner 2
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="bg-white p-4 rounded-lg shadow-sm">
+                      <Image
+                        src="/instats.svg"
+                        alt="Media Partner 3"
+                        width={120}
+                        height={120}
+                        className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Media Partner 3
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className="bg-white p-4 rounded-lg shadow-sm">
+                      <Image
+                        src="/instats.svg"
+                        alt="Media Partner 4"
+                        width={120}
+                        height={120}
+                        className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" arrow>
+                    Media Partner 4
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </TooltipProvider>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Event Details Quick Overview */}
       <div className="my-20">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-12">
-            Quick Event Overview
-          </Text>
-        </BlurFade>
         <div className="mb-8 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <BlurFade inView delay={0.15}>
@@ -482,17 +860,16 @@ const Page = () => {
                     <Text as="h4">Event Format</Text>
                   </CardTitle>
                   <Text as="p" className="font-semibold">
-                    Hybrid (Online + Physical)
+                    Online with Physical Final
                   </Text>
                 </CardHeader>
                 <CardContent>
                   <Text as="p" styleVariant="muted" className="text-sm">
-                    • Online workshops and training
+                    • Competition Briefing & Workshop: Online
                     <br />
-                    • Remote competition phase
-                    <br />
-                    • Physical final presentations
-                    <br />• Live ceremony at UiTM Shah Alam
+                    • Project Submission (Report, Dashboard, VIdeo): Online
+                    <br />• Live Pitching (Shorlisted Teams): Physical
+                    Presentation at (TBA Location)
                   </Text>
                 </CardContent>
               </Card>
@@ -535,9 +912,9 @@ const Page = () => {
                     Team Composition
                   </Text>
                   <Text as="p" styleVariant="muted" className="text-sm">
-                    • 3-4 members per team
+                    • 4 members per team with 1 Advisors
                     <br />
-                    • All from same institution
+                    • All members must come from same institution
                     <br />• Diverse backgrounds encouraged
                   </Text>
                 </div>
@@ -546,10 +923,11 @@ const Page = () => {
                     Eligibility Criteria
                   </Text>
                   <Text as="p" styleVariant="muted" className="text-sm">
-                    • Malaysian university students
+                    • Malaysian university students (IPTA/IPTS), International
+                    students is also allowed
                     <br />
-                    • Diploma/Undergraduate level
-                    <br />• All disciplines welcome
+                    • Diploma/Undergraduate Programs
+                    <br />• Diverse Background (STEM or non-STEM) are encouraged
                   </Text>
                 </div>
                 <div>
@@ -571,7 +949,7 @@ const Page = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button size="lg" asChild>
               <Link href="/event-details">
-                View Complete Details
+                View Event Details
                 <ChevronRightIcon className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -583,10 +961,7 @@ const Page = () => {
       </div>
 
       {/* Registration Section */}
-      <div
-        id="register"
-        className="my-20 py-20 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg"
-      >
+      <div id="register" className="my-20 py-20 bg-primary/10 rounded-lg">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Ready to Register?
@@ -606,8 +981,12 @@ const Page = () => {
         <BlurFade inView delay={0.2}>
           <div className="text-center space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-6">
-                {hasStarted ? "Register Now" : "Registration Opens Soon"}
+              <Button
+                size="lg"
+                disabled={!hasStarted}
+                className="text-lg px-8 py-6"
+              >
+                {hasStarted ? "Register Now" : "Registration Opening Soon"}
                 <ArrowRightIcon className="ml-2 h-5 w-5" />
               </Button>
               <Button
@@ -626,258 +1005,6 @@ const Page = () => {
             </Text>
           </div>
         </BlurFade>
-      </div>
-
-      {/* Organizers Section */}
-      <div className="mt-20 mb-10">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Organizing Partners
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
-            MDIT 2025 is proudly organized in collaboration with leading
-            institutions committed to advancing data science education and
-            innovation in Malaysia.
-          </Text>
-        </BlurFade>
-        <Card className="p-8">
-          <CardContent>
-            <TooltipProvider>
-              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/dosm.svg"
-                      alt="Department of Statistics Malaysia"
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Department of Statistics Malaysia (DOSM)
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/uitm.svg"
-                      alt="UiTM Logo"
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Universiti Teknologi MARA (UiTM)
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="InStats UiTM"
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    InStats UiTM Shah Alam
-                  </TooltipContent>
-                </Tooltip>
-              </div>
-            </TooltipProvider>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Sponsors Section */}
-      <div className="my-20">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Official Sponsors
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
-            We are grateful to our sponsors who make MDIT 2025 possible by
-            supporting innovation and excellence in data science education
-            across Malaysia.
-          </Text>
-        </BlurFade>
-        <Card className="p-8">
-          <CardContent>
-            <TooltipProvider delayDuration={0}>
-              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="Platinum Sponsor"
-                      width={120}
-                      height={120}
-                      className="w-28 h-28 sm:w-32 sm:h-32 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Platinum Sponsor
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="Gold Sponsor"
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Gold Sponsor
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="Silver Sponsor"
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Silver Sponsor
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="Bronze Sponsor"
-                      width={120}
-                      height={120}
-                      className="w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Bronze Sponsor
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="Technology Partner"
-                      width={120}
-                      height={120}
-                      className="w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Technology Partner
-                  </TooltipContent>
-                </Tooltip>
-              </div>
-            </TooltipProvider>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Media Partners Section */}
-      <div className="my-20">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Media Partners
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
-            Our media partners help us reach talented students across Malaysia
-            and spread awareness about the importance of data science and
-            innovation in today&apos;s digital world.
-          </Text>
-        </BlurFade>
-        <Card className="p-8">
-          <CardContent>
-            <TooltipProvider delayDuration={0}>
-              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="Media Partner 1"
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Media Partner 1
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="Media Partner 2"
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Media Partner 2
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="Media Partner 3"
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Media Partner 3
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Image
-                      src="/instats.svg"
-                      alt="Media Partner 4"
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Media Partner 4
-                  </TooltipContent>
-                </Tooltip>
-              </div>
-            </TooltipProvider>
-          </CardContent>
-        </Card>
       </div>
 
       {/* MDIT 2024 Memories */}

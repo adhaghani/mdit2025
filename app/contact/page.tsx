@@ -73,24 +73,10 @@ const ContactPage = () => {
     },
     {
       icon: PhoneIcon,
-      title: "Call Us",
+      title: "For any Inquiry",
       content: "+60 3-5521 1234",
       description: "Available during office hours",
       link: "tel:+60355211234",
-    },
-    {
-      icon: MapPinIcon,
-      title: "Visit Us",
-      content: "Universiti Teknologi MARA",
-      description: "Faculty of Computer Science and Mathematics, Shah Alam",
-      link: "https://maps.google.com",
-    },
-    {
-      icon: ClockIcon,
-      title: "Office Hours",
-      content: "Mon - Fri: 9:00 AM - 5:00 PM",
-      description: "We are here to help during business hours",
-      link: null,
     },
   ];
 
@@ -119,7 +105,7 @@ const ContactPage = () => {
       </div>
 
       {/* Contact Information Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20 mb-6">
         {contactInfo.map((info, index) => (
           <BlurFade key={index} inView delay={0.1 + index * 0.05}>
             <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-105">
@@ -154,7 +140,7 @@ const ContactPage = () => {
       </div>
 
       {/* Contact Form and Additional Info */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 my-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-20 mt-6">
         {/* Contact Form */}
         <BlurFade inView delay={0.3}>
           <Card>
