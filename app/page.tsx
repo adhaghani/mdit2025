@@ -558,62 +558,64 @@ const Page = () => {
         </BlurFade>
         <Card className="p-8">
           <CardContent>
-            <TooltipProvider delayDuration={0}>
-              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/uitm.svg"
-                        alt="UiTM Logo"
-                        width={140}
-                        height={120}
-                        className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 transition-transform duration-300"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Universiti Teknologi MARA (UiTM)
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/dosm.svg"
-                        alt="Department of Statistics Malaysia"
-                        width={120}
-                        height={120}
-                        className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 transition-transform duration-300"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Department of Statistics Malaysia (DOSM)
-                  </TooltipContent>
-                </Tooltip>
-
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="InStats UiTM"
-                        width={120}
-                        height={120}
-                        className="w-24 h-24 sm:w-24 sm:h-24 hover:scale-105 transition-transform"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    InStats UiTM Shah Alam
-                  </TooltipContent>
-                </Tooltip>
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+              <div className="text-center">
+                <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <Image
+                    src="/uitm.svg"
+                    alt="UiTM Logo"
+                    width={140}
+                    height={120}
+                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 transition-transform duration-300"
+                  />
+                </div>
+                <Text as="p" className="mt-4 text-sm font-medium text-center">
+                  Universiti Teknologi MARA (UiTM)
+                </Text>
               </div>
-            </TooltipProvider>
+
+              <div className="text-center">
+                <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {/* Light mode logo */}
+                  <Image
+                    src="/dosm.svg"
+                    alt="Department of Statistics Malaysia"
+                    width={120}
+                    height={120}
+                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 mx-auto transition-transform duration-300 dark:hidden"
+                  />
+                  {/* Dark mode logo */}
+                  <Image
+                    src="/DOSM_Light.svg"
+                    alt="Department of Statistics Malaysia"
+                    width={120}
+                    height={120}
+                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 mx-auto transition-transform duration-300 hidden dark:block"
+                  />
+                </div>
+                <Text as="p" className="mt-4 text-sm font-medium text-center">
+                  Department of Statistics Malaysia (DOSM)
+                </Text>
+              </div>
+
+              <div className="text-center">
+                <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <Image
+                    src="/instats.svg"
+                    alt="InStats UiTM"
+                    width={120}
+                    height={120}
+                    className="w-24 h-24 sm:w-24 sm:h-24 hover:scale-105 transition-transform"
+                  />
+                </div>
+                <Text as="p" className="mt-4 text-sm font-medium text-center">
+                  InStats UiTM Shah Alam
+                </Text>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -789,7 +791,8 @@ const Page = () => {
                 </Tooltip>
                 <Tooltip>
                   <TooltipTrigger>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Image
                         src="/instats.svg"
                         alt="Media Partner 3"
@@ -805,7 +808,8 @@ const Page = () => {
                 </Tooltip>
                 <Tooltip>
                   <TooltipTrigger>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">
+                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Image
                         src="/instats.svg"
                         alt="Media Partner 4"

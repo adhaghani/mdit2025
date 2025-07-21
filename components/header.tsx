@@ -32,7 +32,7 @@ const Header = () => {
             height={40}
             className="w-10 h-10"
           />
-          <Text as="h4">MDIT 2025</Text>
+          <Text as="h4">MDIT x DOSM Datathon 2025</Text>
         </Link>
         <ul className="hidden md:flex items-center gap-4  justify-end">
           <li>

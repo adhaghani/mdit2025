@@ -13,7 +13,6 @@ import {
   CheckIcon,
   GraduationCapIcon,
   DollarSignIcon,
-  PresentationIcon,
   AwardIcon,
   GitGraphIcon,
   InfoIcon,
@@ -36,30 +35,6 @@ import Link from "next/link";
 import { EVENT_JUDGES } from "@/components/constant";
 
 const EventDetailsPage = () => {
-  // Competition benefits
-  const benefits = [
-    {
-      icon: TrophyIcon,
-      title: "Competitive Prize Pool",
-      description: "Total prize pool of RM11,000 for top performing teams",
-    },
-    {
-      icon: GraduationCapIcon,
-      title: "Learning Experience",
-      description: "Gain hands-on experience with real-world datasets",
-    },
-    {
-      icon: PresentationIcon,
-      title: "Industry Exposure",
-      description: "Present to industry professionals and government officials",
-    },
-    {
-      icon: AwardIcon,
-      title: "Recognition",
-      description: "Certificates and recognition from prestigious institutions",
-    },
-  ];
-
   // Requirements
   const requirements = [
     {
@@ -107,11 +82,11 @@ const EventDetailsPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.2}>
           <Text as="p" className="text-lg max-w-3xl mx-auto leading-relaxed">
-            MDIT 2025 is a national inter-varsity program aimed at fostering
-            innovation and collaboration among students in the fields of data
-            science and analytics. This competition provides a platform for
-            students to showcase their analytical skills while working with real
-            government datasets.
+            MDIT x DOSM Datathon 2025 is a national inter-varsity program aimed
+            at fostering innovation and collaboration among students in the
+            fields of data science and analytics. This competition provides a
+            platform for students to showcase their analytical skills while
+            working with real government datasets.
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.25}>
@@ -456,7 +431,7 @@ const EventDetailsPage = () => {
             <BlurFade key={index} inView delay={0.1 + index * 0.05}>
               {/* Desktop: HoverCard */}
               <div className="hidden md:block">
-                <HoverCard>
+                <HoverCard openDelay={80} closeDelay={80}>
                   <HoverCardTrigger asChild>
                     <div className="flex flex-row items-start gap-6 cursor-pointer hover:bg-muted/30 p-4 rounded-lg transition-colors group">
                       {/* Date */}
@@ -475,7 +450,7 @@ const EventDetailsPage = () => {
                       <div className="flex flex-col items-center">
                         <div className="w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg"></div>
                         {index < PROGRAM_TIMELINE.length - 1 && (
-                          <div className="w-0.5 h-16 bg-border mt-2"></div>
+                          <div className="w-0.5 h-24 bg-border mt-2"></div>
                         )}
                       </div>
                       {/* Content */}
@@ -692,7 +667,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="text-center py-20 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg">
+      <div className="text-center py-20 bg-secondary/20 rounded-lg">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="mb-4">
             Ready to Showcase Your Data Skills?

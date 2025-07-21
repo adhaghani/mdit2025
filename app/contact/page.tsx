@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,58 +7,72 @@ import { BlurFade } from "@/components/magicui/blur-fade";
 import {
   MailIcon,
   PhoneIcon,
-  MapPinIcon,
-  ClockIcon,
   SendIcon,
   UserIcon,
   MessageCircleIcon,
 } from "lucide-react";
+import { Instagram, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+const contactFormSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be less than 100 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  subject: z
+    .string()
+    .min(5, "Subject must be at least 5 characters")
+    .max(200, "Subject must be less than 200 characters"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000, "Message must be less than 1000 characters"),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
+  const { isSubmitting } = form.formState;
+  const [submitStatus, setSubmitStatus] = React.useState<
     "idle" | "success" | "error"
   >("idle");
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
+  const onSubmit = async (data: ContactFormValues) => {
+    setSubmitStatus("idle");
+    console.log("Form submitted:", data);
     try {
+      // Simulate form submission
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      form.reset();
     } catch (error) {
       setSubmitStatus("error");
       console.error("Error submitting form:", error);
     } finally {
-      setIsSubmitting(false);
       setTimeout(() => setSubmitStatus("idle"), 5000);
     }
   };
@@ -67,9 +81,9 @@ const ContactPage = () => {
     {
       icon: MailIcon,
       title: "Email Us",
-      content: "info@mdit2025.my",
+      content: "mditxdd2025@gmail.com",
       description: "Send us an email and we will respond within 24 hours",
-      link: "mailto:info@mdit2025.my",
+      link: "mailto:mditxdd2025@gmail.com",
     },
     {
       icon: PhoneIcon,
@@ -104,11 +118,94 @@ const ContactPage = () => {
         </BlurFade>
       </div>
 
+      {/* Social Media Section */}
+      <div className="my-20">
+        <BlurFade inView delay={0.25}>
+          <Text as="h2" className="text-center mb-6">
+            Follow Us on Social Media
+          </Text>
+        </BlurFade>
+        <BlurFade inView delay={0.3}>
+          <Text
+            as="p"
+            styleVariant="muted"
+            className="text-center mb-12 max-w-2xl mx-auto"
+          >
+            Stay updated with the latest news, behind-the-scenes content, and
+            highlights from MDIT 2025. Connect with us on social media for
+            real-time updates and community engagement.
+          </Text>
+        </BlurFade>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <BlurFade inView delay={0.35}>
+            <Card className="h-full transition-all duration-300  bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 border-pink-200 dark:border-pink-800">
+              <CardHeader className="text-center">
+                <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full w-fit">
+                  <Instagram className="h-6 w-6 text-white" />
+                </div>
+                <CardTitle className="text-lg text-pink-700 dark:text-pink-300">
+                  Instagram
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-center space-y-2">
+                <Link
+                  href="https://instagram.com/mdit2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Text
+                    as="p"
+                    className="font-semibold text-pink-600 dark:text-pink-400 hover:underline"
+                  >
+                    @mdit2025
+                  </Text>
+                </Link>
+                <Text as="p" styleVariant="muted" className="text-sm">
+                  Photos, stories, and highlights from the competition
+                </Text>
+              </CardContent>
+            </Card>
+          </BlurFade>
+
+          <BlurFade inView delay={0.4}>
+            <Card className="h-full transition-all duration-300  bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-800">
+              <CardHeader className="text-center">
+                <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-gray-800 to-black rounded-full w-fit">
+                  <MessageSquare className="h-6 w-6 text-white" />
+                </div>
+                <CardTitle className="text-lg text-gray-700 dark:text-gray-300">
+                  TikTok
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-center space-y-2">
+                <Link
+                  href="https://tiktok.com/@mdit2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Text
+                    as="p"
+                    className="font-semibold text-gray-600 dark:text-gray-400 hover:underline"
+                  >
+                    @mdit2025
+                  </Text>
+                </Link>
+                <Text as="p" styleVariant="muted" className="text-sm">
+                  Quick tips, announcements, and fun competition moments
+                </Text>
+              </CardContent>
+            </Card>
+          </BlurFade>
+        </div>
+      </div>
+
       {/* Contact Information Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20 mb-6">
         {contactInfo.map((info, index) => (
           <BlurFade key={index} inView delay={0.1 + index * 0.05}>
-            <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <Card className="h-full transition-all duration-300">
               <CardHeader className="text-center">
                 <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-fit">
                   <info.icon className="h-6 w-6 text-primary" />
@@ -155,128 +252,141 @@ const ContactPage = () => {
               </Text>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full pl-10 pr-4 py-2 border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
-                        placeholder="Enter your full name"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Email Address <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full pl-10 pr-4 py-2 border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
-                        placeholder="Enter your email"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Subject <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-2 border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
-                    placeholder="What is this regarding?"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Message <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-2 border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent resize-vertical"
-                    placeholder="Please provide details about your inquiry..."
-                  />
-                </div>
-
-                {submitStatus === "success" && (
-                  <div className="p-4 bg-green-50 border border-green-200 rounded-md">
-                    <Text as="p" className="text-green-800 text-sm">
-                      ✅ Thank you! Your message has been sent successfully. We
-                      will get back to you soon.
-                    </Text>
-                  </div>
-                )}
-
-                {submitStatus === "error" && (
-                  <div className="p-4 bg-red-50 border border-red-200 rounded-md">
-                    <Text as="p" className="text-red-800 text-sm">
-                      ❌ Sorry, there was an error sending your message. Please
-                      try again.
-                    </Text>
-                  </div>
-                )}
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full"
-                  disabled={isSubmitting}
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <SendIcon className="h-4 w-4 mr-2" />
-                      Send Message
-                    </>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>
+                            Full Name <span className="text-red-500">*</span>
+                          </FormLabel>
+                          <FormControl>
+                            <div className="relative">
+                              <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                              <Input
+                                {...field}
+                                type="text"
+                                placeholder="Enter your full name"
+                                className="pl-10"
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>
+                            Email Address{" "}
+                            <span className="text-red-500">*</span>
+                          </FormLabel>
+                          <FormControl>
+                            <div className="relative">
+                              <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                              <Input
+                                {...field}
+                                type="email"
+                                placeholder="Enter your email"
+                                className="pl-10"
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <FormField
+                    control={form.control}
+                    name="subject"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Subject <span className="text-red-500">*</span>
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            type="text"
+                            placeholder="What is this regarding?"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Message <span className="text-red-500">*</span>
+                        </FormLabel>
+                        <FormControl>
+                          <Textarea
+                            {...field}
+                            rows={5}
+                            placeholder="Please provide details about your inquiry..."
+                            className="resize-vertical"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {submitStatus === "success" && (
+                    <div className="p-4 bg-green-50 border border-green-200 rounded-md">
+                      <Text as="p" className="text-green-800 text-sm">
+                        ✅ Thank you! Your message has been sent successfully.
+                        We will get back to you soon.
+                      </Text>
+                    </div>
                   )}
-                </Button>
-              </form>
+
+                  {submitStatus === "error" && (
+                    <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+                      <Text as="p" className="text-red-800 text-sm">
+                        ❌ Sorry, there was an error sending your message.
+                        Please try again.
+                      </Text>
+                    </div>
+                  )}
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <SendIcon className="h-4 w-4 mr-2" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </Form>
             </CardContent>
           </Card>
         </BlurFade>

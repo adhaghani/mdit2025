@@ -4,7 +4,6 @@ import {
   SparklesIcon,
   PlayIcon,
   PauseIcon,
-  MegaphoneIcon,
   PresentationIcon,
   CrownIcon,
   AlignJustifyIcon,
@@ -166,7 +165,7 @@ export const PROGRAM_TIMELINE = [
   },
   {
     icon: SparklesIcon,
-    date: new Date(2025, 8, 6),
+    date: new Date(2025, 8, 7),
     event: "Software Workshops",
     details:
       "Learn to enhance your project using statistical and data visualization tools.",

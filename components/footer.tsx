@@ -47,9 +47,10 @@ const Footer = () => {
                 className="text-muted-foreground text-justify text-sm"
               >
                 MDIT x DOSM Datathon 2025 is a national inter-varsity program
-                held in collaboration with Faculty of Computer Science and
-                Mathematics Universiti Teknologi MARA, Department of Statistics
-                Malaysia and INSTAT Club.
+                aimed at fostering innovation and collaboration among students
+                in the fields of data science and analytics. This competition
+                provides a platform for students to showcase their analytical
+                skills while working with real government datasets.
               </Text>
             </BlurFade>
           </div>
@@ -111,7 +112,7 @@ const Footer = () => {
                   <span>Instagram</span>
                 </Link>
               </BlurFade>
-              <BlurFade inView delay={0.25}>
+              {/* <BlurFade inView delay={0.25}>
                 <Link
                   href="#"
                   className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors text-sm"
@@ -129,7 +130,7 @@ const Footer = () => {
                   </svg>
                   <span>LinkedIn</span>
                 </Link>
-              </BlurFade>
+              </BlurFade> */}
             </div>
           </div>
 
