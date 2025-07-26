@@ -97,7 +97,7 @@ const ContactPage = () => {
   return (
     <>
       {/* Header Section */}
-      <div className="text-center space-y-4 py-20 max-w-3xl mx-auto">
+      <div className="text-center  space-y-4 py-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h1" className="text-primary">
             Contact Us
@@ -119,7 +119,7 @@ const ContactPage = () => {
       </div>
 
       {/* Social Media Section */}
-      <div className="my-20">
+      <div className="my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.25}>
           <Text as="h2" className="text-center mb-6">
             Follow Us on Social Media
@@ -202,7 +202,7 @@ const ContactPage = () => {
       </div>
 
       {/* Contact Information Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20 mb-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-20 mb-6">
         {contactInfo.map((info, index) => (
           <BlurFade key={index} inView delay={0.1 + index * 0.05}>
             <Card className="h-full transition-all duration-300">
@@ -237,7 +237,7 @@ const ContactPage = () => {
       </div>
 
       {/* Contact Form and Additional Info */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-20 mt-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 mb-20 mt-6">
         {/* Contact Form */}
         <BlurFade inView delay={0.3}>
           <Card>
@@ -489,7 +489,7 @@ const ContactPage = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="text-center py-20">
+      <div className="max-w-7xl mx-auto text-center py-20">
         <BlurFade inView delay={0.7}>
           <Text as="h2" className="mb-4">
             Ready to Join MDIT 2025?

@@ -89,21 +89,8 @@ const Page = () => {
         <div className="relative text-center py-24 md:py-24 lg:py-32 flex flex-col item-center justify-center gap-4">
           <BlurFade
             inView
-            delay={0.05}
-            className="absolute inset-0 !text-9xl flex items-center justify-center text-primary/30 z-0"
-          >
-            <Text
-              as="h1"
-              className="absolute inset-0 !text-9xl translate-y-16 flex items-center justify-center text-primary/30 z-0"
-            >
-              <CountingNumber number={2025} />
-            </Text>
-          </BlurFade>
-
-          <BlurFade
-            inView
             delay={0.15}
-            className="grid place-items-center p-5 bg-primary/30 w-fit mx-auto rounded-full"
+            className="grid place-items-center w-fit mx-auto rounded-full"
           >
             <Image
               alt="Logo of MDIT"
@@ -116,7 +103,8 @@ const Page = () => {
           <div className="relative z-10 space-y-6">
             <BlurFade inView delay={0.1}>
               <Text as="h1" className="text-primary">
-                MDIT x DOSM Datathon 2025
+                Malaysia Data Innovation Talent
+                <br />x <br /> DOSM Datathon 2025
               </Text>
             </BlurFade>
             <BlurFade inView delay={0.15}>
@@ -135,7 +123,7 @@ const Page = () => {
               >
                 Join 100+ talented students from across Malaysia in this
                 prestigious national datathon. Work with real government
-                datasets and compete for RM11,000 in prizes.
+                datasets and compete for RM11,600 in prizes.
               </Text>
             </BlurFade>
 
@@ -335,88 +323,189 @@ const Page = () => {
       </div>
 
       {/* Competition Highlights */}
-      <div className="my-20">
+      <div className="my-20 px-4">
         <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Why Join MDIT x DOSM Datathon 2025?
-          </Text>
+          <div className="text-center mb-16 space-y-4">
+            <Text
+              as="h2"
+              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
+            >
+              Why Join MDIT x DOSM Datathon 2025?
+            </Text>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto rounded-full"></div>
+          </div>
         </BlurFade>
         <BlurFade inView delay={0.15}>
           <Text
             as="p"
             styleVariant="muted"
-            className="text-center  mb-12 max-w-2xl mx-auto"
+            className="text-center text-lg mb-16 max-w-3xl mx-auto leading-relaxed"
           >
             Discover the unique opportunities and benefits that make MDIT 2025
             the most prestigious data science competition in Malaysia.
+            Experience innovation, collaboration, and excellence like never
+            before.
           </Text>
         </BlurFade>
-        <div className="space-y-6">
-          {/* Top row - 3 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        {/* Enhanced Grid Layout */}
+        <div className="max-w-7xl mx-auto">
+          {/* Top row - 3 columns with enhanced cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             {COMPETITION_HIGHLIGHTS.slice(0, 3).map((highlight, index) => (
-              <BlurFade key={index} inView delay={0.2 + index * 0.05}>
+              <BlurFade key={index} inView delay={0.2 + index * 0.1}>
                 <Card
-                  className={`h-full hover:shadow-lg border-0 transition-shadow ${highlight.bgColor}`}
+                  className={`group relative h-full overflow-hidden border-0 hover:shadow-2xl transition-all duration-500 hover:scale-105 ${highlight.bgColor} backdrop-blur-sm`}
                 >
-                  <CardHeader className="text-center">
-                    <div className="mx-auto mb-4 p-4 bg-white dark:bg-white/20 rounded-full w-fit">
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  {/* Animated border */}
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+
+                  <CardHeader className="relative text-center pt-8 pb-4 z-10">
+                    <div
+                      className={`mx-auto mb-6 p-5 rounded-2xl w-fit relative overflow-hidden transition-all duration-500 group-hover:scale-110 ${highlight.bgColor
+                        .replace("50", "100")
+                        .replace("900/30", "800/50")}`}
+                    >
+                      {/* Icon glow effect */}
+                      <div
+                        className={`absolute inset-0 rounded-2xl bg-gradient-to-br opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${
+                          highlight.color.includes("yellow")
+                            ? "from-yellow-400 to-yellow-600"
+                            : highlight.color.includes("blue")
+                            ? "from-blue-400 to-blue-600"
+                            : highlight.color.includes("green")
+                            ? "from-green-400 to-green-600"
+                            : "from-purple-400 to-purple-600"
+                        }`}
+                      ></div>
                       <highlight.icon
-                        className={`h-8 w-8 ${highlight.color}`}
+                        className={`h-10 w-10 relative z-10 transition-all duration-500 group-hover:rotate-12 ${highlight.color}`}
                       />
                     </div>
-                    <CardTitle className={`text-lg ${highlight.color}`}>
+                    <CardTitle
+                      className={`text-xl font-bold transition-all duration-300 group-hover:scale-105 ${highlight.color}`}
+                    >
                       {highlight.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="text-center">
+                  <CardContent className="relative text-center pb-8 px-6 z-10">
                     <Text
                       as="p"
                       styleVariant="muted"
-                      className={`text-sm text-muted-foreground`}
+                      className="text-sm leading-relaxed transition-all duration-300 group-hover:text-foreground/80"
                     >
                       {highlight.description}
                     </Text>
+
+                    {/* Decorative element */}
+                    <div className="mt-6 w-16 h-0.5 bg-gradient-to-r from-transparent via-current to-transparent opacity-30 mx-auto"></div>
                   </CardContent>
+
+                  {/* Floating particles effect */}
+                  <div className="absolute top-4 right-4 w-2 h-2 bg-current opacity-20 rounded-full animate-pulse"></div>
+                  <div
+                    className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-current opacity-20 rounded-full animate-pulse"
+                    style={{ animationDelay: "1s" }}
+                  ></div>
                 </Card>
               </BlurFade>
             ))}
           </div>
-          {/* Bottom row - 2 columns centered */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
+
+          {/* Bottom row - 2 columns centered with special styling */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {COMPETITION_HIGHLIGHTS.slice(3, 5).map((highlight, index) => (
-              <BlurFade key={index + 3} inView delay={0.2 + (index + 3) * 0.05}>
+              <BlurFade key={index + 3} inView delay={0.5 + index * 0.1}>
                 <Card
-                  className={`h-full hover:shadow-lg border-0 transition-shadow ${highlight.bgColor}`}
+                  className={`group relative h-full overflow-hidden border-0 hover:shadow-2xl transition-all duration-500 hover:scale-105 ${highlight.bgColor} backdrop-blur-sm`}
                 >
-                  <CardHeader className="text-center">
-                    <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
+                  {/* Enhanced gradient overlay for bottom cards */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  {/* Special glow effect for bottom cards */}
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/20 via-primary/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+
+                  <CardHeader className="relative text-center pt-8 pb-4 z-10">
+                    <div
+                      className={`mx-auto mb-6 p-6 rounded-2xl w-fit relative overflow-hidden transition-all duration-500 group-hover:scale-110 ${highlight.bgColor
+                        .replace("50", "100")
+                        .replace("900/30", "800/50")}`}
+                    >
+                      {/* Enhanced icon glow for bottom cards */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-400/20 to-primary/20 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
                       <highlight.icon
-                        className={`h-8 w-8 ${highlight.color}`}
+                        className={`h-12 w-12 relative z-10 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110 ${highlight.color}`}
                       />
                     </div>
-                    <CardTitle className={`text-lg ${highlight.color}`}>
+                    <CardTitle
+                      className={`text-xl font-bold transition-all duration-300 group-hover:scale-105 ${highlight.color}`}
+                    >
                       {highlight.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="text-center">
+                  <CardContent className="relative text-center pb-8 px-6 z-10">
                     <Text
                       as="p"
                       styleVariant="muted"
-                      className={`text-sm text-muted-foreground`}
+                      className="text-sm leading-relaxed transition-all duration-300 group-hover:text-foreground/80"
                     >
                       {highlight.description}
                     </Text>
+
+                    {/* Enhanced decorative element */}
+                    <div className="mt-6 w-20 h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-40 mx-auto"></div>
                   </CardContent>
+
+                  {/* Multiple floating particles for bottom cards */}
+                  <div className="absolute top-6 right-6 w-2 h-2 bg-purple-500 opacity-30 rounded-full animate-bounce"></div>
+                  <div
+                    className="absolute top-4 right-10 w-1 h-1 bg-primary opacity-40 rounded-full animate-pulse"
+                    style={{ animationDelay: "0.5s" }}
+                  ></div>
+                  <div
+                    className="absolute bottom-6 left-6 w-1.5 h-1.5 bg-blue-500 opacity-30 rounded-full animate-pulse"
+                    style={{ animationDelay: "1.5s" }}
+                  ></div>
                 </Card>
               </BlurFade>
             ))}
           </div>
         </div>
+
+        {/* Call to action section */}
+        <BlurFade inView delay={0.8}>
+          <div className="text-center max-w-7xl mx-auto mt-16 p-8 rounded-2xl bg-gradient-to-r from-primary/10 via-purple-500/10 to-blue-500/10 border border-primary/20">
+            <Text
+              as="h3"
+              className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
+            >
+              Ready to Experience Excellence?
+            </Text>
+            <Text
+              as="p"
+              styleVariant="muted"
+              className="mb-6 max-w-2xl mx-auto"
+            >
+              Join Malaysia's most prestigious datathon and be part of a
+              transformative journey that will shape your future in data
+              science.
+            </Text>
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Discover More Details
+              <ArrowRightIcon className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </BlurFade>
       </div>
 
       {/* Competition Phases */}
-      <div className="my-20">
+      <div className="my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Competition Phases
@@ -539,7 +628,7 @@ const Page = () => {
       </div>
 
       {/* Organizers Section */}
-      <div className="mt-20 mb-10">
+      <div className="mt-20 max-w-7xl mx-auto mb-10">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Organizing Partners
@@ -621,7 +710,7 @@ const Page = () => {
       </div>
 
       {/* Sponsors Section */}
-      <div className="my-20">
+      <div className="my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Official Sponsors
@@ -734,7 +823,7 @@ const Page = () => {
       </div>
 
       {/* Media Partners Section */}
-      <div className="my-20">
+      <div className="my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Media Partners
@@ -829,141 +918,6 @@ const Page = () => {
         </Card>
       </div>
 
-      {/* Event Details Quick Overview */}
-      <div className="my-20">
-        <div className="mb-8 space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <BlurFade inView delay={0.15}>
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <CalendarIcon className="text-pink-600" />
-                    <Text as="h4">Competition Period</Text>
-                  </CardTitle>
-                  <Text as="p" className="font-semibold">
-                    6 September - 18 October 2025
-                  </Text>
-                </CardHeader>
-                <CardContent>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    • Registration: Aug 15-30, 2025
-                    <br />
-                    • Workshops: Sep 6-20, 2025
-                    <br />
-                    • Competition: Sep 21 - Oct 15
-                    <br />• Finals: Oct 17-18, 2025
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
-            <BlurFade inView delay={0.2}>
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MapPinIcon className="text-cyan-600" />
-                    <Text as="h4">Event Format</Text>
-                  </CardTitle>
-                  <Text as="p" className="font-semibold">
-                    Online with Physical Final
-                  </Text>
-                </CardHeader>
-                <CardContent>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    • Competition Briefing & Workshop: Online
-                    <br />
-                    • Project Submission (Report, Dashboard, VIdeo): Online
-                    <br />• Live Pitching (Shorlisted Teams): Physical
-                    Presentation at (TBA Location)
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
-            <BlurFade inView delay={0.25}>
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <DollarSignIcon className="text-green-600" />
-                    <Text as="h4">Registration</Text>
-                  </CardTitle>
-                  <Text as="p" className="font-semibold">
-                    RM150.00 per team
-                  </Text>
-                </CardHeader>
-                <CardContent>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    • Non-refundable registration fee
-                    <br />
-                    • Limited slots available
-                    <br />
-                    • First-come, first-served basis
-                    <br />• Online payment required
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
-          </div>
-          <BlurFade inView delay={0.3}>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <UsersIcon className="text-blue-600" />
-                  <Text as="h4">Team Requirements & Eligibility</Text>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Team Composition
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    • 4 members per team with 1 Advisors
-                    <br />
-                    • All members must come from same institution
-                    <br />• Diverse backgrounds encouraged
-                  </Text>
-                </div>
-                <div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Eligibility Criteria
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    • Malaysian university students (IPTA/IPTS), International
-                    students is also allowed
-                    <br />
-                    • Diploma/Undergraduate Programs
-                    <br />• Diverse Background (STEM or non-STEM) are encouraged
-                  </Text>
-                </div>
-                <div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Requirements
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    • Valid student identification
-                    <br />
-                    • Team leader contact details
-                    <br />• University enrollment proof
-                  </Text>
-                </div>
-              </CardContent>
-            </Card>
-          </BlurFade>
-        </div>
-        <BlurFade inView delay={0.35}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Button size="lg" asChild>
-              <Link href="/event-details">
-                View Event Details
-                <ChevronRightIcon className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/rules-regulation">Read Rules & Regulations</Link>
-            </Button>
-          </div>
-        </BlurFade>
-      </div>
-
       {/* Registration Section */}
       <div id="register" className="my-20 py-20 bg-primary/10 rounded-lg">
         <BlurFade inView delay={0.1}>
@@ -1012,7 +966,7 @@ const Page = () => {
       </div>
 
       {/* MDIT 2024 Memories */}
-      <div className="container mx-auto py-16">
+      <div className="max-w-7xl mx-auto py-16">
         <BlurFade delay={0.2}>
           <Text
             as="h2"
@@ -1077,7 +1031,7 @@ const Page = () => {
       </div>
 
       {/* MDIT 2023 Memories */}
-      <div className="container mx-auto py-16">
+      <div className="max-w-7xl mx-auto py-16">
         <BlurFade delay={0.2}>
           <Text
             as="h2"

@@ -64,7 +64,7 @@ const EventDetailsPage = () => {
   return (
     <>
       {/* Prize Pool Section */}
-      <div className="text-center max-w-7xl mx-auto py-24 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 rounded-2xl mb-20 relative overflow-hidden">
+      <div className="text-center py-24 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 rounded-2xl my-20 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="absolute top-10 left-10 w-20 h-20 bg-yellow-300/20 rounded-full blur-xl"></div>
@@ -90,7 +90,7 @@ const EventDetailsPage = () => {
             <div className="mb-16">
               <Text
                 as="h1"
-                className="text-primary flex gap-2 items-center justify-center text-6xl md:text-9xl lg:text-[10rem] font-black mb-4"
+                className="text-primary flex gap-2 items-center justify-center text-7xl md:text-9xl lg:text-[10rem] font-black mb-4"
               >
                 RM
                 <CountingNumber
@@ -112,7 +112,7 @@ const EventDetailsPage = () => {
             {/* Champion - Largest Card */}
             <BlurFade inView delay={0.2}>
               <div className="flex justify-center">
-                <Card className="w-full max-w-md bg-gradient-to-br from-yellow-50 via-yellow-100 to-amber-100 border-2 border-yellow-300 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 relative">
+                <Card className="w-full max-w-md bg-gradient-to-br from-yellow-50 via-yellow-100 to-amber-100 border-2 border-yellow-300 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 relative overflow-hidden">
                   {/* Crown decoration */}
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
@@ -363,7 +363,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Event Details */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-12">
             Event Information
@@ -445,7 +445,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Detailed Requirements */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-12">
             Eligibility & Team Requirements
@@ -480,7 +480,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Timeline Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Competition Timeline
@@ -619,7 +619,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Judges Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20">
         <BlurFade delay={0.1} inView>
           <Text as="h2" className="text-center mb-6">
             Meet Our Expert Judges
@@ -704,7 +704,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="text-center max-w-7xl mx-auto py-20 bg-secondary/20 rounded-lg">
+      <div className="text-center py-20 bg-secondary/20 rounded-lg">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="mb-4">
             Ready to Showcase Your Data Skills?

@@ -24,6 +24,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/animate-ui/radix/dialog";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/animate-ui/radix/hover-card";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -64,7 +69,7 @@ const EventDetailsPage = () => {
   return (
     <>
       {/* Prize Pool Section */}
-      <div className="text-center max-w-7xl mx-auto py-24 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 rounded-2xl mb-20 relative overflow-hidden">
+      <div className="text-center py-24 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 rounded-2xl my-20 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="absolute top-10 left-10 w-20 h-20 bg-yellow-300/20 rounded-full blur-xl"></div>
@@ -76,28 +81,25 @@ const EventDetailsPage = () => {
         <div className="relative z-10">
           <BlurFade inView delay={0.1}>
             <div className="mb-8">
-              <Text
-                as="h2"
-                className="mb-4 text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
-              >
+              <Text as="h2" className="mb-4 text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent">
                 Grand Prize Pool
               </Text>
               <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 via-purple-500 to-blue-500 mx-auto rounded-full"></div>
             </div>
           </BlurFade>
-
+          
           <BlurFade inView delay={0.15}>
             <div className="mb-16">
               <Text
                 as="h1"
-                className="text-primary flex gap-2 items-center justify-center text-6xl md:text-9xl lg:text-[10rem] font-black mb-4"
+                className="text-primary flex gap-2 items-center justify-center text-7xl md:text-9xl lg:text-[10rem] font-black mb-4"
               >
                 RM
                 <CountingNumber
                   decimalPlaces={2}
                   decimalSeparator="."
                   inView
-                  number={11600}
+                  number={110000}
                   className="text-primary"
                 />
               </Text>
@@ -112,43 +114,30 @@ const EventDetailsPage = () => {
             {/* Champion - Largest Card */}
             <BlurFade inView delay={0.2}>
               <div className="flex justify-center">
-                <Card className="w-full max-w-md bg-gradient-to-br from-yellow-50 via-yellow-100 to-amber-100 border-2 border-yellow-300 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 relative">
+                <Card className="w-full max-w-md bg-gradient-to-br from-yellow-50 via-yellow-100 to-amber-100 border-2 border-yellow-300 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 relative overflow-hidden">
                   {/* Crown decoration */}
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
                       <TrophyIcon className="h-8 w-8 text-white" />
                     </div>
                   </div>
-
+                  
                   <CardHeader className="text-center pt-12 pb-4">
-                    <CardTitle className="text-2xl font-bold text-yellow-800 mb-2">
-                      🏆 CHAMPION
-                    </CardTitle>
+                    <CardTitle className="text-2xl font-bold text-yellow-800 mb-2">🏆 CHAMPION</CardTitle>
                     <div className="flex items-center justify-center gap-2">
                       <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                      <Text as="p" className="text-yellow-700 font-medium">
-                        1st Place Winner
-                      </Text>
+                      <Text as="p" className="text-yellow-700 font-medium">1st Place Winner</Text>
                       <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                     </div>
                   </CardHeader>
                   <CardContent className="text-center pb-8">
-                    <Text
-                      as="h2"
-                      className="text-5xl font-black text-yellow-700 mb-4"
-                    >
+                    <Text as="h2" className="text-5xl font-black text-yellow-700 mb-4">
                       RM 3,500
                     </Text>
                     <div className="space-y-2">
-                      <Text as="p" className="text-yellow-600 font-semibold">
-                        ✨ Champion Trophy
-                      </Text>
-                      <Text as="p" className="text-yellow-600 font-semibold">
-                        📜 Winner Certificates
-                      </Text>
-                      <Text as="p" className="text-yellow-600 font-semibold">
-                        🎖️ Medal of Excellence
-                      </Text>
+                      <Text as="p" className="text-yellow-600 font-semibold">✨ Champion Trophy</Text>
+                      <Text as="p" className="text-yellow-600 font-semibold">📜 Winner Certificates</Text>
+                      <Text as="p" className="text-yellow-600 font-semibold">🎖️ Medal of Excellence</Text>
                     </div>
                   </CardContent>
                 </Card>
@@ -164,29 +153,18 @@ const EventDetailsPage = () => {
                       <AwardIcon className="h-6 w-6 text-white" />
                     </div>
                   </div>
-
+                  
                   <CardHeader className="text-center pt-10 pb-4">
-                    <CardTitle className="text-xl font-bold text-gray-800 mb-2">
-                      🥈 RUNNER-UP
-                    </CardTitle>
-                    <Text as="p" className="text-gray-600 font-medium">
-                      2nd Place Winner
-                    </Text>
+                    <CardTitle className="text-xl font-bold text-gray-800 mb-2">🥈 RUNNER-UP</CardTitle>
+                    <Text as="p" className="text-gray-600 font-medium">2nd Place Winner</Text>
                   </CardHeader>
                   <CardContent className="text-center pb-6">
-                    <Text
-                      as="h3"
-                      className="text-3xl font-bold text-gray-700 mb-3"
-                    >
+                    <Text as="h3" className="text-3xl font-bold text-gray-700 mb-3">
                       RM 2,500
                     </Text>
                     <div className="space-y-1">
-                      <Text as="p" className="text-gray-600 text-sm">
-                        🏆 Runner-up Trophy
-                      </Text>
-                      <Text as="p" className="text-gray-600 text-sm">
-                        📜 Certificates
-                      </Text>
+                      <Text as="p" className="text-gray-600 text-sm">🏆 Runner-up Trophy</Text>
+                      <Text as="p" className="text-gray-600 text-sm">📜 Certificates</Text>
                     </div>
                   </CardContent>
                 </Card>
@@ -199,29 +177,18 @@ const EventDetailsPage = () => {
                       <AwardIcon className="h-6 w-6 text-white" />
                     </div>
                   </div>
-
+                  
                   <CardHeader className="text-center pt-10 pb-4">
-                    <CardTitle className="text-xl font-bold text-orange-800 mb-2">
-                      🥉 THIRD PLACE
-                    </CardTitle>
-                    <Text as="p" className="text-orange-600 font-medium">
-                      3rd Place Winner
-                    </Text>
+                    <CardTitle className="text-xl font-bold text-orange-800 mb-2">🥉 THIRD PLACE</CardTitle>
+                    <Text as="p" className="text-orange-600 font-medium">3rd Place Winner</Text>
                   </CardHeader>
                   <CardContent className="text-center pb-6">
-                    <Text
-                      as="h3"
-                      className="text-3xl font-bold text-orange-700 mb-3"
-                    >
+                    <Text as="h3" className="text-3xl font-bold text-orange-700 mb-3">
                       RM 1,500
                     </Text>
                     <div className="space-y-1">
-                      <Text as="p" className="text-orange-600 text-sm">
-                        🏆 Third Place Trophy
-                      </Text>
-                      <Text as="p" className="text-orange-600 text-sm">
-                        📜 Certificates
-                      </Text>
+                      <Text as="p" className="text-orange-600 text-sm">🏆 Third Place Trophy</Text>
+                      <Text as="p" className="text-orange-600 text-sm">📜 Certificates</Text>
                     </div>
                   </CardContent>
                 </Card>
@@ -235,135 +202,103 @@ const EventDetailsPage = () => {
                   <CardHeader className="text-center pb-4">
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <CheckIcon className="h-6 w-6 text-blue-600" />
-                      <CardTitle className="text-lg font-bold text-blue-800">
-                        FINALISTS
-                      </CardTitle>
+                      <CardTitle className="text-lg font-bold text-blue-800">FINALISTS</CardTitle>
                       <CheckIcon className="h-6 w-6 text-blue-600" />
                     </div>
-                    <Text as="p" className="text-blue-600 font-medium">
-                      4th - 10th Place (7 Teams)
-                    </Text>
+                    <Text as="p" className="text-blue-600 font-medium">4th - 10th Place (7 Teams)</Text>
                   </CardHeader>
                   <CardContent className="text-center pb-6">
-                    <Text
-                      as="h3"
-                      className="text-2xl font-bold text-blue-700 mb-3"
-                    >
+                    <Text as="h3" className="text-2xl font-bold text-blue-700 mb-3">
                       RM 500 <span className="text-sm font-normal">each</span>
                     </Text>
-                    <Text as="p" className="text-blue-600 text-sm">
-                      🏅 Finalist Certificates + Recognition
-                    </Text>
+                    <Text as="p" className="text-blue-600 text-sm">🏅 Finalist Certificates + Recognition</Text>
                   </CardContent>
                 </Card>
               </div>
             </BlurFade>
           </div>
+        </div>
+      </div>
 
-          {/* Special Awards Section */}
-          <div className="mt-16">
-            <BlurFade inView delay={0.4}>
-              <div className="text-center mb-12">
-                <Text
-                  as="h3"
-                  className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent"
-                >
-                  Special Recognition Awards
-                </Text>
-                <div className="w-24 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-              </div>
+        {/* Special Awards Section */}
+        <div className="mt-12">
+          <BlurFade inView delay={0.4}>
+            <Text as="h3" className="text-center mb-8 text-2xl font-semibold">
+              Special Recognition Awards
+            </Text>
+          </BlurFade>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <BlurFade inView delay={0.45}>
+              <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+                <CardHeader className="text-center">
+                  <AwardIcon className="h-8 w-8 mx-auto text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-800 text-sm">
+                    Pitching Excellence Award
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <Text
+                    as="h4"
+                    className="text-xl font-bold text-purple-700 mb-2"
+                  >
+                    RM 200
+                  </Text>
+                  <Text as="p" className="text-purple-600 text-xs">
+                    Best presentation and communication skills
+                  </Text>
+                </CardContent>
+              </Card>
             </BlurFade>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <BlurFade inView delay={0.45}>
-                <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-purple-200/50 rounded-bl-full"></div>
-                  <CardHeader className="text-center pt-8 pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                      <AwardIcon className="h-6 w-6 text-white" />
-                    </div>
-                    <CardTitle className="text-purple-800 text-lg font-bold">
-                      Pitching Excellence
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center pb-6">
-                    <Text
-                      as="h4"
-                      className="text-2xl font-bold text-purple-700 mb-3"
-                    >
-                      RM 200
-                    </Text>
-                    <Text
-                      as="p"
-                      className="text-purple-600 text-sm leading-relaxed"
-                    >
-                      🎤 Best presentation and communication skills
-                    </Text>
-                  </CardContent>
-                </Card>
-              </BlurFade>
 
-              <BlurFade inView delay={0.5}>
-                <Card className="bg-gradient-to-br from-green-50 to-emerald-100 border border-green-200 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-green-200/50 rounded-bl-full"></div>
-                  <CardHeader className="text-center pt-8 pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                      <AwardIcon className="h-6 w-6 text-white" />
-                    </div>
-                    <CardTitle className="text-green-800 text-lg font-bold">
-                      Critical Thinking & Defence
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center pb-6">
-                    <Text
-                      as="h4"
-                      className="text-2xl font-bold text-green-700 mb-3"
-                    >
-                      RM 200
-                    </Text>
-                    <Text
-                      as="p"
-                      className="text-green-600 text-sm leading-relaxed"
-                    >
-                      🧠 Outstanding analytical reasoning and Q&A defense
-                    </Text>
-                  </CardContent>
-                </Card>
-              </BlurFade>
+            <BlurFade inView delay={0.5}>
+              <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+                <CardHeader className="text-center">
+                  <AwardIcon className="h-8 w-8 mx-auto text-green-600 mb-2" />
+                  <CardTitle className="text-green-800 text-sm">
+                    Critical Thinking & Defence Award
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <Text
+                    as="h4"
+                    className="text-xl font-bold text-green-700 mb-2"
+                  >
+                    RM 200
+                  </Text>
+                  <Text as="p" className="text-green-600 text-xs">
+                    Outstanding analytical reasoning and Q&A defense
+                  </Text>
+                </CardContent>
+              </Card>
+            </BlurFade>
 
-              <BlurFade inView delay={0.55}>
-                <Card className="bg-gradient-to-br from-indigo-50 to-blue-100 border border-indigo-200 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-indigo-200/50 rounded-bl-full"></div>
-                  <CardHeader className="text-center pt-8 pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-blue-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                      <AwardIcon className="h-6 w-6 text-white" />
-                    </div>
-                    <CardTitle className="text-indigo-800 text-lg font-bold">
-                      Innovation Excellence
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center pb-6">
-                    <Text
-                      as="h4"
-                      className="text-2xl font-bold text-indigo-700 mb-3"
-                    >
-                      RM 200
-                    </Text>
-                    <Text
-                      as="p"
-                      className="text-indigo-600 text-sm leading-relaxed"
-                    >
-                      💡 Most creative and innovative solution approach
-                    </Text>
-                  </CardContent>
-                </Card>
-              </BlurFade>
-            </div>
+            <BlurFade inView delay={0.55}>
+              <Card className="bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200">
+                <CardHeader className="text-center">
+                  <AwardIcon className="h-8 w-8 mx-auto text-indigo-600 mb-2" />
+                  <CardTitle className="text-indigo-800 text-sm">
+                    Innovation Excellence Award
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <Text
+                    as="h4"
+                    className="text-xl font-bold text-indigo-700 mb-2"
+                  >
+                    RM 200
+                  </Text>
+                  <Text as="p" className="text-indigo-600 text-xs">
+                    Most creative and innovative solution approach
+                  </Text>
+                </CardContent>
+              </Card>
+            </BlurFade>
           </div>
         </div>
       </div>
 
       {/* Event Details */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-12">
             Event Information
@@ -445,7 +380,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Detailed Requirements */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-12">
             Eligibility & Team Requirements
@@ -480,7 +415,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Timeline Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Competition Timeline
@@ -619,7 +554,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Judges Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20">
         <BlurFade delay={0.1} inView>
           <Text as="h2" className="text-center mb-6">
             Meet Our Expert Judges
@@ -704,7 +639,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="text-center max-w-7xl mx-auto py-20 bg-secondary/20 rounded-lg">
+      <div className="text-center py-20 bg-secondary/20 rounded-lg">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="mb-4">
             Ready to Showcase Your Data Skills?

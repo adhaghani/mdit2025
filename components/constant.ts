@@ -410,7 +410,8 @@ export const COMPETITION_HIGHLIGHTS = [
   {
     icon: TrophyIcon,
     title: "Massive Prize Pool",
-    description: "RM11,000 in total prizes with RM3,500 for first place",
+    description:
+      "RM11,600 in total prizes with RM3,500 for first place plus special awards",
     color: " text-yellow-600 dark:text-yellow-400",
     bgColor: " bg-yellow-50 dark:bg-yellow-900/30",
   },

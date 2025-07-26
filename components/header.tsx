@@ -22,7 +22,7 @@ const Header = () => {
   );
 
   return (
-    <header className="max-w-7xl z-50 h-14 fixed top-4 left-[50%] translate-x-[-50%] w-full mx-auto px-4">
+    <header className="max-w-7xl z-50 h-14 fixed top-4 left-[50%] translate-x-[-50%] w-full lg:mx-auto px-4  xl:px-0">
       <div className="flex justify-between h-full items-center bg-white/50 dark:bg-black/20 backdrop-blur-lg gap-4 border rounded-lg shadow-sm px-4 py-2 ">
         <Link href={"/"} className=" flex items-center justify-center gap-2">
           <Image
@@ -32,11 +32,16 @@ const Header = () => {
             height={40}
             className="w-10 h-10"
           />
-          <Text as="h4">MDIT x DOSM Datathon 2025</Text>
+          <Text as="h4" className="text-sm lg:text-xl">
+            MDIT x DOSM Datathon 2025
+          </Text>
         </Link>
         <ul className="hidden md:flex items-center gap-4  justify-end">
           <li>
             <Link href="/">Home</Link>
+          </li>
+          <li>
+            <Link href="/about-us">About</Link>
           </li>
           <li>
             <Link href="/event-details">Details</Link>
@@ -95,6 +100,14 @@ const Header = () => {
                 <li className="w-full">
                   <Link href="/" className="w-full block text-center py-3">
                     Home
+                  </Link>
+                </li>
+                <li className="w-full">
+                  <Link
+                    href="/about-us"
+                    className="w-full block text-center py-3"
+                  >
+                    About Us
                   </Link>
                 </li>
                 <li className="w-full">
