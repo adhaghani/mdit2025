@@ -236,48 +236,6 @@ const PastMDITPage = () => {
         { label: "Universities", value: "15", icon: University },
         { label: "Days", value: "36", icon: Calendar },
       ],
-      gallery: [
-        {
-          src: "/mdit/2023/inaugural-launch.jpg",
-          alt: "MDIT 2023 Inaugural Launch",
-          category: "ceremony",
-        },
-        {
-          src: "/mdit/2023/first-briefing.jpg",
-          alt: "Competition Briefing",
-          category: "workshop",
-        },
-        {
-          src: "/mdit/2023/team-registration.jpg",
-          alt: "Team Registration",
-          category: "registration",
-        },
-        {
-          src: "/mdit/2023/data-workshop.jpg",
-          alt: "Data Analysis Workshop",
-          category: "workshop",
-        },
-        {
-          src: "/mdit/2023/final-presentation.jpg",
-          alt: "Final Presentations",
-          category: "competition",
-        },
-        {
-          src: "/mdit/2023/winning-team.jpg",
-          alt: "Winning Team Celebration",
-          category: "ceremony",
-        },
-        {
-          src: "/mdit/2023/panel-discussion.jpg",
-          alt: "Industry Panel Discussion",
-          category: "networking",
-        },
-        {
-          src: "/mdit/2023/closing-ceremony.jpg",
-          alt: "Closing Ceremony",
-          category: "ceremony",
-        },
-      ],
     },
   };
 
@@ -321,7 +279,7 @@ const PastMDITPage = () => {
       {/* Year Selection */}
       <div className="my-12">
         <BlurFade inView delay={0.1}>
-          <div className="flex justify-center gap-4 mb-8">
+          <div className="flex justify-center flex-wrap gap-4 mb-8">
             {availableYears.map((year) => (
               <Button
                 key={year}
@@ -594,77 +552,87 @@ const PastMDITPage = () => {
         </BlurFade>
 
         {/* Gallery Marquees */}
-        <BlurFade delay={0.4} className="my-6">
-          <Card>
-            <CardContent className="relative">
-              <Marquee className="flex gap-4 rounded-lg">
-                {selectedYear === "2024"
-                  ? MDIT2024_IMAGE.map((image, index) => (
-                      <Image
-                        key={index}
-                        className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                        src={image.src}
-                        alt={image.alt}
-                        quality={100}
-                        width={500}
-                        height={200}
-                      />
-                    ))
-                  : MDIT2023_IMAGE.map((image, index) => (
-                      <Image
-                        key={index}
-                        className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                        src={image.src}
-                        alt={image.alt}
-                        quality={100}
-                        width={500}
-                        height={200}
-                      />
-                    ))}
-              </Marquee>
-              {/* Gradient mask for seamless fade effect */}
-              <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-              <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
-            </CardContent>
-          </Card>
-        </BlurFade>
-        <BlurFade delay={0.4}>
-          <Card>
-            <CardContent className="relative">
-              <Marquee
-                reverse
-                className="flex gap-4 rounded-lg [--duration:50s]"
-              >
-                {selectedYear === "2024"
-                  ? MDIT2024_IMAGE.map((image, index) => (
-                      <Image
-                        key={index}
-                        className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                        src={image.src}
-                        alt={image.alt}
-                        quality={100}
-                        width={500}
-                        height={200}
-                      />
-                    ))
-                  : MDIT2023_IMAGE.map((image, index) => (
-                      <Image
-                        key={index}
-                        className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                        src={image.src}
-                        alt={image.alt}
-                        quality={100}
-                        width={500}
-                        height={200}
-                      />
-                    ))}
-              </Marquee>
-              {/* Gradient mask for seamless fade effect */}
-              <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-              <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
-            </CardContent>
-          </Card>
-        </BlurFade>
+        {selectedYear === "2024" || selectedYear === "2023" ? (
+          <>
+            <BlurFade delay={0.4} className="my-6">
+              <Card>
+                <CardContent className="relative">
+                  <Marquee className="flex gap-4 rounded-lg">
+                    {selectedYear === "2024"
+                      ? MDIT2024_IMAGE.map((image, index) => (
+                          <Image
+                            key={index}
+                            className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                            src={image.src}
+                            alt={image.alt}
+                            quality={100}
+                            width={500}
+                            height={200}
+                          />
+                        ))
+                      : MDIT2023_IMAGE.map((image, index) => (
+                          <Image
+                            key={index}
+                            className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                            src={image.src}
+                            alt={image.alt}
+                            quality={100}
+                            width={500}
+                            height={200}
+                          />
+                        ))}
+                  </Marquee>
+                  {/* Gradient mask for seamless fade effect */}
+                  <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+                  <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+                </CardContent>
+              </Card>
+            </BlurFade>
+            <BlurFade delay={0.4}>
+              <Card>
+                <CardContent className="relative">
+                  <Marquee
+                    reverse
+                    className="flex gap-4 rounded-lg [--duration:50s]"
+                  >
+                    {selectedYear === "2024"
+                      ? MDIT2024_IMAGE.map((image, index) => (
+                          <Image
+                            key={index}
+                            className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                            src={image.src}
+                            alt={image.alt}
+                            quality={100}
+                            width={500}
+                            height={200}
+                          />
+                        ))
+                      : MDIT2023_IMAGE.map((image, index) => (
+                          <Image
+                            key={index}
+                            className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                            src={image.src}
+                            alt={image.alt}
+                            quality={100}
+                            width={500}
+                            height={200}
+                          />
+                        ))}
+                  </Marquee>
+                  {/* Gradient mask for seamless fade effect */}
+                  <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+                  <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+                </CardContent>
+              </Card>
+            </BlurFade>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center justify-center h-64 bg-background/50 rounded-lg">
+              <Text as="h3">Photo gallery Unavailable</Text>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Legacy Impact */}

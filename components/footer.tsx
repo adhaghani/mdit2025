@@ -8,6 +8,18 @@ import { useStartCountdown } from "@/hooks/useStartCountdown";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "./magicui/blur-fade";
 import { FOOTER_QUICK_LINK } from "./constant";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Calendar,
+  Users,
+  Trophy,
+  ExternalLink,
+  ArrowRight,
+  Heart,
+} from "lucide-react";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -16,167 +28,253 @@ const Footer = () => {
     "2025-08-10T00:00:00+08:00" // Optional: Start countdown on August 10
   );
 
+  const socialLinks = [
+    {
+      name: "TikTok",
+      href: "#",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43V7.93a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.36z" />
+        </svg>
+      ),
+      color: "hover:text-pink-500",
+    },
+    {
+      name: "Instagram",
+      href: "#",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+      ),
+      color: "hover:text-purple-500",
+    },
+  ];
+
+  const partners = [
+    {
+      name: "DOSM",
+      logo: "/dosm.svg",
+      alt: "Department of Statistics Malaysia",
+    },
+    { name: "UiTM", logo: "/uitm.svg", alt: "Universiti Teknologi MARA" },
+    {
+      name: "INSTATS",
+      logo: "/instats.svg",
+      alt: "Malaysian Statistical Association",
+    },
+  ];
+
+  const keyStats = [
+    { icon: Users, label: "Expected Teams", value: "80+" },
+    { icon: Trophy, label: "Prize Pool", value: "RM 11,000.00" },
+    { icon: Calendar, label: "Duration", value: "14 days" },
+  ];
+
   return (
-    <footer className="max-w-7xl pb-4 mt-auto mx-auto  px-4  xl:px-0">
-      <div className=" mx-auto p-4 py-6 h-fit border shadow-sm bg-light/20 dark:bg-black/20 backdrop-blur-lg rounded-lg ">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <BlurFade inView delay={0.15}>
-                <div className="size-10 flex items-center justify-center">
-                  <Image
-                    src="/mdit.svg"
-                    alt="MDIT 2025 Logo"
-                    width={40}
-                    height={40}
-                    className="w-10 h-10"
-                  />
+    <footer className="relative mt-20 pt-10 pb-10">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 xl:px-0">
+        {/* Key Stats Section */}
+        <div className="mb-16">
+          <BlurFade inView delay={0.1}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {keyStats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className="bg-white/50 dark:bg-black/30 backdrop-blur-lg border border-border/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105"
+                >
+                  <stat.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
+                  <Text as="h3" className="text-2xl font-bold mb-1">
+                    {stat.value}
+                  </Text>
+                  <Text as="p" className="text-muted-foreground text-sm">
+                    {stat.label}
+                  </Text>
                 </div>
-              </BlurFade>
-              <BlurFade inView delay={0.2}>
-                <Text as="h4" className="font-bold text-lg">
-                  MDIT x<br />
-                  DOSM Datathon 2025
-                </Text>
-              </BlurFade>
-            </div>
-            <BlurFade inView delay={0.25}>
-              <Text
-                as="p"
-                className="text-muted-foreground text-justify text-sm"
-              >
-                MDIT x DOSM Datathon 2025 is a national inter-varsity program
-                aimed at fostering innovation and collaboration among students
-                in the fields of data science and analytics. This competition
-                provides a platform for students to showcase their analytical
-                skills while working with real government datasets.
-              </Text>
-            </BlurFade>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4 ">
-            <BlurFade inView delay={0.05}>
-              <h3 className="font-semibold text-foreground">Quick Links</h3>
-            </BlurFade>
-            <ul className="space-y-2">
-              {FOOTER_QUICK_LINK.map((link, index) => (
-                <li key={link.href} id={`${index + 1}`}>
-                  <BlurFade inView delay={0.09 * (index + 1)}>
-                    <Link
-                      href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                    >
-                      {link.title}
-                    </Link>
-                  </BlurFade>
-                </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Social Media */}
-          <div className="space-y-4">
-            <BlurFade inView delay={0.3}>
-              <h3 className="font-semibold text-foreground">Follow Us @</h3>
-            </BlurFade>
-            <div className="flex flex-col space-y-3">
-              <BlurFade inView delay={0.1}>
-                <Link
-                  href="#"
-                  className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43V7.93a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.36z" />
-                  </svg>
-                  <span>Tiktok</span>
-                </Link>
-              </BlurFade>
-              <BlurFade inView delay={0.15}>
-                <Link
-                  href="#"
-                  className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                  <span>Instagram</span>
-                </Link>
-              </BlurFade>
-              {/* <BlurFade inView delay={0.25}>
-                <Link
-                  href="#"
-                  className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  <span>LinkedIn</span>
-                </Link>
-              </BlurFade> */}
             </div>
-          </div>
-
-          {/* Newsletter */}
-          <div className="space-y-2">
-            <BlurFade inView delay={0.1}>
-              <Text as="h3">
-                {isExpired
-                  ? "Registration has closed"
-                  : hasStarted
-                  ? "Registration is open"
-                  : "Registration will open soon."}
-              </Text>
-            </BlurFade>
-            <BlurFade inView delay={0.15}>
-              <Text as="p">
-                {isExpired
-                  ? "Stay tuned for future events!"
-                  : hasStarted
-                  ? "Register now to MDIT 2025 and be the best amongst the best!"
-                  : "Prepare your team, sharpen your skills, and get ready to innovate!"}
-              </Text>
-            </BlurFade>
-            <BlurFade inView delay={0.2}>
-              <Button
-                size="sm"
-                className="flex items-center gap-2 w-full"
-                disabled={isExpired || !hasStarted}
-              >
-                {isExpired
-                  ? "Registeration Closed"
-                  : hasStarted
-                  ? "Register Now"
-                  : "Coming Soon"}
-              </Button>
-            </BlurFade>
-          </div>
+          </BlurFade>
         </div>
 
-        {/* Bottom Section */}
-        <div className="mt-10 pt-6 border-t border-border">
-          <BlurFade inView delay={0.1}>
-            <Text as="p" styleVariant="muted" className="text-center">
-              © {currentYear} MDIT x DOSM Datathon 2025. All rights reserved.
-            </Text>
-          </BlurFade>
+        {/* Main Footer Content */}
+        <div className="bg-white/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 rounded-3xl p-8 lg:p-12 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            {/* Brand Section */}
+            <div className="lg:col-span-5 space-y-6">
+              <BlurFade inView delay={0.1}>
+                <div className="flex items-center space-x-4">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl" />
+                    <div className="relative size-12 flex items-center justify-center bg-white dark:bg-black/50 rounded-full border border-border/50">
+                      <Image
+                        src="/mdit.svg"
+                        alt="MDIT 2025 Logo"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Text
+                      as="h2"
+                      className="text-xl font-bold font-mono bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+                    >
+                      MDIT x DOSM Datathon
+                    </Text>
+                    <Text
+                      as="p"
+                      className="text-sm text-muted-foreground font-medium"
+                    >
+                      2025 National Competition
+                    </Text>
+                  </div>
+                </div>
+              </BlurFade>
+
+              <BlurFade inView delay={0.15}>
+                <Text as="p" className="text-muted-foreground leading-relaxed">
+                  MDIT x DOSM Datathon 2025 is Malaysia&apos;s premier national
+                  inter-varsity program fostering innovation and collaboration
+                  among students in data science and analytics. Join us in
+                  shaping the future of data-driven solutions.
+                </Text>
+              </BlurFade>
+
+              {/* Contact Info */}
+              <BlurFade inView delay={0.2}>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+                    <Mail className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>mdit2025@dosm.gov.my</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+                    <Phone className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>+60 3-8885 7000</span>
+                  </div>
+                </div>
+              </BlurFade>
+            </div>
+
+            {/* Quick Links */}
+            <div className="lg:col-span-3 space-y-6">
+              <BlurFade inView delay={0.25}>
+                <Text as="h3" className="text-lg font-semibold text-foreground">
+                  Quick Links
+                </Text>
+              </BlurFade>
+              <ul className="space-y-3">
+                {FOOTER_QUICK_LINK.map((link, index) => (
+                  <li key={link.href}>
+                    <BlurFade inView delay={0.3 + index * 0.05}>
+                      <Link
+                        href={link.href}
+                        className="group flex items-center justify-between text-muted-foreground hover:text-primary transition-colors text-sm py-1"
+                      >
+                        <span>{link.title}</span>
+                        <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transform translate-x-1 group-hover:translate-x-0 transition-all duration-200" />
+                      </Link>
+                    </BlurFade>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Social Media */}
+              <BlurFade inView delay={0.5}>
+                <div className="pt-4">
+                  <Text
+                    as="h4"
+                    className="text-sm font-semibold text-foreground mb-3"
+                  >
+                    Follow Us
+                  </Text>
+                  <div className="flex space-x-3">
+                    {socialLinks.map((social, index) => (
+                      <Link
+                        key={social.name}
+                        href={social.href}
+                        className={`group flex items-center justify-center w-10 h-10 rounded-full bg-muted/50 text-muted-foreground transition-all duration-300 ${social.color} hover:scale-110 hover:shadow-lg`}
+                        aria-label={social.name}
+                      >
+                        {social.icon}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </BlurFade>
+            </div>
+
+            {/* Registration CTA */}
+            <div className="lg:col-span-4 space-y-6">
+              <BlurFade inView delay={0.6}>
+                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-6 border border-primary/20">
+                  <div className="text-center space-y-4">
+                    <div className="w-12 h-12 mx-auto bg-primary/20 rounded-full flex items-center justify-center">
+                      <Trophy className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <Text as="h3" className="text-lg font-bold mb-2">
+                        {isExpired
+                          ? "Registration Closed"
+                          : hasStarted
+                          ? "Registration Open!"
+                          : "Registration Opening Soon"}
+                      </Text>
+                      <Text
+                        as="p"
+                        className="text-sm text-muted-foreground mb-4"
+                      >
+                        {isExpired
+                          ? "Stay tuned for future datathon events and competitions!"
+                          : hasStarted
+                          ? "Secure your spot in Malaysia's biggest datathon competition!"
+                          : "Get ready to showcase your data science skills with the best teams nationwide!"}
+                      </Text>
+                    </div>
+                    <Button
+                      size="sm"
+                      className="w-full group"
+                      disabled={isExpired || !hasStarted}
+                    >
+                      {isExpired
+                        ? "Registration Closed"
+                        : hasStarted
+                        ? "Register Your Team"
+                        : "Notify Me"}
+                      {hasStarted && !isExpired && (
+                        <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              </BlurFade>
+            </div>
+          </div>
+
+          {/* Bottom Section */}
+          <div className="mt-12 pt-8 border-t border-border/50">
+            <BlurFade inView delay={0.7}>
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <Text
+                  as="p"
+                  className="text-sm text-muted-foreground flex items-center gap-2"
+                >
+                  © {currentYear} MDIT x DOSM Datathon. Made with
+                  <Heart className="w-4 h-4 text-red-500 fill-current" />
+                  for data enthusiasts.
+                </Text>
+                <div className="flex items-center space-x-6 text-xs text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    this is a Live Event
+                  </span>
+                </div>
+              </div>
+            </BlurFade>
+          </div>
         </div>
       </div>
     </footer>

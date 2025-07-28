@@ -57,7 +57,7 @@ const Header = memo(() => {
             height={40}
             className="w-10 h-10"
           />
-          <Text as="h4" className="text-sm lg:text-xl">
+          <Text as="h4" className="text-sm font-mono lg:text-xl">
             MDIT x DOSM Datathon 2025
           </Text>
         </Link>

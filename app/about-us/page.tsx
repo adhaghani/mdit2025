@@ -282,7 +282,7 @@ const AboutUsPage = () => {
       {/* Our Story / About MDIT Section */}
       <div className="my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-12">
+          <Text as="h2" className="text-center font-mono mb-12">
             Our Story & Vision
           </Text>
         </BlurFade>
@@ -350,64 +350,12 @@ const AboutUsPage = () => {
             </div>
           </BlurFade>
         </div>
-
-        {/* National Alignment */}
-        <BlurFade inView delay={0.25}>
-          <Card className="bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20 mb-16">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <Globe className="h-6 w-6 text-primary" />
-                Alignment with National Initiatives
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="font-bold text-primary">MyDIGITAL</span>
-                  </div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    MyDIGITAL Initiative
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    Supporting Malaysia&apos;s digital economy transformation
-                    through data literacy and innovation
-                  </Text>
-                </div>
-                <div className="text-center">
-                  <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="font-bold text-primary">IR4.0</span>
-                  </div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Industry 4.0
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    Preparing future workforce for data-driven industrial
-                    revolution and smart manufacturing
-                  </Text>
-                </div>
-                <div className="text-center">
-                  <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="font-bold text-primary">SDGs</span>
-                  </div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    UN SDGs
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    Contributing to sustainable development goals through
-                    data-driven solutions and evidence-based policy
-                  </Text>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </BlurFade>
       </div>
 
       {/* Meet the Team Section */}
       <div className="my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
+          <Text as="h2" className="text-center font-mono mb-6">
             Meet Our Team
           </Text>
         </BlurFade>
@@ -492,7 +440,7 @@ const AboutUsPage = () => {
       {/* Hall of Fame / Past Editions Section */}
       <div className="my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
+          <Text as="h2" className="text-center font-mono mb-6">
             Hall of Fame
           </Text>
         </BlurFade>
@@ -510,7 +458,7 @@ const AboutUsPage = () => {
         <div className="space-y-6">
           {pastWinners.map((winner, index) => (
             <BlurFade key={index} inView delay={0.2 + index * 0.1}>
-              <Card className="border-2 border-yellow-500">
+              <Card className="border-l-4 border-l-yellow-500">
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-6 gap-4 items-center">
                     <div className="text-center">
@@ -540,27 +488,12 @@ const AboutUsPage = () => {
             </BlurFade>
           ))}
         </div>
-
-        <BlurFade inView delay={0.4}>
-          <div className="text-center mt-12">
-            <Text as="p" styleVariant="muted" className="mb-6">
-              Join the ranks of innovative data scientists who are shaping
-              Malaysia&apos;s future through data-driven solutions.
-            </Text>
-            <Button size="lg" asChild>
-              <Link href="/event-details">
-                <Award className="h-5 w-5 mr-2" />
-                Join MDIT 2025
-              </Link>
-            </Button>
-          </div>
-        </BlurFade>
       </div>
 
       {/* About inStats Association Section */}
       <div className="mt-20 mb-10 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-12">
+          <Text as="h2" className="text-center font-mono mb-12">
             About inStats Association
           </Text>
         </BlurFade>
@@ -569,20 +502,22 @@ const AboutUsPage = () => {
           <BlurFade inView delay={0.15}>
             <div className="space-y-6">
               <Text as="h3" className="text-xl font-semibold">
-                Leading Statistics Education in Malaysia
+                Leading Statistics Club at Universiti Teknologi MARA (UiTM) Shah
+                Alam
               </Text>
               <Text as="p" styleVariant="muted" className="leading-relaxed">
-                The inStats Association is the premier organization representing
-                statistics students across Malaysian universities. Founded with
-                the mission to advance statistical education and create
-                opportunities for students to apply their knowledge in
-                real-world scenarios.
+                inStats Association is the premier statistics club at UiTM,
+                dedicated to fostering a vibrant community of data enthusiasts
+                and professionals. Our mission is to empower students with the
+                skills, knowledge, and networks needed to excel in the field of
+                data science and analytics.
               </Text>
               <Text as="p" styleVariant="muted" className="leading-relaxed">
-                We serve as a bridge between academic learning and professional
-                development, organizing competitions, workshops, seminars, and
-                networking events that prepare our members for successful
-                careers in data science, analytics, and research.
+                We organize a wide range of activities including workshops,
+                seminars, and competitions to enhance practical skills and
+                industry readiness. Our flagship event, MDIT, exemplifies our
+                commitment to bridging the gap between academic learning and
+                real-world data challenges.
               </Text>
               <div className="flex items-center gap-3">
                 <Star className="h-5 w-5 text-primary" />
@@ -606,7 +541,7 @@ const AboutUsPage = () => {
                       Annual Data Science Competitions
                     </Text>
                     <Text as="p" className="text-sm text-muted-foreground">
-                      Including MDIT and specialized analytical challenges
+                      Including MDIT, fostering innovation and practical skills.
                     </Text>
                   </div>
                 </div>
@@ -649,43 +584,12 @@ const AboutUsPage = () => {
             </Card>
           </BlurFade>
         </div>
-
-        {/* inStats Achievements */}
-        <BlurFade inView delay={0.25}>
-          <Card className="bg-gradient-to-r from-secondary/5 to-secondary/10 border-secondary/20">
-            <CardHeader>
-              <CardTitle className="text-center">
-                inStats Association Impact
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {inStatsAchievements.map((achievement, index) => (
-                  <div key={index} className="text-center">
-                    <Text
-                      as="h3"
-                      className="text-3xl font-bold text-primary mb-1"
-                    >
-                      {achievement.metric}
-                    </Text>
-                    <Text as="p" className="font-semibold mb-2">
-                      {achievement.label}
-                    </Text>
-                    <Text as="p" className="text-sm text-muted-foreground">
-                      {achievement.description}
-                    </Text>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </BlurFade>
       </div>
 
       {/* Call to Action */}
       <div className="text-center max-w-7xl mx-auto py-20 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg">
         <BlurFade inView delay={0.1}>
-          <Text as="h2" className="mb-4">
+          <Text as="h2" className="mb-4 font-mono">
             Ready to Be Part of Our Story?
           </Text>
         </BlurFade>

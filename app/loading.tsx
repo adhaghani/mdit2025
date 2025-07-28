@@ -39,7 +39,7 @@ LoadingDots.displayName = "LoadingDots";
 
 const Loading = memo(() => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center p-4">
+    <div className="fixed top-0 left-0 min-w-screen z-[100000] min-h-screen bg-background flex items-center justify-center p-4">
       <div className="max-w-md mx-auto text-center space-y-8">
         {/* Logo Section */}
         <BlurFade delay={0.1}>

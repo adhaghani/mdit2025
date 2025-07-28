@@ -39,6 +39,7 @@ import {
   OFFICIAL_SPONSORS,
   MEDIA_PARTNERS,
 } from "@/components/constant";
+import { BubbleBackground } from "@/components/animate-ui/backgrounds/bubble";
 
 // Type definitions
 interface CompetitionPhase {
@@ -488,6 +489,10 @@ const Page = memo(() => {
     <>
       {/* Hero Section with Background Pattern */}
       <div className="relative min-h-fit h-[90vh] max-h-[700px] overflow-hidden">
+        <BubbleBackground
+          interactive
+          className="absolute inset-0 z-0 rounded-lg opacity-30 hidden lg:block"
+        />
         <div className="relative text-center py-24 md:py-24 lg:py-32 flex flex-col item-center justify-center gap-4 z-10">
           <BlurFade
             inView
@@ -590,7 +595,7 @@ const Page = memo(() => {
       {/* About MDIT Section */}
       <div className="my-20 relative">
         <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6 relative z-10">
+          <Text as="h2" className="text-center font-mono mb-6 relative z-10">
             About MDIT x DOSM Datathon 2025
           </Text>
         </BlurFade>
@@ -818,7 +823,7 @@ const Page = memo(() => {
           <div className="text-center max-w-7xl mx-auto mt-16 p-8 rounded-2xl bg-gradient-to-r from-primary/10 via-purple-500/10 to-blue-500/10 border border-primary/20">
             <Text
               as="h3"
-              className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
+              className="text-2xl font-bold font-mono mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
             >
               Ready to Experience Excellence?
             </Text>
@@ -872,7 +877,7 @@ const Page = memo(() => {
       <div className="py-20 bg-gradient-to-r from-slate-100/50 to-gray-100/50 dark:from-slate-800/30 dark:to-gray-800/30 rounded-lg my-20 relative overflow-hidden">
         <div className="relative z-10">
           <BlurFade inView delay={0.1}>
-            <Text as="h2" className="text-center mb-6">
+            <Text as="h2" className="text-center font-mono mb-6">
               MDIT 2025 Current Statistics
             </Text>
           </BlurFade>
@@ -1018,7 +1023,7 @@ const Page = memo(() => {
           <div className="text-center mb-20 space-y-4 relative z-10">
             <Text
               as="h2"
-              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl font-mono font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
             >
               Our Partners & Collaborators
             </Text>
