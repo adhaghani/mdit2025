@@ -144,6 +144,13 @@ const AboutUsPage = () => {
         image: "/team/placeholder-team-16.jpg",
         bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       },
+      {
+        name: "Ahmad Adha",
+        role: "Multimedia Bureau",
+        designation: "Computer Science Student",
+        image: "/team/placeholder-team-16.jpg",
+        bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
     ],
     "Protocol Bureau": [
       {
