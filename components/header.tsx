@@ -61,7 +61,7 @@ const Header = memo(() => {
             MDIT x DOSM Datathon 2025
           </Text>
         </Link>
-        <NavigationMenu>
+        <NavigationMenu className="hidden md:flex flex-1 justify-center">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
@@ -71,58 +71,73 @@ const Header = memo(() => {
             <NavigationMenuItem>
               <NavigationMenuTrigger>About</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid gap-3 p-4 md:w-[300px] lg:w-[400px]">
+                <div className="grid grid-cols-2 gap-3 p-6 md:w-[500px] lg:w-[600px]">
                   <NavigationMenuLink asChild>
                     <Link
                       href="/about-us"
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                      className="group block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
                     >
-                      <div className="text-sm font-medium leading-none">
-                        About Us
+                      <div className="flex items-center space-x-2 mb-2">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                        <div className="text-sm font-semibold leading-none group-hover:text-primary transition-colors">
+                          About Us
+                        </div>
                       </div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground group-hover:text-muted-foreground/80">
                         Learn about our mission, team, and the journey of MDIT
                         2025.
                       </p>
                     </Link>
                   </NavigationMenuLink>
+
                   <NavigationMenuLink asChild>
                     <Link
                       href="/about-us/past-mdit"
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                      className="group block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
                     >
-                      <div className="text-sm font-medium leading-none">
-                        View Past MDIT
+                      <div className="flex items-center space-x-2 mb-2">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <div className="text-sm font-semibold leading-none group-hover:text-purple-600 transition-colors">
+                          View Past MDIT
+                        </div>
                       </div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground group-hover:text-muted-foreground/80">
                         Explore memories and highlights from previous
                         competitions.
                       </p>
                     </Link>
                   </NavigationMenuLink>
+
                   <NavigationMenuLink asChild>
                     <Link
                       href="/event-details"
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                      className="group block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
                     >
-                      <div className="text-sm font-medium leading-none">
-                        Event Details
+                      <div className="flex items-center space-x-2 mb-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <div className="text-sm font-semibold leading-none group-hover:text-blue-600 transition-colors">
+                          Event Details
+                        </div>
                       </div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground group-hover:text-muted-foreground/80">
                         Complete information about the competition structure and
                         timeline.
                       </p>
                     </Link>
                   </NavigationMenuLink>
+
                   <NavigationMenuLink asChild>
                     <Link
                       href="/rules-regulation"
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                      className="group block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
                     >
-                      <div className="text-sm font-medium leading-none">
-                        Rules & Regulation
+                      <div className="flex items-center space-x-2 mb-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <div className="text-sm font-semibold leading-none group-hover:text-green-600 transition-colors">
+                          Rules & Regulation
+                        </div>
                       </div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground group-hover:text-muted-foreground/80">
                         Official rules, guidelines, and competition
                         requirements.
                       </p>

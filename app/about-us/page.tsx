@@ -205,21 +205,18 @@ const AboutUsPage = () => {
       team: "Team 1",
       university: "Universiti Teknologi MARA",
       project: "Smart City Traffic Optimization",
-      impact: "-",
     },
     {
       year: "2023",
       team: "Team 2",
       university: "Universiti Teknologi MARA",
       project: "Healthcare Resource Prediction",
-      impact: "-",
     },
     {
       year: "2021",
       team: "Team 2",
       university: "Universiti Teknologi MARA",
       project: "Healthcare Resource Prediction",
-      impact: "-",
     },
   ];
 
@@ -492,8 +489,76 @@ const AboutUsPage = () => {
         </BlurFade>
       </div>
 
-      {/* About inStats Association Section */}
+      {/* Hall of Fame / Past Editions Section */}
       <div className="my-20 max-w-7xl mx-auto">
+        <BlurFade inView delay={0.1}>
+          <Text as="h2" className="text-center mb-6">
+            Hall of Fame
+          </Text>
+        </BlurFade>
+        <BlurFade inView delay={0.15}>
+          <Text
+            as="p"
+            styleVariant="muted"
+            className="text-center mb-12 max-w-2xl mx-auto"
+          >
+            Celebrating the outstanding achievements of past MDIT champions and
+            their innovative solutions that have made real-world impact.
+          </Text>
+        </BlurFade>
+
+        <div className="space-y-6">
+          {pastWinners.map((winner, index) => (
+            <BlurFade key={index} inView delay={0.2 + index * 0.1}>
+              <Card className="border-2 border-yellow-500">
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-6 gap-4 items-center">
+                    <div className="text-center">
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 text-yellow-700 rounded-full mb-2">
+                        <Award className="h-8 w-8" />
+                      </div>
+                      <Text as="p" className="font-bold text-yellow-700">
+                        {winner.year} Winner
+                      </Text>
+                    </div>
+                    <div className="md:col-span-5 space-y-2">
+                      <div className="flex flex-col md:flex-row md:items-center md:gap-4">
+                        <Text as="h4" className="font-semibold text-lg">
+                          Team {winner.team}
+                        </Text>
+                        <Text as="p" className="text-primary font-medium">
+                          {winner.university}
+                        </Text>
+                      </div>
+                      <Text as="p" className="font-medium">
+                        Project: {winner.project}
+                      </Text>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </BlurFade>
+          ))}
+        </div>
+
+        <BlurFade inView delay={0.4}>
+          <div className="text-center mt-12">
+            <Text as="p" styleVariant="muted" className="mb-6">
+              Join the ranks of innovative data scientists who are shaping
+              Malaysia&apos;s future through data-driven solutions.
+            </Text>
+            <Button size="lg" asChild>
+              <Link href="/event-details">
+                <Award className="h-5 w-5 mr-2" />
+                Join MDIT 2025
+              </Link>
+            </Button>
+          </div>
+        </BlurFade>
+      </div>
+
+      {/* About inStats Association Section */}
+      <div className="mt-20 mb-10 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-12">
             About inStats Association
@@ -614,152 +679,6 @@ const AboutUsPage = () => {
               </div>
             </CardContent>
           </Card>
-        </BlurFade>
-      </div>
-
-      {/* Advisors & Partners Section */}
-      <div className="my-20 max-w-7xl mx-auto">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Our Advisors & Strategic Partners
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
-            We are proud to collaborate with leading institutions and
-            organizations that share our vision of advancing data science
-            education and innovation in Malaysia.
-          </Text>
-        </BlurFade>
-
-        <div className="space-y-8">
-          {advisorsPartners.map((partner, index) => (
-            <BlurFade key={index} inView delay={0.2 + index * 0.1}>
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-0">
-                    {/* Logo Section */}
-                    <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-8 flex items-center justify-center">
-                      <div className="relative w-24 h-24">
-                        <Image
-                          src={partner.logo}
-                          alt={partner.name}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Content Section */}
-                    <div className="lg:col-span-3 p-8">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Text as="h3" className="text-xl font-semibold">
-                          {partner.name}
-                        </Text>
-                        <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
-                          {partner.type}
-                        </span>
-                      </div>
-                      <Text
-                        as="p"
-                        styleVariant="muted"
-                        className="mb-4 leading-relaxed"
-                      >
-                        {partner.description}
-                      </Text>
-                      <div className="flex items-start gap-3 bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
-                        <Quote className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                        <Text as="p" className="italic text-sm">
-                          {partner.quote}
-                        </Text>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </BlurFade>
-          ))}
-        </div>
-      </div>
-
-      {/* Hall of Fame / Past Editions Section */}
-      <div className="my-20 max-w-7xl mx-auto">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Hall of Fame
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
-            Celebrating the outstanding achievements of past MDIT champions and
-            their innovative solutions that have made real-world impact.
-          </Text>
-        </BlurFade>
-
-        <div className="space-y-6">
-          {pastWinners.map((winner, index) => (
-            <BlurFade key={index} inView delay={0.2 + index * 0.1}>
-              <Card className="border-l-4 border-l-yellow-500">
-                <CardContent className="pt-6">
-                  <div className="grid grid-cols-1 md:grid-cols-6 gap-4 items-center">
-                    <div className="text-center">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 text-yellow-700 rounded-full mb-2">
-                        <Award className="h-8 w-8" />
-                      </div>
-                      <Text as="p" className="font-bold text-yellow-700">
-                        {winner.year} Winner
-                      </Text>
-                    </div>
-                    <div className="md:col-span-5 space-y-2">
-                      <div className="flex flex-col md:flex-row md:items-center md:gap-4">
-                        <Text as="h4" className="font-semibold text-lg">
-                          Team {winner.team}
-                        </Text>
-                        <Text as="p" className="text-primary font-medium">
-                          {winner.university}
-                        </Text>
-                      </div>
-                      <Text as="p" className="font-medium">
-                        Project: {winner.project}
-                      </Text>
-                      <div className="flex items-center gap-2">
-                        <Target className="h-4 w-4 text-green-600" />
-                        <Text
-                          as="p"
-                          className="text-sm text-green-700 font-medium"
-                        >
-                          Real-world Impact: {winner.impact}
-                        </Text>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </BlurFade>
-          ))}
-        </div>
-
-        <BlurFade inView delay={0.4}>
-          <div className="text-center mt-12">
-            <Text as="p" styleVariant="muted" className="mb-6">
-              Join the ranks of innovative data scientists who are shaping
-              Malaysia&apos;s future through data-driven solutions.
-            </Text>
-            <Button size="lg" asChild>
-              <Link href="/event-details">
-                <Award className="h-5 w-5 mr-2" />
-                Join MDIT 2025
-              </Link>
-            </Button>
-          </div>
         </BlurFade>
       </div>
 

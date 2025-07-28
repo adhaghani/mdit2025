@@ -1,31 +1,13 @@
 "use client";
-import React, { useMemo, useCallback, useState } from "react";
+import React, { useMemo, useCallback } from "react";
 import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BlurFade } from "@/components/magicui/blur-fade";
-import {
-  MailIcon,
-  PhoneIcon,
-  SendIcon,
-  UserIcon,
-  MessageCircleIcon,
-} from "lucide-react";
-import { Instagram, MessageSquare } from "lucide-react";
+import { MailIcon, MessageCircleIcon } from "lucide-react";
+import { Instagram } from "lucide-react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import Image from "next/image";
 
 // Type definitions
 interface ContactInfo {
@@ -41,30 +23,19 @@ interface SocialPlatform {
   handle: string;
   link: string;
   description: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: React.ComponentType<{ className?: string }> | string;
   cardClass: string;
   iconBg: string;
   titleClass: string;
   linkClass: string;
 }
 
-const contactFormSchema = z.object({
-  name: z
-    .string()
-    .min(2, "Name must be at least 2 characters")
-    .max(100, "Name must be less than 100 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  subject: z
-    .string()
-    .min(5, "Subject must be at least 5 characters")
-    .max(200, "Subject must be less than 200 characters"),
-  message: z
-    .string()
-    .min(10, "Message must be at least 10 characters")
-    .max(1000, "Message must be less than 1000 characters"),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
+interface WhatsAppContact {
+  name: string;
+  role: string;
+  number: string;
+  description: string;
+}
 
 // Memoized ContactInfo component
 const ContactInfoCard = React.memo(
@@ -114,7 +85,17 @@ const SocialMediaCard = React.memo(
           <div
             className={`mx-auto mb-4 p-3 ${platform.iconBg} rounded-full w-fit`}
           >
-            <platform.icon className="h-6 w-6 text-white" />
+            {typeof platform.icon === "string" ? (
+              <Image
+                src={platform.icon}
+                alt={`${platform.name} icon`}
+                width={24}
+                height={24}
+                className="size-10"
+              />
+            ) : (
+              <platform.icon className="size-10 text-white" />
+            )}
           </div>
           <CardTitle className={`text-lg ${platform.titleClass}`}>
             {platform.name}
@@ -146,21 +127,6 @@ const SocialMediaCard = React.memo(
 SocialMediaCard.displayName = "SocialMediaCard";
 
 const ContactPage = () => {
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    },
-  });
-
-  const { isSubmitting } = form.formState;
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
   // Memoize static data to prevent unnecessary re-renders
   const contactInfo = useMemo(
     () =>
@@ -171,13 +137,6 @@ const ContactPage = () => {
           content: "mditxdd2025@gmail.com",
           description: "Send us an email and we will respond within 24 hours",
           link: "mailto:mditxdd2025@gmail.com",
-        },
-        {
-          icon: PhoneIcon,
-          title: "For any Inquiry",
-          content: "+60 3-5521 1234",
-          description: "Available during office hours",
-          link: "tel:+60355211234",
         },
       ] as const),
     []
@@ -203,12 +162,33 @@ const ContactPage = () => {
           handle: "@mdit2025",
           link: "https://tiktok.com/@mdit2025",
           description: "Quick tips, announcements, and fun competition moments",
-          icon: MessageSquare,
+          icon: "/tiktok.svg",
           cardClass:
             "bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-800",
-          iconBg: "bg-gradient-to-r from-gray-800 to-black",
+          iconBg: "bg-black",
           titleClass: "text-gray-700 dark:text-gray-300",
           linkClass: "text-gray-600 dark:text-gray-400",
+        },
+      ] as const),
+    []
+  );
+
+  const whatsappContacts = useMemo(
+    () =>
+      Object.freeze([
+        {
+          name: "Ahmad Syafiq",
+          role: "Competition Director",
+          number: "+60123456789",
+          description:
+            "General inquiries, registration issues, and competition guidelines",
+        },
+        {
+          name: "Siti Nurhaliza",
+          role: "Technical Support",
+          number: "+60987654321",
+          description:
+            "Technical requirements, dataset questions, and submission help",
         },
       ] as const),
     []
@@ -241,23 +221,14 @@ const ContactPage = () => {
     []
   );
 
-  const onSubmit = useCallback(
-    async (data: ContactFormValues) => {
-      setSubmitStatus("idle");
-      console.log("Form submitted:", data);
-      try {
-        // Simulate form submission
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        setSubmitStatus("success");
-        form.reset();
-      } catch (error) {
-        setSubmitStatus("error");
-        console.error("Error submitting form:", error);
-      } finally {
-        setTimeout(() => setSubmitStatus("idle"), 5000);
-      }
+  const createWhatsAppLink = useCallback(
+    (number: string, name: string, role: string) => {
+      const message = encodeURIComponent(
+        `Hello ${name}, I would like to inquire about MDIT 2025. I understand you handle ${role.toLowerCase()} matters.`
+      );
+      return `https://wa.me/${number.replace(/[^0-9]/g, "")}?text=${message}`;
     },
-    [form]
+    []
   );
 
   return (
@@ -314,163 +285,83 @@ const ContactPage = () => {
       </div>
 
       {/* Contact Information Cards */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-20 mb-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 gap-6 mt-20 mb-6">
         {contactInfo.map((info, index) => (
           <ContactInfoCard key={index} info={info} index={index} />
         ))}
       </div>
 
-      {/* Contact Form and Additional Info */}
+      {/* WhatsApp Contact Section */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 mb-20 mt-6">
-        {/* Contact Form */}
+        {/* WhatsApp Contact Cards */}
         <BlurFade inView delay={0.3}>
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <MessageCircleIcon className="h-5 w-5 text-primary" />
-                Send us a Message
+                <MessageCircleIcon className="h-5 w-5 text-green-600" />
+                Contact Our Team via WhatsApp
               </CardTitle>
               <Text as="p" styleVariant="muted">
-                Fill out the form below and we will get back to you as soon as
-                possible.
+                Get instant responses from our team members. Click the buttons
+                below to start a WhatsApp conversation.
               </Text>
             </CardHeader>
-            <CardContent>
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-6"
+            <CardContent className="space-y-4">
+              {whatsappContacts.map((contact, index) => (
+                <div
+                  key={index}
+                  className="p-4 border rounded-lg hover:border-green-200 transition-colors"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>
-                            Full Name <span className="text-red-500">*</span>
-                          </FormLabel>
-                          <FormControl>
-                            <div className="relative">
-                              <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                              <Input
-                                {...field}
-                                type="text"
-                                placeholder="Enter your full name"
-                                className="pl-10"
-                              />
-                            </div>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>
-                            Email Address{" "}
-                            <span className="text-red-500">*</span>
-                          </FormLabel>
-                          <FormControl>
-                            <div className="relative">
-                              <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                              <Input
-                                {...field}
-                                type="email"
-                                placeholder="Enter your email"
-                                className="pl-10"
-                              />
-                            </div>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <Text
+                        as="h4"
+                        className="font-semibold text-green-700 mb-1"
+                      >
+                        {contact.name}
+                      </Text>
+                      <Text as="p" className="text-sm text-green-600 mb-2">
+                        {contact.role}
+                      </Text>
+                      <Text
+                        as="p"
+                        styleVariant="muted"
+                        className="text-sm mb-3"
+                      >
+                        {contact.description}
+                      </Text>
+                      <Link
+                        href={createWhatsAppLink(
+                          contact.number,
+                          contact.name,
+                          contact.role
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button
+                          size="sm"
+                          className="bg-green-600 hover:bg-green-700 text-white"
+                        >
+                          <MessageCircleIcon className="h-4 w-4 mr-2" />
+                          Chat on WhatsApp
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
+                </div>
+              ))}
 
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>
-                          Subject <span className="text-red-500">*</span>
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            {...field}
-                            type="text"
-                            placeholder="What is this regarding?"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>
-                          Message <span className="text-red-500">*</span>
-                        </FormLabel>
-                        <FormControl>
-                          <Textarea
-                            {...field}
-                            rows={5}
-                            placeholder="Please provide details about your inquiry..."
-                            className="resize-vertical"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  {submitStatus === "success" && (
-                    <div className="p-4 bg-green-50 border border-green-200 rounded-md">
-                      <Text as="p" className="text-green-800 text-sm">
-                        ✅ Thank you! Your message has been sent successfully.
-                        We will get back to you soon.
-                      </Text>
-                    </div>
-                  )}
-
-                  {submitStatus === "error" && (
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-md">
-                      <Text as="p" className="text-red-800 text-sm">
-                        ❌ Sorry, there was an error sending your message.
-                        Please try again.
-                      </Text>
-                    </div>
-                  )}
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <SendIcon className="h-4 w-4 mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </Form>
+              <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                <Text
+                  as="p"
+                  className="text-sm text-green-800 dark:text-green-200"
+                >
+                  💡 <strong>Tip:</strong> When contacting us, please mention
+                  your inquiry type (registration, technical, rules, etc.) to
+                  help us assist you better.
+                </Text>
+              </div>
             </CardContent>
           </Card>
         </BlurFade>
@@ -518,28 +409,6 @@ const ContactPage = () => {
                     Event Details
                   </Button>
                 </Link>
-              </CardContent>
-            </Card>
-          </BlurFade>
-
-          <BlurFade inView delay={0.6}>
-            <Card className="bg-primary/5 border-primary/20">
-              <CardHeader>
-                <CardTitle className="text-primary">
-                  Emergency Contact
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Text as="p" className="mb-2">
-                  For urgent matters during the competition period:
-                </Text>
-                <Text as="p" className="font-semibold">
-                  📱 WhatsApp: +60 12-345 6789
-                </Text>
-                <Text as="p" styleVariant="muted" className="text-sm mt-2">
-                  Available 24/7 during competition dates (Sept 6 - Oct 18,
-                  2025)
-                </Text>
               </CardContent>
             </Card>
           </BlurFade>

@@ -180,6 +180,20 @@
   }
 }
 
+/* Custom animations for loading components */
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 1s linear infinite;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

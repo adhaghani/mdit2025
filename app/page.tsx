@@ -27,7 +27,6 @@ import Link from "next/link";
 import {
   MDIT2023_IMAGE,
   MDIT2024_IMAGE,
-  KEY_STATISTICS,
   COMPETITION_HIGHLIGHTS,
   ORGANIZERS,
   OFFICIAL_SPONSORS,
@@ -43,10 +42,6 @@ interface CompetitionPhase {
   status: string;
 }
 
-interface CountdownItem {
-  label: string;
-  value: number;
-}
 
 interface CompetitionHighlight {
   title: string;
@@ -867,18 +862,128 @@ const Page = memo(() => {
         </div>
       </div>
 
-      {/* Statistics Section */}
+      {/* Current Statistics Section */}
       <div className="py-20 bg-gradient-to-r from-slate-100/50 to-gray-100/50 dark:from-slate-800/30 dark:to-gray-800/30 rounded-lg my-20">
         <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-12">
-            Competition at a Glance
+          <Text as="h2" className="text-center mb-6">
+            MDIT 2025 Current Statistics
+          </Text>
+        </BlurFade>
+        <BlurFade inView delay={0.15}>
+          <Text
+            as="p"
+            styleVariant="muted"
+            className="text-center mb-12 max-w-2xl mx-auto"
+          >
+            Live statistics showing the growing participation and excitement for
+            MDIT 2025 across Malaysian universities.
           </Text>
         </BlurFade>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {KEY_STATISTICS.map((stat, index) => (
-            <StatisticCard key={`stat-${index}`} stat={stat} index={index} />
-          ))}
+          <BlurFade inView delay={0.2}>
+            <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+              <CardContent className="p-6">
+                <div className="mx-auto mb-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full w-fit">
+                  <Users2Icon className="h-6 w-6 text-blue-600" />
+                </div>
+                <Text as="h3" className="text-2xl font-bold text-blue-600 mb-2">
+                  <NumberFlow value={0} format={{ minimumIntegerDigits: 1 }} />
+                </Text>
+                <Text as="p" styleVariant="muted" className="text-sm">
+                  Teams Registered
+                </Text>
+              </CardContent>
+            </Card>
+          </BlurFade>
+
+          <BlurFade inView delay={0.25}>
+            <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+              <CardContent className="p-6">
+                <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
+                  <BookOpenIcon className="h-6 w-6 text-purple-600" />
+                </div>
+                <Text
+                  as="h3"
+                  className="text-2xl font-bold text-purple-600 mb-2"
+                >
+                  <NumberFlow value={0} format={{ minimumIntegerDigits: 1 }} />
+                </Text>
+                <Text as="p" styleVariant="muted" className="text-sm">
+                  Universities Participating
+                </Text>
+              </CardContent>
+            </Card>
+          </BlurFade>
+
+          <BlurFade inView delay={0.3}>
+            <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+              <CardContent className="p-6">
+                <div className="mx-auto mb-4 p-3 bg-teal-100 dark:bg-teal-900/30 rounded-full w-fit">
+                  <UsersIcon className="h-6 w-6 text-teal-600" />
+                </div>
+                <Text as="h3" className="text-2xl font-bold text-teal-600 mb-2">
+                  <NumberFlow value={0} format={{ minimumIntegerDigits: 1 }} />
+                </Text>
+                <Text as="p" styleVariant="muted" className="text-sm">
+                  Total Participants
+                </Text>
+              </CardContent>
+            </Card>
+          </BlurFade>
+
+          <BlurFade inView delay={0.35}>
+            <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+              <CardContent className="p-6">
+                <div className="mx-auto mb-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-full w-fit">
+                  <TrophyIcon className="h-6 w-6 text-green-600" />
+                </div>
+                <Text
+                  as="h3"
+                  className="text-2xl font-bold text-green-600 mb-2"
+                >
+                  <NumberFlow value={0} format={{ minimumIntegerDigits: 1 }} />
+                </Text>
+                <Text as="p" styleVariant="muted" className="text-sm">
+                  Days Until Registration Closes
+                </Text>
+              </CardContent>
+            </Card>
+          </BlurFade>
         </div>
+
+        {/* Additional Statistics Row */}
+        <div className="grid grid-cols-1 gap-6 max-w-xl mx-auto mt-8">
+          <BlurFade inView delay={0.4}>
+            <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20">
+              <CardContent className="p-6">
+                <Text
+                  as="h4"
+                  className="text-lg font-semibold text-primary mb-2"
+                >
+                  Registration Progress
+                </Text>
+                <div className="w-full bg-muted/30 rounded-full h-3 mb-3">
+                  <div
+                    className="bg-gradient-to-r from-primary to-purple-500 h-3 rounded-full transition-all duration-1000"
+                    style={{ width: "0%" }}
+                  ></div>
+                </div>
+                <Text as="p" styleVariant="muted" className="text-sm">
+                  0 out of 100 slots filled
+                </Text>
+              </CardContent>
+            </Card>
+          </BlurFade>
+        </div>
+
+        {/* Real-time Update Notice */}
+        <BlurFade inView delay={0.6}>
+          <div className="text-center mt-8">
+            <Text as="p" styleVariant="muted" className="text-xs mt-2">
+              Last updated: 28 July 2025 at 16:43 GMT+8
+            </Text>
+          </div>
+        </BlurFade>
       </div>
 
       {/* Organizers Section */}
@@ -965,7 +1070,7 @@ const Page = memo(() => {
           <div className="mt-5 flex justify-center items-center gap-2 flex-wrap">
             <Text as="p">Interested in sponsoring our event?</Text>
             <Button variant={"secondary"} size={"sm"} asChild>
-              <Link href={"/contact"}>Link Reach us out</Link>
+              <Link href={"/contact"}>Reach us out</Link>
             </Button>
           </div>
         </BlurFade>
