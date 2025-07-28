@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo, useMemo } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,11 +15,36 @@ import { useStartCountdown } from "@/hooks/useStartCountdown";
 import Image from "next/image";
 import { Text } from "@/components/ui/text";
 import { ModeToggle } from "./mode-toggle";
-const Header = () => {
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+const Header = memo(() => {
   const { hasStarted, isExpired } = useStartCountdown(
     "2025-08-30T00:00:00+08:00", // Count down to August 30
     "2025-08-10T00:00:00+08:00" // Optional: Start countdown on August 10
   );
+
+  // Memoize button text to prevent recalculation
+  const buttonText = useMemo(() => {
+    if (isExpired) return "Registration Closed";
+    if (hasStarted) return "Register Now";
+    return "Coming Soon";
+  }, [isExpired, hasStarted]);
+
+  // Memoize button href to prevent recalculation
+  const buttonHref = useMemo(() => {
+    return isExpired || !hasStarted ? "#" : "/register";
+  }, [isExpired, hasStarted]);
+
+  // Memoize button disabled state
+  const isButtonDisabled = useMemo(() => {
+    return isExpired || !hasStarted;
+  }, [isExpired, hasStarted]);
 
   return (
     <header className="max-w-7xl z-50 h-14 fixed top-4 left-[50%] translate-x-[-50%] w-full lg:mx-auto px-4  xl:px-0">
@@ -36,45 +61,103 @@ const Header = () => {
             MDIT x DOSM Datathon 2025
           </Text>
         </Link>
-        <ul className="hidden md:flex items-center gap-4  justify-end">
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/about-us">About</Link>
-          </li>
-          <li>
-            <Link href="/event-details">Details</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link href="/">Home</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>About</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid gap-3 p-4 md:w-[300px] lg:w-[400px]">
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href="/about-us"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                    >
+                      <div className="text-sm font-medium leading-none">
+                        About Us
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        Learn about our mission, team, and the journey of MDIT
+                        2025.
+                      </p>
+                    </Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href="/about-us/past-mdit"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                    >
+                      <div className="text-sm font-medium leading-none">
+                        View Past MDIT
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        Explore memories and highlights from previous
+                        competitions.
+                      </p>
+                    </Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href="/event-details"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                    >
+                      <div className="text-sm font-medium leading-none">
+                        Event Details
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        Complete information about the competition structure and
+                        timeline.
+                      </p>
+                    </Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href="/rules-regulation"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                    >
+                      <div className="text-sm font-medium leading-none">
+                        Rules & Regulation
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        Official rules, guidelines, and competition
+                        requirements.
+                      </p>
+                    </Link>
+                  </NavigationMenuLink>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link href="/contact">Contact</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link href="/frequently-asked-questions">FAQs</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <ModeToggle />
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href={buttonHref}>
+                <Button
+                  size="sm"
+                  className="flex items-center gap-2"
+                  disabled={isButtonDisabled}
+                >
+                  {buttonText}
+                </Button>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
 
-          <li>
-            <Link href="/rules-regulation">Rules</Link>
-          </li>
-          <li>
-            <Link href="/frequently-asked-questions">FAQs</Link>
-          </li>
-          <li>
-            <ModeToggle />
-          </li>
-          <li>
-            <Link href={isExpired || !hasStarted ? "#" : "/register"}>
-              <Button
-                size="sm"
-                className="flex items-center gap-2"
-                disabled={isExpired || !hasStarted}
-              >
-                {isExpired
-                  ? "Registeration Closed"
-                  : hasStarted
-                  ? "Register Now"
-                  : "Coming Soon"}
-              </Button>
-            </Link>
-          </li>
-        </ul>
         {/* MOBILE TRIGGER */}
         <div className="md:hidden flex items-center gap-2">
           <Sheet>
@@ -143,20 +226,13 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link
-                    className="block w-full "
-                    href={isExpired || !hasStarted ? "#" : "/register"}
-                  >
+                  <Link className="block w-full " href={buttonHref}>
                     <Button
                       size="sm"
                       className="flex items-center gap-2 w-full "
-                      disabled={isExpired || !hasStarted}
+                      disabled={isButtonDisabled}
                     >
-                      {isExpired
-                        ? "Registeration Closed"
-                        : hasStarted
-                        ? "Register Now"
-                        : "Coming Soon"}
+                      {buttonText}
                     </Button>
                   </Link>
                 </li>
@@ -167,17 +243,13 @@ const Header = () => {
             <ModeToggle />
           </div>
           <div className="hidden sm:flex">
-            <Link href={isExpired || !hasStarted ? "#" : "/register"}>
+            <Link href={buttonHref}>
               <Button
                 size="sm"
                 className="flex items-center gap-2"
-                disabled={isExpired || !hasStarted}
+                disabled={isButtonDisabled}
               >
-                {isExpired
-                  ? "Registeration Closed"
-                  : hasStarted
-                  ? "Register Now"
-                  : "Coming Soon"}
+                {buttonText}
               </Button>
             </Link>
           </div>
@@ -185,6 +257,8 @@ const Header = () => {
       </div>
     </header>
   );
-};
+});
+
+Header.displayName = "Header";
 
 export default Header;

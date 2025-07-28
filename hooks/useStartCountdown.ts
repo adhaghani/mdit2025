@@ -1,29 +1,41 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { useCountdown } from "./useCountdown";
 
 export const useStartCountdown = (targetDate: string, startDate?: string) => {
   const [hasStarted, setHasStarted] = useState(!startDate); // If no startDate, start immediately
   const countdownData = useCountdown(targetDate);
 
-  useEffect(() => {
-    // If no start date is provided, the countdown starts immediately
+  // Use ref to store the start timestamp to avoid recalculating
+  const startTimestamp = useRef(startDate ? new Date(startDate).getTime() : 0);
+
+  // Memoize the check function
+  const checkStartDate = useCallback(() => {
     if (!startDate) {
       setHasStarted(true);
       return;
     }
 
-    const checkStartDate = () => {
-      const start = new Date(startDate);
-      const now = new Date();
+    const now = Date.now();
+    if (now >= startTimestamp.current) {
+      setHasStarted(true);
+    } else {
+      setHasStarted(false);
+    }
+  }, [startDate]);
 
-      if (now >= start) {
-        setHasStarted(true);
-      } else {
-        setHasStarted(false);
-      }
-    };
+  useEffect(() => {
+    // Update start timestamp if startDate changes
+    if (startDate) {
+      startTimestamp.current = new Date(startDate).getTime();
+    }
+
+    // If no start date is provided, the countdown starts immediately
+    if (!startDate) {
+      setHasStarted(true);
+      return;
+    }
 
     // Check immediately
     checkStartDate();
@@ -33,24 +45,29 @@ export const useStartCountdown = (targetDate: string, startDate?: string) => {
 
     // Cleanup interval on component unmount
     return () => clearInterval(timer);
-  }, [startDate]);
+  }, [startDate, checkStartDate]);
 
-  // Return countdown data only if countdown has started, otherwise return zeros
-  return {
-    hasStarted,
-    isExpired: hasStarted ? countdownData.isExpired : false,
-    timeLeft: hasStarted
-      ? {
-          days: countdownData.days,
-          hours: countdownData.hours,
-          minutes: countdownData.minutes,
-          seconds: countdownData.seconds,
-        }
-      : {
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-        },
-  };
+  // Memoize the return value to prevent unnecessary re-renders
+  const returnValue = useMemo(
+    () => ({
+      hasStarted,
+      isExpired: hasStarted ? countdownData.isExpired : false,
+      timeLeft: hasStarted
+        ? {
+            days: countdownData.days,
+            hours: countdownData.hours,
+            minutes: countdownData.minutes,
+            seconds: countdownData.seconds,
+          }
+        : {
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+          },
+    }),
+    [hasStarted, countdownData]
+  );
+
+  return returnValue;
 };

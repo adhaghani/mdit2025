@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useMemo, useCallback, useState } from "react";
 import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,6 +27,27 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+// Type definitions
+interface ContactInfo {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  content: string;
+  description: string;
+  link: string;
+}
+
+interface SocialPlatform {
+  name: string;
+  handle: string;
+  link: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  cardClass: string;
+  iconBg: string;
+  titleClass: string;
+  linkClass: string;
+}
+
 const contactFormSchema = z.object({
   name: z
     .string()
@@ -45,6 +66,85 @@ const contactFormSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
+// Memoized ContactInfo component
+const ContactInfoCard = React.memo(
+  ({ info, index }: { info: ContactInfo; index: number }) => (
+    <BlurFade key={index} inView delay={0.1 + index * 0.05}>
+      <Card className="h-full transition-all duration-300">
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-fit">
+            <info.icon className="h-6 w-6 text-primary" />
+          </div>
+          <CardTitle className="text-lg">{info.title}</CardTitle>
+        </CardHeader>
+        <CardContent className="text-center space-y-2">
+          {info.link ? (
+            <Link href={info.link} className="block">
+              <Text
+                as="p"
+                className="font-semibold text-primary hover:underline"
+              >
+                {info.content}
+              </Text>
+            </Link>
+          ) : (
+            <Text as="p" className="font-semibold">
+              {info.content}
+            </Text>
+          )}
+          <Text as="p" styleVariant="muted" className="text-sm">
+            {info.description}
+          </Text>
+        </CardContent>
+      </Card>
+    </BlurFade>
+  )
+);
+
+ContactInfoCard.displayName = "ContactInfoCard";
+
+// Memoized Social Media Card component
+const SocialMediaCard = React.memo(
+  ({ platform, delay }: { platform: SocialPlatform; delay: number }) => (
+    <BlurFade inView delay={delay}>
+      <Card
+        className={`h-full transition-all duration-300 ${platform.cardClass}`}
+      >
+        <CardHeader className="text-center">
+          <div
+            className={`mx-auto mb-4 p-3 ${platform.iconBg} rounded-full w-fit`}
+          >
+            <platform.icon className="h-6 w-6 text-white" />
+          </div>
+          <CardTitle className={`text-lg ${platform.titleClass}`}>
+            {platform.name}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-center space-y-2">
+          <Link
+            href={platform.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <Text
+              as="p"
+              className={`font-semibold ${platform.linkClass} hover:underline`}
+            >
+              {platform.handle}
+            </Text>
+          </Link>
+          <Text as="p" styleVariant="muted" className="text-sm">
+            {platform.description}
+          </Text>
+        </CardContent>
+      </Card>
+    </BlurFade>
+  )
+);
+
+SocialMediaCard.displayName = "SocialMediaCard";
+
 const ContactPage = () => {
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -57,42 +157,108 @@ const ContactPage = () => {
   });
 
   const { isSubmitting } = form.formState;
-  const [submitStatus, setSubmitStatus] = React.useState<
+  const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
 
-  const onSubmit = async (data: ContactFormValues) => {
-    setSubmitStatus("idle");
-    console.log("Form submitted:", data);
-    try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSubmitStatus("success");
-      form.reset();
-    } catch (error) {
-      setSubmitStatus("error");
-      console.error("Error submitting form:", error);
-    } finally {
-      setTimeout(() => setSubmitStatus("idle"), 5000);
-    }
-  };
+  // Memoize static data to prevent unnecessary re-renders
+  const contactInfo = useMemo(
+    () =>
+      Object.freeze([
+        {
+          icon: MailIcon,
+          title: "Email Us",
+          content: "mditxdd2025@gmail.com",
+          description: "Send us an email and we will respond within 24 hours",
+          link: "mailto:mditxdd2025@gmail.com",
+        },
+        {
+          icon: PhoneIcon,
+          title: "For any Inquiry",
+          content: "+60 3-5521 1234",
+          description: "Available during office hours",
+          link: "tel:+60355211234",
+        },
+      ] as const),
+    []
+  );
 
-  const contactInfo = [
-    {
-      icon: MailIcon,
-      title: "Email Us",
-      content: "mditxdd2025@gmail.com",
-      description: "Send us an email and we will respond within 24 hours",
-      link: "mailto:mditxdd2025@gmail.com",
+  const socialPlatforms = useMemo(
+    () =>
+      Object.freeze([
+        {
+          name: "Instagram",
+          handle: "@mdit2025",
+          link: "https://instagram.com/mdit2025",
+          description: "Photos, stories, and highlights from the competition",
+          icon: Instagram,
+          cardClass:
+            "bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 border-pink-200 dark:border-pink-800",
+          iconBg: "bg-gradient-to-r from-pink-500 to-purple-600",
+          titleClass: "text-pink-700 dark:text-pink-300",
+          linkClass: "text-pink-600 dark:text-pink-400",
+        },
+        {
+          name: "TikTok",
+          handle: "@mdit2025",
+          link: "https://tiktok.com/@mdit2025",
+          description: "Quick tips, announcements, and fun competition moments",
+          icon: MessageSquare,
+          cardClass:
+            "bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-800",
+          iconBg: "bg-gradient-to-r from-gray-800 to-black",
+          titleClass: "text-gray-700 dark:text-gray-300",
+          linkClass: "text-gray-600 dark:text-gray-400",
+        },
+      ] as const),
+    []
+  );
+
+  const frequentlyAskedTopics = useMemo(
+    () =>
+      Object.freeze([
+        {
+          title: "Registration Issues",
+          description:
+            "Having trouble with team registration, payment, or account setup? We are here to help.",
+        },
+        {
+          title: "Technical Requirements",
+          description:
+            "Questions about software, datasets, submission formats, or technical specifications.",
+        },
+        {
+          title: "Competition Rules",
+          description:
+            "Need clarification on eligibility, team composition, or competition guidelines.",
+        },
+        {
+          title: "Event Logistics",
+          description:
+            "Information about venues, schedules, accommodation, or travel arrangements.",
+        },
+      ] as const),
+    []
+  );
+
+  const onSubmit = useCallback(
+    async (data: ContactFormValues) => {
+      setSubmitStatus("idle");
+      console.log("Form submitted:", data);
+      try {
+        // Simulate form submission
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        setSubmitStatus("success");
+        form.reset();
+      } catch (error) {
+        setSubmitStatus("error");
+        console.error("Error submitting form:", error);
+      } finally {
+        setTimeout(() => setSubmitStatus("idle"), 5000);
+      }
     },
-    {
-      icon: PhoneIcon,
-      title: "For any Inquiry",
-      content: "+60 3-5521 1234",
-      description: "Available during office hours",
-      link: "tel:+60355211234",
-    },
-  ];
+    [form]
+  );
 
   return (
     <>
@@ -137,102 +303,20 @@ const ContactPage = () => {
           </Text>
         </BlurFade>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <BlurFade inView delay={0.35}>
-            <Card className="h-full transition-all duration-300  bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 border-pink-200 dark:border-pink-800">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full w-fit">
-                  <Instagram className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle className="text-lg text-pink-700 dark:text-pink-300">
-                  Instagram
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-center space-y-2">
-                <Link
-                  href="https://instagram.com/mdit2025"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <Text
-                    as="p"
-                    className="font-semibold text-pink-600 dark:text-pink-400 hover:underline"
-                  >
-                    @mdit2025
-                  </Text>
-                </Link>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  Photos, stories, and highlights from the competition
-                </Text>
-              </CardContent>
-            </Card>
-          </BlurFade>
-
-          <BlurFade inView delay={0.4}>
-            <Card className="h-full transition-all duration-300  bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-800">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-gray-800 to-black rounded-full w-fit">
-                  <MessageSquare className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle className="text-lg text-gray-700 dark:text-gray-300">
-                  TikTok
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-center space-y-2">
-                <Link
-                  href="https://tiktok.com/@mdit2025"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <Text
-                    as="p"
-                    className="font-semibold text-gray-600 dark:text-gray-400 hover:underline"
-                  >
-                    @mdit2025
-                  </Text>
-                </Link>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  Quick tips, announcements, and fun competition moments
-                </Text>
-              </CardContent>
-            </Card>
-          </BlurFade>
+          {socialPlatforms.map((platform, index) => (
+            <SocialMediaCard
+              key={platform.name}
+              platform={platform}
+              delay={0.35 + index * 0.05}
+            />
+          ))}
         </div>
       </div>
 
       {/* Contact Information Cards */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-20 mb-6">
         {contactInfo.map((info, index) => (
-          <BlurFade key={index} inView delay={0.1 + index * 0.05}>
-            <Card className="h-full transition-all duration-300">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-fit">
-                  <info.icon className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle className="text-lg">{info.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center space-y-2">
-                {info.link ? (
-                  <Link href={info.link} className="block">
-                    <Text
-                      as="p"
-                      className="font-semibold text-primary hover:underline"
-                    >
-                      {info.content}
-                    </Text>
-                  </Link>
-                ) : (
-                  <Text as="p" className="font-semibold">
-                    {info.content}
-                  </Text>
-                )}
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  {info.description}
-                </Text>
-              </CardContent>
-            </Card>
-          </BlurFade>
+          <ContactInfoCard key={index} info={info} index={index} />
         ))}
       </div>
 
@@ -399,42 +483,16 @@ const ContactPage = () => {
                 <CardTitle>Frequently Asked Topics</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Registration Issues
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    Having trouble with team registration, payment, or account
-                    setup? We are here to help.
-                  </Text>
-                </div>
-                <div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Technical Requirements
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    Questions about software, datasets, submission formats, or
-                    technical specifications.
-                  </Text>
-                </div>
-                <div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Competition Rules
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    Need clarification on eligibility, team composition, or
-                    competition guidelines.
-                  </Text>
-                </div>
-                <div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Event Logistics
-                  </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
-                    Information about venues, schedules, accommodation, or
-                    travel arrangements.
-                  </Text>
-                </div>
+                {frequentlyAskedTopics.map((topic, index) => (
+                  <div key={index}>
+                    <Text as="h4" className="font-semibold mb-2">
+                      {topic.title}
+                    </Text>
+                    <Text as="p" styleVariant="muted" className="text-sm">
+                      {topic.description}
+                    </Text>
+                  </div>
+                ))}
               </CardContent>
             </Card>
           </BlurFade>

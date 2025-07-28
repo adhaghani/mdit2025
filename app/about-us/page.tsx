@@ -8,58 +8,164 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  MapPin,
-  Calendar,
   Users,
   Award,
   Target,
   Lightbulb,
   Globe,
   Star,
-  ExternalLink,
   Quote,
 } from "lucide-react";
 
 const AboutUsPage = () => {
-  // Team members data
-  const teamMembers = [
-    {
-      name: "Dr. Sarah Ahmad",
-      role: "Chairman, Majlis Tertinggi",
-      designation:
-        "Senior Lecturer, Faculty of Computer & Mathematical Sciences",
-      image: "/team/placeholder-team-1.jpg", // You'll need to add actual images
-      bio: "Leading digital transformation initiatives in higher education with focus on data science excellence.",
-    },
-    {
-      name: "Ahmad Firdaus",
-      role: "Head of Program Bureau",
-      designation: "Final Year Statistics Student",
-      image: "/team/placeholder-team-2.jpg",
-      bio: "Passionate about creating meaningful learning experiences through data competition programs.",
-    },
-    {
-      name: "Nurul Aina",
-      role: "Head of Technical Bureau",
-      designation: "Computer Science Graduate Student",
-      image: "/team/placeholder-team-3.jpg",
-      bio: "Ensuring technical excellence and innovation in all competition aspects.",
-    },
-    {
-      name: "Muhammad Haziq",
-      role: "Head of Corporate Network Bureau",
-      designation: "Statistics Undergraduate",
-      image: "/team/placeholder-team-4.jpg",
-      bio: "Building strategic partnerships to enhance industry collaboration and opportunities.",
-    },
-    {
-      name: "Siti Aminah",
-      role: "Head of Judging Bureau",
-      designation: "Data Science Postgraduate",
-      image: "/team/placeholder-team-5.jpg",
-      bio: "Coordinating expert evaluation processes to ensure fair and comprehensive assessment.",
-    },
-  ];
+  // Team members data organized by bureau
+  const teamByBureau = {
+    "High Committee": [
+      {
+        name: "Dr. Sarah Ahmad",
+        role: "Chairman, Majlis Tertinggi",
+        designation:
+          "Senior Lecturer, Faculty of Computer & Mathematical Sciences",
+        image: "/team/placeholder-team-1.jpg",
+        bio: "Leading digital transformation initiatives in higher education with focus on data science excellence.",
+      },
+      {
+        name: "Prof. Ahmad Hassan",
+        role: "Vice Chairman",
+        designation: "Dean, Faculty of Computer & Mathematical Sciences",
+        image: "/team/placeholder-team-2.jpg",
+        bio: "Providing strategic oversight and academic guidance for competition excellence.",
+      },
+      {
+        name: "Dr. Nurul Huda",
+        role: "Secretary General",
+        designation: "Associate Professor, Statistics Department",
+        image: "/team/placeholder-team-3.jpg",
+        bio: "Coordinating high-level committee decisions and strategic planning initiatives.",
+      },
+    ],
+    "Program Bureau": [
+      {
+        name: "Ahmad Firdaus",
+        role: "Head of Program Bureau",
+        designation: "Final Year Statistics Student",
+        image: "/team/placeholder-team-4.jpg",
+        bio: "Passionate about creating meaningful learning experiences through data competition programs.",
+      },
+      {
+        name: "Siti Fatimah",
+        role: "Deputy Head of Program",
+        designation: "Computer Science Undergraduate",
+        image: "/team/placeholder-team-5.jpg",
+        bio: "Ensuring seamless execution of competition phases and participant experience.",
+      },
+      {
+        name: "Muhammad Arif",
+        role: "Workshop Coordinator",
+        designation: "Mathematics Student",
+        image: "/team/placeholder-team-6.jpg",
+        bio: "Organizing educational workshops and skill development sessions for participants.",
+      },
+    ],
+    "Technical Bureau": [
+      {
+        name: "Nurul Aina",
+        role: "Head of Technical Bureau",
+        designation: "Computer Science Graduate Student",
+        image: "/team/placeholder-team-7.jpg",
+        bio: "Ensuring technical excellence and innovation in all competition aspects.",
+      },
+      {
+        name: "Khalid Rahman",
+        role: "Platform Developer",
+        designation: "Software Engineering Student",
+        image: "/team/placeholder-team-8.jpg",
+        bio: "Developing and maintaining competition platforms and technical infrastructure.",
+      },
+      {
+        name: "Aisyah Zain",
+        role: "Data Systems Manager",
+        designation: "Data Science Postgraduate",
+        image: "/team/placeholder-team-9.jpg",
+        bio: "Managing dataset preparation and technical evaluation systems.",
+      },
+    ],
+    "Corporate Network Bureau": [
+      {
+        name: "Muhammad Haziq",
+        role: "Head of Corporate Network Bureau",
+        designation: "Statistics Undergraduate",
+        image: "/team/placeholder-team-10.jpg",
+        bio: "Building strategic partnerships to enhance industry collaboration and opportunities.",
+      },
+      {
+        name: "Diana Syafiqah",
+        role: "Partnership Manager",
+        designation: "Business Analytics Student",
+        image: "/team/placeholder-team-11.jpg",
+        bio: "Developing relationships with industry partners and sponsors for mutual benefit.",
+      },
+      {
+        name: "Ravi Kumar",
+        role: "Industry Liaison",
+        designation: "Economics & Statistics Student",
+        image: "/team/placeholder-team-12.jpg",
+        bio: "Facilitating connections between participants and industry professionals.",
+      },
+    ],
+    "Judging Bureau": [
+      {
+        name: "Siti Aminah",
+        role: "Head of Judging Bureau",
+        designation: "Data Science Postgraduate",
+        image: "/team/placeholder-team-13.jpg",
+        bio: "Coordinating expert evaluation processes to ensure fair and comprehensive assessment.",
+      },
+      {
+        name: "Ahmad Zikri",
+        role: "Assessment Coordinator",
+        designation: "Applied Statistics Student",
+        image: "/team/placeholder-team-14.jpg",
+        bio: "Developing evaluation criteria and managing the judging process workflow.",
+      },
+    ],
+    "Multimedia Bureau": [
+      {
+        name: "Puteri Nurain",
+        role: "Head of Multimedia Bureau",
+        designation: "Statistic Students",
+        image: "/team/placeholder-team-15.jpg",
+        bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "Ahmad Adha",
+        role: "Multimedia Bureau",
+        designation: "Computer Science Student",
+        image: "/team/placeholder-team-16.jpg",
+        bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+    ],
+    "Protocol Bureau": [
+      {
+        name: "Noor Azlan",
+        role: "Head of Protocol Bureau",
+        designation: "International Relations Student",
+        image: "/team/placeholder-team-18.jpg",
+        bio: "Ensuring proper protocols and ceremonial aspects of competition events.",
+      },
+      {
+        name: "Sarah Michelle",
+        role: "Event Coordinator",
+        designation: "Hospitality Management Student",
+        image: "/team/placeholder-team-19.jpg",
+        bio: "Coordinating logistics and ensuring smooth execution of all competition events.",
+      },
+    ],
+  };
+
+  // State for active tab
+  const [activeTab, setActiveTab] = React.useState("High Committee");
+  const bureauTabs = Object.keys(teamByBureau);
 
   // Advisors and partners data
   const advisorsPartners = [
@@ -92,45 +198,28 @@ const AboutUsPage = () => {
     },
   ];
 
-  // Milestones data
-  const milestones = [
-    {
-      year: "2023",
-      title: "MDIT Inaugural Edition",
-      description:
-        "First national datathon launched with 50+ teams from 15 universities",
-      achievement: "Foundation laid for annual data innovation competition",
-    },
-    {
-      year: "2024",
-      title: "Expanded Reach",
-      description: "Grew to 80+ teams with international student participation",
-      achievement: "Established partnerships with government agencies",
-    },
-    {
-      year: "2025",
-      title: "National Recognition",
-      description:
-        "Official endorsement from DOSM and alignment with MyDIGITAL initiatives",
-      achievement: "Largest prize pool and industry involvement to date",
-    },
-  ];
-
   // Past winners data (you can expand this)
   const pastWinners = [
     {
       year: "2024",
-      team: "DataMavens",
-      university: "Universiti Malaya",
+      team: "Team 1",
+      university: "Universiti Teknologi MARA",
       project: "Smart City Traffic Optimization",
-      impact: "Adopted by Kuala Lumpur City Hall for traffic management",
+      impact: "-",
     },
     {
       year: "2023",
-      team: "StatVanguard",
-      university: "Universiti Teknologi Malaysia",
+      team: "Team 2",
+      university: "Universiti Teknologi MARA",
       project: "Healthcare Resource Prediction",
-      impact: "Implemented in regional hospitals for capacity planning",
+      impact: "-",
+    },
+    {
+      year: "2021",
+      team: "Team 2",
+      university: "Universiti Teknologi MARA",
+      project: "Healthcare Resource Prediction",
+      impact: "-",
     },
   ];
 
@@ -138,8 +227,8 @@ const AboutUsPage = () => {
   const inStatsAchievements = [
     {
       metric: "500+",
-      label: "Active Members Nationwide",
-      description: "Statistics students across Malaysian universities",
+      label: "Active Members",
+      description: "Statistics students in UiTM",
     },
     {
       metric: "25+",
@@ -169,16 +258,16 @@ const AboutUsPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.15}>
           <Text as="p" className="text-lg">
-            Discover the vision, team, and partnerships behind Malaysia's
+            Discover the vision, team, and partnerships behind Malaysia&apos;s
             premier data innovation competition
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.2}>
           <Text as="p" styleVariant="muted" className="max-w-3xl mx-auto">
             Learn about our mission to nurture the next generation of data
-            scientists and how we're contributing to Malaysia's digital
-            transformation journey through innovative education and competition
-            platforms.
+            scientists and how we&apos;re contributing to Malaysia&apos;s
+            digital transformation journey through innovative education and
+            competition platforms.
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.25}>
@@ -284,8 +373,8 @@ const AboutUsPage = () => {
                     MyDIGITAL Initiative
                   </Text>
                   <Text as="p" styleVariant="muted" className="text-sm">
-                    Supporting Malaysia's digital economy transformation through
-                    data literacy and innovation
+                    Supporting Malaysia&apos;s digital economy transformation
+                    through data literacy and innovation
                   </Text>
                 </div>
                 <div className="text-center">
@@ -316,49 +405,6 @@ const AboutUsPage = () => {
             </CardContent>
           </Card>
         </BlurFade>
-
-        {/* Milestones */}
-        <BlurFade inView delay={0.3}>
-          <div className="mb-12">
-            <Text as="h3" className="text-center text-2xl font-semibold mb-8">
-              Our Journey & Milestones
-            </Text>
-            <div className="space-y-6">
-              {milestones.map((milestone, index) => (
-                <BlurFade key={index} inView delay={0.35 + index * 0.05}>
-                  <Card className="border-l-4 border-l-primary">
-                    <CardContent className="pt-6">
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <div className="text-center md:text-left">
-                          <span className="text-3xl font-bold text-primary">
-                            {milestone.year}
-                          </span>
-                        </div>
-                        <div className="md:col-span-3 space-y-2">
-                          <Text as="h4" className="font-semibold text-lg">
-                            {milestone.title}
-                          </Text>
-                          <Text as="p" styleVariant="muted">
-                            {milestone.description}
-                          </Text>
-                          <div className="flex items-center gap-2">
-                            <Award className="h-4 w-4 text-primary" />
-                            <Text
-                              as="p"
-                              className="text-sm font-medium text-primary"
-                            >
-                              {milestone.achievement}
-                            </Text>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </BlurFade>
-              ))}
-            </div>
-          </div>
-        </BlurFade>
       </div>
 
       {/* Meet the Team Section */}
@@ -380,32 +426,70 @@ const AboutUsPage = () => {
           </Text>
         </BlurFade>
 
+        {/* Bureau Tabs */}
+        <BlurFade inView delay={0.2}>
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {bureauTabs.map((bureau) => (
+              <Button
+                key={bureau}
+                variant={activeTab === bureau ? "default" : "outline"}
+                onClick={() => setActiveTab(bureau)}
+                className="text-sm px-4 py-2"
+              >
+                {bureau}
+              </Button>
+            ))}
+          </div>
+        </BlurFade>
+
+        {/* Team Members Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <BlurFade key={index} inView delay={0.2 + index * 0.1}>
-              <Card className="h-full hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <div className="relative w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-primary/40 rounded-full flex items-center justify-center">
-                    {/* Placeholder for team member image */}
-                    <Users className="h-12 w-12 text-primary" />
-                  </div>
-                  <Text as="h4" className="font-semibold text-lg mb-1">
-                    {member.name}
-                  </Text>
-                  <Text as="p" className="text-primary font-medium mb-2">
-                    {member.role}
-                  </Text>
-                  <Text as="p" className="text-sm text-muted-foreground mb-3">
-                    {member.designation}
-                  </Text>
-                  <Text as="p" className="text-sm leading-relaxed">
-                    {member.bio}
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
-          ))}
+          {teamByBureau[activeTab as keyof typeof teamByBureau].map(
+            (member, index) => (
+              <BlurFade
+                key={`${activeTab}-${index}`}
+                inView
+                delay={0.2 + index * 0.1}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <div className="relative w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-primary/40 rounded-full flex items-center justify-center">
+                      {/* Placeholder for team member image */}
+                      <Users className="h-12 w-12 text-primary" />
+                    </div>
+                    <Text as="h4" className="font-semibold text-lg mb-1">
+                      {member.name}
+                    </Text>
+                    <Text as="p" className="text-primary font-medium mb-2">
+                      {member.role}
+                    </Text>
+                    <Text as="p" className="text-sm text-muted-foreground mb-3">
+                      {member.designation}
+                    </Text>
+                    <Text as="p" className="text-sm leading-relaxed">
+                      {member.bio}
+                    </Text>
+                  </CardContent>
+                </Card>
+              </BlurFade>
+            )
+          )}
         </div>
+
+        {/* Bureau Info */}
+        <BlurFade inView delay={0.3}>
+          <div className="mt-8 text-center">
+            <Card className="bg-muted/80 backdrop-blur-xs border-muted/40 shadow-none">
+              <CardContent className="p-6">
+                <Text as="p" className="text-sm text-muted-foreground">
+                  Showing{" "}
+                  {teamByBureau[activeTab as keyof typeof teamByBureau].length}{" "}
+                  team members from {activeTab}
+                </Text>
+              </CardContent>
+            </Card>
+          </div>
+        </BlurFade>
       </div>
 
       {/* About inStats Association Section */}
@@ -590,7 +674,7 @@ const AboutUsPage = () => {
                       <div className="flex items-start gap-3 bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
                         <Quote className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                         <Text as="p" className="italic text-sm">
-                          "{partner.quote}"
+                          {partner.quote}
                         </Text>
                       </div>
                     </div>
@@ -667,7 +751,7 @@ const AboutUsPage = () => {
           <div className="text-center mt-12">
             <Text as="p" styleVariant="muted" className="mb-6">
               Join the ranks of innovative data scientists who are shaping
-              Malaysia's future through data-driven solutions.
+              Malaysia&apos;s future through data-driven solutions.
             </Text>
             <Button size="lg" asChild>
               <Link href="/event-details">
@@ -679,78 +763,6 @@ const AboutUsPage = () => {
         </BlurFade>
       </div>
 
-      {/* Media & Recognition Section */}
-      <div className="my-20 max-w-7xl mx-auto">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-12">
-            Media & Recognition
-          </Text>
-        </BlurFade>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <BlurFade inView delay={0.15}>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <ExternalLink className="h-5 w-5" />
-                  Press Coverage
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Text as="p" styleVariant="muted" className="mb-4">
-                  Featured in leading Malaysian tech publications and university
-                  newsletters for promoting data science education.
-                </Text>
-                <Button variant="outline" size="sm">
-                  View Articles
-                </Button>
-              </CardContent>
-            </Card>
-          </BlurFade>
-
-          <BlurFade inView delay={0.2}>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <Star className="h-5 w-5" />
-                  Awards & Recognition
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Text as="p" styleVariant="muted" className="mb-4">
-                  Recognized by Malaysian universities and government agencies
-                  for excellence in educational innovation and student
-                  development.
-                </Text>
-                <Button variant="outline" size="sm">
-                  View Awards
-                </Button>
-              </CardContent>
-            </Card>
-          </BlurFade>
-
-          <BlurFade inView delay={0.25}>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <Users className="h-5 w-5" />
-                  Testimonials
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Text as="p" styleVariant="muted" className="mb-4">
-                  Hear from past participants, judges, and industry partners
-                  about their transformative MDIT experience.
-                </Text>
-                <Button variant="outline" size="sm">
-                  Read Stories
-                </Button>
-              </CardContent>
-            </Card>
-          </BlurFade>
-        </div>
-      </div>
-
       {/* Call to Action */}
       <div className="text-center max-w-7xl mx-auto py-20 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg">
         <BlurFade inView delay={0.1}>
@@ -760,9 +772,9 @@ const AboutUsPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.15}>
           <Text as="p" styleVariant="muted" className="mb-6 max-w-2xl mx-auto">
-            Join MDIT 2025 and contribute to Malaysia's data innovation journey.
-            Together, we can build a data-driven future that benefits all
-            Malaysians.
+            Join MDIT 2025 and contribute to Malaysia&apos;s data innovation
+            journey. Together, we can build a data-driven future that benefits
+            all Malaysians.
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.2}>

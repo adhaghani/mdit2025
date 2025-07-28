@@ -329,7 +329,8 @@ export const FOOTER_QUICK_LINK = [
   },
 ];
 
-export const MDIT2024_IMAGE = [
+// Freeze arrays for better performance and prevent mutations
+export const MDIT2024_IMAGE = Object.freeze([
   {
     src: "/assets/mdit2024/DSC_0088.jpg",
     alt: "MDIT 2024 Image 1",
@@ -358,9 +359,9 @@ export const MDIT2024_IMAGE = [
     src: "/assets/mdit2024/DSC_0290.jpg",
     alt: "MDIT 2024 Image 7",
   },
-];
+] as const);
 
-export const MDIT2023_IMAGE = [
+export const MDIT2023_IMAGE = Object.freeze([
   {
     src: "/assets/mdit2023/DSC_0127.jpg",
     alt: "MDIT 2023 Image 1",
@@ -397,7 +398,7 @@ export const MDIT2023_IMAGE = [
     src: "/assets/mdit2023/DSC_0256.jpg",
     alt: "MDIT 2023 Image 9",
   },
-];
+] as const);
 
 export const KEY_STATISTICS = [
   { label: "Total Prize Pool", value: "RM 11,000", icon: TrophyIcon },
@@ -454,6 +455,36 @@ interface Judge {
   bio: string;
 }
 
+// Partner interfaces for type safety
+interface Organizer {
+  name: string;
+  logo: string;
+  logoLight?: string;
+  logoAlt: string;
+  width: number;
+  height: number;
+  className: string;
+}
+
+interface Sponsor {
+  name: string;
+  logo: string;
+  logoAlt: string;
+  width: number;
+  height: number;
+  className: string;
+  tier: string;
+}
+
+interface MediaPartner {
+  name: string;
+  logo: string;
+  logoAlt: string;
+  width: number;
+  height: number;
+  className: string;
+}
+
 export const EVENT_JUDGES: Judge[] = [
   // {
   //   name: "AHMAD ADHA BIN MOHD GHANI",
@@ -474,5 +505,135 @@ export const EVENT_JUDGES: Judge[] = [
   //   name: "MS. NURUL AISYAH",
   //   title: "Head of Analytics, Grab Malaysia",
   //   bio: "Nurul leads data science teams at Grab Malaysia, focusing on predictive analytics and machine learning solutions for Southeast Asia super app ecosystem.",
+  // },
+];
+
+// Organizers data
+export const ORGANIZERS: Organizer[] = [
+  {
+    name: "Universiti Teknologi MARA (UiTM)",
+    logo: "/uitm.svg",
+    logoAlt: "UiTM Logo",
+    width: 140,
+    height: 120,
+    className: "w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24",
+  },
+  {
+    name: "Jabatan Perangkaan Malaysia",
+    logo: "/ekonomi.png",
+    logoAlt: "Logo Jabatan Perangkaan Malaysia",
+    width: 140,
+    height: 120,
+    className: "w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 object-cover",
+  },
+  {
+    name: "Department of Statistics Malaysia (DOSM)",
+    logo: "/dosm.svg",
+    logoLight: "/DOSM_Light.svg", // For dark mode
+    logoAlt: "Department of Statistics Malaysia",
+    width: 120,
+    height: 120,
+    className: "w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24",
+  },
+  {
+    name: "InStats UiTM Shah Alam",
+    logo: "/instats.svg",
+    logoAlt: "InStats UiTM",
+    width: 120,
+    height: 120,
+    className: "w-24 h-24 sm:w-24 sm:h-24",
+  },
+  {
+    name: "nama_institusi",
+    logo: "/md.svg",
+    logoAlt: "logo nama_institusi",
+    width: 120,
+    height: 120,
+    className: "w-24 h-24 sm:w-24 sm:h-24",
+  },
+];
+
+// Official Sponsors data
+export const OFFICIAL_SPONSORS: Sponsor[] = [
+  // {
+  //   name: "Platinum Sponsor",
+  //   logo: "/instats.svg",
+  //   logoAlt: "Platinum Sponsor",
+  //   width: 120,
+  //   height: 120,
+  //   className: "w-28 h-28 sm:w-32 sm:h-32",
+  //   tier: "platinum",
+  // },
+  // {
+  //   name: "Gold Sponsor",
+  //   logo: "/instats.svg",
+  //   logoAlt: "Gold Sponsor",
+  //   width: 120,
+  //   height: 120,
+  //   className: "w-24 h-24 sm:w-28 sm:h-28",
+  //   tier: "gold",
+  // },
+  // {
+  //   name: "Silver Sponsor",
+  //   logo: "/instats.svg",
+  //   logoAlt: "Silver Sponsor",
+  //   width: 120,
+  //   height: 120,
+  //   className: "w-24 h-24 sm:w-28 sm:h-28",
+  //   tier: "silver",
+  // },
+  // {
+  //   name: "Bronze Sponsor",
+  //   logo: "/instats.svg",
+  //   logoAlt: "Bronze Sponsor",
+  //   width: 120,
+  //   height: 120,
+  //   className: "w-20 h-20 sm:w-24 sm:h-24",
+  //   tier: "bronze",
+  // },
+  // {
+  //   name: "Technology Partner",
+  //   logo: "/instats.svg",
+  //   logoAlt: "Technology Partner",
+  //   width: 120,
+  //   height: 120,
+  //   className: "w-20 h-20 sm:w-24 sm:h-24",
+  //   tier: "technology",
+  // },
+];
+
+// Media Partners data
+export const MEDIA_PARTNERS: MediaPartner[] = [
+  // {
+  //   name: "Media Partner 1",
+  //   logo: "/instats.svg",
+  //   logoAlt: "Media Partner 1",
+  //   width: 120,
+  //   height: 120,
+  //   className: "w-24 h-24 sm:w-28 sm:h-28",
+  // },
+  // {
+  //   name: "Media Partner 2",
+  //   logo: "/instats.svg",
+  //   logoAlt: "Media Partner 2",
+  //   width: 120,
+  //   height: 120,
+  //   className: "w-24 h-24 sm:w-28 sm:h-28",
+  // },
+  // {
+  //   name: "Media Partner 3",
+  //   logo: "/instats.svg",
+  //   logoAlt: "Media Partner 3",
+  //   width: 120,
+  //   height: 120,
+  //   className: "w-24 h-24 sm:w-28 sm:h-28",
+  // },
+  // {
+  //   name: "Media Partner 4",
+  //   logo: "/instats.svg",
+  //   logoAlt: "Media Partner 4",
+  //   width: 120,
+  //   height: 120,
+  //   className: "w-24 h-24 sm:w-28 sm:h-28",
   // },
 ];

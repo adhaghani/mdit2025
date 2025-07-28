@@ -1,13 +1,11 @@
 "use client";
+import React, { memo, useMemo, lazy, Suspense } from "react";
 import { Text } from "@/components/ui/text";
 import NumberFlow from "@number-flow/react";
 import {
-  CalendarIcon,
-  MapPinIcon,
   UsersIcon,
   TrophyIcon,
   ArrowRightIcon,
-  DollarSignIcon,
   BookOpenIcon,
   TargetIcon,
   LightbulbIcon,
@@ -18,14 +16,12 @@ import { useStartCountdown } from "@/hooks/useStartCountdown";
 import { Button } from "@/components/ui/button";
 import { ChevronRightIcon } from "lucide-react";
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { Marquee } from "@/components/magicui/marquee";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
   TooltipProvider,
 } from "@/components/animate-ui/radix/tooltip";
-import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -33,9 +29,391 @@ import {
   MDIT2024_IMAGE,
   KEY_STATISTICS,
   COMPETITION_HIGHLIGHTS,
+  ORGANIZERS,
+  OFFICIAL_SPONSORS,
+  MEDIA_PARTNERS,
 } from "@/components/constant";
 
-const Page = () => {
+// Type definitions
+interface CompetitionPhase {
+  phase: string;
+  date: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  status: string;
+}
+
+interface CountdownItem {
+  label: string;
+  value: number;
+}
+
+interface CompetitionHighlight {
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  bgColor: string;
+  gradient: string;
+}
+
+interface Statistic {
+  label: string;
+  value: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+interface Organizer {
+  name: string;
+  logo: string;
+  logoLight?: string;
+  logoAlt: string;
+  width: number;
+  height: number;
+  className: string;
+}
+
+interface Sponsor {
+  logo: string;
+  logoAlt: string;
+  name: string;
+  width: number;
+  height: number;
+  className: string;
+}
+
+interface MediaPartner {
+  logo: string;
+  logoAlt: string;
+  name: string;
+  width: number;
+  height: number;
+  className: string;
+}
+
+interface MarqueeImageData {
+  src: string;
+  alt: string;
+}
+
+// Lazy load heavy components
+const Marquee = lazy(() =>
+  import("@/components/magicui/marquee").then((m) => ({ default: m.Marquee }))
+);
+
+// Memoized components for better performance
+const CountdownCard = memo(
+  ({ value, label }: { value: number; label: string }) => (
+    <div className="text-center space-y-2">
+      <Card className="text-center">
+        <CardContent>
+          <NumberFlow
+            value={value}
+            format={{ minimumIntegerDigits: 2 }}
+            className="lg:text-5xl md:text-3xl text-xl font-bold w-[21px] md:w-[40px] lg:w-[55px] text-primary"
+          />
+        </CardContent>
+      </Card>
+      <Text as="p" className="text-sm text-muted-foreground">
+        {label}
+      </Text>
+    </div>
+  )
+);
+
+CountdownCard.displayName = "CountdownCard";
+
+const PhaseCard = memo(
+  ({ phase, index }: { phase: CompetitionPhase; index: number }) => {
+    const colors = useMemo(
+      () => [
+        {
+          bg: "bg-emerald-100 dark:bg-emerald-900/30",
+          icon: "text-emerald-600",
+        },
+        {
+          bg: "bg-indigo-100 dark:bg-indigo-900/30",
+          icon: "text-indigo-600",
+        },
+        {
+          bg: "bg-rose-100 dark:bg-rose-900/30",
+          icon: "text-rose-600",
+        },
+        {
+          bg: "bg-amber-100 dark:bg-amber-900/30",
+          icon: "text-amber-600",
+        },
+      ],
+      []
+    );
+
+    const colorScheme = useMemo(
+      () => colors[index % colors.length],
+      [colors, index]
+    );
+
+    return (
+      <BlurFade key={index} inView delay={0.2 + index * 0.05}>
+        <Card className="relative h-full hover:shadow-lg transition-shadow">
+          <CardHeader className="text-center">
+            <div
+              className={`mx-auto mb-4 p-3 ${colorScheme.bg} rounded-full w-fit`}
+            >
+              <phase.icon className={`h-6 w-6 ${colorScheme.icon}`} />
+            </div>
+            <CardTitle className="text-lg">{phase.phase}</CardTitle>
+            <Text
+              as="p"
+              className={`text-sm font-semibold ${colorScheme.icon}`}
+            >
+              {phase.date}
+            </Text>
+          </CardHeader>
+          <CardContent className="text-center">
+            <Text as="p" styleVariant="muted" className="text-sm">
+              {phase.description}
+            </Text>
+          </CardContent>
+          {index < 3 && (
+            <div className="hidden lg:block absolute top-1/2 -right-7 transform -translate-y-1/2">
+              <ArrowRightIcon className={`size-8 ${colorScheme.icon}/50`} />
+            </div>
+          )}
+        </Card>
+      </BlurFade>
+    );
+  }
+);
+
+PhaseCard.displayName = "PhaseCard";
+
+// Memoized Statistic Card component
+const StatisticCard = memo(
+  ({ stat, index }: { stat: Statistic; index: number }) => {
+    const colors = useMemo(
+      () => [
+        { bg: "bg-blue-100 dark:bg-blue-900/30", text: "text-blue-600" },
+        { bg: "bg-purple-100 dark:bg-purple-900/30", text: "text-purple-600" },
+        { bg: "bg-teal-100 dark:bg-teal-900/30", text: "text-teal-600" },
+        { bg: "bg-red-100 dark:bg-red-900/30", text: "text-red-600" },
+      ],
+      []
+    );
+
+    const colorScheme = useMemo(
+      () => colors[index % colors.length],
+      [colors, index]
+    );
+
+    return (
+      <BlurFade key={index} inView delay={0.15 + index * 0.05}>
+        <Card className="text-center hover:shadow-lg transition-shadow bg-background border-2">
+          <CardContent className="p-6">
+            <div
+              className={`mx-auto mb-4 p-3 ${colorScheme.bg} rounded-full w-fit`}
+            >
+              <stat.icon className={`h-6 w-6 ${colorScheme.text}`} />
+            </div>
+            <Text
+              as="h3"
+              className={`text-2xl font-bold ${colorScheme.text} mb-2`}
+            >
+              {stat.value}
+            </Text>
+            <Text as="p" styleVariant="muted" className="text-sm">
+              {stat.label}
+            </Text>
+          </CardContent>
+        </Card>
+      </BlurFade>
+    );
+  }
+);
+
+StatisticCard.displayName = "StatisticCard";
+
+// Memoized Competition Highlight Card
+const CompetitionHighlightCard = memo(
+  ({
+    highlight,
+    index,
+  }: {
+    highlight: CompetitionHighlight;
+    index: number;
+  }) => (
+    <BlurFade key={index} inView delay={0.2 + index * 0.1}>
+      <Card
+        className={`group relative h-full overflow-hidden border-0 hover:shadow-2xl transition-all duration-500 hover:scale-105 ${highlight.bgColor} backdrop-blur-sm`}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+
+        <CardHeader className="relative text-center pt-8 pb-4 z-10">
+          <div
+            className={`mx-auto mb-6 p-5 rounded-2xl w-fit relative overflow-hidden transition-all duration-500 group-hover:scale-110 ${highlight.bgColor
+              .replace("50", "100")
+              .replace("900/30", "800/50")}`}
+          >
+            <div
+              className={`absolute inset-0 rounded-2xl bg-gradient-to-br opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${
+                highlight.color.includes("yellow")
+                  ? "from-yellow-400 to-yellow-600"
+                  : highlight.color.includes("blue")
+                  ? "from-blue-400 to-blue-600"
+                  : highlight.color.includes("green")
+                  ? "from-green-400 to-green-600"
+                  : "from-purple-400 to-purple-600"
+              }`}
+            ></div>
+            <highlight.icon
+              className={`h-10 w-10 relative z-10 transition-all duration-500 group-hover:rotate-12 ${highlight.color}`}
+            />
+          </div>
+          <CardTitle
+            className={`text-xl font-bold transition-all duration-300 group-hover:scale-105 ${highlight.color}`}
+          >
+            {highlight.title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="relative text-center pb-8 px-6 z-10">
+          <Text
+            as="p"
+            styleVariant="muted"
+            className="text-sm leading-relaxed transition-all duration-300 group-hover:text-foreground/80"
+          >
+            {highlight.description}
+          </Text>
+          <div className="mt-6 w-16 h-0.5 bg-gradient-to-r from-transparent via-current to-transparent opacity-30 mx-auto"></div>
+        </CardContent>
+
+        <div className="absolute top-4 right-4 w-2 h-2 bg-current opacity-20 rounded-full animate-pulse"></div>
+        <div
+          className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-current opacity-20 rounded-full animate-pulse"
+          style={{ animationDelay: "1s" }}
+        ></div>
+      </Card>
+    </BlurFade>
+  )
+);
+
+CompetitionHighlightCard.displayName = "CompetitionHighlightCard";
+
+// Memoized Organizer Card
+const OrganizerCard = memo(
+  ({ organizer, index }: { organizer: Organizer; index: number }) => (
+    <div key={index} className="text-center">
+      <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        {organizer.logoLight ? (
+          <>
+            <Image
+              src={organizer.logo}
+              alt={organizer.logoAlt}
+              width={organizer.width}
+              height={organizer.height}
+              className={`${organizer.className} relative z-10 mx-auto transition-transform duration-300 dark:hidden`}
+              loading="lazy"
+            />
+            <Image
+              src={organizer.logoLight}
+              alt={organizer.logoAlt}
+              width={organizer.width}
+              height={organizer.height}
+              className={`${organizer.className} relative z-10 mx-auto transition-transform duration-300 hidden dark:block`}
+              loading="lazy"
+            />
+          </>
+        ) : (
+          <Image
+            src={organizer.logo}
+            alt={organizer.logoAlt}
+            width={organizer.width}
+            height={organizer.height}
+            className={`${organizer.className} relative z-10 transition-transform duration-300`}
+            loading="lazy"
+          />
+        )}
+      </div>
+      <Text as="p" className="mt-4 text-sm font-medium text-center">
+        {organizer.name}
+      </Text>
+    </div>
+  )
+);
+
+OrganizerCard.displayName = "OrganizerCard";
+
+// Memoized Sponsor Card
+const SponsorCard = memo(
+  ({ sponsor, index }: { sponsor: Sponsor; index: number }) => (
+    <Tooltip key={index}>
+      <TooltipTrigger>
+        <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <Image
+            src={sponsor.logo}
+            alt={sponsor.logoAlt}
+            width={sponsor.width}
+            height={sponsor.height}
+            className={`${sponsor.className} relative z-10 transition-transform duration-300`}
+            loading="lazy"
+          />
+        </div>
+      </TooltipTrigger>
+      <TooltipContent side="bottom" arrow>
+        <p>{sponsor.name}</p>
+      </TooltipContent>
+    </Tooltip>
+  )
+);
+
+SponsorCard.displayName = "SponsorCard";
+
+// Memoized Media Partner Card
+const MediaPartnerCard = memo(
+  ({ partner, index }: { partner: MediaPartner; index: number }) => (
+    <Tooltip key={index}>
+      <TooltipTrigger>
+        <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
+          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <Image
+            src={partner.logo}
+            alt={partner.logoAlt}
+            width={partner.width}
+            height={partner.height}
+            className={`${partner.className} relative z-10 transition-transform duration-300`}
+            loading="lazy"
+          />
+        </div>
+      </TooltipTrigger>
+      <TooltipContent side="bottom" arrow>
+        <p>{partner.name}</p>
+      </TooltipContent>
+    </Tooltip>
+  )
+);
+
+MediaPartnerCard.displayName = "MediaPartnerCard";
+
+// Memoized Marquee Image component
+const MarqueeImage = memo(
+  ({ image, index }: { image: MarqueeImageData; index: number }) => (
+    <Image
+      key={`${image.src}-${index}`}
+      className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+      src={image.src}
+      alt={image.alt}
+      quality={75}
+      width={500}
+      height={200}
+      loading="lazy"
+    />
+  )
+);
+
+MarqueeImage.displayName = "MarqueeImage";
+
+const Page = memo(() => {
   // Target date: August 30, 2025, GMT+8 (midnight)
   const { hasStarted, timeLeft, isExpired } = useStartCountdown(
     "2025-08-30T00:00:00+08:00", // Count down to August 30
@@ -46,41 +424,64 @@ const Page = () => {
     "2025-08-10T00:00:00+08:00" // Count down to August 10
   );
 
-  // Competition phases
-  const phases = [
-    {
-      phase: "Registration",
-      date: "Aug 15-30, 2025",
-      description:
-        "Complete team registration and confirm participation via payment.",
-      icon: UsersIcon,
-      status: "upcoming",
-    },
-    {
-      phase: "Briefing & Workshops",
-      date: "Sep 6-20, 2025",
-      description:
-        "Overview of competition structure, themes, and deliverables, followed by a workshop to enhance data and presentation skills.",
-      icon: BookOpenIcon,
-      status: "upcoming",
-    },
-    {
-      phase: "Preliminary round",
-      date: "Sep 21 - Oct 15, 2025",
-      description:
-        "Project Development, Report submission, and online video presentation.",
-      icon: LightbulbIcon,
-      status: "upcoming",
-    },
-    {
-      phase: "Final Round ",
-      date: "Oct 17-18, 2025",
-      description:
-        "Shortlisted teams will pitch their projects physically to expert judges, demonstrating analytical clarity and impact",
-      icon: TrophyIcon,
-      status: "upcoming",
-    },
-  ];
+  // Memoize competition phases to prevent recreation on every render
+  const phases = useMemo(
+    () => [
+      {
+        phase: "Registration",
+        date: "Aug 15-30, 2025",
+        description:
+          "Complete team registration and confirm participation via payment.",
+        icon: UsersIcon,
+        status: "upcoming",
+      },
+      {
+        phase: "Briefing & Workshops",
+        date: "Sep 6-20, 2025",
+        description:
+          "Overview of competition structure, themes, and deliverables, followed by a workshop to enhance data and presentation skills.",
+        icon: BookOpenIcon,
+        status: "upcoming",
+      },
+      {
+        phase: "Preliminary round",
+        date: "Sep 21 - Oct 15, 2025",
+        description:
+          "Project Development, Report submission, and online video presentation.",
+        icon: LightbulbIcon,
+        status: "upcoming",
+      },
+      {
+        phase: "Final Round ",
+        date: "Oct 17-18, 2025",
+        description:
+          "Shortlisted teams will pitch their projects physically to expert judges, demonstrating analytical clarity and impact",
+        icon: TrophyIcon,
+        status: "upcoming",
+      },
+    ],
+    []
+  );
+
+  // Memoize countdown values to prevent unnecessary re-renders
+  const countdownValues = useMemo(() => {
+    const values = hasStarted ? timeLeft : timeUntilRegistration;
+    return [
+      { value: values.days, label: "Days" },
+      { value: values.hours, label: "Hours" },
+      { value: values.minutes, label: "Minutes" },
+      { value: values.seconds, label: "Seconds" },
+    ];
+  }, [hasStarted, timeLeft, timeUntilRegistration]);
+
+  // Memoize button state
+  const buttonState = useMemo(() => {
+    if (isExpired)
+      return { text: "Registration has closed", href: "#", disabled: true };
+    if (hasStarted)
+      return { text: "Register Your Team", href: "#register", disabled: false };
+    return { text: "Registration will open soon", href: "#", disabled: true };
+  }, [isExpired, hasStarted]);
 
   return (
     <>
@@ -102,7 +503,10 @@ const Page = () => {
 
           <div className="relative z-10 space-y-6">
             <BlurFade inView delay={0.1}>
-              <Text as="h1" className="text-primary">
+              <Text
+                as="h1"
+                className="text-primary font-mono tracking-wider font-bold uppercase"
+              >
                 Malaysia Data Innovation Talent
                 <br />x <br /> DOSM Datathon 2025
               </Text>
@@ -136,78 +540,13 @@ const Page = () => {
                     : "Registration Opens In:"}
                 </Text>
                 <div className="flex items-center justify-center gap-4 md:gap-6">
-                  <div className="text-center space-y-2">
-                    <Card className="text-center">
-                      <CardContent>
-                        <NumberFlow
-                          value={
-                            hasStarted
-                              ? timeLeft.days
-                              : timeUntilRegistration.days
-                          }
-                          format={{ minimumIntegerDigits: 2 }}
-                          className="lg:text-5xl md:text-3xl text-xl font-bold w-[21px] md:w-[40px] lg:w-[55px] text-primary"
-                        />
-                      </CardContent>
-                    </Card>
-                    <Text as="p" className="text-sm text-muted-foreground">
-                      Days
-                    </Text>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <Card className="text-center">
-                      <CardContent>
-                        <NumberFlow
-                          value={
-                            hasStarted
-                              ? timeLeft.hours
-                              : timeUntilRegistration.hours
-                          }
-                          format={{ minimumIntegerDigits: 2 }}
-                          className="lg:text-5xl md:text-3xl text-xl font-bold w-[21px] md:w-[40px] lg:w-[55px] text-primary"
-                        />
-                      </CardContent>
-                    </Card>
-                    <Text as="p" className="text-sm text-muted-foreground">
-                      Hours
-                    </Text>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <Card className="text-center">
-                      <CardContent>
-                        <NumberFlow
-                          value={
-                            hasStarted
-                              ? timeLeft.minutes
-                              : timeUntilRegistration.minutes
-                          }
-                          format={{ minimumIntegerDigits: 2 }}
-                          className="lg:text-5xl md:text-3xl text-xl w-[21px] md:w-[40px] lg:w-[55px] font-bold text-primary"
-                        />
-                      </CardContent>
-                    </Card>
-                    <Text as="p" className="text-sm text-muted-foreground">
-                      Minutes
-                    </Text>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <Card className="text-center">
-                      <CardContent>
-                        <NumberFlow
-                          value={
-                            hasStarted
-                              ? timeLeft.seconds
-                              : timeUntilRegistration.seconds
-                          }
-                          format={{ minimumIntegerDigits: 2 }}
-                          className="lg:text-5xl md:text-3xl text-xl font-bold w-[21px] lg:w-[55px] md:w-[40px] text-primary"
-                        />
-                      </CardContent>
-                    </Card>
-                    <Text as="p" className="text-sm text-muted-foreground">
-                      Seconds
-                    </Text>
-                  </div>
+                  {countdownValues.map((item, index) => (
+                    <CountdownCard
+                      key={item.label}
+                      value={item.value}
+                      label={item.label}
+                    />
+                  ))}
                 </div>
               </div>
             </BlurFade>
@@ -221,15 +560,13 @@ const Page = () => {
                   className="text-lg px-8 py-6"
                   asChild
                 >
-                  {isExpired ? (
-                    <Link href="#">Registeration has closed</Link>
-                  ) : hasStarted ? (
-                    <Link href="#register">
-                      Register Your Team
+                  {buttonState.disabled ? (
+                    <Link href={buttonState.href}>{buttonState.text}</Link>
+                  ) : (
+                    <Link href={buttonState.href}>
+                      {buttonState.text}
                       <ArrowRightIcon className="ml-2 h-5 w-5" />
                     </Link>
-                  ) : (
-                    <Link href="#">Registeration will open soon</Link>
                   )}
                 </Button>
                 <Button
@@ -489,7 +826,7 @@ const Page = () => {
               styleVariant="muted"
               className="mb-6 max-w-2xl mx-auto"
             >
-              Join Malaysia's most prestigious datathon and be part of a
+              Join Malaysia&apos;s most prestigious datathon and be part of a
               transformative journey that will shape your future in data
               science.
             </Text>
@@ -523,60 +860,9 @@ const Page = () => {
         </BlurFade>
         <div className=" mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {phases.map((phase, index) => {
-              const colors = [
-                {
-                  bg: "bg-emerald-100 dark:bg-emerald-900/30",
-                  icon: "text-emerald-600",
-                },
-                {
-                  bg: "bg-indigo-100 dark:bg-indigo-900/30",
-                  icon: "text-indigo-600",
-                },
-                {
-                  bg: "bg-rose-100 dark:bg-rose-900/30",
-                  icon: "text-rose-600",
-                },
-                {
-                  bg: "bg-amber-100 dark:bg-amber-900/30",
-                  icon: "text-amber-600",
-                },
-              ];
-              const colorScheme = colors[index % colors.length];
-
-              return (
-                <BlurFade key={index} inView delay={0.2 + index * 0.05}>
-                  <Card className="relative h-full hover:shadow-lg transition-shadow">
-                    <CardHeader className="text-center">
-                      <div
-                        className={`mx-auto mb-4 p-3 ${colorScheme.bg} rounded-full w-fit`}
-                      >
-                        <phase.icon className={`h-6 w-6 ${colorScheme.icon}`} />
-                      </div>
-                      <CardTitle className="text-lg">{phase.phase}</CardTitle>
-                      <Text
-                        as="p"
-                        className={`text-sm font-semibold ${colorScheme.icon}`}
-                      >
-                        {phase.date}
-                      </Text>
-                    </CardHeader>
-                    <CardContent className="text-center">
-                      <Text as="p" styleVariant="muted" className="text-sm">
-                        {phase.description}
-                      </Text>
-                    </CardContent>
-                    {index < phases.length - 1 && (
-                      <div className="hidden lg:block absolute top-1/2 -right-7 transform -translate-y-1/2">
-                        <ArrowRightIcon
-                          className={`size-8 ${colorScheme.icon}/50`}
-                        />
-                      </div>
-                    )}
-                  </Card>
-                </BlurFade>
-              );
-            })}
+            {phases.map((phase, index) => (
+              <PhaseCard key={phase.phase} phase={phase} index={index} />
+            ))}
           </div>
         </div>
       </div>
@@ -589,41 +875,9 @@ const Page = () => {
           </Text>
         </BlurFade>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {KEY_STATISTICS.map((stat, index) => {
-            const colors = [
-              { bg: "bg-blue-100 dark:bg-blue-900/30", text: "text-blue-600" },
-              {
-                bg: "bg-purple-100 dark:bg-purple-900/30",
-                text: "text-purple-600",
-              },
-              { bg: "bg-teal-100 dark:bg-teal-900/30", text: "text-teal-600" },
-              { bg: "bg-red-100 dark:bg-red-900/30", text: "text-red-600" },
-            ];
-            const colorScheme = colors[index % colors.length];
-
-            return (
-              <BlurFade key={index} inView delay={0.15 + index * 0.05}>
-                <Card className="text-center hover:shadow-lg transition-shadow bg-background border-2">
-                  <CardContent className="p-6">
-                    <div
-                      className={`mx-auto mb-4 p-3 ${colorScheme.bg} rounded-full w-fit`}
-                    >
-                      <stat.icon className={`h-6 w-6 ${colorScheme.text}`} />
-                    </div>
-                    <Text
-                      as="h3"
-                      className={`text-2xl font-bold ${colorScheme.text} mb-2`}
-                    >
-                      {stat.value}
-                    </Text>
-                    <Text as="p" styleVariant="muted" className="text-sm">
-                      {stat.label}
-                    </Text>
-                  </CardContent>
-                </Card>
-              </BlurFade>
-            );
-          })}
+          {KEY_STATISTICS.map((stat, index) => (
+            <StatisticCard key={`stat-${index}`} stat={stat} index={index} />
+          ))}
         </div>
       </div>
 
@@ -648,62 +902,13 @@ const Page = () => {
         <Card className="p-8">
           <CardContent>
             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-              <div className="text-center">
-                <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Image
-                    src="/uitm.svg"
-                    alt="UiTM Logo"
-                    width={140}
-                    height={120}
-                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 transition-transform duration-300"
-                  />
-                </div>
-                <Text as="p" className="mt-4 text-sm font-medium text-center">
-                  Universiti Teknologi MARA (UiTM)
-                </Text>
-              </div>
-
-              <div className="text-center">
-                <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  {/* Light mode logo */}
-                  <Image
-                    src="/dosm.svg"
-                    alt="Department of Statistics Malaysia"
-                    width={120}
-                    height={120}
-                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 mx-auto transition-transform duration-300 dark:hidden"
-                  />
-                  {/* Dark mode logo */}
-                  <Image
-                    src="/DOSM_Light.svg"
-                    alt="Department of Statistics Malaysia"
-                    width={120}
-                    height={120}
-                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 relative z-10 mx-auto transition-transform duration-300 hidden dark:block"
-                  />
-                </div>
-                <Text as="p" className="mt-4 text-sm font-medium text-center">
-                  Department of Statistics Malaysia (DOSM)
-                </Text>
-              </div>
-
-              <div className="text-center">
-                <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Image
-                    src="/instats.svg"
-                    alt="InStats UiTM"
-                    width={120}
-                    height={120}
-                    className="w-24 h-24 sm:w-24 sm:h-24 hover:scale-105 transition-transform"
-                  />
-                </div>
-                <Text as="p" className="mt-4 text-sm font-medium text-center">
-                  InStats UiTM Shah Alam
-                </Text>
-              </div>
+              {ORGANIZERS.map((organizer, index) => (
+                <OrganizerCard
+                  key={organizer.name}
+                  organizer={organizer}
+                  index={index}
+                />
+              ))}
             </div>
           </CardContent>
         </Card>
@@ -731,95 +936,39 @@ const Page = () => {
           <CardContent>
             <TooltipProvider delayDuration={0}>
               <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="Platinum Sponsor"
-                        width={120}
-                        height={120}
-                        className="w-28 h-28 sm:w-32 sm:h-32 relative z-10 transition-transform duration-300"
-                      />
+                {OFFICIAL_SPONSORS.length > 0 ? (
+                  OFFICIAL_SPONSORS.map((sponsor, index) => (
+                    <SponsorCard key={index} sponsor={sponsor} index={index} />
+                  ))
+                ) : (
+                  <div className="text-center py-12">
+                    <div className="mx-auto mb-4 p-4 bg-muted/20 rounded-full w-fit">
+                      <TrophyIcon className="h-12 w-12 text-muted-foreground/50" />
                     </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Platinum Sponsor
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="Gold Sponsor"
-                        width={120}
-                        height={120}
-                        className="w-24 h-24 sm:w-28 sm:h-28 relative z-10 transition-transform duration-300"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Gold Sponsor
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="Silver Sponsor"
-                        width={120}
-                        height={120}
-                        className="w-24 h-24 sm:w-28 sm:h-28 relative z-10 transition-transform duration-300"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Silver Sponsor
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="Bronze Sponsor"
-                        width={120}
-                        height={120}
-                        className="w-20 h-20 sm:w-24 sm:h-24 relative z-10 transition-transform duration-300"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Bronze Sponsor
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="Technology Partner"
-                        width={120}
-                        height={120}
-                        className="w-20 h-20 sm:w-24 sm:h-24 relative z-10 transition-transform duration-300"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Technology Partner
-                  </TooltipContent>
-                </Tooltip>
+                    <Text
+                      as="h3"
+                      className="text-lg font-semibold mb-2 text-muted-foreground"
+                    >
+                      Sponsor list will be released soon
+                    </Text>
+                    <Text as="p" className="text-sm text-muted-foreground/70">
+                      We are actively seeking partnerships with organizations
+                      that share our vision
+                    </Text>
+                  </div>
+                )}
               </div>
             </TooltipProvider>
           </CardContent>
         </Card>
+        <BlurFade delay={0.2} inView>
+          <div className="mt-5 flex justify-center items-center gap-2 flex-wrap">
+            <Text as="p">Interested in sponsoring our event?</Text>
+            <Button variant={"secondary"} size={"sm"} asChild>
+              <Link href={"/contact"}>Link Reach us out</Link>
+            </Button>
+          </div>
+        </BlurFade>
       </div>
 
       {/* Media Partners Section */}
@@ -844,74 +993,31 @@ const Page = () => {
           <CardContent>
             <TooltipProvider delayDuration={0}>
               <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="Media Partner 1"
-                        width={120}
-                        height={120}
-                        className="w-24 h-24 sm:w-28 sm:h-28 relative z-10 transition-transform duration-300"
-                      />
+                {MEDIA_PARTNERS.length > 0 ? (
+                  MEDIA_PARTNERS.map((partner, index) => (
+                    <MediaPartnerCard
+                      key={index}
+                      partner={partner}
+                      index={index}
+                    />
+                  ))
+                ) : (
+                  <div className="text-center py-12">
+                    <div className="mx-auto mb-4 p-4 bg-muted/20 rounded-full w-fit">
+                      <Users2Icon className="h-12 w-12 text-muted-foreground/50" />
                     </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Media Partner 1
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="Media Partner 2"
-                        width={120}
-                        height={120}
-                        className="w-24 h-24 sm:w-28 sm:h-28 relative z-10 transition-transform duration-300"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Media Partner 2
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="Media Partner 3"
-                        width={120}
-                        height={120}
-                        className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Media Partner 3
-                  </TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <div className="group relative p-6 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 hover:from-primary/10 hover:to-purple-500/10 border border-muted/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 shadow-md hover:shadow-lg">
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Image
-                        src="/instats.svg"
-                        alt="Media Partner 4"
-                        width={120}
-                        height={120}
-                        className="w-24 h-24 sm:w-28 sm:h-28 hover:scale-105 transition-transform"
-                      />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" arrow>
-                    Media Partner 4
-                  </TooltipContent>
-                </Tooltip>
+                    <Text
+                      as="h3"
+                      className="text-lg font-semibold mb-2 text-muted-foreground"
+                    >
+                      Media Partners list will be released soon
+                    </Text>
+                    <Text as="p" className="text-sm text-muted-foreground/70">
+                      We are building partnerships with leading media
+                      organizations
+                    </Text>
+                  </div>
+                )}
               </div>
             </TooltipProvider>
           </CardContent>
@@ -987,19 +1093,21 @@ const Page = () => {
         <BlurFade delay={0.4} className="my-3">
           <Card>
             <CardContent className="relative">
-              <Marquee className="flex gap-4 rounded-lg">
-                {MDIT2024_IMAGE.map((image, index) => (
-                  <Image
-                    key={index}
-                    className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                    src={image.src}
-                    alt={image.alt}
-                    quality={100}
-                    width={500}
-                    height={200}
-                  />
-                ))}
-              </Marquee>
+              <Suspense
+                fallback={
+                  <div className="h-32 bg-muted/50 rounded-lg animate-pulse" />
+                }
+              >
+                <Marquee className="flex gap-4 rounded-lg">
+                  {MDIT2024_IMAGE.map((image, index) => (
+                    <MarqueeImage
+                      key={`mdit2024-1-${index}`}
+                      image={image}
+                      index={index}
+                    />
+                  ))}
+                </Marquee>
+              </Suspense>
               {/* Gradient mask for seamless fade effect */}
               <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
               <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
@@ -1009,19 +1117,21 @@ const Page = () => {
         <BlurFade delay={0.4}>
           <Card>
             <CardContent className="relative">
-              <Marquee reverse className="flex gap-4 rounded-lg">
-                {MDIT2024_IMAGE.map((image, index) => (
-                  <Image
-                    key={index}
-                    className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                    src={image.src}
-                    alt={image.alt}
-                    quality={100}
-                    width={500}
-                    height={200}
-                  />
-                ))}
-              </Marquee>
+              <Suspense
+                fallback={
+                  <div className="h-32 bg-muted/50 rounded-lg animate-pulse" />
+                }
+              >
+                <Marquee reverse className="flex gap-4 rounded-lg">
+                  {MDIT2024_IMAGE.map((image, index) => (
+                    <MarqueeImage
+                      key={`mdit2024-2-${index}`}
+                      image={image}
+                      index={index}
+                    />
+                  ))}
+                </Marquee>
+              </Suspense>
               {/* Gradient mask for seamless fade effect */}
               <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
               <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
@@ -1052,19 +1162,17 @@ const Page = () => {
         <BlurFade delay={0.4} className="my-3">
           <Card>
             <CardContent className="relative">
-              <Marquee className="flex gap-4 rounded-lg [--duration:50s]">
-                {MDIT2023_IMAGE.map((image, index) => (
-                  <Image
-                    key={index}
-                    className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                    src={image.src}
-                    alt={image.alt}
-                    quality={100}
-                    width={500}
-                    height={200}
-                  />
-                ))}
-              </Marquee>
+              <Suspense
+                fallback={
+                  <div className="h-48 animate-pulse bg-muted rounded-lg" />
+                }
+              >
+                <Marquee className="flex gap-4 rounded-lg [--duration:50s]">
+                  {MDIT2023_IMAGE.map((image, index) => (
+                    <MarqueeImage key={index} image={image} index={index} />
+                  ))}
+                </Marquee>
+              </Suspense>
               {/* Gradient mask for seamless fade effect */}
               <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
               <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
@@ -1074,22 +1182,20 @@ const Page = () => {
         <BlurFade delay={0.4}>
           <Card>
             <CardContent className="relative">
-              <Marquee
-                reverse
-                className="flex gap-4 rounded-lg [--duration:50s]"
+              <Suspense
+                fallback={
+                  <div className="h-48 animate-pulse bg-muted rounded-lg" />
+                }
               >
-                {MDIT2023_IMAGE.map((image, index) => (
-                  <Image
-                    key={index}
-                    className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
-                    src={image.src}
-                    alt={image.alt}
-                    quality={100}
-                    width={500}
-                    height={200}
-                  />
-                ))}
-              </Marquee>
+                <Marquee
+                  reverse
+                  className="flex gap-4 rounded-lg [--duration:50s]"
+                >
+                  {MDIT2023_IMAGE.map((image, index) => (
+                    <MarqueeImage key={index} image={image} index={index} />
+                  ))}
+                </Marquee>
+              </Suspense>
               {/* Gradient mask for seamless fade effect */}
               <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
               <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
@@ -1099,6 +1205,8 @@ const Page = () => {
       </div>
     </>
   );
-};
+});
+
+Page.displayName = "Page";
 
 export default Page;

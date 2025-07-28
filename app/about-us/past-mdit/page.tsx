@@ -18,10 +18,9 @@ import {
   ExternalLink,
   ChevronLeft,
   ChevronRight,
-  Eye,
-  Download,
 } from "lucide-react";
 import { Marquee } from "@/components/magicui/marquee";
+import { MDIT2023_IMAGE, MDIT2024_IMAGE } from "@/components/constant";
 
 const PastMDITPage = () => {
   const [selectedYear, setSelectedYear] = useState("2024");
@@ -31,13 +30,13 @@ const PastMDITPage = () => {
     "2024": {
       year: "2024",
       theme: "Data for Sustainable Future",
-      logo: "/mdit/mdit2024-logo.png", // Placeholder
+      logo: "/mdit2024.png", // Placeholder
       dates: "September 15 - October 20, 2024",
       venue: "UiTM Shah Alam, Selangor",
-      totalTeams: 87,
-      totalParticipants: 348,
+      totalTeams: 80,
+      totalParticipants: 320,
       universities: 23,
-      prizePool: "RM8,500",
+      prizePool: "RM9,600",
       winner: {
         team: "DataMavens",
         university: "Universiti Malaya",
@@ -119,13 +118,95 @@ const PastMDITPage = () => {
     "2023": {
       year: "2023",
       theme: "Pioneering Data Innovation",
-      logo: "/mdit/mdit2023-logo.png", // Placeholder
+      logo: "/mdit2023.png", // Placeholder
       dates: "August 20 - September 25, 2023",
       venue: "UiTM Shah Alam, Selangor",
-      totalTeams: 52,
-      totalParticipants: 208,
+      totalTeams: 100,
+      totalParticipants: 400,
       universities: 15,
-      prizePool: "RM5,000",
+      prizePool: "RM9,999",
+      winner: {
+        team: "StatVanguard",
+        university: "Universiti Teknologi Malaysia",
+        members: ["Farah Ibrahim", "Michael Wong", "Aisha Kassim", "Raj Patel"],
+        project: "Healthcare Resource Prediction",
+        impact: "Implemented in regional hospitals for capacity planning",
+      },
+      runnerUp: {
+        team: "DataExplorers",
+        university: "Universiti Putra Malaysia",
+        project: "Agricultural Yield Optimization",
+      },
+      secondRunnerUp: {
+        team: "AnalyticsHub",
+        university: "Universiti Kebangsaan Malaysia",
+        project: "Education Performance Analytics",
+      },
+      highlights: [
+        "Inaugural MDIT competition launch",
+        "Partnership with Department of Statistics Malaysia established",
+        "First national-level university data competition",
+        "Foundation for annual data innovation talent development",
+      ],
+      statistics: [
+        { label: "Teams", value: "52", icon: Users },
+        { label: "Participants", value: "208", icon: Users },
+        { label: "Universities", value: "15", icon: University },
+        { label: "Days", value: "36", icon: Calendar },
+      ],
+      gallery: [
+        {
+          src: "/mdit/2023/inaugural-launch.jpg",
+          alt: "MDIT 2023 Inaugural Launch",
+          category: "ceremony",
+        },
+        {
+          src: "/mdit/2023/first-briefing.jpg",
+          alt: "Competition Briefing",
+          category: "workshop",
+        },
+        {
+          src: "/mdit/2023/team-registration.jpg",
+          alt: "Team Registration",
+          category: "registration",
+        },
+        {
+          src: "/mdit/2023/data-workshop.jpg",
+          alt: "Data Analysis Workshop",
+          category: "workshop",
+        },
+        {
+          src: "/mdit/2023/final-presentation.jpg",
+          alt: "Final Presentations",
+          category: "competition",
+        },
+        {
+          src: "/mdit/2023/winning-team.jpg",
+          alt: "Winning Team Celebration",
+          category: "ceremony",
+        },
+        {
+          src: "/mdit/2023/panel-discussion.jpg",
+          alt: "Industry Panel Discussion",
+          category: "networking",
+        },
+        {
+          src: "/mdit/2023/closing-ceremony.jpg",
+          alt: "Closing Ceremony",
+          category: "ceremony",
+        },
+      ],
+    },
+    "2021": {
+      year: "2021",
+      theme: "Pioneering Data Innovation",
+      logo: "/mdit2021.png", // Placeholder
+      dates: "August 20 - September 25, 2021",
+      venue: "UiTM Shah Alam, Selangor",
+      totalTeams: 74,
+      totalParticipants: 296,
+      universities: 15,
+      prizePool: "RM9,999",
       winner: {
         team: "StatVanguard",
         university: "Universiti Teknologi Malaysia",
@@ -204,22 +285,6 @@ const PastMDITPage = () => {
     pastEditions[selectedYear as keyof typeof pastEditions];
   const availableYears = Object.keys(pastEditions).sort().reverse();
 
-  // Gallery filter
-  const [galleryFilter, setGalleryFilter] = useState("all");
-  const galleryCategories = [
-    "all",
-    "ceremony",
-    "competition",
-    "workshop",
-    "networking",
-    "judging",
-    "registration",
-  ];
-
-  const filteredGallery = currentEdition.gallery.filter(
-    (item) => galleryFilter === "all" || item.category === galleryFilter
-  );
-
   return (
     <>
       {/* Header Section */}
@@ -240,7 +305,7 @@ const PastMDITPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.2}>
           <Text as="p" className="text-lg">
-            Celebrating the journey of Malaysia's premier data innovation
+            Celebrating the journey of Malaysia&apos;s premier data innovation
             competition
           </Text>
         </BlurFade>
@@ -248,7 +313,7 @@ const PastMDITPage = () => {
           <Text as="p" styleVariant="muted" className="max-w-3xl mx-auto">
             Explore the history, achievements, and memorable moments from
             previous MDIT competitions. Witness how data science talents have
-            evolved and contributed to Malaysia's digital transformation.
+            evolved and contributed to Malaysia&apos;s digital transformation.
           </Text>
         </BlurFade>
       </div>
@@ -279,13 +344,14 @@ const PastMDITPage = () => {
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
                 {/* Logo Section */}
                 <div className="text-center">
-                  <div className="relative w-32 h-32 mx-auto mb-4 bg-white rounded-lg shadow-md p-4">
+                  <div className="relative w-32 h-32 mx-auto mb-4 bg-white rounded-lg shadow-md p-2">
                     {/* Placeholder for MDIT logo */}
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-lg flex items-center justify-center">
-                      <Text as="p" className="font-bold text-primary text-sm">
-                        MDIT {currentEdition.year}
-                      </Text>
-                    </div>
+                    <Image
+                      src={currentEdition.logo}
+                      alt={`MDIT ${currentEdition.year} Logo`}
+                      width={256}
+                      height={256}
+                    />
                   </div>
                   <Text as="p" className="text-sm text-muted-foreground">
                     Official Logo
@@ -527,66 +593,77 @@ const PastMDITPage = () => {
           </Text>
         </BlurFade>
 
-        {/* Gallery Filter */}
-        <BlurFade inView delay={0.15}>
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {galleryCategories.map((category) => (
-              <Button
-                key={category}
-                variant={galleryFilter === category ? "default" : "outline"}
-                size="sm"
-                onClick={() => setGalleryFilter(category)}
-                className="capitalize"
-              >
-                {category === "all" ? "All Photos" : category}
-              </Button>
-            ))}
-          </div>
+        {/* Gallery Marquees */}
+        <BlurFade delay={0.4} className="my-6">
+          <Card>
+            <CardContent className="relative">
+              <Marquee className="flex gap-4 rounded-lg">
+                {selectedYear === "2024"
+                  ? MDIT2024_IMAGE.map((image, index) => (
+                      <Image
+                        key={index}
+                        className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                        src={image.src}
+                        alt={image.alt}
+                        quality={100}
+                        width={500}
+                        height={200}
+                      />
+                    ))
+                  : MDIT2023_IMAGE.map((image, index) => (
+                      <Image
+                        key={index}
+                        className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                        src={image.src}
+                        alt={image.alt}
+                        quality={100}
+                        width={500}
+                        height={200}
+                      />
+                    ))}
+              </Marquee>
+              {/* Gradient mask for seamless fade effect */}
+              <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+              <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+            </CardContent>
+          </Card>
         </BlurFade>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {filteredGallery.map((image, index) => (
-            <BlurFade key={index} inView delay={0.2 + index * 0.05}>
-              <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer">
-                <div className="relative aspect-square bg-gradient-to-br from-primary/10 to-purple-500/10 flex items-center justify-center">
-                  {/* Placeholder for actual images */}
-                  <div className="text-center">
-                    <Eye className="h-8 w-8 text-primary mx-auto mb-2" />
-                    <Text as="p" className="text-sm text-muted-foreground px-2">
-                      {image.alt}
-                    </Text>
-                  </div>
-
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <div className="flex gap-2">
-                      <Button size="sm" variant="secondary">
-                        <Eye className="h-4 w-4" />
-                      </Button>
-                      <Button size="sm" variant="secondary">
-                        <Download className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </BlurFade>
-          ))}
-        </div>
-
-        {/* Gallery Note */}
-        <BlurFade inView delay={0.3}>
-          <div className="text-center mt-8">
-            <Text as="p" styleVariant="muted" className="mb-4">
-              Showing {filteredGallery.length} of{" "}
-              {currentEdition.gallery.length} photos
-            </Text>
-            <Button variant="outline">
-              <Download className="h-4 w-4 mr-2" />
-              Download All Photos
-            </Button>
-          </div>
+        <BlurFade delay={0.4}>
+          <Card>
+            <CardContent className="relative">
+              <Marquee
+                reverse
+                className="flex gap-4 rounded-lg [--duration:50s]"
+              >
+                {selectedYear === "2024"
+                  ? MDIT2024_IMAGE.map((image, index) => (
+                      <Image
+                        key={index}
+                        className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                        src={image.src}
+                        alt={image.alt}
+                        quality={100}
+                        width={500}
+                        height={200}
+                      />
+                    ))
+                  : MDIT2023_IMAGE.map((image, index) => (
+                      <Image
+                        key={index}
+                        className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
+                        src={image.src}
+                        alt={image.alt}
+                        quality={100}
+                        width={500}
+                        height={200}
+                      />
+                    ))}
+              </Marquee>
+              {/* Gradient mask for seamless fade effect */}
+              <div className="absolute left-5 top-0 w-22 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+              <div className="absolute right-5 top-0 w-22 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+            </CardContent>
+          </Card>
         </BlurFade>
       </div>
 
