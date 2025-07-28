@@ -113,7 +113,9 @@ const Page = memo(() => {
             <BlurFade inView delay={0.25}>
               <div className="mt-12 mb-8">
                 <Text as="h3" className="mb-6">
-                  {hasStarted ? "Registration Closes In:" : "Website Launched:"}
+                  {hasStarted
+                    ? "Registration Closes In:"
+                    : "Website Launched In:"}
                 </Text>
                 <div className="flex items-center justify-center gap-4 md:gap-6">
                   {countdownValues.map((item) => (
