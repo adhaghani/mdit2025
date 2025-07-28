@@ -299,7 +299,7 @@ const PastMDITPage = () => {
           </Link>
         </BlurFade>
         <BlurFade inView delay={0.15}>
-          <Text as="h1" className="text-primary">
+          <Text as="h1" className="font-mono text-primary">
             Past MDIT Editions
           </Text>
         </BlurFade>
@@ -363,7 +363,7 @@ const PastMDITPage = () => {
                   <div>
                     <Text
                       as="h2"
-                      className="text-3xl font-bold text-primary mb-2"
+                      className="text-3xl font-bold font-mono text-primary mb-2"
                     >
                       MDIT {currentEdition.year}
                     </Text>

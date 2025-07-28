@@ -22,6 +22,13 @@ import {
   TooltipTrigger,
   TooltipProvider,
 } from "@/components/animate-ui/radix/tooltip";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -41,7 +48,6 @@ interface CompetitionPhase {
   icon: React.ComponentType<{ className?: string }>;
   status: string;
 }
-
 
 interface CompetitionHighlight {
   title: string;
@@ -482,7 +488,7 @@ const Page = memo(() => {
     <>
       {/* Hero Section with Background Pattern */}
       <div className="relative min-h-fit h-[90vh] max-h-[700px] overflow-hidden">
-        <div className="relative text-center py-24 md:py-24 lg:py-32 flex flex-col item-center justify-center gap-4">
+        <div className="relative text-center py-24 md:py-24 lg:py-32 flex flex-col item-center justify-center gap-4 z-10">
           <BlurFade
             inView
             delay={0.15}
@@ -582,9 +588,9 @@ const Page = memo(() => {
       </div>
 
       {/* About MDIT Section */}
-      <div className="my-20">
+      <div className="my-20 relative">
         <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
+          <Text as="h2" className="text-center mb-6 relative z-10">
             About MDIT x DOSM Datathon 2025
           </Text>
         </BlurFade>
@@ -655,12 +661,12 @@ const Page = memo(() => {
       </div>
 
       {/* Competition Highlights */}
-      <div className="my-20 px-4">
+      <div className="my-20 px-4 relative">
         <BlurFade inView delay={0.1}>
-          <div className="text-center mb-16 space-y-4">
+          <div className="text-center mb-16 space-y-4 relative z-10">
             <Text
               as="h2"
-              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl font-mono font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
             >
               Why Join MDIT x DOSM Datathon 2025?
             </Text>
@@ -847,13 +853,13 @@ const Page = memo(() => {
           <Text
             as="p"
             styleVariant="muted"
-            className="text-center  mb-12 max-w-2xl mx-auto"
+            className="text-center  mb-12 max-w-2xl mx-auto relative z-10"
           >
             Explore the key phases of the MDIT x DOSM Datathon 2025, designed to
             guide participants from registration to the final round.
           </Text>
         </BlurFade>
-        <div className=" mx-auto">
+        <div className=" mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {phases.map((phase, index) => (
               <PhaseCard key={phase.phase} phase={phase} index={index} />
@@ -863,270 +869,568 @@ const Page = memo(() => {
       </div>
 
       {/* Current Statistics Section */}
-      <div className="py-20 bg-gradient-to-r from-slate-100/50 to-gray-100/50 dark:from-slate-800/30 dark:to-gray-800/30 rounded-lg my-20">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            MDIT 2025 Current Statistics
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
-            Live statistics showing the growing participation and excitement for
-            MDIT 2025 across Malaysian universities.
-          </Text>
-        </BlurFade>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          <BlurFade inView delay={0.2}>
-            <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
-              <CardContent className="p-6">
-                <div className="mx-auto mb-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full w-fit">
-                  <Users2Icon className="h-6 w-6 text-blue-600" />
-                </div>
-                <Text as="h3" className="text-2xl font-bold text-blue-600 mb-2">
-                  <NumberFlow value={0} format={{ minimumIntegerDigits: 1 }} />
-                </Text>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  Teams Registered
-                </Text>
-              </CardContent>
-            </Card>
+      <div className="py-20 bg-gradient-to-r from-slate-100/50 to-gray-100/50 dark:from-slate-800/30 dark:to-gray-800/30 rounded-lg my-20 relative overflow-hidden">
+        <div className="relative z-10">
+          <BlurFade inView delay={0.1}>
+            <Text as="h2" className="text-center mb-6">
+              MDIT 2025 Current Statistics
+            </Text>
           </BlurFade>
+          <BlurFade inView delay={0.15}>
+            <Text
+              as="p"
+              styleVariant="muted"
+              className="text-center mb-12 max-w-2xl mx-auto"
+            >
+              Live statistics showing the growing participation and excitement
+              for MDIT 2025 across Malaysian universities.
+            </Text>
+          </BlurFade>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <BlurFade inView delay={0.2}>
+              <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+                <CardContent className="p-6">
+                  <div className="mx-auto mb-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full w-fit">
+                    <Users2Icon className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <Text
+                    as="h3"
+                    className="text-2xl font-bold text-blue-600 mb-2"
+                  >
+                    <NumberFlow
+                      value={0}
+                      format={{ minimumIntegerDigits: 1 }}
+                    />
+                  </Text>
+                  <Text as="p" styleVariant="muted" className="text-sm">
+                    Teams Registered
+                  </Text>
+                </CardContent>
+              </Card>
+            </BlurFade>
 
-          <BlurFade inView delay={0.25}>
-            <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
-              <CardContent className="p-6">
-                <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                  <BookOpenIcon className="h-6 w-6 text-purple-600" />
-                </div>
+            <BlurFade inView delay={0.25}>
+              <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+                <CardContent className="p-6">
+                  <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
+                    <BookOpenIcon className="h-6 w-6 text-purple-600" />
+                  </div>
+                  <Text
+                    as="h3"
+                    className="text-2xl font-bold text-purple-600 mb-2"
+                  >
+                    <NumberFlow
+                      value={0}
+                      format={{ minimumIntegerDigits: 1 }}
+                    />
+                  </Text>
+                  <Text as="p" styleVariant="muted" className="text-sm">
+                    Universities Participating
+                  </Text>
+                </CardContent>
+              </Card>
+            </BlurFade>
+
+            <BlurFade inView delay={0.3}>
+              <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+                <CardContent className="p-6">
+                  <div className="mx-auto mb-4 p-3 bg-teal-100 dark:bg-teal-900/30 rounded-full w-fit">
+                    <UsersIcon className="h-6 w-6 text-teal-600" />
+                  </div>
+                  <Text
+                    as="h3"
+                    className="text-2xl font-bold text-teal-600 mb-2"
+                  >
+                    <NumberFlow
+                      value={0}
+                      format={{ minimumIntegerDigits: 1 }}
+                    />
+                  </Text>
+                  <Text as="p" styleVariant="muted" className="text-sm">
+                    Total Participants
+                  </Text>
+                </CardContent>
+              </Card>
+            </BlurFade>
+
+            <BlurFade inView delay={0.35}>
+              <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+                <CardContent className="p-6">
+                  <div className="mx-auto mb-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-full w-fit">
+                    <TrophyIcon className="h-6 w-6 text-green-600" />
+                  </div>
+                  <Text
+                    as="h3"
+                    className="text-2xl font-bold text-green-600 mb-2"
+                  >
+                    <NumberFlow
+                      value={0}
+                      format={{ minimumIntegerDigits: 1 }}
+                    />
+                  </Text>
+                  <Text as="p" styleVariant="muted" className="text-sm">
+                    Days Until Registration Closes
+                  </Text>
+                </CardContent>
+              </Card>
+            </BlurFade>
+          </div>
+
+          {/* Additional Statistics Row */}
+          <div className="grid grid-cols-1 gap-6 max-w-xl mx-auto mt-8">
+            <BlurFade inView delay={0.4}>
+              <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20">
+                <CardContent className="p-6">
+                  <Text
+                    as="h4"
+                    className="text-lg font-semibold text-primary mb-2"
+                  >
+                    Registration Progress
+                  </Text>
+                  <div className="w-full bg-muted rounded-full h-3 mb-3">
+                    <div
+                      className="bg-gradient-to-r from-primary to-purple-500 h-3 rounded-full transition-all duration-1000"
+                      style={{ width: "0%" }}
+                    ></div>
+                  </div>
+                  <Text as="p" styleVariant="muted" className="text-sm">
+                    0 out of 100 slots filled
+                  </Text>
+                </CardContent>
+              </Card>
+            </BlurFade>
+          </div>
+
+          {/* Real-time Update Notice */}
+          <BlurFade inView delay={0.6}>
+            <div className="text-center mt-8">
+              <Text as="p" styleVariant="muted" className="text-xs mt-2">
+                Last updated: 28 July 2025 at 16:43 GMT+8
+              </Text>
+            </div>
+          </BlurFade>
+        </div>
+      </div>
+
+      {/* Partnerships & Collaborations Section */}
+      <div className="my-32 max-w-7xl mx-auto relative">
+        <BlurFade inView delay={0.1}>
+          <div className="text-center mb-20 space-y-4 relative z-10">
+            <Text
+              as="h2"
+              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
+            >
+              Our Partners & Collaborators
+            </Text>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto rounded-full"></div>
+            <Text
+              as="p"
+              styleVariant="muted"
+              className="text-lg max-w-3xl mx-auto leading-relaxed"
+            >
+              MDIT 2025 is made possible through strategic partnerships with
+              leading institutions, organizations, and media partners who share
+              our vision of advancing data science innovation in Malaysia.
+            </Text>
+          </div>
+        </BlurFade>
+
+        {/* Organizing Partners */}
+        <BlurFade inView delay={0.2}>
+          <div className="mb-16">
+            <div className="text-center mb-8">
+              <Text as="h3" className="text-2xl font-bold text-primary mb-2">
+                Organizing Partners
+              </Text>
+              <Text as="p" styleVariant="muted" className="text-sm">
+                Leading institutions driving data science education and
+                innovation
+              </Text>
+            </div>
+            <div className="bg-gradient-to-r from-primary/5 via-purple-500/5 to-blue-500/5 rounded-2xl p-12 border border-primary/10 overflow-visible">
+              {/* Desktop View */}
+              <div className="hidden md:flex flex-wrap items-center justify-center gap-12 md:gap-16">
+                {ORGANIZERS.map((organizer, index) => (
+                  <BlurFade
+                    key={organizer.name}
+                    inView
+                    delay={0.3 + index * 0.1}
+                  >
+                    <div className="group relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:border-primary/30">
+                        {organizer.logoLight ? (
+                          <>
+                            <Image
+                              src={organizer.logo}
+                              alt={organizer.logoAlt}
+                              width={organizer.width}
+                              height={organizer.height}
+                              className={`${organizer.className} mx-auto transition-transform duration-300 group-hover:scale-105 dark:hidden`}
+                              loading="lazy"
+                            />
+                            <Image
+                              src={organizer.logoLight}
+                              alt={organizer.logoAlt}
+                              width={organizer.width}
+                              height={organizer.height}
+                              className={`${organizer.className} mx-auto transition-transform duration-300 group-hover:scale-105 hidden dark:block`}
+                              loading="lazy"
+                            />
+                          </>
+                        ) : (
+                          <Image
+                            src={organizer.logo}
+                            alt={organizer.logoAlt}
+                            width={organizer.width}
+                            height={organizer.height}
+                            className={`${organizer.className} mx-auto transition-transform duration-300 group-hover:scale-105`}
+                            loading="lazy"
+                          />
+                        )}
+                        <Text
+                          as="p"
+                          className="mt-4 text-sm font-medium text-center text-primary group-hover:text-purple-600 transition-colors"
+                        >
+                          {organizer.name}
+                        </Text>
+                      </div>
+                    </div>
+                  </BlurFade>
+                ))}
+              </div>
+
+              {/* Mobile Carousel View */}
+              <div className="md:hidden">
+                <Carousel
+                  className="w-full max-w-sm mx-auto"
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                >
+                  <CarouselContent className="-ml-2 md:-ml-4">
+                    {ORGANIZERS.map((organizer, index) => (
+                      <CarouselItem
+                        key={organizer.name}
+                        className="pl-2 md:pl-4 basis-1/2"
+                      >
+                        <BlurFade inView delay={0.3 + index * 0.1}>
+                          <div className="group relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="relative bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:border-primary/30">
+                              {organizer.logoLight ? (
+                                <>
+                                  <Image
+                                    src={organizer.logo}
+                                    alt={organizer.logoAlt}
+                                    width={organizer.width}
+                                    height={organizer.height}
+                                    className={`${organizer.className} mx-auto transition-transform duration-300 group-hover:scale-105 dark:hidden`}
+                                    loading="lazy"
+                                  />
+                                  <Image
+                                    src={organizer.logoLight}
+                                    alt={organizer.logoAlt}
+                                    width={organizer.width}
+                                    height={organizer.height}
+                                    className={`${organizer.className} mx-auto transition-transform duration-300 group-hover:scale-105 hidden dark:block`}
+                                    loading="lazy"
+                                  />
+                                </>
+                              ) : (
+                                <Image
+                                  src={organizer.logo}
+                                  alt={organizer.logoAlt}
+                                  width={organizer.width}
+                                  height={organizer.height}
+                                  className={`${organizer.className} mx-auto transition-transform duration-300 group-hover:scale-105`}
+                                  loading="lazy"
+                                />
+                              )}
+                              <Text
+                                as="p"
+                                className="mt-2 text-xs font-medium text-center text-primary group-hover:text-purple-600 transition-colors"
+                              >
+                                {organizer.name}
+                              </Text>
+                            </div>
+                          </div>
+                        </BlurFade>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              </div>
+            </div>
+          </div>
+        </BlurFade>
+
+        {/* Sponsors & Media Partners Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-12">
+          {/* Official Sponsors */}
+          <BlurFade inView delay={0.4}>
+            <div className="h-full">
+              <div className="text-center mb-6">
                 <Text
                   as="h3"
                   className="text-2xl font-bold text-purple-600 mb-2"
                 >
-                  <NumberFlow value={0} format={{ minimumIntegerDigits: 1 }} />
+                  Official Sponsors
                 </Text>
                 <Text as="p" styleVariant="muted" className="text-sm">
-                  Universities Participating
+                  Supporting innovation and excellence in data science
                 </Text>
-              </CardContent>
-            </Card>
-          </BlurFade>
+              </div>
+              <div className="bg-gradient-to-br from-purple-50/50 to-purple-100/50 dark:from-purple-900/10 dark:to-purple-800/10 rounded-2xl p-12 border border-purple-200/50 dark:border-purple-800/30 h-full min-h-[300px] flex items-center justify-center overflow-visible">
+                <TooltipProvider delayDuration={0}>
+                  {OFFICIAL_SPONSORS.length > 0 ? (
+                    <>
+                      {/* Desktop View */}
+                      <div className="hidden md:flex flex-wrap items-center justify-center gap-8">
+                        {OFFICIAL_SPONSORS.map((sponsor, index) => (
+                          <Tooltip key={index}>
+                            <TooltipTrigger>
+                              <div className="group relative p-3">
+                                <div className="absolute inset-1 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                                <div className="relative bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
+                                  <Image
+                                    src={sponsor.logo}
+                                    alt={sponsor.logoAlt}
+                                    width={sponsor.width}
+                                    height={sponsor.height}
+                                    className={`${sponsor.className} transition-transform duration-300 group-hover:scale-105`}
+                                    loading="lazy"
+                                  />
+                                </div>
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent side="bottom" arrow>
+                              <p>{sponsor.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        ))}
+                      </div>
 
-          <BlurFade inView delay={0.3}>
-            <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
-              <CardContent className="p-6">
-                <div className="mx-auto mb-4 p-3 bg-teal-100 dark:bg-teal-900/30 rounded-full w-fit">
-                  <UsersIcon className="h-6 w-6 text-teal-600" />
-                </div>
-                <Text as="h3" className="text-2xl font-bold text-teal-600 mb-2">
-                  <NumberFlow value={0} format={{ minimumIntegerDigits: 1 }} />
-                </Text>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  Total Participants
-                </Text>
-              </CardContent>
-            </Card>
-          </BlurFade>
-
-          <BlurFade inView delay={0.35}>
-            <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
-              <CardContent className="p-6">
-                <div className="mx-auto mb-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-full w-fit">
-                  <TrophyIcon className="h-6 w-6 text-green-600" />
-                </div>
-                <Text
-                  as="h3"
-                  className="text-2xl font-bold text-green-600 mb-2"
-                >
-                  <NumberFlow value={0} format={{ minimumIntegerDigits: 1 }} />
-                </Text>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  Days Until Registration Closes
-                </Text>
-              </CardContent>
-            </Card>
-          </BlurFade>
-        </div>
-
-        {/* Additional Statistics Row */}
-        <div className="grid grid-cols-1 gap-6 max-w-xl mx-auto mt-8">
-          <BlurFade inView delay={0.4}>
-            <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20">
-              <CardContent className="p-6">
-                <Text
-                  as="h4"
-                  className="text-lg font-semibold text-primary mb-2"
-                >
-                  Registration Progress
-                </Text>
-                <div className="w-full bg-muted/30 rounded-full h-3 mb-3">
-                  <div
-                    className="bg-gradient-to-r from-primary to-purple-500 h-3 rounded-full transition-all duration-1000"
-                    style={{ width: "0%" }}
-                  ></div>
-                </div>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  0 out of 100 slots filled
-                </Text>
-              </CardContent>
-            </Card>
-          </BlurFade>
-        </div>
-
-        {/* Real-time Update Notice */}
-        <BlurFade inView delay={0.6}>
-          <div className="text-center mt-8">
-            <Text as="p" styleVariant="muted" className="text-xs mt-2">
-              Last updated: 28 July 2025 at 16:43 GMT+8
-            </Text>
-          </div>
-        </BlurFade>
-      </div>
-
-      {/* Organizers Section */}
-      <div className="mt-20 max-w-7xl mx-auto mb-10">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Organizing Partners
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
-            MDIT 2025 is proudly organized in collaboration with leading
-            institutions committed to advancing data science education and
-            innovation in Malaysia.
-          </Text>
-        </BlurFade>
-        <Card className="p-8">
-          <CardContent>
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-              {ORGANIZERS.map((organizer, index) => (
-                <OrganizerCard
-                  key={organizer.name}
-                  organizer={organizer}
-                  index={index}
-                />
-              ))}
+                      {/* Mobile Carousel View */}
+                      <div className="md:hidden w-full">
+                        <Carousel
+                          className="w-full max-w-sm mx-auto"
+                          opts={{
+                            align: "start",
+                            loop: true,
+                          }}
+                        >
+                          <CarouselContent className="-ml-2 md:-ml-4">
+                            {OFFICIAL_SPONSORS.map((sponsor, index) => (
+                              <CarouselItem
+                                key={index}
+                                className="pl-2 md:pl-4 basis-1/2"
+                              >
+                                <div className="group relative p-2">
+                                  <div className="absolute inset-1 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                                  <div className="relative bg-white dark:bg-gray-900 p-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
+                                    <Image
+                                      src={sponsor.logo}
+                                      alt={sponsor.logoAlt}
+                                      width={sponsor.width}
+                                      height={sponsor.height}
+                                      className={`${sponsor.className} transition-transform duration-300 group-hover:scale-105 mx-auto`}
+                                      loading="lazy"
+                                    />
+                                  </div>
+                                </div>
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                          <CarouselPrevious />
+                          <CarouselNext />
+                        </Carousel>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-center">
+                      <div className="mx-auto mb-6 p-4 bg-purple-100/50 dark:bg-purple-900/30 rounded-full w-fit">
+                        <TrophyIcon className="h-16 w-16 text-purple-400" />
+                      </div>
+                      <Text
+                        as="h4"
+                        className="text-xl font-semibold mb-3 text-purple-600"
+                      >
+                        Sponsors Coming Soon
+                      </Text>
+                      <Text
+                        as="p"
+                        className="text-sm text-purple-500/70 mb-4 max-w-xs"
+                      >
+                        We are actively seeking partnerships with organizations
+                        that share our vision
+                      </Text>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-purple-300 text-purple-600 hover:bg-purple-50"
+                        asChild
+                      >
+                        <Link href="/contact">Become a Sponsor</Link>
+                      </Button>
+                    </div>
+                  )}
+                </TooltipProvider>
+              </div>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          </BlurFade>
 
-      {/* Sponsors Section */}
-      <div className="my-20 max-w-7xl mx-auto">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Official Sponsors
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
-            We are grateful to our sponsors who make MDIT 2025 possible by
-            supporting innovation and excellence in data science education
-            across Malaysia.
-          </Text>
-        </BlurFade>
-        <Card className="p-8">
-          <CardContent>
-            <TooltipProvider delayDuration={0}>
-              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-                {OFFICIAL_SPONSORS.length > 0 ? (
-                  OFFICIAL_SPONSORS.map((sponsor, index) => (
-                    <SponsorCard key={index} sponsor={sponsor} index={index} />
-                  ))
-                ) : (
-                  <div className="text-center py-12">
-                    <div className="mx-auto mb-4 p-4 bg-muted/20 rounded-full w-fit">
-                      <TrophyIcon className="h-12 w-12 text-muted-foreground/50" />
-                    </div>
-                    <Text
-                      as="h3"
-                      className="text-lg font-semibold mb-2 text-muted-foreground"
-                    >
-                      Sponsor list will be released soon
-                    </Text>
-                    <Text as="p" className="text-sm text-muted-foreground/70">
-                      We are actively seeking partnerships with organizations
-                      that share our vision
-                    </Text>
-                  </div>
-                )}
+          {/* Media Partners */}
+          <BlurFade inView delay={0.5}>
+            <div className="h-full">
+              <div className="text-center mb-6">
+                <Text as="h3" className="text-2xl font-bold text-blue-600 mb-2">
+                  Media Partners
+                </Text>
+                <Text as="p" styleVariant="muted" className="text-sm">
+                  Spreading awareness and connecting communities
+                </Text>
               </div>
-            </TooltipProvider>
-          </CardContent>
-        </Card>
-        <BlurFade delay={0.2} inView>
-          <div className="mt-5 flex justify-center items-center gap-2 flex-wrap">
-            <Text as="p">Interested in sponsoring our event?</Text>
-            <Button variant={"secondary"} size={"sm"} asChild>
-              <Link href={"/contact"}>Reach us out</Link>
-            </Button>
+              <div className="bg-gradient-to-br from-blue-50/50 to-blue-100/50 dark:from-blue-900/10 dark:to-blue-800/10 rounded-2xl p-12 border border-blue-200/50 dark:border-blue-800/30 h-full min-h-[300px] flex items-center justify-center overflow-visible">
+                <TooltipProvider delayDuration={0}>
+                  {MEDIA_PARTNERS.length > 0 ? (
+                    <>
+                      {/* Desktop View */}
+                      <div className="hidden md:flex flex-wrap items-center justify-center gap-8">
+                        {MEDIA_PARTNERS.map((partner, index) => (
+                          <Tooltip key={index}>
+                            <TooltipTrigger>
+                              <div className="group relative p-3">
+                                <div className="absolute inset-1 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                                <div className="relative bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-blue-300 overflow-hidden">
+                                  <Image
+                                    src={partner.logo}
+                                    alt={partner.logoAlt}
+                                    width={partner.width}
+                                    height={partner.height}
+                                    className={`${partner.className} transition-transform duration-300 group-hover:scale-105`}
+                                    loading="lazy"
+                                  />
+                                </div>
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent side="bottom" arrow>
+                              <p>{partner.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        ))}
+                      </div>
+
+                      {/* Mobile Carousel View */}
+                      <div className="md:hidden w-full">
+                        <Carousel
+                          className="w-full max-w-sm mx-auto"
+                          opts={{
+                            align: "start",
+                            loop: true,
+                          }}
+                        >
+                          <CarouselContent className="-ml-2 md:-ml-4">
+                            {MEDIA_PARTNERS.map((partner, index) => (
+                              <CarouselItem
+                                key={index}
+                                className="pl-2 md:pl-4 basis-1/2"
+                              >
+                                <div className="group relative p-2">
+                                  <div className="absolute inset-1 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                                  <div className="relative bg-white dark:bg-gray-900 p-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-blue-300 overflow-hidden">
+                                    <Image
+                                      src={partner.logo}
+                                      alt={partner.logoAlt}
+                                      width={partner.width}
+                                      height={partner.height}
+                                      className={`${partner.className} transition-transform duration-300 group-hover:scale-105 mx-auto`}
+                                      loading="lazy"
+                                    />
+                                  </div>
+                                </div>
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                          <CarouselPrevious />
+                          <CarouselNext />
+                        </Carousel>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-center">
+                      <div className="mx-auto mb-6 p-4 bg-blue-100/50 dark:bg-blue-900/30 rounded-full w-fit">
+                        <Users2Icon className="h-16 w-16 text-blue-400" />
+                      </div>
+                      <Text
+                        as="h4"
+                        className="text-xl font-semibold mb-3 text-blue-600"
+                      >
+                        Media Partners Coming Soon
+                      </Text>
+                      <Text
+                        as="p"
+                        className="text-sm text-blue-500/70 mb-4 max-w-xs"
+                      >
+                        We are building partnerships with leading media
+                        organizations
+                      </Text>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-blue-300 text-blue-600 hover:bg-blue-50"
+                        asChild
+                      >
+                        <Link href="/contact">Partner With Us</Link>
+                      </Button>
+                    </div>
+                  )}
+                </TooltipProvider>
+              </div>
+            </div>
+          </BlurFade>
+        </div>
+
+        {/* Partnership Call to Action */}
+        <BlurFade inView delay={0.6}>
+          <div className="mt-32 text-center">
+            <div className="bg-gradient-to-r from-primary/10 via-purple-500/10 to-blue-500/10 rounded-2xl p-8 border border-primary/20">
+              <Text
+                as="h3"
+                className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
+              >
+                Join Our Partnership Network
+              </Text>
+              <Text
+                as="p"
+                styleVariant="muted"
+                className="mb-6 max-w-2xl mx-auto"
+              >
+                Interested in partnering with MDIT 2025? We welcome
+                collaborations with organizations that share our commitment to
+                advancing data science education and innovation in Malaysia.
+              </Text>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-primary to-purple-600"
+                  asChild
+                >
+                  <Link href="/contact">
+                    Become a Partner
+                    <ArrowRightIcon className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <Link href="/about-us">Learn More About Us</Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </BlurFade>
-      </div>
-
-      {/* Media Partners Section */}
-      <div className="my-20 max-w-7xl mx-auto">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Media Partners
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
-            Our media partners help us reach talented students across Malaysia
-            and spread awareness about the importance of data science and
-            innovation in today&apos;s digital world.
-          </Text>
-        </BlurFade>
-        <Card className="p-8">
-          <CardContent>
-            <TooltipProvider delayDuration={0}>
-              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-                {MEDIA_PARTNERS.length > 0 ? (
-                  MEDIA_PARTNERS.map((partner, index) => (
-                    <MediaPartnerCard
-                      key={index}
-                      partner={partner}
-                      index={index}
-                    />
-                  ))
-                ) : (
-                  <div className="text-center py-12">
-                    <div className="mx-auto mb-4 p-4 bg-muted/20 rounded-full w-fit">
-                      <Users2Icon className="h-12 w-12 text-muted-foreground/50" />
-                    </div>
-                    <Text
-                      as="h3"
-                      className="text-lg font-semibold mb-2 text-muted-foreground"
-                    >
-                      Media Partners list will be released soon
-                    </Text>
-                    <Text as="p" className="text-sm text-muted-foreground/70">
-                      We are building partnerships with leading media
-                      organizations
-                    </Text>
-                  </div>
-                )}
-              </div>
-            </TooltipProvider>
-          </CardContent>
-        </Card>
       </div>
 
       {/* Registration Section */}
@@ -1140,7 +1444,7 @@ const Page = memo(() => {
           <Text
             as="p"
             styleVariant="muted"
-            className="text-center mb-8 max-w-2xl mx-auto"
+            className="text-center mb-8 max-w-2xl mx-auto relative z-10"
           >
             Don&apos;t miss this opportunity to be part of Malaysia&apos;s most
             prestigious data science competition. Register your team now and
@@ -1148,7 +1452,7 @@ const Page = memo(() => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.2}>
-          <div className="text-center space-y-6">
+          <div className="text-center space-y-6 relative z-10">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
@@ -1181,7 +1485,7 @@ const Page = memo(() => {
         <BlurFade delay={0.2}>
           <Text
             as="h2"
-            className="text-3xl font-bold text-center mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent"
+            className="text-3xl font-mono font-bold text-center mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent"
           >
             MDIT 2024 Memories
           </Text>
@@ -1250,7 +1554,7 @@ const Page = memo(() => {
         <BlurFade delay={0.2}>
           <Text
             as="h2"
-            className="text-3xl font-bold text-center mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent"
+            className="text-3xl font-mono font-bold text-center mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent"
           >
             MDIT 2023 Memories
           </Text>

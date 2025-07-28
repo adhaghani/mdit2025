@@ -64,9 +64,10 @@ const EventDetailsPage = () => {
   return (
     <>
       {/* Prize Pool Section */}
-      <div className="text-center max-w-7xl mx-auto py-24 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 rounded-2xl mb-20 relative overflow-hidden">
+      <div className="text-center py-24 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 rounded-2xl my-20">
         {/* Background decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full">
+          {" "}
           <div className="absolute top-10 left-10 w-20 h-20 bg-yellow-300/20 rounded-full blur-xl"></div>
           <div className="absolute top-20 right-20 w-16 h-16 bg-purple-400/20 rounded-full blur-lg"></div>
           <div className="absolute bottom-10 left-1/4 w-24 h-24 bg-blue-400/20 rounded-full blur-xl"></div>
@@ -78,7 +79,7 @@ const EventDetailsPage = () => {
             <div className="mb-8">
               <Text
                 as="h2"
-                className="mb-4 text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
+                className="mb-4 text-3xl font-mono md:text-4xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
               >
                 Grand Prize Pool
               </Text>
@@ -98,7 +99,7 @@ const EventDetailsPage = () => {
                   decimalSeparator="."
                   inView
                   number={11600}
-                  className="text-primary"
+                  className="text-primary "
                 />
               </Text>
               <Text as="p" styleVariant="muted" className="text-lg font-medium">
@@ -140,9 +141,6 @@ const EventDetailsPage = () => {
                       RM 3,500
                     </Text>
                     <div className="space-y-2">
-                      <Text as="p" className="text-yellow-600 font-semibold">
-                        ✨ Champion Trophy
-                      </Text>
                       <Text as="p" className="text-yellow-600 font-semibold">
                         📜 Winner Certificates
                       </Text>
@@ -619,7 +617,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Judges Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="mt-20 mb-10 max-w-7xl mx-auto">
         <BlurFade delay={0.1} inView>
           <Text as="h2" className="text-center mb-6">
             Meet Our Expert Judges

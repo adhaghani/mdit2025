@@ -73,7 +73,7 @@ const FrequentlyAskedQuestionsPage = () => {
     setSearchTerm("");
   };
 
-  const isReleased = false;
+  const isReleased = true;
 
   if (!isReleased) {
     return (
@@ -114,7 +114,7 @@ const FrequentlyAskedQuestionsPage = () => {
 
       {/* Search Bar */}
       <BlurFade inView delay={0.25}>
-        <div className="max-w-2xl mx-auto mb-12">
+        <div className="max-w-2xl mx-auto mb-12 ">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
@@ -144,7 +144,7 @@ const FrequentlyAskedQuestionsPage = () => {
       </BlurFade>
 
       {/* Category Filter */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 max-w-7xl mx-auto">
         {faqCategories.map((category, index) => (
           <BlurFade key={index} inView delay={0.3 + index * 0.05}>
             <Card
@@ -211,7 +211,7 @@ const FrequentlyAskedQuestionsPage = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.5}>
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardHeader>

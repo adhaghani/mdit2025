@@ -249,7 +249,7 @@ const AboutUsPage = () => {
       {/* Header Section */}
       <div className="text-center space-y-4 py-20 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
-          <Text as="h1" className="text-primary">
+          <Text as="h1" className="font-mono text-primary">
             About Us
           </Text>
         </BlurFade>

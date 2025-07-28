@@ -181,77 +181,108 @@ const Header = memo(() => {
                 <MoreHorizontalIcon className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side={"right"}>
-              <SheetHeader>
+            <SheetContent side={"right"} className="w-[300px] sm:w-[400px]">
+              <SheetHeader className="space-y-4">
                 <div className="flex items-center justify-center">
                   <Image
                     src="/mdit.svg"
                     alt="MDIT 2025 Logo"
-                    width={40}
-                    height={40}
-                    className="w-10 h-10"
+                    width={50}
+                    height={50}
+                    className="w-12 h-12"
                   />
                 </div>
-                <SheetTitle>MDIT 2025</SheetTitle>
+                <SheetTitle className="text-center text-lg font-bold">
+                  MDIT x DOSM Datathon 2025
+                </SheetTitle>
               </SheetHeader>
-              <ul className="flex w-full flex-col items-center gap-4 pt-4">
-                <li className="w-full">
-                  <Link href="/" className="w-full block text-center py-3">
-                    Home
-                  </Link>
-                </li>
-                <li className="w-full">
+              <div className="mt-8 space-y-2">
+                <div className="px-2 py-2">
                   <Link
-                    href="/about-us"
-                    className="w-full block text-center py-3"
+                    href="/"
+                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
                   >
-                    About Us
+                    <div className="w-2 h-2 bg-primary rounded-full group-hover:scale-125 transition-transform"></div>
+                    <span className="font-medium">Home</span>
                   </Link>
-                </li>
-                <li className="w-full">
+                </div>
+
+                <div className="px-2 py-1">
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-2">
+                    About
+                  </div>
+                  <div className="space-y-1 ml-2">
+                    <Link
+                      href="/about-us"
+                      className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors text-sm group"
+                    >
+                      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                      <span>About Us</span>
+                    </Link>
+                    <Link
+                      href="/about-us/past-mdit"
+                      className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors text-sm group"
+                    >
+                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                      <span>Past MDIT</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="px-2 py-2">
                   <Link
                     href="/event-details"
-                    className="w-full block text-center py-3"
+                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
                   >
-                    Event Details
+                    <div className="w-2 h-2 bg-green-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                    <span className="font-medium">Event Details</span>
                   </Link>
-                </li>
-                <li className="w-full">
-                  <Link
-                    href="/contact"
-                    className="w-full block text-center py-3"
-                  >
-                    Contact
-                  </Link>
-                </li>
-                <li className="w-full">
+                </div>
+
+                <div className="px-2 py-2">
                   <Link
                     href="/rules-regulation"
-                    className="w-full block text-center py-3"
+                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
                   >
-                    Rules & Regulation
+                    <div className="w-2 h-2 bg-orange-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                    <span className="font-medium">Rules & Regulation</span>
                   </Link>
-                </li>
-                <li className="w-full">
+                </div>
+
+                <div className="px-2 py-2">
+                  <Link
+                    href="/contact"
+                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
+                  >
+                    <div className="w-2 h-2 bg-pink-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                    <span className="font-medium">Contact</span>
+                  </Link>
+                </div>
+
+                <div className="px-2 py-2">
                   <Link
                     href="/frequently-asked-questions"
-                    className="w-full block text-center py-3"
+                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
                   >
-                    FAQs
+                    <div className="w-2 h-2 bg-teal-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                    <span className="font-medium">FAQs</span>
                   </Link>
-                </li>
-                <li className="block w-full">
-                  <Link className="block w-full " href={buttonHref}>
-                    <Button
-                      size="sm"
-                      className="flex items-center gap-2 w-full "
-                      disabled={isButtonDisabled}
-                    >
-                      {buttonText}
-                    </Button>
-                  </Link>
-                </li>
-              </ul>
+                </div>
+
+                <div className="pt-4 px-2">
+                  <div className="border-t pt-4">
+                    <Link className="block w-full" href={buttonHref}>
+                      <Button
+                        size="lg"
+                        className="w-full justify-center gap-2 font-semibold"
+                        disabled={isButtonDisabled}
+                      >
+                        {buttonText}
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </SheetContent>
           </Sheet>
           <div className="flex">

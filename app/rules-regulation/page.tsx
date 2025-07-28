@@ -124,7 +124,7 @@ const RulesRegulationPage = () => {
     },
   ];
 
-  const isReleased = false;
+  const isReleased = true;
 
   if (!isReleased) {
     return (
@@ -166,7 +166,7 @@ const RulesRegulationPage = () => {
       </div>
 
       {/* Rules Sections */}
-      <div className=" my-20 grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="my-20 grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
         {sections.map((section, index) => (
           <BlurFade key={index} inView delay={0.1 + index * 0.05}>
             <Card className="h-full">
@@ -196,7 +196,7 @@ const RulesRegulationPage = () => {
       </div>
 
       {/* Important Notes */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-20 max-w-7xl mx-auto">
         {importantNotes.map((note, index) => (
           <BlurFade key={index} inView delay={0.3 + index * 0.1}>
             <Card
@@ -243,7 +243,7 @@ const RulesRegulationPage = () => {
 
       {/* Timeline Reminder */}
       <BlurFade inView delay={0.5}>
-        <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
+        <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20 max-w-7xl mx-auto">
           <CardHeader>
             <CardTitle className="text-center text-primary">
               Important Dates to Remember
