@@ -26,6 +26,7 @@ import {
 } from "@/components/animate-ui/radix/dialog";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 import { EVENT_JUDGES } from "@/components/constant";
 
@@ -452,24 +453,26 @@ const EventDetailsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {requirements.map((req, index) => (
             <BlurFade key={index} inView delay={0.15 + index * 0.05}>
-              <Card className="h-full">
+              <Card className="h-full max-h-96">
                 <CardHeader>
                   <CardTitle className="text-lg">
                     <req.icon className="inline-block mr-2 h-5 w-5 text-primary" />
                     {req.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {req.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start gap-2">
-                        <CheckIcon className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <Text as="p" className="text-sm">
-                          {item}
-                        </Text>
-                      </li>
-                    ))}
-                  </ul>
+                <CardContent className="p-0">
+                  <ScrollArea className="h-full max-h-64 px-6 pb-6">
+                    <ul className="space-y-2">
+                      {req.items.map((item, itemIndex) => (
+                        <li key={itemIndex} className="flex items-start gap-2">
+                          <CheckIcon className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                          <Text as="p" className="text-sm">
+                            {item}
+                          </Text>
+                        </li>
+                      ))}
+                    </ul>
+                  </ScrollArea>
                 </CardContent>
               </Card>
             </BlurFade>
@@ -478,7 +481,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Timeline Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20 max-w-7xl mx-auto px-4">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Competition Timeline
@@ -491,126 +494,422 @@ const EventDetailsPage = () => {
             className="text-center mb-12 max-w-2xl mx-auto"
           >
             Stay informed about all important dates and milestones throughout
-            the competition period. Click on any event to view detailed
+            the competition period. Click on events with details to view more
             information.
           </Text>
         </BlurFade>
 
-        <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+        <div className="flex flex-col gap-4 md:gap-8 max-w-5xl mx-auto">
           {PROGRAM_TIMELINE.map((item, index) => (
-            <BlurFade key={index} inView delay={0.1 + index * 0.05}>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <div className="flex flex-row items-start gap-6 cursor-pointer hover:bg-muted/30 p-4 rounded-lg transition-colors group">
-                    {/* Date */}
-                    <div className="min-w-[120px] text-right">
-                      <Text as="p" className="font-semibold">
-                        {new Date(item.date).toLocaleDateString("en-MY", {
-                          month: "short",
-                          day: "numeric",
-                        })}
-                      </Text>
-                      <Text as="p" styleVariant="muted" className="text-sm">
-                        {new Date(item.date).getFullYear()}
-                      </Text>
+            <BlurFade key={index} inView delay={0.1 + index * 0.03}>
+              {item.hasDetails ? (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="flex items-start gap-4 md:gap-6 cursor-pointer hover:bg-muted/30 p-3 md:p-4 rounded-lg transition-colors group">
+                      {/* Date (left) - Mobile & Desktop */}
+                      <div className="min-w-[100px] md:min-w-[140px] text-right">
+                        <Text
+                          as="p"
+                          className="font-semibold text-sm md:text-base"
+                        >
+                          {new Date(item.date).toLocaleDateString("en-MY", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </Text>
+                        <Text
+                          as="p"
+                          styleVariant="muted"
+                          className="text-xs md:text-sm"
+                        >
+                          {new Date(item.date).getFullYear()}
+                        </Text>
+                        <Text
+                          as="p"
+                          styleVariant="muted"
+                          className="text-xs mt-1 hidden md:block"
+                        >
+                          {new Date(item.date).toLocaleDateString("en-MY", {
+                            weekday: "long",
+                          })}
+                        </Text>
+                      </div>
+
+                      {/* Timeline */}
+                      <div className="flex flex-col items-center">
+                        <div
+                          className={`w-3 md:w-4 h-3 md:h-4 rounded-full border-2 md:border-4 border-background shadow-lg ${
+                            item.type === "milestone"
+                              ? "bg-primary"
+                              : item.type === "workshop"
+                              ? "bg-purple-600"
+                              : item.type === "event"
+                              ? "bg-blue-600"
+                              : "bg-red-600"
+                          }`}
+                        ></div>
+                        {index < PROGRAM_TIMELINE.length - 1 && (
+                          <div className="w-0.5 h-12 md:h-16 lg:h-24 bg-border mt-2"></div>
+                        )}
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-1 text-left">
+                        <div className="flex flex-col gap-2 mb-2">
+                          <div className="flex items-center gap-2">
+                            <item.icon className="h-4 w-4 text-primary flex-shrink-0" />
+                            <Text
+                              as="h4"
+                              className="font-semibold text-sm md:text-base"
+                            >
+                              {item.event}
+                            </Text>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                item.type === "milestone"
+                                  ? "bg-primary/10 text-primary"
+                                  : item.type === "workshop"
+                                  ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300"
+                                  : item.type === "event"
+                                  ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
+                                  : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
+                              }`}
+                            >
+                              {item.type.charAt(0).toUpperCase() +
+                                item.type.slice(1)}
+                            </span>
+                            <InfoIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                          </div>
+                        </div>
+                        <Text
+                          as="p"
+                          styleVariant="muted"
+                          className="text-xs md:text-sm leading-relaxed"
+                        >
+                          {item.details}
+                        </Text>
+                        <Text
+                          as="p"
+                          className="text-xs text-primary mt-2 font-medium"
+                        >
+                          Click for details
+                        </Text>
+                      </div>
                     </div>
-                    {/* Timeline */}
-                    <div className="flex flex-col items-center">
-                      <div className="w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg"></div>
-                      {index < PROGRAM_TIMELINE.length - 1 && (
-                        <div className="w-0.5 h-24 bg-border mt-2"></div>
-                      )}
-                    </div>
-                    {/* Content */}
-                    <div className="flex-1 pb-8">
-                      <div className="flex items-center gap-2 mb-2">
-                        <item.icon className="h-4 w-4 text-primary" />
-                        <Text as="h4" className="font-semibold">
+                  </DialogTrigger>
+
+                  <DialogContent className="max-w-lg md:max-w-2xl max-h-[90vh]">
+                    <DialogHeader>
+                      <DialogTitle className="flex items-center gap-2">
+                        <item.icon className="h-5 w-5 text-primary" />
+                        {item.event}
+                      </DialogTitle>
+                    </DialogHeader>
+                    <ScrollArea className="max-h-[70vh] pr-4">
+                      <div className="space-y-4 mt-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          <div>
+                            <Text
+                              as="p"
+                              className="font-medium text-muted-foreground text-sm"
+                            >
+                              Date & Time:
+                            </Text>
+                            <Text as="p" className="text-sm">
+                              {new Date(item.date).toLocaleDateString("en-MY", {
+                                weekday: "long",
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              })}
+                            </Text>
+                            <Text as="p" className="text-sm font-medium">
+                              {item.extendedDetails?.time}
+                            </Text>
+                          </div>
+                          <div>
+                            <Text
+                              as="p"
+                              className="font-medium text-muted-foreground text-sm"
+                            >
+                              Location:
+                            </Text>
+                            <Text as="p" className="text-sm">
+                              {item.extendedDetails?.location}
+                            </Text>
+                          </div>
+                        </div>
+
+                        <div>
+                          <Text
+                            as="p"
+                            className="font-medium text-muted-foreground text-sm mb-2"
+                          >
+                            Description:
+                          </Text>
+                          <Text as="p" className="text-sm leading-relaxed">
+                            {item.extendedDetails?.description}
+                          </Text>
+                        </div>
+
+                        {/* Event-specific details for workshops and events */}
+                        {item.extendedDetails?.eventDetails && (
+                          <div className="space-y-3">
+                            {item.extendedDetails.eventDetails.agenda && (
+                              <div>
+                                <Text
+                                  as="p"
+                                  className="font-medium text-muted-foreground text-sm mb-2"
+                                >
+                                  Agenda:
+                                </Text>
+                                <ul className="text-sm space-y-1">
+                                  {item.extendedDetails.eventDetails.agenda.map(
+                                    (agendaItem, agendaIndex) => (
+                                      <li
+                                        key={agendaIndex}
+                                        className="flex items-start gap-2"
+                                      >
+                                        <CalendarIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                        <span>{agendaItem}</span>
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+
+                            {item.extendedDetails.eventDetails.speakers && (
+                              <div>
+                                <Text
+                                  as="p"
+                                  className="font-medium text-muted-foreground text-sm mb-2"
+                                >
+                                  Speakers:
+                                </Text>
+                                <ul className="text-sm space-y-1">
+                                  {item.extendedDetails.eventDetails.speakers.map(
+                                    (speaker, speakerIndex) => (
+                                      <li
+                                        key={speakerIndex}
+                                        className="flex items-start gap-2"
+                                      >
+                                        <UsersIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                        <span>{speaker}</span>
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+
+                            {item.extendedDetails.eventDetails.instructors && (
+                              <div>
+                                <Text
+                                  as="p"
+                                  className="font-medium text-muted-foreground text-sm mb-2"
+                                >
+                                  Instructors:
+                                </Text>
+                                <ul className="text-sm space-y-1">
+                                  {item.extendedDetails.eventDetails.instructors.map(
+                                    (instructor, instructorIndex) => (
+                                      <li
+                                        key={instructorIndex}
+                                        className="flex items-start gap-2"
+                                      >
+                                        <GraduationCapIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                        <span>{instructor}</span>
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+
+                            {item.extendedDetails.eventDetails.tools && (
+                              <div>
+                                <Text
+                                  as="p"
+                                  className="font-medium text-muted-foreground text-sm mb-2"
+                                >
+                                  Tools & Technologies:
+                                </Text>
+                                <div className="flex flex-wrap gap-2">
+                                  {item.extendedDetails.eventDetails.tools.map(
+                                    (tool, toolIndex) => (
+                                      <span
+                                        key={toolIndex}
+                                        className="px-2 py-1 bg-secondary rounded-md text-xs"
+                                      >
+                                        {tool}
+                                      </span>
+                                    )
+                                  )}
+                                </div>
+                              </div>
+                            )}
+
+                            {item.extendedDetails.eventDetails
+                              .materialsProvided && (
+                              <div>
+                                <Text
+                                  as="p"
+                                  className="font-medium text-muted-foreground text-sm mb-2"
+                                >
+                                  Materials Provided:
+                                </Text>
+                                <ul className="text-sm space-y-1">
+                                  {item.extendedDetails.eventDetails.materialsProvided.map(
+                                    (material, materialIndex) => (
+                                      <li
+                                        key={materialIndex}
+                                        className="flex items-start gap-2"
+                                      >
+                                        <CheckIcon className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
+                                        <span>{material}</span>
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+
+                            {/* Special indicators */}
+                            <div className="flex flex-wrap gap-2 pt-2">
+                              {item.extendedDetails.eventDetails
+                                .certificateAwarded && (
+                                <span className="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 rounded-full text-xs font-medium flex items-center gap-1">
+                                  <AwardIcon className="h-3 w-3" />
+                                  Certificate Awarded
+                                </span>
+                              )}
+                              {item.extendedDetails.eventDetails
+                                .recordingAvailable && (
+                                <span className="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-xs font-medium">
+                                  Recording Available
+                                </span>
+                              )}
+                              {item.extendedDetails.eventDetails
+                                .liveStreaming && (
+                                <span className="px-3 py-1 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 rounded-full text-xs font-medium">
+                                  Live Streaming
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
+                        <div>
+                          <Text
+                            as="p"
+                            className="font-medium text-muted-foreground text-sm mb-2"
+                          >
+                            Requirements:
+                          </Text>
+                          <ul className="text-sm space-y-2">
+                            {item.extendedDetails?.requirements.map(
+                              (req, reqIndex) => (
+                                <li
+                                  key={reqIndex}
+                                  className="flex items-start gap-2"
+                                >
+                                  <CheckIcon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                                  <span>{req}</span>
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        </div>
+                      </div>
+                    </ScrollArea>
+                  </DialogContent>
+                </Dialog>
+              ) : (
+                // Simple timeline item without detailed modal
+                <div className="flex items-start gap-4 md:gap-6 p-3 md:p-4 rounded-lg bg-muted/20">
+                  {/* Date (left) - Mobile & Desktop */}
+                  <div className="min-w-[100px] md:min-w-[140px] text-right">
+                    <Text as="p" className="font-semibold text-sm md:text-base">
+                      {new Date(item.date).toLocaleDateString("en-MY", {
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </Text>
+                    <Text
+                      as="p"
+                      styleVariant="muted"
+                      className="text-xs md:text-sm"
+                    >
+                      {new Date(item.date).getFullYear()}
+                    </Text>
+                    <Text
+                      as="p"
+                      styleVariant="muted"
+                      className="text-xs mt-1 hidden md:block"
+                    >
+                      {new Date(item.date).toLocaleDateString("en-MY", {
+                        weekday: "long",
+                      })}
+                    </Text>
+                  </div>
+
+                  {/* Timeline */}
+                  <div className="flex flex-col items-center">
+                    <div
+                      className={`w-3 md:w-4 h-3 md:h-4 rounded-full border-2 md:border-4 border-background shadow-lg ${
+                        item.type === "milestone"
+                          ? "bg-primary"
+                          : item.type === "workshop"
+                          ? "bg-purple-600"
+                          : item.type === "event"
+                          ? "bg-blue-600"
+                          : "bg-red-600"
+                      }`}
+                    ></div>
+                    {index < PROGRAM_TIMELINE.length - 1 && (
+                      <div className="w-0.5 h-12 md:h-16 lg:h-24 bg-border mt-2"></div>
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 text-left">
+                    <div className="flex flex-col gap-2 mb-2">
+                      <div className="flex items-center gap-2">
+                        <item.icon className="h-4 w-4 text-primary flex-shrink-0" />
+                        <Text
+                          as="h4"
+                          className="font-semibold text-sm md:text-base"
+                        >
                           {item.event}
                         </Text>
-                        <InfoIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors ml-auto" />
                       </div>
-                      <Text as="p" styleVariant="muted" className="text-sm">
-                        {item.details}
-                      </Text>
-                      <Text
-                        as="p"
-                        className="text-xs text-primary mt-2 font-medium"
+                      <span
+                        className={`px-2 py-1 rounded-full text-xs font-medium w-fit ${
+                          item.type === "milestone"
+                            ? "bg-primary/10 text-primary"
+                            : item.type === "workshop"
+                            ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300"
+                            : item.type === "event"
+                            ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
+                            : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
+                        }`}
                       >
-                        Click for details
-                      </Text>
+                        {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+                      </span>
                     </div>
+                    <Text
+                      as="p"
+                      styleVariant="muted"
+                      className="text-xs md:text-sm leading-relaxed"
+                    >
+                      {item.details}
+                    </Text>
                   </div>
-                </DialogTrigger>
-                <DialogContent className="max-w-lg">
-                  <DialogHeader>
-                    <DialogTitle className="flex items-center gap-2">
-                      <item.icon className="h-5 w-5 text-primary" />
-                      {item.event}
-                    </DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4 mt-4">
-                    <div className="grid grid-cols-1 gap-3">
-                      <div>
-                        <Text
-                          as="p"
-                          className="font-medium text-muted-foreground text-sm"
-                        >
-                          Time:
-                        </Text>
-                        <Text as="p" className="text-sm">
-                          {item.extendedDetails.time}
-                        </Text>
-                      </div>
-                      <div>
-                        <Text
-                          as="p"
-                          className="font-medium text-muted-foreground text-sm"
-                        >
-                          Location:
-                        </Text>
-                        <Text as="p" className="text-sm">
-                          {item.extendedDetails.location}
-                        </Text>
-                      </div>
-                    </div>
-
-                    <div>
-                      <Text
-                        as="p"
-                        className="font-medium text-muted-foreground text-sm mb-2"
-                      >
-                        Description:
-                      </Text>
-                      <Text as="p" className="text-sm leading-relaxed">
-                        {item.extendedDetails.description}
-                      </Text>
-                    </div>
-
-                    <div>
-                      <Text
-                        as="p"
-                        className="font-medium text-muted-foreground text-sm mb-2"
-                      >
-                        Requirements:
-                      </Text>
-                      <ul className="text-sm space-y-2">
-                        {item.extendedDetails.requirements.map(
-                          (req, reqIndex) => (
-                            <li
-                              key={reqIndex}
-                              className="flex items-start gap-2"
-                            >
-                              <CheckIcon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                              <span>{req}</span>
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
+                </div>
+              )}
             </BlurFade>
           ))}
         </div>
@@ -661,28 +960,30 @@ const EventDetailsPage = () => {
                       </Text>
                     </CardContent>
                   </Card>
-                  <DialogContent className="max-w-2xl">
+                  <DialogContent className="max-w-2xl max-h-[90vh]">
                     <DialogHeader>
                       <DialogTitle>Judge #{index + 1}</DialogTitle>
                     </DialogHeader>
-                    <div className="flex flex-col sm:flex-row gap-5">
-                      <div className="relative flex-1 aspect-video sm:aspect-square border rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
-                        <Text as="p" styleVariant="muted">
-                          Professional Photo
-                        </Text>
+                    <ScrollArea className="max-h-[70vh] pr-4">
+                      <div className="flex flex-col sm:flex-row gap-5">
+                        <div className="relative flex-1 aspect-video sm:aspect-square border rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
+                          <Text as="p" styleVariant="muted">
+                            Professional Photo
+                          </Text>
+                        </div>
+                        <div className="flex-1">
+                          <Text as="h3" className="text-lg font-semibold mb-2">
+                            {judge.name}
+                          </Text>
+                          <Text as="p" styleVariant="muted" className="mb-4">
+                            {judge.title}
+                          </Text>
+                          <Text as="p" className="text-justify leading-relaxed">
+                            {judge.bio}
+                          </Text>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <Text as="h3" className="text-lg font-semibold mb-2">
-                          {judge.name}
-                        </Text>
-                        <Text as="p" styleVariant="muted" className="mb-4">
-                          {judge.title}
-                        </Text>
-                        <Text as="p" className="text-justify leading-relaxed">
-                          {judge.bio}
-                        </Text>
-                      </div>
-                    </div>
+                    </ScrollArea>
                   </DialogContent>
                 </Dialog>
               </BlurFade>

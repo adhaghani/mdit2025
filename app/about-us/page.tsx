@@ -12,9 +12,8 @@ import {
   Award,
   Target,
   Lightbulb,
-  Globe,
   Star,
-  Quote,
+
 } from "lucide-react";
 
 const AboutUsPage = () => {
@@ -174,36 +173,6 @@ const AboutUsPage = () => {
   const [activeTab, setActiveTab] = React.useState("High Committee");
   const bureauTabs = Object.keys(teamByBureau);
 
-  // Advisors and partners data
-  const advisorsPartners = [
-    {
-      name: "Department of Statistics Malaysia (DOSM)",
-      type: "Government Partner",
-      logo: "/dosm.svg",
-      description:
-        "Official statistical agency providing datasets and expertise for real-world data challenges.",
-      quote:
-        "MDIT bridges the gap between academic learning and practical data application in government sectors.",
-    },
-    {
-      name: "Universiti Teknologi MARA (UiTM)",
-      type: "Academic Partner",
-      logo: "/uitm.svg",
-      description:
-        "Leading public university providing academic oversight and institutional support.",
-      quote:
-        "Supporting the next generation of data scientists through innovative competition platforms.",
-    },
-    {
-      name: "Faculty of Computer & Mathematical Sciences",
-      type: "Academic Unit",
-      logo: "/uitm.svg", // You might want a specific faculty logo
-      description:
-        "Providing academic guidance and ensuring educational quality standards.",
-      quote:
-        "Fostering excellence in computational thinking and mathematical reasoning among students.",
-    },
-  ];
 
   // Past winners data (you can expand this)
   const pastWinners = [
@@ -224,30 +193,6 @@ const AboutUsPage = () => {
       team: "Team 2",
       university: "Universiti Teknologi MARA",
       project: "Healthcare Resource Prediction",
-    },
-  ];
-
-  // inStats achievements
-  const inStatsAchievements = [
-    {
-      metric: "500+",
-      label: "Active Members",
-      description: "Statistics students in UiTM",
-    },
-    {
-      metric: "25+",
-      label: "Universities Represented",
-      description: "From leading public and private institutions",
-    },
-    {
-      metric: "50+",
-      label: "Industry Partnerships",
-      description: "With government agencies and private sectors",
-    },
-    {
-      metric: "100+",
-      label: "Successful Graduates",
-      description: "Now working in data science and analytics roles",
     },
   ];
 

@@ -533,7 +533,7 @@ const Page = memo(() => {
               >
                 Join 100+ talented students from across Malaysia in this
                 prestigious national datathon. Work with real government
-                datasets and compete for RM11,600 in prizes.
+                datasets and compete for RM11,000 in prizes.
               </Text>
             </BlurFade>
 
@@ -546,7 +546,7 @@ const Page = memo(() => {
                     : "Registration Opens In:"}
                 </Text>
                 <div className="flex items-center justify-center gap-4 md:gap-6">
-                  {countdownValues.map((item, index) => (
+                  {countdownValues.map((item) => (
                     <CountdownCard
                       key={item.label}
                       value={item.value}
@@ -1054,7 +1054,7 @@ const Page = memo(() => {
             </div>
             <div className="bg-gradient-to-r from-primary/5 via-purple-500/5 to-blue-500/5 rounded-2xl p-12 border border-primary/10 overflow-visible">
               {/* Desktop View */}
-              <div className="hidden md:flex flex-wrap items-center justify-center gap-12 md:gap-16">
+              <div className="hidden md:flex flex-wrap items-center justify-center gap-6 md:gap-12">
                 {ORGANIZERS.map((organizer, index) => (
                   <BlurFade
                     key={organizer.name}
@@ -1118,7 +1118,7 @@ const Page = memo(() => {
                     {ORGANIZERS.map((organizer, index) => (
                       <CarouselItem
                         key={organizer.name}
-                        className="pl-2 md:pl-4 basis-1/2"
+                        className="pl-2 md:pl-4 "
                       >
                         <BlurFade inView delay={0.3 + index * 0.1}>
                           <div className="group relative">

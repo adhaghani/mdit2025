@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { BlurFade } from "./magicui/blur-fade";
 import { FOOTER_QUICK_LINK } from "./constant";
 import {
-  MapPin,
   Phone,
   Mail,
   Calendar,
@@ -51,19 +50,6 @@ const Footer = () => {
     },
   ];
 
-  const partners = [
-    {
-      name: "DOSM",
-      logo: "/dosm.svg",
-      alt: "Department of Statistics Malaysia",
-    },
-    { name: "UiTM", logo: "/uitm.svg", alt: "Universiti Teknologi MARA" },
-    {
-      name: "INSTATS",
-      logo: "/instats.svg",
-      alt: "Malaysian Statistical Association",
-    },
-  ];
 
   const keyStats = [
     { icon: Users, label: "Expected Teams", value: "80+" },
@@ -81,7 +67,7 @@ const Footer = () => {
         <div className="mb-16">
           <BlurFade inView delay={0.1}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {keyStats.map((stat, index) => (
+              {keyStats.map((stat) => (
                 <div
                   key={stat.label}
                   className="bg-white/50 dark:bg-black/30 backdrop-blur-lg border border-border/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105"
@@ -192,7 +178,7 @@ const Footer = () => {
                     Follow Us
                   </Text>
                   <div className="flex space-x-3">
-                    {socialLinks.map((social, index) => (
+                    {socialLinks.map((social) => (
                       <Link
                         key={social.name}
                         href={social.href}

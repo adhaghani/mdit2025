@@ -116,6 +116,8 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 7, 15),
     event: "Registration Opens",
     details: "Registration for MDIT 2025 opens.",
+    type: "milestone", // milestone, workshop, event, deadline
+    hasDetails: true,
     extendedDetails: {
       time: "12:00 AM GMT+8",
       location: "Online Platform",
@@ -133,6 +135,8 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 7, 30),
     event: "Registration Closes",
     details: "Registration for MDIT 2025 closes.",
+    type: "deadline",
+    hasDetails: true,
     extendedDetails: {
       time: "11:59 PM GMT+8",
       location: "Online Platform",
@@ -151,34 +155,76 @@ export const PROGRAM_TIMELINE = [
     event: "Opening Ceremony & Competition Briefing",
     details:
       "Covers competition briefing and pitching essentials to guide your team toward an effective project presentation.",
+    type: "event",
+    hasDetails: true,
     extendedDetails: {
-      time: "To be Announced",
-      location: "Online Platform",
+      time: "2:00 PM - 4:00 PM GMT+8",
+      location: "Online Platform (Microsoft Teams)",
       description:
-        "Official launch of MDIT 2025 featuring keynote speeches, competition briefing.It will covers competition briefing and pitching essentials to guide your team toward an effective project presentation.",
+        "Official launch of MDIT 2025 featuring keynote speeches, competition briefing. It will covers competition briefing and pitching essentials to guide your team toward an effective project presentation.",
       requirements: [
         "Team attendance (minimum 1 representative)",
         "Stable internet connection for online participants",
         "Notebook for taking notes",
       ],
+      eventDetails: {
+        speakers: ["Prof. Dr. Ahmad Rahman - UiTM", "Dato' Sarah Lim - DOSM"],
+        agenda: [
+          "2:00 PM - Welcome & Opening Remarks",
+          "2:30 PM - Competition Rules & Guidelines",
+          "3:00 PM - Pitching Workshop",
+          "3:45 PM - Q&A Session",
+          "4:00 PM - Closing",
+        ],
+        meetingLink: "https://teams.microsoft.com/meet/...",
+        recordingAvailable: true,
+      },
     },
   },
   {
-    icon: SparklesIcon,
+    icon: BrainIcon,
     date: new Date(2025, 8, 7),
-    event: "Software Workshops",
+    event: "Data Analytics Workshop",
     details:
       "Learn to enhance your project using statistical and data visualization tools.",
+    type: "workshop",
+    hasDetails: true,
     extendedDetails: {
-      time: "TBA",
-      location: "Online Platform",
+      time: "10:00 AM - 4:00 PM GMT+8",
+      location: "Online Platform (Zoom)",
       description:
-        "Online Software Workshops, team will be guided on using various statistical and data visualization tools effectively. This will help teams enhance their projects with advanced analytical techniques and visualization methods.",
+        "Comprehensive workshop covering data analytics, statistical methods, and visualization techniques. Teams will be guided through hands-on exercises using various tools and frameworks.",
       requirements: [
-        "Team attendance (minimum 1 representative)",
-        "Stable internet connection for online participants",
-        "Notebook for taking notes",
+        "Laptop with Python/R installed",
+        "Stable internet connection",
+        "Workshop materials (provided)",
       ],
+      eventDetails: {
+        instructors: [
+          "Dr. Nurul Ain - Data Scientist",
+          "Ahmad Hassan - Analytics Expert",
+        ],
+        agenda: [
+          "10:00 AM - Introduction to Data Analytics",
+          "11:00 AM - Statistical Analysis Fundamentals",
+          "12:00 PM - Lunch Break",
+          "1:00 PM - Data Visualization Techniques",
+          "2:30 PM - Hands-on Practice Session",
+          "3:30 PM - Q&A and Troubleshooting",
+          "4:00 PM - Wrap-up",
+        ],
+        tools: [
+          "Python (Pandas, NumPy, Matplotlib)",
+          "R (ggplot2, dplyr)",
+          "Tableau Public",
+        ],
+        materialsProvided: [
+          "Workshop slides",
+          "Sample datasets",
+          "Code templates",
+        ],
+        certificateAwarded: true,
+      },
     },
   },
   {
@@ -187,6 +233,8 @@ export const PROGRAM_TIMELINE = [
     event: "Preliminary Round Begins",
     details:
       "Submission window is now open for your team to upload their report, dashboard, and video.",
+    type: "milestone",
+    hasDetails: true,
     extendedDetails: {
       time: "9:00 AM GMT+8",
       location: "Online Platform",
@@ -205,6 +253,8 @@ export const PROGRAM_TIMELINE = [
     event: "Submission Period Ended",
     details:
       "All your submitted materials will now proceed to the evaluation phase.",
+    type: "deadline",
+    hasDetails: true,
     extendedDetails: {
       time: "11:59 PM GMT+8",
       location: "Online",
@@ -222,6 +272,8 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 9, 16),
     event: "Evaluation Period Begins",
     details: "Shortlisting of groups begins.",
+    type: "milestone",
+    hasDetails: true,
     extendedDetails: {
       time: "9:00 AM GMT+8",
       location: "Judge Panel Review",
@@ -239,6 +291,8 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 9, 16),
     event: "Top 10 Finalists Announced",
     details: "Shortlisting of groups is completed.",
+    type: "milestone",
+    hasDetails: true,
     extendedDetails: {
       time: "6:00 PM GMT+8",
       location: "Online Announcement",
@@ -254,11 +308,14 @@ export const PROGRAM_TIMELINE = [
   {
     icon: PresentationIcon,
     date: new Date(2025, 9, 17),
-    event: "Final Presentations",
-    details: "Finalists present their pitches live to expert judges.",
+    event: "Final Pitching",
+    details:
+      "Top 10 finalist will present their pitches live to expert judges.",
+    type: "event",
+    hasDetails: true,
     extendedDetails: {
       time: "9:00 AM - 5:00 PM GMT+8",
-      location: "To be Announced",
+      location: "UiTM Shah Alam, Selangor",
       description:
         "Finalist teams deliver 15-minute presentations followed by 10-minute Q&A sessions with industry experts, government officials, and academic leaders.",
       requirements: [
@@ -267,6 +324,25 @@ export const PROGRAM_TIMELINE = [
         "Demo-ready solutions",
         "Professional attire",
       ],
+      eventDetails: {
+        venue: "Auditorium Dewan Latihan, UiTM Shah Alam",
+        judges: [
+          "Industry leaders",
+          "Government officials",
+          "Academic experts",
+        ],
+        agenda: [
+          "9:00 AM - Registration & Setup",
+          "9:30 AM - Opening Remarks",
+          "10:00 AM - Team Presentations (Round 1)",
+          "12:00 PM - Lunch Break",
+          "1:00 PM - Team Presentations (Round 2)",
+          "4:00 PM - Deliberation",
+          "5:00 PM - Preliminary Results",
+        ],
+        liveStreaming: true,
+        presentationFormat: "15 min presentation + 10 min Q&A",
+      },
     },
   },
   {
@@ -274,9 +350,11 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 9, 18),
     event: "Awards Ceremony & Closing",
     details: "Winners are announced and the event concludes.",
+    type: "event",
+    hasDetails: true,
     extendedDetails: {
       time: "2:00 PM - 6:00 PM GMT+8",
-      location: "To be Announced",
+      location: "UiTM Shah Alam, Selangor",
       description:
         "Grand finale featuring winner announcements, prize distribution, networking sessions, and celebration dinner. Recognition of all participants and appreciation for sponsors and partners.",
       requirements: [
@@ -284,6 +362,21 @@ export const PROGRAM_TIMELINE = [
         "Networking opportunities",
         "Group photos and media sessions",
       ],
+      eventDetails: {
+        venue: "Dewan Resital, UiTM Shah Alam",
+        agenda: [
+          "2:00 PM - Registration & Welcome",
+          "2:30 PM - Opening Ceremony",
+          "3:00 PM - Winner Announcements",
+          "3:30 PM - Prize Distribution",
+          "4:00 PM - Networking Session",
+          "5:00 PM - Group Photos",
+          "5:30 PM - Closing Remarks",
+        ],
+        keynoteSpeker: "Dato' Ahmad Rahman - Chief Statistician Malaysia",
+        dinnerIncluded: true,
+        liveStreaming: true,
+      },
     },
   },
 ];
@@ -412,7 +505,7 @@ export const COMPETITION_HIGHLIGHTS = [
     icon: TrophyIcon,
     title: "Massive Prize Pool",
     description:
-      "RM11,600 in total prizes with RM3,500 for first place plus special awards",
+      "RM11,000 in total prizes with RM3,500 for first place plus special awards",
     color: " text-yellow-600 dark:text-yellow-400",
     bgColor: " bg-yellow-50 dark:bg-yellow-900/30",
   },
@@ -486,26 +579,26 @@ interface MediaPartner {
 }
 
 export const EVENT_JUDGES: Judge[] = [
-  // {
-  //   name: "AHMAD ADHA BIN MOHD GHANI",
-  //   title: "PwC Trust Ambassador, PwC Malaysia",
-  //   bio: "Ahmad Adha is a seasoned professional with extensive experience in data analytics and business intelligence, currently serving as a PwC Trust Ambassador with over 10 years of experience in transforming data into actionable insights.",
-  // },
-  // {
-  //   name: "DR. SARAH LIAM",
-  //   title: "Senior Data Scientist, Department of Statistics Malaysia",
-  //   bio: "Dr. Sarah leads the data innovation initiatives at DOSM with a PhD in Applied Statistics and 15 years of experience in government data systems and policy-making through data-driven insights.",
-  // },
-  // {
-  //   name: "PROF. AHMAD HASSAN",
-  //   title: "Dean, Faculty of Computer Science and Mathematics, UiTM",
-  //   bio: "Professor Ahmad Hassan is an expert in machine learning and data mining with over 20 years of academic experience and numerous publications in top-tier journals.",
-  // },
-  // {
-  //   name: "MS. NURUL AISYAH",
-  //   title: "Head of Analytics, Grab Malaysia",
-  //   bio: "Nurul leads data science teams at Grab Malaysia, focusing on predictive analytics and machine learning solutions for Southeast Asia super app ecosystem.",
-  // },
+  {
+    name: "AHMAD ADHA BIN MOHD GHANI",
+    title: "PwC Trust Ambassador, PwC Malaysia",
+    bio: "Ahmad Adha is a seasoned professional with extensive experience in data analytics and business intelligence, currently serving as a PwC Trust Ambassador with over 10 years of experience in transforming data into actionable insights.",
+  },
+  {
+    name: "DR. SARAH LIAM",
+    title: "Senior Data Scientist, Department of Statistics Malaysia",
+    bio: "Dr. Sarah leads the data innovation initiatives at DOSM with a PhD in Applied Statistics and 15 years of experience in government data systems and policy-making through data-driven insights.",
+  },
+  {
+    name: "PROF. AHMAD HASSAN",
+    title: "Dean, Faculty of Computer Science and Mathematics, UiTM",
+    bio: "Professor Ahmad Hassan is an expert in machine learning and data mining with over 20 years of academic experience and numerous publications in top-tier journals.",
+  },
+  {
+    name: "MS. NURUL AISYAH",
+    title: "Head of Analytics, Grab Malaysia",
+    bio: "Nurul leads data science teams at Grab Malaysia, focusing on predictive analytics and machine learning solutions for Southeast Asia super app ecosystem.",
+  },
 ];
 
 // Organizers data
@@ -513,6 +606,7 @@ export const ORGANIZERS: Organizer[] = [
   {
     name: "Universiti Teknologi MARA (UiTM)",
     logo: "/uitm.svg",
+    logoLight: "/uitm_light.svg", // For dark mode
     logoAlt: "UiTM Logo",
     width: 140,
     height: 120,
@@ -521,6 +615,7 @@ export const ORGANIZERS: Organizer[] = [
   {
     name: "Jabatan Perangkaan Malaysia",
     logo: "/ekonomi.png",
+    logoLight: "/ekonomi_Light.png", // For dark mode
     logoAlt: "Logo Jabatan Perangkaan Malaysia",
     width: 140,
     height: 120,
@@ -546,6 +641,7 @@ export const ORGANIZERS: Organizer[] = [
   {
     name: "nama_institusi",
     logo: "/md.svg",
+    logoLight: "/md_light.svg", // For dark mode
     logoAlt: "logo nama_institusi",
     width: 120,
     height: 120,

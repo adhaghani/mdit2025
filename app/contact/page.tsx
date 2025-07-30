@@ -30,12 +30,6 @@ interface SocialPlatform {
   linkClass: string;
 }
 
-interface WhatsAppContact {
-  name: string;
-  role: string;
-  number: string;
-  description: string;
-}
 
 // Memoized ContactInfo component
 const ContactInfoCard = React.memo(
