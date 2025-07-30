@@ -50,7 +50,6 @@ const Footer = () => {
     },
   ];
 
-
   const keyStats = [
     { icon: Users, label: "Expected Teams", value: "80+" },
     { icon: Trophy, label: "Prize Pool", value: "RM 11,000.00" },
@@ -58,20 +57,35 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative mt-20 pt-10 pb-10">
+    <footer className="relative mt-20 pt-10 pb-10 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 pointer-events-none" />
+
+      {/* Pattern Squares Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Multiple pattern instances for better coverage */}
+        {/* <Image
+          src={"/assets/bg-gradients/7.svg"}
+          alt="Background Gradient"
+          width={300}
+          height={300}
+          quality={50}
+          className="w-1/2 h-full object-cover "
+        /> */}
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 xl:px-0">
         {/* Key Stats Section */}
         <div className="mb-16">
-          <BlurFade inView delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {keyStats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="bg-white/50 dark:bg-black/30 backdrop-blur-lg border border-border/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105"
-                >
+          <div className="grid  grid-cols-1 md:grid-cols-3 gap-6">
+            {keyStats.map((stat) => (
+              <BlurFade
+                inView
+                delay={0.1}
+                key={stat.label}
+                className="bg-white/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 text-center"
+              >
+                <div>
                   <stat.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
                   <Text as="h3" className="text-2xl font-bold mb-1">
                     {stat.value}
@@ -80,9 +94,9 @@ const Footer = () => {
                     {stat.label}
                   </Text>
                 </div>
-              ))}
-            </div>
-          </BlurFade>
+              </BlurFade>
+            ))}
+          </div>
         </div>
 
         {/* Main Footer Content */}

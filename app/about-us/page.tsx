@@ -7,14 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Users,
-  Award,
-  Target,
-  Lightbulb,
-  Star,
-
-} from "lucide-react";
+import { Users, Award, Target, Lightbulb, Star } from "lucide-react";
 
 const AboutUsPage = () => {
   // Team members data organized by bureau
@@ -173,7 +166,6 @@ const AboutUsPage = () => {
   const [activeTab, setActiveTab] = React.useState("High Committee");
   const bureauTabs = Object.keys(teamByBureau);
 
-
   // Past winners data (you can expand this)
   const pastWinners = [
     {
@@ -198,6 +190,16 @@ const AboutUsPage = () => {
 
   return (
     <>
+      <div className="absolute h-[1200px]  -left-128 rotate-90 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/11.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
+
       {/* Header Section */}
       <div className="text-center space-y-4 py-20 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -302,6 +304,15 @@ const AboutUsPage = () => {
             </div>
           </BlurFade>
         </div>
+      </div>
+      <div className="absolute h-[800px]  -right-0 rotate-90 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/10.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
       </div>
 
       {/* Meet the Team Section */}
@@ -440,6 +451,16 @@ const AboutUsPage = () => {
             </BlurFade>
           ))}
         </div>
+      </div>
+
+      <div className="absolute h-[800px]  -left-64 rotate-180 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/13.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
       </div>
 
       {/* About inStats Association Section */}

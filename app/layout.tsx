@@ -156,7 +156,9 @@ export default function RootLayout({
             />
           </div>
           <Header />
-          <main className="mx-auto px-4 py-2 mt-18">{children}</main>
+          <main className="mx-auto px-4 py-2 mt-18 !overflow-hidden">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

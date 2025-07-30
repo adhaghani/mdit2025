@@ -276,6 +276,16 @@ const PastMDITPage = () => {
         </BlurFade>
       </div>
 
+      <div className="absolute h-[1200px]  -left-64 rotate-90 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/8.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
+
       {/* Year Selection */}
       <div className="my-12">
         <BlurFade inView delay={0.1}>
@@ -296,8 +306,8 @@ const PastMDITPage = () => {
 
       {/* Edition Header */}
       <div className="my-16  max-w-7xl mx-auto">
-        <BlurFade inView delay={0.1}>
-          <Card className="bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
+        <BlurFade inView delay={0.1} className="backdrop-blur-lg">
+          <Card className="bg-card/50">
             <CardContent className="p-8">
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
                 {/* Logo Section */}
@@ -311,7 +321,7 @@ const PastMDITPage = () => {
                       height={256}
                     />
                   </div>
-                  <Text as="p" className="text-sm text-muted-foreground">
+                  <Text as="p" className="text-sm ">
                     Official Logo
                   </Text>
                 </div>
@@ -543,6 +553,16 @@ const PastMDITPage = () => {
         </div>
       </div>
 
+      <div className="absolute h-[1200px]  -right-0 rotate-90 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/9.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
+
       {/* Photo Gallery Section */}
       <div className="my-16  max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -633,44 +653,6 @@ const PastMDITPage = () => {
             </div>
           </>
         )}
-      </div>
-
-      {/* Legacy Impact */}
-      <div className="my-16  max-w-7xl mx-auto">
-        <BlurFade inView delay={0.1}>
-          <Card className="bg-gradient-to-r from-primary/5 to-purple-500/5 border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-center">
-                <Trophy className="h-6 w-6 text-primary mx-auto mb-2" />
-                MDIT {currentEdition.year} Legacy Impact
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <Text
-                as="p"
-                styleVariant="muted"
-                className="mb-6 max-w-2xl mx-auto leading-relaxed"
-              >
-                MDIT {currentEdition.year} was more than just a competition—it
-                was a catalyst for innovation, collaboration, and real-world
-                impact. The solutions developed continue to benefit Malaysian
-                society and showcase the power of data science in solving
-                national challenges.
-              </Text>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="outline" asChild>
-                  <Link href="/about-us">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Learn More About MDIT
-                  </Link>
-                </Button>
-                <Button asChild>
-                  <Link href="/event-details">Join MDIT 2025</Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </BlurFade>
       </div>
 
       {/* Navigation */}

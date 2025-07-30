@@ -30,7 +30,6 @@ interface SocialPlatform {
   linkClass: string;
 }
 
-
 // Memoized ContactInfo component
 const ContactInfoCard = React.memo(
   ({ info, index }: { info: ContactInfo; index: number }) => (
@@ -227,6 +226,15 @@ const ContactPage = () => {
 
   return (
     <>
+      <div className="absolute h-[900px]  -left-128 rotate-0 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/9.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
       {/* Header Section */}
       <div className="text-center space-y-4 py-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -276,6 +284,16 @@ const ContactPage = () => {
             />
           ))}
         </div>
+      </div>
+
+      <div className="absolute h-[1200px]  -right-0 rotate-90 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/9.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
       </div>
 
       {/* Contact Information Cards */}

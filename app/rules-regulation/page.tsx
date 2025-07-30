@@ -3,6 +3,7 @@ import { Text } from "@/components/ui/text";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Users,
@@ -165,6 +166,16 @@ const RulesRegulationPage = () => {
         </BlurFade>
       </div>
 
+      <div className="absolute h-[700px]  -right-0 rotate-0 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/12.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
+
       {/* Rules Sections */}
       <div className="my-20 grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
         {sections.map((section, index) => (
@@ -240,9 +251,17 @@ const RulesRegulationPage = () => {
           </BlurFade>
         ))}
       </div>
-
+      <div className="absolute h-[900px]  -left-128 rotate-0 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/9.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
       {/* Timeline Reminder */}
-      <BlurFade inView delay={0.5}>
+      <BlurFade inView delay={0.5} className="">
         <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20 max-w-7xl mx-auto">
           <CardHeader>
             <CardTitle className="text-center text-primary">

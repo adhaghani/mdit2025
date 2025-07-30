@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Text } from "@/components/ui/text";
 import { PROGRAM_TIMELINE } from "@/components/constant";
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
@@ -443,6 +444,16 @@ const EventDetailsPage = () => {
         </div>
       </div>
 
+      <div className="absolute h-[800px]  -left-0 rotate-90 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/10.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
+
       {/* Detailed Requirements */}
       <div className="my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -488,11 +499,7 @@ const EventDetailsPage = () => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
+          <Text as="p" className="text-center mb-12 max-w-2xl mx-auto">
             Stay informed about all important dates and milestones throughout
             the competition period. Click on events with details to view more
             information.
@@ -913,6 +920,16 @@ const EventDetailsPage = () => {
             </BlurFade>
           ))}
         </div>
+      </div>
+
+      <div className="absolute h-[800px]  -right-0 rotate-180 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/13.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
       </div>
 
       {/* Judges Section */}

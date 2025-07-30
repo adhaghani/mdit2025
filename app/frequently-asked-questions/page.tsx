@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/animate-ui/radix/accordion";
+import Image from "next/image";
 import { FAQ } from "@/components/constant";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -91,6 +92,16 @@ const FrequentlyAskedQuestionsPage = () => {
 
   return (
     <>
+      <div className="absolute h-[1200px]  -left-128 rotate-0 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/9.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
+
       {/* Header Section */}
       <div className="text-center space-y-4 py-20 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -172,16 +183,13 @@ const FrequentlyAskedQuestionsPage = () => {
                   value={`item-${index}`}
                   className="max-w-4xl mx-auto"
                 >
-                  <AccordionTrigger className="text-left hover:text-primary transition-colors">
+                  <AccordionTrigger className="text-left">
                     <Text as="h3" className="text-lg font-semibold pr-4">
                       {faq.question}
                     </Text>
                   </AccordionTrigger>
                   <AccordionContent className="pt-2">
-                    <Text
-                      as="p"
-                      className="text-muted-foreground leading-relaxed"
-                    >
+                    <Text as="p" className=" leading-relaxed">
                       {faq.answer}
                     </Text>
                   </AccordionContent>
@@ -208,6 +216,16 @@ const FrequentlyAskedQuestionsPage = () => {
             </Card>
           </BlurFade>
         )}
+      </div>
+
+      <div className="absolute h-[800px]  -right-0 rotate-0 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/9.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
       </div>
 
       {/* Quick Actions */}

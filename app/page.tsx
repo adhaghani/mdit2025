@@ -546,7 +546,7 @@ const Page = memo(() => {
                     : "Registration Opens In:"}
                 </Text>
                 <div className="flex items-center justify-center gap-4 md:gap-6">
-                  {countdownValues.map((item) => (
+                  {countdownValues.map((item, index) => (
                     <CountdownCard
                       key={item.label}
                       value={item.value}
@@ -590,6 +590,16 @@ const Page = memo(() => {
             </BlurFade>
           </div>
         </div>
+      </div>
+
+      <div className="absolute h-[600px]  -right-0 rotate-180 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/13.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
       </div>
 
       {/* About MDIT Section */}
@@ -847,6 +857,16 @@ const Page = memo(() => {
         </BlurFade>
       </div>
 
+      <div className="absolute h-[900px]  -left-128 lg:-left-64  !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/8.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
+
       {/* Competition Phases */}
       <div className="my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -874,7 +894,7 @@ const Page = memo(() => {
       </div>
 
       {/* Current Statistics Section */}
-      <div className="py-20 bg-gradient-to-r from-slate-100/50 to-gray-100/50 dark:from-slate-800/30 dark:to-gray-800/30 rounded-lg my-20 relative overflow-hidden">
+      <div className="py-20 rounded-lg my-20 relative overflow-hidden">
         <div className="relative z-10">
           <BlurFade inView delay={0.1}>
             <Text as="h2" className="text-center font-mono mb-6">
@@ -1017,6 +1037,16 @@ const Page = memo(() => {
         </div>
       </div>
 
+      <div className="absolute h-[600px]  -right-0  !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/9.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
+
       {/* Partnerships & Collaborations Section */}
       <div className="my-32 max-w-7xl mx-auto relative">
         <BlurFade inView delay={0.1}>
@@ -1028,11 +1058,7 @@ const Page = memo(() => {
               Our Partners & Collaborators
             </Text>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto rounded-full"></div>
-            <Text
-              as="p"
-              styleVariant="muted"
-              className="text-lg max-w-3xl mx-auto leading-relaxed"
-            >
+            <Text as="p" className="text-lg max-w-3xl mx-auto leading-relaxed">
               MDIT 2025 is made possible through strategic partnerships with
               leading institutions, organizations, and media partners who share
               our vision of advancing data science innovation in Malaysia.
@@ -1047,7 +1073,7 @@ const Page = memo(() => {
               <Text as="h3" className="text-2xl font-bold text-primary mb-2">
                 Organizing Partners
               </Text>
-              <Text as="p" styleVariant="muted" className="text-sm">
+              <Text as="p" className="text-sm">
                 Leading institutions driving data science education and
                 innovation
               </Text>
@@ -1185,7 +1211,7 @@ const Page = memo(() => {
                 >
                   Official Sponsors
                 </Text>
-                <Text as="p" styleVariant="muted" className="text-sm">
+                <Text as="p" className="text-sm">
                   Supporting innovation and excellence in data science
                 </Text>
               </div>
@@ -1295,7 +1321,7 @@ const Page = memo(() => {
                 <Text as="h3" className="text-2xl font-bold text-blue-600 mb-2">
                   Media Partners
                 </Text>
-                <Text as="p" styleVariant="muted" className="text-sm">
+                <Text as="p" className="text-sm">
                   Spreading awareness and connecting communities
                 </Text>
               </div>
@@ -1485,6 +1511,16 @@ const Page = memo(() => {
         </BlurFade>
       </div>
 
+      <div className="absolute h-[1200px]  -left-64 rotate-180 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/11.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
+
       {/* MDIT 2024 Memories */}
       <div className="max-w-7xl mx-auto py-16">
         <BlurFade delay={0.2}>
@@ -1552,6 +1588,16 @@ const Page = memo(() => {
             </CardContent>
           </Card>
         </BlurFade>
+      </div>
+
+      <div className="absolute h-[1200px]  -right-0 !overflow-visible">
+        <Image
+          src={"/assets/bg-gradients/11.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
       </div>
 
       {/* MDIT 2023 Memories */}
