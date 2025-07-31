@@ -787,13 +787,6 @@ const EventDetailsPage = () => {
                             {/* Special indicators */}
                             <div className="flex flex-wrap gap-2 pt-2">
                               {item.extendedDetails.eventDetails
-                                .certificateAwarded && (
-                                <span className="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 rounded-full text-xs font-medium flex items-center gap-1">
-                                  <AwardIcon className="h-3 w-3" />
-                                  Certificate Awarded
-                                </span>
-                              )}
-                              {item.extendedDetails.eventDetails
                                 .recordingAvailable && (
                                 <span className="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-xs font-medium">
                                   Recording Available

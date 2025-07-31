@@ -250,7 +250,7 @@ const AboutUsPage = () => {
                   Why MDIT Was Created
                 </Text>
               </div>
-              <Text as="p" styleVariant="muted" className="leading-relaxed">
+              <Text as="p" className="leading-relaxed">
                 MDIT (Malaysia Data Innovation Talent) was born from the
                 recognition that Malaysia needs skilled data professionals to
                 drive its digital transformation. As industries increasingly
@@ -258,7 +258,7 @@ const AboutUsPage = () => {
                 between academic learning and practical application of data
                 science skills.
               </Text>
-              <Text as="p" styleVariant="muted" className="leading-relaxed">
+              <Text as="p" className="leading-relaxed">
                 Our competition bridges this gap by providing students with
                 real-world datasets from government agencies, challenging them
                 to develop innovative solutions that address actual national
@@ -278,25 +278,25 @@ const AboutUsPage = () => {
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <Text as="p" styleVariant="muted">
+                  <Text as="p">
                     Lack of practical data science experience among graduates
                   </Text>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <Text as="p" styleVariant="muted">
+                  <Text as="p">
                     Limited exposure to real government and industry datasets
                   </Text>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <Text as="p" styleVariant="muted">
+                  <Text as="p">
                     Disconnect between academic curriculum and industry needs
                   </Text>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <Text as="p" styleVariant="muted">
+                  <Text as="p">
                     Need for more data-driven solutions in public policy
                   </Text>
                 </li>

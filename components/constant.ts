@@ -113,7 +113,7 @@ export const FAQ = [
 export const PROGRAM_TIMELINE = [
   {
     icon: DoorOpenIcon,
-    date: new Date(2025, 7, 15),
+    date: new Date(2025, 7, 10),
     event: "Registration Opens",
     details: "Registration for MDIT 2025 opens.",
     type: "milestone", // milestone, workshop, event, deadline
@@ -184,7 +184,7 @@ export const PROGRAM_TIMELINE = [
   {
     icon: BrainIcon,
     date: new Date(2025, 8, 7),
-    event: "Data Analytics Workshop",
+    event: "Software Workshop by PwC Malaysia",
     details:
       "Learn to enhance your project using statistical and data visualization tools.",
     type: "workshop",
@@ -223,13 +223,12 @@ export const PROGRAM_TIMELINE = [
           "Sample datasets",
           "Code templates",
         ],
-        certificateAwarded: true,
       },
     },
   },
   {
     icon: PlayIcon,
-    date: new Date(2025, 8, 21),
+    date: new Date(2025, 8, 8),
     event: "Preliminary Round Begins",
     details:
       "Submission window is now open for your team to upload their report, dashboard, and video.",
@@ -249,7 +248,7 @@ export const PROGRAM_TIMELINE = [
   },
   {
     icon: PauseIcon,
-    date: new Date(2025, 9, 15),
+    date: new Date(2025, 8, 21),
     event: "Submission Period Ended",
     details:
       "All your submitted materials will now proceed to the evaluation phase.",
@@ -269,7 +268,7 @@ export const PROGRAM_TIMELINE = [
   },
   {
     icon: AlignJustifyIcon,
-    date: new Date(2025, 9, 16),
+    date: new Date(2025, 8, 21),
     event: "Evaluation Period Begins",
     details: "Shortlisting of groups begins.",
     type: "milestone",
@@ -288,7 +287,7 @@ export const PROGRAM_TIMELINE = [
   },
   {
     icon: ListCheckIcon,
-    date: new Date(2025, 9, 16),
+    date: new Date(2025, 9, 3),
     event: "Top 10 Finalists Announced",
     details: "Shortlisting of groups is completed.",
     type: "milestone",
