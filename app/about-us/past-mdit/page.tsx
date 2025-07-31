@@ -40,12 +40,6 @@ const PastMDITPage = () => {
       winner: {
         team: "DataMavens",
         university: "Universiti Malaya",
-        members: [
-          "Ahmad Rahman",
-          "Siti Nurhaliza",
-          "David Lim",
-          "Priya Sharma",
-        ],
         project: "Smart City Traffic Optimization",
         impact:
           "Adopted by Kuala Lumpur City Hall for traffic management system",
@@ -128,7 +122,6 @@ const PastMDITPage = () => {
       winner: {
         team: "StatVanguard",
         university: "Universiti Teknologi Malaysia",
-        members: ["Farah Ibrahim", "Michael Wong", "Aisha Kassim", "Raj Patel"],
         project: "Healthcare Resource Prediction",
         impact: "Implemented in regional hospitals for capacity planning",
       },
@@ -210,7 +203,6 @@ const PastMDITPage = () => {
       winner: {
         team: "StatVanguard",
         university: "Universiti Teknologi Malaysia",
-        members: ["Farah Ibrahim", "Michael Wong", "Aisha Kassim", "Raj Patel"],
         project: "Healthcare Resource Prediction",
         impact: "Implemented in regional hospitals for capacity planning",
       },
@@ -438,16 +430,6 @@ const PastMDITPage = () => {
                   <Text as="p" className="mb-4">
                     {currentEdition.winner.project}
                   </Text>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Team Members:
-                  </Text>
-                  <ul className="list-disc list-inside space-y-1">
-                    {currentEdition.winner.members.map((member, index) => (
-                      <li key={index} className="text-sm">
-                        {member}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
                 <div>
                   <Text as="h4" className="font-semibold mb-2">

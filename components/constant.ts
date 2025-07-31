@@ -605,7 +605,7 @@ export const ORGANIZERS: Organizer[] = [
   {
     name: "Universiti Teknologi MARA (UiTM)",
     logo: "/uitm.svg",
-    logoLight: "/uitm_light.svg", // For dark mode
+    logoLight: "/uitm_Light.svg", // For dark mode
     logoAlt: "UiTM Logo",
     width: 140,
     height: 120,
@@ -640,7 +640,7 @@ export const ORGANIZERS: Organizer[] = [
   {
     name: "nama_institusi",
     logo: "/md.svg",
-    logoLight: "/md_light.svg", // For dark mode
+    logoLight: "/md_Light.svg", // For dark mode
     logoAlt: "logo nama_institusi",
     width: 120,
     height: 120,
