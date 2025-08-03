@@ -761,7 +761,7 @@ const Page = memo(() => {
         </div>
       </div>
 
-      <div className="absolute h-[600px]  -right-0 rotate-180 !overflow-visible">
+      <div className="absolute lg:w-auto w-screen lg:h-[600px]  -right-0 rotate-180 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/13.svg"}
           alt="Background Gradient"
@@ -1026,7 +1026,7 @@ const Page = memo(() => {
         </BlurFade>
       </div>
 
-      <div className="absolute h-[900px]  -left-128 lg:-left-64  !overflow-visible">
+      <div className="absolute lg:w-auto w-screen lg:h-[900px]  -left-128 lg:-left-64  !overflow-visible">
         <Image
           src={"/assets/bg-gradients/8.svg"}
           alt="Background Gradient"
@@ -1206,7 +1206,7 @@ const Page = memo(() => {
         </div>
       </div>
 
-      <div className="absolute h-[600px]  -right-0  !overflow-visible">
+      <div className="absolute lg:w-auto w-screen lg:h-[600px]  -right-0  !overflow-visible">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"
@@ -1677,7 +1677,7 @@ const Page = memo(() => {
         </BlurFade>
       </div>
 
-      <div className="absolute h-[1200px]  -left-64 rotate-180 !overflow-visible">
+      <div className="absolute lg:w-auto w-screen lg:h-[1200px] -z-10 -left-40 rotate-180 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/11.svg"}
           alt="Background Gradient"
@@ -1727,10 +1727,7 @@ const Page = memo(() => {
           >
             MDIT 2024 Memories
           </Text>
-          <Text
-            as="p"
-            className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto"
-          >
+          <Text as="p" className=" text-center mb-12 max-w-2xl mx-auto">
             Relive the excitement and innovation from last year&apos;s Malaysian
             Data Innovation Tournament. See the passion, dedication, and
             brilliant minds that made MDIT 2024 an unforgettable experience.
@@ -1787,16 +1784,6 @@ const Page = memo(() => {
         </BlurFade>
       </div>
 
-      <div className="absolute h-[1200px]  -right-0 !overflow-visible">
-        <Image
-          src={"/assets/bg-gradients/11.svg"}
-          alt="Background Gradient"
-          width={1920}
-          height={1080}
-          className="inset-0 w-full h-full object-cover !overflow-visible"
-        />
-      </div>
-
       {/* MDIT 2023 Memories */}
       <div className="max-w-7xl mx-auto py-16">
         <BlurFade delay={0.2}>
@@ -1806,10 +1793,7 @@ const Page = memo(() => {
           >
             MDIT 2023 Memories
           </Text>
-          <Text
-            as="p"
-            className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto"
-          >
+          <Text as="p" className="text-center mb-12 max-w-2xl mx-auto">
             Relive the excitement and innovation from last year&apos;s Malaysian
             Data Innovation Tournament. See the passion, dedication, and
             brilliant minds that made MDIT 2023 an unforgettable experience.

@@ -104,7 +104,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="icon"
@@ -153,9 +153,7 @@ export default function RootLayout({
             />
           </div>
           <Header />
-          <main className="mx-auto px-4 py-2 mt-18 overflow-hidden">
-            {children}
-          </main>
+          <main className="mx-auto px-4 py-2 mt-18">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

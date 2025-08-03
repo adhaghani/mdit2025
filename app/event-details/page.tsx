@@ -933,11 +933,7 @@ const EventDetailsPage = () => {
           </Text>
         </BlurFade>
         <BlurFade delay={0.15} inView>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
+          <Text as="p" className="text-center mb-12 max-w-2xl mx-auto">
             Our panel consists of industry experts, government officials, and
             academic leaders who will evaluate projects based on innovation,
             technical excellence, and practical application.
