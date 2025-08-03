@@ -143,17 +143,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed h-screen w-screen left-0 top-0 -z-10">
-            <FlickeringGrid
-              className="relative inset-0 z-0"
-              squareSize={6}
-              gridGap={12}
-              color="#8b5cf6"
-              maxOpacity={0.12}
-              flickerChance={0.1}
-            />
-          </div>
-
           <main className="mx-auto p-4">{children}</main>
         </ThemeProvider>
       </body>

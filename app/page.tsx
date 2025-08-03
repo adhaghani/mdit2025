@@ -2,6 +2,7 @@
 import React, { memo, useMemo } from "react";
 import { Text } from "@/components/ui/text";
 import NumberFlow from "@number-flow/react";
+import { Orbitron, Manrope, Rajdhani } from "next/font/google";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { useStartCountdown } from "@/hooks/useStartCountdown";
@@ -12,22 +13,51 @@ import Image from "next/image";
 
 import { BubbleBackground } from "@/components/animate-ui/backgrounds/bubble";
 
+// Font configurations
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const rajdhani = Rajdhani({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
 // Memoized components for better performance
 const CountdownCard = memo(
-  ({ value, label }: { value: number; label: string }) => (
-    <div className="text-center space-y-2">
-      <Card className="text-center">
-        <CardContent>
-          <NumberFlow
-            value={value}
-            format={{ minimumIntegerDigits: 2 }}
-            className="lg:text-5xl md:text-3xl text-xl font-bold w-[21px] md:w-[40px] lg:w-[55px] text-primary"
-          />
-        </CardContent>
-      </Card>
-      <Text as="p" className="text-sm text-muted-foreground">
-        {label}
-      </Text>
+  ({
+    value,
+    label,
+    isLast,
+  }: {
+    value: number;
+    label: string;
+    isLast?: boolean;
+  }) => (
+    <div className="flex items-center">
+      <div className="text-center">
+        <div>
+          <span
+            className={`text-xl md:text-3xl lg:text-5xl font-bold text-primary ${rajdhani.className}`}
+          >
+            {value.toString().padStart(2, "0")}
+          </span>
+        </div>
+      </div>
+      {!isLast && (
+        <span
+          className={`mx-1 md:mx-2 text-lg md:text-2xl lg:text-4xl text-primary ${rajdhani.className}`}
+        >
+          :
+        </span>
+      )}
     </div>
   )
 );
@@ -62,9 +92,9 @@ const Page = memo(() => {
       <div className="relative h-screen min-h-fit">
         <BubbleBackground
           interactive
-          className="absolute inset-0 z-0 rounded-lg opacity-30 hidden lg:block"
+          className="absolute inset-0 z-0 rounded-lg opacity-30"
         />
-        <div className="relative text-center py-10 flex flex-col item-center justify-center gap-4 z-10">
+        <div className="relative text-center py-10 px-4 flex flex-col item-center justify-center gap-4 z-10">
           <BlurFade
             inView
             delay={0.15}
@@ -83,16 +113,16 @@ const Page = memo(() => {
             <BlurFade inView delay={0.1}>
               <Text
                 as="h1"
-                className="text-primary font-mono tracking-wider font-bold uppercase"
+                className={`text-primary font-mono tracking-wider font-bold ${orbitron.className}`}
               >
-                Malaysia Data Innovation Talent
-                <br />x <br /> DOSM Datathon 2025
+                MALAYSIA DATA INNOVATION TALENT
+                <br />x <br /> DOSM DATATHON 2025
               </Text>
             </BlurFade>
             <BlurFade inView delay={0.15}>
               <Text
                 as="h2"
-                className="text-2xl md:text-3xl lg:text-4xl font-bold max-w-4xl mx-auto"
+                className={`text-2xl md:text-3xl lg:text-4xl font-bold max-w-4xl mx-auto ${manrope.className}`}
               >
                 Malaysia&apos;s Premier Data Innovation Competition
               </Text>
@@ -101,30 +131,76 @@ const Page = memo(() => {
               <Text
                 as="p"
                 styleVariant="muted"
-                className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+                className={`text-lg md:text-xl max-w-3xl mx-auto leading-relaxed ${manrope.className}`}
               >
-                Join 80+ expected talented teams from across Malaysia in this
-                prestigious national datathon. Work with real government
-                datasets and compete for RM11,000 in prizes.
+                Join 80+ expected teams from across Malaysia in this prestigious
+                national datathon. Work with real government datasets and stand
+                a chance to win from a total prize pool of RM9,600.
               </Text>
             </BlurFade>
 
             {/* Countdown Timer */}
             <BlurFade inView delay={0.25}>
               <div className="mt-12 mb-8">
-                <Text as="h3" className="mb-6">
-                  {hasStarted
-                    ? "Registration Closes In:"
-                    : "Website Launched In:"}
+                <Text as="h3" className="mb-2 font-extrabold">
+                  COMING SOON
                 </Text>
-                <div className="flex items-center justify-center gap-4 md:gap-6">
-                  {countdownValues.map((item) => (
-                    <CountdownCard
-                      key={item.label}
-                      value={item.value}
-                      label={item.label}
-                    />
-                  ))}
+                <Text as="h3" className="mb-6">
+                  Join us for MDIT x DD 2025 - Kicking Off In:
+                </Text>
+                <div className="flex flex-col items-center gap-2">
+                  {/* Timer Numbers */}
+                  <div className="flex items-center justify-center">
+                    <span
+                      className={`text-xl md:text-3xl lg:text-5xl font-bold text-primary ${rajdhani.className} mr-1 md:mr-2`}
+                    >
+                      [
+                    </span>
+                    <div className="flex items-center">
+                      {countdownValues.map((item, index) => (
+                        <CountdownCard
+                          key={item.label}
+                          value={item.value}
+                          label={item.label}
+                          isLast={index === countdownValues.length - 1}
+                        />
+                      ))}
+                    </div>
+                    <span
+                      className={`text-xl md:text-3xl lg:text-5xl font-bold text-primary ${rajdhani.className} ml-1 md:ml-2`}
+                    >
+                      ]
+                    </span>
+                  </div>
+
+                  {/* Timer Labels - positioned to align with numbers */}
+                  <div className="flex items-center justify-center">
+                    <div className="mr-1 md:mr-2 text-xl md:text-3xl lg:text-5xl opacity-0">
+                      [
+                    </div>
+                    <div className="flex items-center">
+                      {countdownValues.map((item, index) => (
+                        <div
+                          key={`label-${item.label}`}
+                          className="flex items-center"
+                        >
+                          <div className="text-center min-w-[18px] md:min-w-[40px] lg:min-w-[55px]">
+                            <span className="text-[10px] md:text-xs text-muted-foreground font-medium">
+                              {item.label.toUpperCase().substring(0, 3)}
+                            </span>
+                          </div>
+                          {index < countdownValues.length - 1 && (
+                            <span className="mx-1 md:mx-2 text-lg md:text-2xl lg:text-4xl opacity-0">
+                              :
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="ml-1 md:ml-2 text-xl md:text-3xl lg:text-5xl opacity-0">
+                      ]
+                    </div>
+                  </div>
                 </div>
               </div>
             </BlurFade>
@@ -132,6 +208,9 @@ const Page = memo(() => {
             {/* Competition Statistics */}
             <BlurFade inView delay={0.3}>
               <div className="mt-16">
+                <Text as="h3" className="mb-6 font-extrabold">
+                  What to Expect in MDIT x DD 2025
+                </Text>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
                   {/* Prize Pool */}
                   <Card className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-950/20 dark:to-orange-950/20 border-yellow-200 dark:border-yellow-800/30 hover:shadow-lg transition-all duration-300">
@@ -155,11 +234,9 @@ const Page = memo(() => {
                         as="h4"
                         className="text-2xl md:text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-2"
                       >
-                        RM11,000
+                        RM9,600
                       </Text>
-                      <Text as="p" className="text-sm text-muted-foreground">
-                        Total Prize Pool
-                      </Text>
+                      <Text as="p">Total Prize Pool</Text>
                     </CardContent>
                   </Card>
 
@@ -187,9 +264,7 @@ const Page = memo(() => {
                       >
                         80+
                       </Text>
-                      <Text as="p" className="text-sm text-muted-foreground">
-                        Expected Teams
-                      </Text>
+                      <Text as="p">Participating Teams</Text>
                     </CardContent>
                   </Card>
 
@@ -217,9 +292,7 @@ const Page = memo(() => {
                       >
                         10+
                       </Text>
-                      <Text as="p" className="text-sm text-muted-foreground">
-                        Expected Participating Universities
-                      </Text>
+                      <Text as="p">Participating Universities</Text>
                     </CardContent>
                   </Card>
                 </div>
