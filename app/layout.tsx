@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_MY",
-    url: "https://mdit2025.vercel.app",
+    url: "https://www.mdit2025.my",
     title: "MDIT 2025 - Malaysia Data Innovation Talent",
     description:
       "National inter-varsity datathon competition fostering innovation in data science and analytics among Malaysian university students.",
@@ -83,9 +83,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mdit2025.vercel.app"),
   alternates: {
     canonical: "/",
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
   other: {
     "event:start_date": "2025-08-15",
