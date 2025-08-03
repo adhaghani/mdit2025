@@ -3,8 +3,6 @@ import { Outfit, Merriweather, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
-
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
