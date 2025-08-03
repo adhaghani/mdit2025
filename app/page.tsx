@@ -32,32 +32,20 @@ const rajdhani = Rajdhani({
 
 // Memoized components for better performance
 const CountdownCard = memo(
-  ({
-    value,
-    label,
-    isLast,
-  }: {
-    value: number;
-    label: string;
-    isLast?: boolean;
-  }) => (
-    <div className="flex items-center">
-      <div className="text-center">
-        <div>
-          <span
-            className={`text-xl md:text-3xl lg:text-5xl font-bold text-primary ${rajdhani.className}`}
-          >
-            {value.toString().padStart(2, "0")}
-          </span>
-        </div>
-      </div>
-      {!isLast && (
-        <span
-          className={`mx-1 md:mx-2 text-lg md:text-2xl lg:text-4xl text-primary ${rajdhani.className}`}
-        >
-          :
-        </span>
-      )}
+  ({ value, label }: { value: number; label: string }) => (
+    <div className="text-center space-y-2">
+      <Card className="text-center">
+        <CardContent>
+          <NumberFlow
+            value={value}
+            format={{ minimumIntegerDigits: 2 }}
+            className={`lg:text-5xl md:text-3xl text-xl font-bold w-[21px] md:w-[40px] lg:w-[55px] text-primary ${rajdhani.className}`}
+          />
+        </CardContent>
+      </Card>
+      <Text as="p" className="text-sm text-muted-foreground">
+        {label}
+      </Text>
     </div>
   )
 );
@@ -148,59 +136,14 @@ const Page = memo(() => {
                 <Text as="h3" className="mb-6">
                   Join us for MDIT x DD 2025 - Kicking Off In:
                 </Text>
-                <div className="flex flex-col items-center gap-2">
-                  {/* Timer Numbers */}
-                  <div className="flex items-center justify-center">
-                    <span
-                      className={`text-xl md:text-3xl lg:text-5xl font-bold text-primary ${rajdhani.className} mr-1 md:mr-2`}
-                    >
-                      [
-                    </span>
-                    <div className="flex items-center">
-                      {countdownValues.map((item, index) => (
-                        <CountdownCard
-                          key={item.label}
-                          value={item.value}
-                          label={item.label}
-                          isLast={index === countdownValues.length - 1}
-                        />
-                      ))}
-                    </div>
-                    <span
-                      className={`text-xl md:text-3xl lg:text-5xl font-bold text-primary ${rajdhani.className} ml-1 md:ml-2`}
-                    >
-                      ]
-                    </span>
-                  </div>
-
-                  {/* Timer Labels - positioned to align with numbers */}
-                  <div className="flex items-center justify-center">
-                    <div className="mr-1 md:mr-2 text-xl md:text-3xl lg:text-5xl opacity-0">
-                      [
-                    </div>
-                    <div className="flex items-center">
-                      {countdownValues.map((item, index) => (
-                        <div
-                          key={`label-${item.label}`}
-                          className="flex items-center"
-                        >
-                          <div className="text-center min-w-[18px] md:min-w-[40px] lg:min-w-[55px]">
-                            <span className="text-[10px] md:text-xs text-muted-foreground font-medium">
-                              {item.label.toUpperCase().substring(0, 3)}
-                            </span>
-                          </div>
-                          {index < countdownValues.length - 1 && (
-                            <span className="mx-1 md:mx-2 text-lg md:text-2xl lg:text-4xl opacity-0">
-                              :
-                            </span>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="ml-1 md:ml-2 text-xl md:text-3xl lg:text-5xl opacity-0">
-                      ]
-                    </div>
-                  </div>
+                <div className="flex items-center justify-center gap-4 md:gap-6">
+                  {countdownValues.map((item) => (
+                    <CountdownCard
+                      key={item.label}
+                      value={item.value}
+                      label={item.label}
+                    />
+                  ))}
                 </div>
               </div>
             </BlurFade>
