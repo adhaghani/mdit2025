@@ -48,7 +48,28 @@ import {
   OFFICIAL_SPONSORS,
   MEDIA_PARTNERS,
 } from "@/components/constant";
+import {
+  MediaPlayer,
+  MediaPlayerCaptions,
+  MediaPlayerControls,
+  MediaPlayerControlsOverlay,
+  MediaPlayerError,
+  MediaPlayerFullscreen,
+  MediaPlayerLoading,
+  MediaPlayerPiP,
+  MediaPlayerPlay,
+  MediaPlayerSeek,
+  MediaPlayerSeekBackward,
+  MediaPlayerSeekForward,
+  MediaPlayerSettings,
+  MediaPlayerTime,
+  MediaPlayerVideo,
+  MediaPlayerVolume,
+  MediaPlayerVolumeIndicator,
+} from "@/components/ui/media-player";
+
 import { BubbleBackground } from "@/components/animate-ui/backgrounds/bubble";
+import MuxVideo from "@mux/mux-video-react";
 
 // Type definitions
 interface CompetitionPhase {
@@ -634,7 +655,7 @@ const Page = memo(() => {
   }, [isExpired, hasStarted]);
 
   return (
-    <div className="relative overflow-x-hidden">
+    <div className="relative">
       {/* Hero Section with Background Pattern */}
       <div className="relative min-h-fit h-[90vh] max-h-[700px] overflow-hidden">
         <BubbleBackground
@@ -1665,7 +1686,38 @@ const Page = memo(() => {
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
       </div>
-
+      <div className="max-w-7xl mx-auto py-16">
+        <Text as="h2" className="text-3xl font-bold mb-4">
+          Watch Our recap video for the past MDIT!
+        </Text>
+        <MediaPlayer autoHide>
+          <MediaPlayerVideo asChild>
+            <MuxVideo playbackId="OUmM1TFY4k7n7WQBbo01600YTa9Y00x8PWaHGvaVNbLG00g" />
+          </MediaPlayerVideo>
+          <MediaPlayerLoading />
+          <MediaPlayerError />
+          <MediaPlayerVolumeIndicator />
+          <MediaPlayerControls className="flex-col items-start gap-2.5">
+            <MediaPlayerControlsOverlay />
+            <MediaPlayerSeek />
+            <div className="flex w-full items-center gap-2">
+              <div className="flex flex-1 items-center gap-2">
+                <MediaPlayerPlay />
+                <MediaPlayerSeekBackward />
+                <MediaPlayerSeekForward />
+                <MediaPlayerVolume expandable />
+                <MediaPlayerTime />
+              </div>
+              <div className="flex items-center gap-2">
+                <MediaPlayerCaptions />
+                <MediaPlayerSettings />
+                <MediaPlayerPiP />
+                <MediaPlayerFullscreen />
+              </div>
+            </div>
+          </MediaPlayerControls>
+        </MediaPlayer>
+      </div>
       {/* MDIT 2024 Memories */}
       <div className="max-w-7xl mx-auto py-16">
         <BlurFade delay={0.2}>

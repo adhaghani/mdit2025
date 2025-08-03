@@ -137,7 +137,7 @@ export default function RootLayout({
       </head>
       <Analytics />
       <body
-        className={`${outfit.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased overflow-x-visible`}
+        className={`${outfit.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -156,7 +156,7 @@ export default function RootLayout({
             />
           </div>
           <Header />
-          <main className="mx-auto px-4 py-2 mt-18 overflow-visible">
+          <main className="mx-auto px-4 py-2 mt-18 overflow-hidden">
             {children}
           </main>
           <Footer />

@@ -117,6 +117,7 @@ function TooltipContent({
   positionerClassName,
   side = "top",
   sideOffset = 10,
+
   transition = { type: "spring", stiffness: 300, damping: 25 },
   arrow = true,
   children,
