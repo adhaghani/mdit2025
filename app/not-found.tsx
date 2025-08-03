@@ -34,36 +34,7 @@ interface SupportOption {
 }
 
 const NotFoundPage = memo(() => {
-  // Memoize quick navigation links
-  const quickLinks = useMemo<QuickLink[]>(
-    () => [
-      {
-        href: "/",
-        label: "Homepage",
-        description: "Back to MDIT 2025 main page",
-        icon: HomeIcon,
-      },
-      {
-        href: "/about-us",
-        label: "About Us",
-        description: "Learn about MDIT 2025",
-        icon: MapPinIcon,
-      },
-      {
-        href: "/event-details",
-        label: "Event Details",
-        description: "Competition information",
-        icon: SearchIcon,
-      },
-      {
-        href: "/contact",
-        label: "Contact",
-        description: "Get in touch with us",
-        icon: SearchIcon,
-      },
-    ],
-    []
-  );
+
 
   // Memoize support options
   const supportOptions = useMemo<SupportOption[]>(
@@ -206,48 +177,6 @@ const NotFoundPage = memo(() => {
             </CardContent>
           </Card>
         </BlurFade>
-
-        {/* Quick Navigation */}
-        <BlurFade delay={0.5}>
-          <Card className="p-6">
-            <CardHeader>
-              <CardTitle className="text-xl">Quick Navigation</CardTitle>
-              <Text as="p" styleVariant="muted">
-                Or explore these popular sections of MDIT 2025
-              </Text>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {quickLinks.map((link, index) => (
-                  <BlurFade key={index} delay={0.6 + index * 0.1}>
-                    <Link href={link.href} className="block h-full">
-                      <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer border-2 hover:border-primary/20">
-                        <CardContent className="p-6 text-center space-y-4">
-                          <div className="mx-auto w-12 h-12 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-full flex items-center justify-center">
-                            <link.icon className="h-6 w-6 text-primary" />
-                          </div>
-                          <div className="space-y-2">
-                            <Text as="h3" className="font-semibold">
-                              {link.label}
-                            </Text>
-                            <Text
-                              as="p"
-                              styleVariant="muted"
-                              className="text-sm"
-                            >
-                              {link.description}
-                            </Text>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  </BlurFade>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </BlurFade>
-
         {/* Additional Help */}
         <BlurFade delay={0.7}>
           <div className="space-y-4">
