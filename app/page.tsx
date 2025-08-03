@@ -152,7 +152,7 @@ const Page = memo(() => {
             <BlurFade inView delay={0.3}>
               <div className="mt-16">
                 <Text as="h3" className="mb-6 font-extrabold">
-                  What to Expect in MDIT x DD 2025
+                  What to Expect in MDIT x DD 2025?
                 </Text>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
                   {/* Prize Pool */}
