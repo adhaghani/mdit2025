@@ -608,15 +608,6 @@ export const EVENT_JUDGES: Judge[] = [
 // Organizers data
 export const ORGANIZERS: Organizer[] = [
   {
-    name: "Universiti Teknologi MARA (UiTM)",
-    logo: "/uitm.svg",
-    logoLight: "/uitm_Light.svg", // For dark mode
-    logoAlt: "UiTM Logo",
-    width: 140,
-    height: 120,
-    className: "w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24",
-  },
-  {
     name: "Jabatan Perangkaan Malaysia",
     logo: "/ekonomi.png",
     logoLight: "/ekonomi_Light.png", // For dark mode
@@ -626,21 +617,13 @@ export const ORGANIZERS: Organizer[] = [
     className: "w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24 object-cover",
   },
   {
-    name: "Department of Statistics Malaysia (DOSM)",
-    logo: "/dosm.svg",
-    logoLight: "/DOSM_Light.svg", // For dark mode
-    logoAlt: "Department of Statistics Malaysia",
-    width: 120,
+    name: "Universiti Teknologi MARA (UiTM)",
+    logo: "/uitm.svg",
+    logoLight: "/uitm_Light.svg", // For dark mode
+    logoAlt: "UiTM Logo",
+    width: 140,
     height: 120,
     className: "w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24",
-  },
-  {
-    name: "InStats UiTM Shah Alam",
-    logo: "/instats.svg",
-    logoAlt: "InStats UiTM",
-    width: 120,
-    height: 120,
-    className: "w-24 h-24 sm:w-24 sm:h-24",
   },
   {
     name: "Malaysia Digital",
@@ -650,6 +633,24 @@ export const ORGANIZERS: Organizer[] = [
     width: 120,
     height: 120,
     className: "w-24 h-24 sm:w-24 sm:h-24",
+  },
+
+  {
+    name: "InStats UiTM Shah Alam",
+    logo: "/instats.svg",
+    logoAlt: "InStats UiTM",
+    width: 120,
+    height: 120,
+    className: "w-24 h-24 sm:w-24 sm:h-24",
+  },
+  {
+    name: "Department of Statistics Malaysia (DOSM)",
+    logo: "/dosm.svg",
+    logoLight: "/DOSM_Light.svg", // For dark mode
+    logoAlt: "Department of Statistics Malaysia",
+    width: 120,
+    height: 120,
+    className: "w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-24",
   },
 ];
 
