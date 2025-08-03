@@ -21,11 +21,11 @@ const sourceCodePro = Source_Code_Pro({
 
 export const metadata: Metadata = {
   title:
-    "MDIT 2025 - Malaysia Data Innovation Talent | National Inter-Varsity Datathon",
+    "MDIT x DD 2025 - Malaysia Data Innovation Talent x DOSM Datathon | National Inter-Varsity Datathon",
   description:
-    "MDIT 2025 is a national inter-varsity program aimed at fostering innovation and collaboration among students in the fields of computer science and mathematics. Join the datathon competition organized by UiTM INSTATS Club in collaboration with Department of Statistics Malaysia (DOSM).",
+    "MDIT x DD 2025 is a national inter-varsity program aimed at fostering innovation and collaboration among students in the fields of computer science and mathematics. Join the datathon competition organized by UiTM INSTATS Club in collaboration with Department of Statistics Malaysia (DOSM).",
   keywords: [
-    "MDIT 2025",
+    "MDIT x DD 2025",
     "Malaysia Data Innovation Talent",
     "datathon",
     "inter-varsity competition",
@@ -39,6 +39,10 @@ export const metadata: Metadata = {
     "innovation",
     "computer science",
     "mathematics",
+    "MDIT",
+    "DOSM",
+    "MDIT 2024",
+    "MDIT 2023",
   ],
   authors: [{ name: "adhaghani" }],
   creator: "adhaghani",
