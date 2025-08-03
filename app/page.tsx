@@ -56,11 +56,11 @@ const Page = memo(() => {
   // Target date: August 30, 2025, GMT+8 (midnight)
   const { hasStarted, timeLeft } = useStartCountdown(
     "2025-08-05T00:00:00+08:00", // Count down to August 30
-    "2025-08-05T00:00:00+08:00" // Optional: Start countdown on August 10
+    "2025-08-10T10:00:00+08:00" // Optional: Start countdown on August 10
   );
 
   const { timeLeft: timeUntilRegistration } = useStartCountdown(
-    "2025-08-05T00:00:00+08:00" // Count down to August 10
+    "2025-08-10T10:00:00+08:00" // Count down to August 10, 10:00 AM GMT+8
   );
 
   // Memoize countdown values to prevent unnecessary re-renders
