@@ -236,7 +236,7 @@ const PastMDITPage = () => {
   const availableYears = Object.keys(pastEditions).sort().reverse();
 
   return (
-    <>
+    <div className="relative">
       {/* Header Section */}
       <div className="text-center space-y-4 py-20 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -268,7 +268,7 @@ const PastMDITPage = () => {
         </BlurFade>
       </div>
 
-      <div className="absolute h-[1200px]  -left-64 rotate-90 !overflow-visible">
+      <div className="absolute w-screen lg:w-auto lg:h-[1200px] -left-32  lg:-left-64 rotate-90 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/8.svg"}
           alt="Background Gradient"
@@ -535,7 +535,7 @@ const PastMDITPage = () => {
         </div>
       </div>
 
-      <div className="absolute h-[1200px]  -right-0 rotate-90 !overflow-visible">
+      <div className="absolute lg:w-auto w-screen lg:h-[1200px]  -right-0 rotate-90 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"
@@ -679,7 +679,7 @@ const PastMDITPage = () => {
           </div>
         </BlurFade>
       </div>
-    </>
+    </div>
   );
 };
 

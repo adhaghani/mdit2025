@@ -15,6 +15,7 @@ import { useStartCountdown } from "@/hooks/useStartCountdown";
 import Image from "next/image";
 import { Text } from "@/components/ui/text";
 import { ModeToggle } from "./mode-toggle";
+import { ScrollArea } from "./ui/scroll-area";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -182,107 +183,109 @@ const Header = memo(() => {
               </Button>
             </SheetTrigger>
             <SheetContent side={"right"} className="w-[300px] sm:w-[400px]">
-              <SheetHeader className="space-y-4">
-                <div className="flex items-center justify-center">
-                  <Image
-                    src="/mdit.svg"
-                    alt="MDIT 2025 Logo"
-                    width={50}
-                    height={50}
-                    className="w-12 h-12"
-                  />
-                </div>
-                <SheetTitle className="text-center text-lg font-bold">
-                  MDIT x DOSM Datathon 2025
-                </SheetTitle>
-              </SheetHeader>
-              <div className="mt-8 space-y-2">
-                <div className="px-2 py-2">
-                  <Link
-                    href="/"
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
-                  >
-                    <div className="w-2 h-2 bg-primary rounded-full group-hover:scale-125 transition-transform"></div>
-                    <span className="font-medium">Home</span>
-                  </Link>
-                </div>
-
-                <div className="px-2 py-1">
-                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-2">
-                    About
+              <ScrollArea className="h-[calc(100vh-4rem)]">
+                <SheetHeader className="space-y-4">
+                  <div className="flex items-center justify-center">
+                    <Image
+                      src="/mdit.svg"
+                      alt="MDIT 2025 Logo"
+                      width={50}
+                      height={50}
+                      className="w-12 h-12"
+                    />
                   </div>
-                  <div className="space-y-1 ml-2">
+                  <SheetTitle className="text-center text-lg font-bold">
+                    MDIT x DOSM Datathon 2025
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="mt-8 space-y-2">
+                  <div className="px-2 py-2">
                     <Link
-                      href="/about-us"
-                      className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors text-sm group"
+                      href="/"
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
                     >
-                      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full group-hover:scale-125 transition-transform"></div>
-                      <span>About Us</span>
-                    </Link>
-                    <Link
-                      href="/about-us/past-mdit"
-                      className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors text-sm group"
-                    >
-                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:scale-125 transition-transform"></div>
-                      <span>Past MDIT</span>
+                      <div className="w-2 h-2 bg-primary rounded-full group-hover:scale-125 transition-transform"></div>
+                      <span className="font-medium">Home</span>
                     </Link>
                   </div>
-                </div>
 
-                <div className="px-2 py-2">
-                  <Link
-                    href="/event-details"
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
-                  >
-                    <div className="w-2 h-2 bg-green-500 rounded-full group-hover:scale-125 transition-transform"></div>
-                    <span className="font-medium">Event Details</span>
-                  </Link>
-                </div>
-
-                <div className="px-2 py-2">
-                  <Link
-                    href="/rules-regulation"
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
-                  >
-                    <div className="w-2 h-2 bg-orange-500 rounded-full group-hover:scale-125 transition-transform"></div>
-                    <span className="font-medium">Rules & Regulation</span>
-                  </Link>
-                </div>
-
-                <div className="px-2 py-2">
-                  <Link
-                    href="/contact"
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
-                  >
-                    <div className="w-2 h-2 bg-pink-500 rounded-full group-hover:scale-125 transition-transform"></div>
-                    <span className="font-medium">Contact</span>
-                  </Link>
-                </div>
-
-                <div className="px-2 py-2">
-                  <Link
-                    href="/frequently-asked-questions"
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
-                  >
-                    <div className="w-2 h-2 bg-teal-500 rounded-full group-hover:scale-125 transition-transform"></div>
-                    <span className="font-medium">FAQs</span>
-                  </Link>
-                </div>
-
-                <div className="pt-4 px-2">
-                  <div className="border-t pt-4">
-                    <Link className="block w-full" href={buttonHref}>
-                      <Button
-                        size="lg"
-                        className="w-full justify-center gap-2 font-semibold"
-                        disabled={isButtonDisabled}
+                  <div className="px-2 py-1">
+                    <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-2">
+                      About
+                    </div>
+                    <div className="space-y-1 ml-2">
+                      <Link
+                        href="/about-us"
+                        className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors text-sm group"
                       >
-                        {buttonText}
-                      </Button>
+                        <div className="w-1.5 h-1.5 bg-purple-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                        <span>About Us</span>
+                      </Link>
+                      <Link
+                        href="/about-us/past-mdit"
+                        className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors text-sm group"
+                      >
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                        <span>Past MDIT</span>
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="px-2 py-2">
+                    <Link
+                      href="/event-details"
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
+                    >
+                      <div className="w-2 h-2 bg-green-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                      <span className="font-medium">Event Details</span>
                     </Link>
                   </div>
+
+                  <div className="px-2 py-2">
+                    <Link
+                      href="/rules-regulation"
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
+                    >
+                      <div className="w-2 h-2 bg-orange-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                      <span className="font-medium">Rules & Regulation</span>
+                    </Link>
+                  </div>
+
+                  <div className="px-2 py-2">
+                    <Link
+                      href="/contact"
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
+                    >
+                      <div className="w-2 h-2 bg-pink-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                      <span className="font-medium">Contact</span>
+                    </Link>
+                  </div>
+
+                  <div className="px-2 py-2">
+                    <Link
+                      href="/frequently-asked-questions"
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors group"
+                    >
+                      <div className="w-2 h-2 bg-teal-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                      <span className="font-medium">FAQs</span>
+                    </Link>
+                  </div>
+
+                  <div className="pt-4 px-2">
+                    <div className="border-t pt-4">
+                      <Link className="block w-full" href={buttonHref}>
+                        <Button
+                          size="lg"
+                          className="w-full justify-center gap-2 font-semibold"
+                          disabled={isButtonDisabled}
+                        >
+                          {buttonText}
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </ScrollArea>
             </SheetContent>
           </Sheet>
           <div className="flex">

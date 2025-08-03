@@ -1,5 +1,5 @@
 "use client";
-import React, { memo, useMemo, lazy, Suspense } from "react";
+import React, { memo, useMemo, lazy, Suspense, useState } from "react";
 import { Text } from "@/components/ui/text";
 import NumberFlow from "@number-flow/react";
 import {
@@ -10,6 +10,7 @@ import {
   TargetIcon,
   LightbulbIcon,
   Users2Icon,
+  ExternalLinkIcon,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useStartCountdown } from "@/hooks/useStartCountdown";
@@ -22,6 +23,14 @@ import {
   TooltipTrigger,
   TooltipProvider,
 } from "@/components/animate-ui/radix/tooltip";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/animate-ui/radix/dialog";
 import {
   Carousel,
   CarouselContent,
@@ -415,6 +424,145 @@ const MarqueeImage = memo(
 
 MarqueeImage.displayName = "MarqueeImage";
 
+// Sponsor Dialog Component
+interface SponsorDialogProps {
+  sponsor: {
+    name: string;
+    logo: string;
+    logoAlt: string;
+    tier: string;
+    description?: string;
+    website?: string;
+    industry?: string;
+    founded?: string;
+    headquarters?: string;
+  };
+  children: React.ReactNode;
+}
+
+const SponsorDialog = ({ sponsor, children }: SponsorDialogProps) => {
+  const [open, setOpen] = useState(false);
+
+  const getTierBadgeColor = (tier: string) => {
+    switch (tier) {
+      case "platinum":
+        return "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200";
+      case "gold":
+        return "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200";
+      case "silver":
+        return "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300";
+      case "bronze":
+        return "bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200";
+      case "technology":
+        return "bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200";
+      default:
+        return "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300";
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <DialogTrigger asChild>{children}</DialogTrigger>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p className="text-sm text-white">
+            Click to learn more about {sponsor.name}
+          </p>
+        </TooltipContent>
+        <DialogContent className="max-w-md">
+          <DialogHeader className="space-y-4">
+            <div className="flex items-center justify-center">
+              <div className="relative bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg border">
+                <Image
+                  src={sponsor.logo}
+                  alt={sponsor.logoAlt}
+                  width={80}
+                  height={80}
+                  className="w-20 h-20 object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div className="text-center space-y-2">
+              <DialogTitle className="text-xl font-bold">
+                {sponsor.name}
+              </DialogTitle>
+              <div
+                className={`inline-flex px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide ${getTierBadgeColor(
+                  sponsor.tier
+                )}`}
+              >
+                {sponsor.tier}{" "}
+                {sponsor.tier === "technology" ? "Partner" : "Sponsor"}
+              </div>
+            </div>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            {sponsor.description && (
+              <div>
+                <DialogDescription className="text-sm leading-relaxed">
+                  {sponsor.description}
+                </DialogDescription>
+              </div>
+            )}
+
+            {(sponsor.industry || sponsor.founded || sponsor.headquarters) && (
+              <div className="grid grid-cols-1 gap-3 pt-4 border-t">
+                {sponsor.industry && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium text-muted-foreground">
+                      Industry:
+                    </span>
+                    <span className="text-sm">{sponsor.industry}</span>
+                  </div>
+                )}
+                {sponsor.founded && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium text-muted-foreground">
+                      Founded:
+                    </span>
+                    <span className="text-sm">{sponsor.founded}</span>
+                  </div>
+                )}
+                {sponsor.headquarters && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium text-muted-foreground">
+                      Headquarters:
+                    </span>
+                    <span className="text-sm">{sponsor.headquarters}</span>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {sponsor.website && (
+              <div className="pt-4">
+                <Button
+                  className="w-full"
+                  asChild
+                  onClick={() => setOpen(false)}
+                >
+                  <Link
+                    href={sponsor.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit Website
+                    <ExternalLinkIcon className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Tooltip>
+    </Dialog>
+  );
+};
+
 const Page = memo(() => {
   // Target date: August 30, 2025, GMT+8 (midnight)
   const { hasStarted, timeLeft, isExpired } = useStartCountdown(
@@ -486,14 +634,14 @@ const Page = memo(() => {
   }, [isExpired, hasStarted]);
 
   return (
-    <>
+    <div className="relative overflow-x-hidden">
       {/* Hero Section with Background Pattern */}
       <div className="relative min-h-fit h-[90vh] max-h-[700px] overflow-hidden">
         <BubbleBackground
           interactive
           className="absolute inset-0 z-0 rounded-lg opacity-30 hidden lg:block"
         />
-        <div className="relative text-center py-24 md:py-24 lg:py-32 flex flex-col item-center justify-center gap-4 z-10">
+        <div className="relative text-center py-24 flex flex-col item-center justify-center gap-4 z-10">
           <BlurFade
             inView
             delay={0.15}
@@ -511,10 +659,10 @@ const Page = memo(() => {
             <BlurFade inView delay={0.1}>
               <Text
                 as="h1"
-                className="text-primary font-mono tracking-wider font-bold uppercase"
+                className="text-primary font-mono tracking-wider font-bold"
               >
-                Malaysia Data Innovation Talent
-                <br />x <br /> DOSM Datathon 2025
+                MALAYSIA DATA INNOVATION TALENT
+                <br />x <br /> DOSM DATATHON 2025
               </Text>
             </BlurFade>
             <BlurFade inView delay={0.15}>
@@ -1216,32 +1364,27 @@ const Page = memo(() => {
                 </Text>
               </div>
               <div className="bg-gradient-to-br from-purple-50/50 to-purple-100/50 dark:from-purple-900/10 dark:to-purple-800/10 rounded-2xl p-12 border border-purple-200/50 dark:border-purple-800/30 h-full min-h-[300px] flex items-center justify-center overflow-visible">
-                <TooltipProvider delayDuration={0}>
-                  {OFFICIAL_SPONSORS.length > 0 ? (
-                    <>
+                {OFFICIAL_SPONSORS.length > 0 ? (
+                  <>
+                    <TooltipProvider delayDuration={0}>
                       {/* Desktop View */}
                       <div className="hidden md:flex flex-wrap items-center justify-center gap-8">
                         {OFFICIAL_SPONSORS.map((sponsor, index) => (
-                          <Tooltip key={index}>
-                            <TooltipTrigger>
-                              <div className="group relative p-3">
-                                <div className="absolute inset-1 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-                                <div className="relative bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
-                                  <Image
-                                    src={sponsor.logo}
-                                    alt={sponsor.logoAlt}
-                                    width={sponsor.width}
-                                    height={sponsor.height}
-                                    className={`${sponsor.className} transition-transform duration-300 group-hover:scale-105`}
-                                    loading="lazy"
-                                  />
-                                </div>
+                          <SponsorDialog key={index} sponsor={sponsor}>
+                            <div className="group relative p-3 cursor-pointer">
+                              <div className="absolute inset-1 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                              <div className="relative bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
+                                <Image
+                                  src={sponsor.logo}
+                                  alt={sponsor.logoAlt}
+                                  width={sponsor.width}
+                                  height={sponsor.height}
+                                  className={`${sponsor.className} transition-transform duration-300 group-hover:scale-105`}
+                                  loading="lazy"
+                                />
                               </div>
-                            </TooltipTrigger>
-                            <TooltipContent side="bottom" arrow>
-                              <p>{sponsor.name}</p>
-                            </TooltipContent>
-                          </Tooltip>
+                            </div>
+                          </SponsorDialog>
                         ))}
                       </div>
 
@@ -1260,19 +1403,21 @@ const Page = memo(() => {
                                 key={index}
                                 className="pl-2 md:pl-4 basis-1/2"
                               >
-                                <div className="group relative p-2">
-                                  <div className="absolute inset-1 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-                                  <div className="relative bg-white dark:bg-gray-900 p-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
-                                    <Image
-                                      src={sponsor.logo}
-                                      alt={sponsor.logoAlt}
-                                      width={sponsor.width}
-                                      height={sponsor.height}
-                                      className={`${sponsor.className} transition-transform duration-300 group-hover:scale-105 mx-auto`}
-                                      loading="lazy"
-                                    />
+                                <SponsorDialog sponsor={sponsor}>
+                                  <div className="group relative p-2 cursor-pointer">
+                                    <div className="absolute inset-1 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                                    <div className="relative bg-white dark:bg-gray-900 p-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
+                                      <Image
+                                        src={sponsor.logo}
+                                        alt={sponsor.logoAlt}
+                                        width={sponsor.width}
+                                        height={sponsor.height}
+                                        className={`${sponsor.className} transition-transform duration-300 group-hover:scale-105 mx-auto`}
+                                        loading="lazy"
+                                      />
+                                    </div>
                                   </div>
-                                </div>
+                                </SponsorDialog>
                               </CarouselItem>
                             ))}
                           </CarouselContent>
@@ -1280,36 +1425,36 @@ const Page = memo(() => {
                           <CarouselNext />
                         </Carousel>
                       </div>
-                    </>
-                  ) : (
-                    <div className="text-center">
-                      <div className="mx-auto mb-6 p-4 bg-purple-100/50 dark:bg-purple-900/30 rounded-full w-fit">
-                        <TrophyIcon className="h-16 w-16 text-purple-400" />
-                      </div>
-                      <Text
-                        as="h4"
-                        className="text-xl font-semibold mb-3 text-purple-600"
-                      >
-                        Sponsors Coming Soon
-                      </Text>
-                      <Text
-                        as="p"
-                        className="text-sm text-purple-500/70 mb-4 max-w-xs"
-                      >
-                        We are actively seeking partnerships with organizations
-                        that share our vision
-                      </Text>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-purple-300 text-purple-600 hover:bg-purple-50"
-                        asChild
-                      >
-                        <Link href="/contact">Become a Sponsor</Link>
-                      </Button>
+                    </TooltipProvider>
+                  </>
+                ) : (
+                  <div className="text-center">
+                    <div className="mx-auto mb-6 p-4 bg-purple-100/50 dark:bg-purple-900/30 rounded-full w-fit">
+                      <TrophyIcon className="h-16 w-16 text-purple-400" />
                     </div>
-                  )}
-                </TooltipProvider>
+                    <Text
+                      as="h4"
+                      className="text-xl font-semibold mb-3 text-purple-600"
+                    >
+                      Sponsors Coming Soon
+                    </Text>
+                    <Text
+                      as="p"
+                      className="text-sm text-purple-500/70 mb-4 max-w-xs"
+                    >
+                      We are actively seeking partnerships with organizations
+                      that share our vision
+                    </Text>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-purple-300 text-purple-600 hover:bg-purple-50"
+                      asChild
+                    >
+                      <Link href="/contact">Become a Sponsor</Link>
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </BlurFade>
@@ -1663,7 +1808,7 @@ const Page = memo(() => {
           </Card>
         </BlurFade>
       </div>
-    </>
+    </div>
   );
 });
 

@@ -93,7 +93,7 @@ const EventDetailsPage = () => {
             <div className="mb-16">
               <Text
                 as="h1"
-                className="text-primary flex gap-2 items-center justify-center text-6xl md:text-9xl lg:text-[10rem] font-black mb-4"
+                className="text-primary flex gap-2 items-center justify-center text-5xl sm:text-6xl md:text-9xl lg:text-[10rem] font-black mb-4"
               >
                 RM
                 <CountingNumber
@@ -444,7 +444,7 @@ const EventDetailsPage = () => {
         </div>
       </div>
 
-      <div className="absolute h-[800px]  -left-0 rotate-90 !overflow-visible">
+      <div className="absolute lg:w-auto w-screen lg:h-[800px]  -left-0 rotate-90 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/10.svg"}
           alt="Background Gradient"
@@ -514,7 +514,7 @@ const EventDetailsPage = () => {
                   <DialogTrigger asChild>
                     <div className="flex items-start gap-4 md:gap-6 cursor-pointer hover:bg-muted/30 p-3 md:p-4 rounded-lg transition-colors group">
                       {/* Date (left) - Mobile & Desktop */}
-                      <div className="min-w-[100px] md:min-w-[140px] text-right">
+                      <div className="min-w-fit md:min-w-[140px] text-right">
                         <Text
                           as="p"
                           className="font-semibold text-sm md:text-base"
@@ -915,7 +915,7 @@ const EventDetailsPage = () => {
         </div>
       </div>
 
-      <div className="absolute h-[800px]  -right-0 rotate-180 !overflow-visible">
+      <div className="absolute lg:w-auto w-screen lg:h-[800px]  -right-0 rotate-180 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/13.svg"}
           alt="Background Gradient"

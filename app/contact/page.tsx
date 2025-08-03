@@ -172,14 +172,14 @@ const ContactPage = () => {
         {
           name: "Ahmad Syafiq",
           role: "Competition Director",
-          number: "+60123456789",
+          number: "+60182017884",
           description:
             "General inquiries, registration issues, and competition guidelines",
         },
         {
           name: "Siti Nurhaliza",
           role: "Technical Support",
-          number: "+60987654321",
+          number: "+601135212008",
           description:
             "Technical requirements, dataset questions, and submission help",
         },
@@ -286,7 +286,7 @@ const ContactPage = () => {
         </div>
       </div>
 
-      <div className="absolute h-[1200px]  -right-0 rotate-90 !overflow-visible">
+      <div className="absolute lg:w-auto w-screen lg:h-[1200px]  -right-0 rotate-90 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"
@@ -341,24 +341,25 @@ const ContactPage = () => {
                         className="text-sm mb-3"
                       >
                         {contact.description}
-                      </Text>
-                      <Link
-                        href={createWhatsAppLink(
-                          contact.number,
-                          contact.name,
-                          contact.role
-                        )}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      </Text>{" "}
+                      <Button
+                        size="sm"
+                        className="bg-green-600 hover:bg-green-700 text-white"
+                        asChild
                       >
-                        <Button
-                          size="sm"
-                          className="bg-green-600 hover:bg-green-700 text-white"
+                        <Link
+                          href={createWhatsAppLink(
+                            contact.number,
+                            contact.name,
+                            contact.role
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           <MessageCircleIcon className="h-4 w-4 mr-2" />
                           Chat on WhatsApp
-                        </Button>
-                      </Link>
+                        </Link>
+                      </Button>
                     </div>
                   </div>
                 </div>

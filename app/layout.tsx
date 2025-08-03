@@ -107,7 +107,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <head>
         <link
           rel="icon"
@@ -137,7 +137,7 @@ export default function RootLayout({
       </head>
       <Analytics />
       <body
-        className={`${outfit.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased`}
+        className={`${outfit.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased overflow-x-visible`}
       >
         <ThemeProvider
           attribute="class"
@@ -156,7 +156,7 @@ export default function RootLayout({
             />
           </div>
           <Header />
-          <main className="mx-auto px-4 py-2 mt-18 !overflow-hidden">
+          <main className="mx-auto px-4 py-2 mt-18 overflow-visible">
             {children}
           </main>
           <Footer />

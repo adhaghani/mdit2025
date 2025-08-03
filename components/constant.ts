@@ -566,6 +566,11 @@ interface Sponsor {
   height: number;
   className: string;
   tier: string;
+  description?: string;
+  website?: string;
+  industry?: string;
+  founded?: string;
+  headquarters?: string;
 }
 
 interface MediaPartner {
@@ -638,10 +643,10 @@ export const ORGANIZERS: Organizer[] = [
     className: "w-24 h-24 sm:w-24 sm:h-24",
   },
   {
-    name: "nama_institusi",
+    name: "Malaysia Digital",
     logo: "/md.svg",
     logoLight: "/md_Light.svg", // For dark mode
-    logoAlt: "logo nama_institusi",
+    logoAlt: "logo Malaysia Digital",
     width: 120,
     height: 120,
     className: "w-24 h-24 sm:w-24 sm:h-24",
@@ -651,49 +656,79 @@ export const ORGANIZERS: Organizer[] = [
 // Official Sponsors data
 export const OFFICIAL_SPONSORS: Sponsor[] = [
   {
-    name: "Platinum Sponsor",
+    name: "TechCorp Solutions",
     logo: "/instats.svg",
-    logoAlt: "Platinum Sponsor",
+    logoAlt: "TechCorp Solutions",
     width: 120,
     height: 120,
     className: "w-28 h-28 sm:w-32 sm:h-32",
     tier: "platinum",
+    description:
+      "TechCorp Solutions is a leading technology company specializing in enterprise software solutions, cloud computing, and data analytics. We empower businesses to harness the power of data for strategic decision-making and operational excellence.",
+    website: "https://techcorp.com",
+    industry: "Technology & Software",
+    founded: "2010",
+    headquarters: "Kuala Lumpur, Malaysia",
   },
   {
-    name: "Gold Sponsor",
+    name: "DataVision Analytics",
     logo: "/instats.svg",
-    logoAlt: "Gold Sponsor",
+    logoAlt: "DataVision Analytics",
     width: 120,
     height: 120,
     className: "w-24 h-24 sm:w-28 sm:h-28",
     tier: "gold",
+    description:
+      "DataVision Analytics is a premier data science consultancy that helps organizations transform raw data into actionable insights. Our expertise spans machine learning, artificial intelligence, and advanced analytics across various industries.",
+    website: "https://datavision.com",
+    industry: "Data Analytics & AI",
+    founded: "2015",
+    headquarters: "Cyberjaya, Malaysia",
   },
   {
-    name: "Silver Sponsor",
+    name: "Innovation Hub Malaysia",
     logo: "/instats.svg",
-    logoAlt: "Silver Sponsor",
+    logoAlt: "Innovation Hub Malaysia",
     width: 120,
     height: 120,
     className: "w-24 h-24 sm:w-28 sm:h-28",
     tier: "silver",
+    description:
+      "Innovation Hub Malaysia is a government-backed initiative that supports startups and emerging technologies. We provide funding, mentorship, and resources to foster innovation in the Malaysian tech ecosystem, particularly in data science and digital transformation.",
+    website: "https://innovationhub.my",
+    industry: "Government & Innovation",
+    founded: "2018",
+    headquarters: "Putrajaya, Malaysia",
   },
   {
-    name: "Bronze Sponsor",
+    name: "CloudFirst Technologies",
     logo: "/instats.svg",
-    logoAlt: "Bronze Sponsor",
+    logoAlt: "CloudFirst Technologies",
     width: 120,
     height: 120,
     className: "w-20 h-20 sm:w-24 sm:h-24",
     tier: "bronze",
+    description:
+      "CloudFirst Technologies is a cloud computing specialist that provides scalable infrastructure solutions for data-intensive applications. We enable organizations to build, deploy, and manage big data and analytics workloads in the cloud.",
+    website: "https://cloudfirst.tech",
+    industry: "Cloud Computing",
+    founded: "2017",
+    headquarters: "Shah Alam, Malaysia",
   },
   {
-    name: "Technology Partner",
+    name: "EduTech Solutions",
     logo: "/instats.svg",
-    logoAlt: "Technology Partner",
+    logoAlt: "EduTech Solutions",
     width: 120,
     height: 120,
     className: "w-20 h-20 sm:w-24 sm:h-24",
     tier: "technology",
+    description:
+      "EduTech Solutions bridges the gap between education and industry by providing cutting-edge learning platforms and tools for data science education. We empower students and professionals with the skills needed for the digital economy.",
+    website: "https://edutech.solutions",
+    industry: "Education Technology",
+    founded: "2019",
+    headquarters: "Petaling Jaya, Malaysia",
   },
 ];
 

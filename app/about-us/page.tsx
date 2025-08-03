@@ -14,150 +14,289 @@ const AboutUsPage = () => {
   const teamByBureau = {
     "High Committee": [
       {
-        name: "Dr. Sarah Ahmad",
-        role: "Chairman, Majlis Tertinggi",
-        designation:
-          "Senior Lecturer, Faculty of Computer & Mathematical Sciences",
-        image: "/team/placeholder-team-1.jpg",
-        bio: "Leading digital transformation initiatives in higher education with focus on data science excellence.",
-      },
-      {
-        name: "Prof. Ahmad Hassan",
-        role: "Vice Chairman",
-        designation: "Dean, Faculty of Computer & Mathematical Sciences",
-        image: "/team/placeholder-team-2.jpg",
-        bio: "Providing strategic oversight and academic guidance for competition excellence.",
-      },
-      {
-        name: "Dr. Nurul Huda",
-        role: "Secretary General",
-        designation: "Associate Professor, Statistics Department",
-        image: "/team/placeholder-team-3.jpg",
-        bio: "Coordinating high-level committee decisions and strategic planning initiatives.",
-      },
-    ],
-    "Program Bureau": [
-      {
-        name: "Ahmad Firdaus",
-        role: "Head of Program Bureau",
-        designation: "Final Year Statistics Student",
-        image: "/team/placeholder-team-4.jpg",
-        bio: "Passionate about creating meaningful learning experiences through data competition programs.",
-      },
-      {
-        name: "Siti Fatimah",
-        role: "Deputy Head of Program",
-        designation: "Computer Science Undergraduate",
-        image: "/team/placeholder-team-5.jpg",
-        bio: "Ensuring seamless execution of competition phases and participant experience.",
-      },
-      {
-        name: "Muhammad Arif",
-        role: "Workshop Coordinator",
-        designation: "Mathematics Student",
+        name: "Ikhwan Mukminin Abdul Aziz",
+        role: "Program Director",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-6.jpg",
-        bio: "Organizing educational workshops and skill development sessions for participants.",
       },
-    ],
-    "Technical Bureau": [
       {
-        name: "Nurul Aina",
-        role: "Head of Technical Bureau",
-        designation: "Computer Science Graduate Student",
+        name: "Nur Faqihah Binti Mohd Nazri",
+        role: "Deputy Program Director",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-7.jpg",
-        bio: "Ensuring technical excellence and innovation in all competition aspects.",
       },
       {
-        name: "Khalid Rahman",
-        role: "Platform Developer",
-        designation: "Software Engineering Student",
+        name: "Adlin Sofiya Binti Mohd Anizam",
+        role: "Secretary 1",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-8.jpg",
-        bio: "Developing and maintaining competition platforms and technical infrastructure.",
       },
       {
-        name: "Aisyah Zain",
-        role: "Data Systems Manager",
-        designation: "Data Science Postgraduate",
+        name: "Nazaratul Aleeya Binti Mohd Nazri",
+        role: "Secretary 2",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-9.jpg",
-        bio: "Managing dataset preparation and technical evaluation systems.",
+      },
+      {
+        name: "Auni 'Izzati Binti Mohd Faizal",
+        role: "Treasurer",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-9.jpg",
       },
     ],
-    "Corporate Network Bureau": [
+    "Program & Protocol Bureau": [
       {
-        name: "Muhammad Haziq",
-        role: "Head of Corporate Network Bureau",
-        designation: "Statistics Undergraduate",
+        name: "Nur Nadia Syamimi Binti Mohd Nordin",
+        role: "Head of Program Bureau",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-10.jpg",
-        bio: "Building strategic partnerships to enhance industry collaboration and opportunities.",
       },
       {
-        name: "Diana Syafiqah",
-        role: "Partnership Manager",
-        designation: "Business Analytics Student",
+        name: "Wan Nuraqilah Amna Binti Wan Muhammad",
+        role: "Program Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-10.jpg",
+      },
+      {
+        name: "Maliki Bin Nasarudin",
+        role: "Program Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-11.jpg",
-        bio: "Developing relationships with industry partners and sponsors for mutual benefit.",
       },
       {
-        name: "Ravi Kumar",
-        role: "Industry Liaison",
-        designation: "Economics & Statistics Student",
+        name: "Salis Saadah Binti Shamsul Bahrin",
+        role: "Program Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-12.jpg",
-        bio: "Facilitating connections between participants and industry professionals.",
       },
-    ],
-    "Judging Bureau": [
       {
-        name: "Siti Aminah",
-        role: "Head of Judging Bureau",
-        designation: "Data Science Postgraduate",
+        name: "Nursufi Al-Insyirah Binti Nazir",
+        role: "Program Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-13.jpg",
-        bio: "Coordinating expert evaluation processes to ensure fair and comprehensive assessment.",
       },
       {
-        name: "Ahmad Zikri",
-        role: "Assessment Coordinator",
-        designation: "Applied Statistics Student",
+        name: "Nur Dania Binti Sahrulniza",
+        role: "Program Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-14.jpg",
-        bio: "Developing evaluation criteria and managing the judging process workflow.",
+      },
+      {
+        name: "Syaripah Nur Anis Sofea Binti Syed Rijeno",
+        role: "Program Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-14.jpg",
       },
     ],
-    "Multimedia Bureau": [
+    "Management Bureau": [
       {
-        name: "Puteri Nurain",
-        role: "Head of Multimedia Bureau",
-        designation: "Statistic Students",
+        name: "Amira Adriana Binti Ahmad Tarmizi",
+        role: "Head of Management Bureau",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-27.jpg",
+      },
+      {
+        name: "Muhammad Amir Hakim bin Isahrin",
+        role: "Management Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-28.jpg",
+      },
+      {
+        name: "Brandon Ivan Rollend",
+        role: "Management Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-29.jpg",
+      },
+      {
+        name: "Nur Eirdina Binti Mohd Nazri",
+        role: "Management Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-30.jpg",
+      },
+      {
+        name: "Muhammad Fiqri Bin Sahrel",
+        role: "Management Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-30.jpg",
+      },
+      {
+        name: "Nur Aina Mardhiah Binti Muhamad Ruslan",
+        role: "Management Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-30.jpg",
+      },
+    ],
+    "Technical & Logistic Bureau": [
+      {
+        name: "Ikhmal Hakimi Bin Mohd Zunaidi",
+        role: "Head of Technical Bureau",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-15.jpg",
-        bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       },
       {
-        name: "Ahmad Adha",
-        role: "Multimedia Bureau",
-        designation: "Computer Science Student",
+        name: "Nurul Hanis Nadhirah Binti Norman",
+        role: "Deputy Head of Technical Bureau",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/placeholder-team-16.jpg",
-        bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       },
       {
-        name: "Ahmad Adha",
-        role: "Multimedia Bureau",
-        designation: "Computer Science Student",
-        image: "/team/placeholder-team-16.jpg",
-        bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        name: "Mashitah Binti Rahman",
+        role: "Technical Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-17.jpg",
+      },
+      {
+        name: "Muhammad Fadhil Rais bin Mohd Harris",
+        role: "Technical Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-18.jpg",
+      },
+      {
+        name: "Emran Hafiz Bin M Abd Kohar",
+        role: "Technical Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-18.jpg",
       },
     ],
-    "Protocol Bureau": [
+    "Judge & Marking Bureau": [
       {
-        name: "Noor Azlan",
-        role: "Head of Protocol Bureau",
-        designation: "International Relations Student",
-        image: "/team/placeholder-team-18.jpg",
-        bio: "Ensuring proper protocols and ceremonial aspects of competition events.",
+        name: "Imtinan Ilwani Binti Abdul Ghani",
+        role: "Head of Judging Bureau",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-19.jpg",
       },
       {
-        name: "Sarah Michelle",
-        role: "Event Coordinator",
-        designation: "Hospitality Management Student",
-        image: "/team/placeholder-team-19.jpg",
-        bio: "Coordinating logistics and ensuring smooth execution of all competition events.",
+        name: "Nur Ain Adriana Binti Zulfiqar",
+        role: "Deputy Head of Judging Bureau",
+        designation: "Third Year Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-20.jpg",
+      },
+      {
+        name: "Siti Nurfarhah Binti Zahari",
+        role: "Judging Bureau Member",
+        designation: "Third Year Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-21.jpg",
+      },
+    ],
+    "Multimedia & Publicity Bureau": [
+      {
+        name: "Puteri Nurain Binti Mazlan",
+        role: "Head of Multimedia Bureau",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-23.jpg",
+      },
+      {
+        name: "Nur Afrina Firzana Binti Othman",
+        role: "Multimedia Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-24.jpg",
+      },
+      {
+        name: "Megdelenny Anak Sim",
+        role: "Multimedia Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-25.jpg",
+      },
+      {
+        name: "Nik Nayly Alya Binti Nik Salimi",
+        role: "Multimedia Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-26.jpg",
+      },
+      {
+        name: "Aliyah Nadine Binti Azma Yazuddin",
+        role: "Multimedia Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-26.jpg",
+      },
+      {
+        name: "Muhammad 'Irfan Bin Rahmat",
+        role: "Multimedia Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-26.jpg",
+      },
+      {
+        name: "Ahmad Adha bin Mohd Ghani",
+        role: "Multimedia Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-26.jpg",
+      },
+      {
+        name: "Anis Adlina Binti Rohesan",
+        role: "Multimedia Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-26.jpg",
+      },
+      {
+        name: "Nurulhayati Binti Ahmad Fauzi",
+        role: "Multimedia Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-26.jpg",
+      },
+    ],
+    "Corporate Relations Bureau": [
+      {
+        name: "Aina Batrisyia Binti Zulamri",
+        role: "Head of Corporate Relations Bureau",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-27.jpg",
+      },
+      {
+        name: "Mohamad Nazmi Aiman Bin Abdullah",
+        role: "Corporate Relations Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-28.jpg",
+      },
+      {
+        name: "Amni Aizzati Binti Azmi",
+        role: "Corporate Relations Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-29.jpg",
+      },
+      {
+        name: "Nuqman Aqeef Bin Abd Rahman",
+        role: "Corporate Relations Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-30.jpg",
+      },
+
+      {
+        name: "Sofea Nur Batrisyia Binti Bisaludin",
+        role: "Corporate Relations Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-30.jpg",
+      },
+      {
+        name: "Aisyah Nazihah Binti Ariffin",
+        role: "Corporate Relations Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-30.jpg",
+      },
+    ],
+    "Special Task Bureau": [
+      {
+        name: "Dania Farzana",
+        role: "Head of Special Task Bureau",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-27.jpg",
+      },
+      {
+        name: "Nur Azreena Aiyna Binti Azlan",
+        role: "Special Task Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-28.jpg",
+      },
+      {
+        name: "Nursyahirah Binti Mulkiaman",
+        role: "Special Task Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-29.jpg",
+      },
+      {
+        name: "Nur Nadia Wahida Binti Zulkifli",
+        role: "Special Task Bureau Member",
+        designation: "Statistics Student, UiTM Shah Alam",
+        image: "/team/placeholder-team-30.jpg",
       },
     ],
   };
@@ -190,7 +329,7 @@ const AboutUsPage = () => {
 
   return (
     <>
-      <div className="absolute h-[1200px]  -left-128 rotate-90 !overflow-visible">
+      <div className="absolute w-screen lg:w-auto lg:h-[1200px]  lg:-left-128 -left-64 rotate-90 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/11.svg"}
           alt="Background Gradient"
@@ -305,7 +444,7 @@ const AboutUsPage = () => {
           </BlurFade>
         </div>
       </div>
-      <div className="absolute h-[800px]  -right-0 rotate-90 !overflow-visible">
+      <div className="absolute w-screen lg:w-auto lg:h-[800px]  -right-0 rotate-90 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/10.svg"}
           alt="Background Gradient"
@@ -323,11 +462,7 @@ const AboutUsPage = () => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-12 max-w-2xl mx-auto"
-          >
+          <Text as="p" className="text-center mb-12 max-w-2xl mx-auto">
             Dedicated individuals working tirelessly to make MDIT 2025 a
             transformative experience for all participants. Our team combines
             academic excellence with industry expertise.
@@ -360,22 +495,18 @@ const AboutUsPage = () => {
                 delay={0.2 + index * 0.1}
               >
                 <Card className="h-full hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <div className="relative w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-primary/40 rounded-full flex items-center justify-center">
-                      {/* Placeholder for team member image */}
+                  <CardContent>
+                    <div className="relative aspect-video mx-auto mb-4 bg-gradient-to-br from-primary/20 to-primary/40 rounded-lg flex items-center justify-center">
                       <Users className="h-12 w-12 text-primary" />
                     </div>
-                    <Text as="h4" className="font-semibold text-lg mb-1">
+                    <Text as="h4" className="font-semibold text-lg mb-0">
                       {member.name}
-                    </Text>
-                    <Text as="p" className="text-primary font-medium mb-2">
-                      {member.role}
                     </Text>
                     <Text as="p" className="text-sm text-muted-foreground mb-3">
                       {member.designation}
                     </Text>
-                    <Text as="p" className="text-sm leading-relaxed">
-                      {member.bio}
+                    <Text as="p" className="text-primary font-medium mb-2">
+                      {member.role}
                     </Text>
                   </CardContent>
                 </Card>
