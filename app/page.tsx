@@ -12,6 +12,7 @@ import { BlurFade } from "@/components/magicui/blur-fade";
 import Image from "next/image";
 
 import { BubbleBackground } from "@/components/animate-ui/backgrounds/bubble";
+import { MobileGradientBackground } from "@/components/animate-ui/backgrounds/mobile-gradient";
 
 // Font configurations
 const orbitron = Orbitron({
@@ -78,10 +79,17 @@ const Page = memo(() => {
     <>
       {/* Hero Section with Background Pattern */}
       <div className="relative h-screen min-h-fit">
+        {/* Desktop Background - Bubble Background */}
         <BubbleBackground
           interactive
-          className="absolute inset-0 z-0 rounded-lg opacity-30"
+          className="absolute inset-0 z-0 rounded-lg opacity-30 hidden md:block"
         />
+        
+        {/* Mobile Background - Optimized Gradient */}
+        <MobileGradientBackground
+          className="absolute inset-0 z-0 rounded-lg opacity-60 block md:hidden"
+        />
+        
         <div className="relative text-center py-10 px-4 flex flex-col item-center justify-center gap-4 z-10">
           <BlurFade
             inView
