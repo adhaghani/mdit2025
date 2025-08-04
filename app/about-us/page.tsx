@@ -17,31 +17,31 @@ const AboutUsPage = () => {
         name: "Ikhwan Mukminin Abdul Aziz",
         role: "Program Director",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-6.jpg",
+        image: "/team/MT1.png",
       },
       {
         name: "Nur Faqihah Binti Mohd Nazri",
         role: "Deputy Program Director",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-7.jpg",
+        image: "/team/MT2.png",
       },
       {
         name: "Adlin Sofiya Binti Mohd Anizam",
         role: "Secretary 1",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-8.jpg",
+        image: "/team/MT3.png",
       },
       {
         name: "Nazaratul Aleeya Binti Mohd Nazri",
         role: "Secretary 2",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-9.jpg",
+        image: "/team/MT4.png",
       },
       {
         name: "Auni 'Izzati Binti Mohd Faizal",
         role: "Treasurer",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-9.jpg",
+        image: "/team/MT5.png",
       },
     ],
     "Program & Protocol Bureau": [
@@ -49,43 +49,43 @@ const AboutUsPage = () => {
         name: "Nur Nadia Syamimi Binti Mohd Nordin",
         role: "Head of Program Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-10.jpg",
+        image: "/team/PP1.png",
       },
       {
         name: "Wan Nuraqilah Amna Binti Wan Muhammad",
         role: "Program Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-10.jpg",
+        image: "/team/PP2.png",
       },
       {
         name: "Maliki Bin Nasarudin",
         role: "Program Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-11.jpg",
+        image: "/team/PP3.png",
       },
       {
         name: "Salis Saadah Binti Shamsul Bahrin",
         role: "Program Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-12.jpg",
+        image: "/team/PP4.png",
       },
       {
         name: "Nursufi Al-Insyirah Binti Nazir",
         role: "Program Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-13.jpg",
+        image: "/team/PP5.png",
       },
       {
         name: "Nur Dania Binti Sahrulniza",
         role: "Program Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-14.jpg",
+        image: "/team/PP6.png",
       },
       {
         name: "Syaripah Nur Anis Sofea Binti Syed Rijeno",
         role: "Program Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-14.jpg",
+        image: "/team/PP7.png",
       },
     ],
     "Management Bureau": [
@@ -93,37 +93,37 @@ const AboutUsPage = () => {
         name: "Amira Adriana Binti Ahmad Tarmizi",
         role: "Head of Management Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-27.jpg",
+        image: "/team/M1.png",
       },
       {
         name: "Muhammad Amir Hakim bin Isahrin",
         role: "Management Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-28.jpg",
+        image: "/team/M2.png",
       },
       {
         name: "Brandon Ivan Rollend",
         role: "Management Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-29.jpg",
+        image: "/team/M3.png",
       },
       {
         name: "Nur Eirdina Binti Mohd Nazri",
         role: "Management Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-30.jpg",
+        image: "/team/M4.png",
       },
       {
         name: "Muhammad Fiqri Bin Sahrel",
         role: "Management Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-30.jpg",
+        image: "/team/M5.png",
       },
       {
         name: "Nur Aina Mardhiah Binti Muhamad Ruslan",
         role: "Management Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-30.jpg",
+        image: "/team/M6.png",
       },
     ],
     "Technical & Logistic Bureau": [
@@ -131,31 +131,31 @@ const AboutUsPage = () => {
         name: "Ikhmal Hakimi Bin Mohd Zunaidi",
         role: "Head of Technical Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-15.jpg",
+        image: "/team/placeholder-team-15.png",
       },
       {
         name: "Nurul Hanis Nadhirah Binti Norman",
         role: "Deputy Head of Technical Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-16.jpg",
+        image: "/team/placeholder-team-16.png",
       },
       {
         name: "Mashitah Binti Rahman",
         role: "Technical Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-17.jpg",
+        image: "/team/placeholder-team-17.png",
       },
       {
         name: "Muhammad Fadhil Rais bin Mohd Harris",
         role: "Technical Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-18.jpg",
+        image: "/team/placeholder-team-18.png",
       },
       {
         name: "Emran Hafiz Bin M Abd Kohar",
         role: "Technical Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-18.jpg",
+        image: "/team/placeholder-team-18.png",
       },
     ],
     "Judge & Marking Bureau": [
@@ -163,19 +163,19 @@ const AboutUsPage = () => {
         name: "Imtinan Ilwani Binti Abdul Ghani",
         role: "Head of Judging Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-19.jpg",
+        image: "/team/JM1.png",
       },
       {
         name: "Nur Ain Adriana Binti Zulfiqar",
         role: "Deputy Head of Judging Bureau",
         designation: "Third Year Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-20.jpg",
+        image: "/team/JM2.png",
       },
       {
         name: "Siti Nurfarhah Binti Zahari",
         role: "Judging Bureau Member",
         designation: "Third Year Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-21.jpg",
+        image: "/team/JM3.png",
       },
     ],
     "Multimedia & Publicity Bureau": [
@@ -183,55 +183,55 @@ const AboutUsPage = () => {
         name: "Puteri Nurain Binti Mazlan",
         role: "Head of Multimedia Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-23.jpg",
+        image: "/team/MP1.png",
       },
       {
         name: "Nur Afrina Firzana Binti Othman",
         role: "Multimedia Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-24.jpg",
+        image: "/team/MP2.png",
       },
       {
         name: "Megdelenny Anak Sim",
         role: "Multimedia Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-25.jpg",
+        image: "/team/MP3.png",
       },
       {
         name: "Nik Nayly Alya Binti Nik Salimi",
         role: "Multimedia Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-26.jpg",
+        image: "/team/MP4.png",
       },
       {
         name: "Aliyah Nadine Binti Azma Yazuddin",
         role: "Multimedia Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-26.jpg",
+        image: "/team/MP5.png",
       },
       {
         name: "Muhammad 'Irfan Bin Rahmat",
         role: "Multimedia Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-26.jpg",
+        image: "/team/MP6.png",
       },
       {
         name: "Ahmad Adha bin Mohd Ghani",
         role: "Multimedia Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-26.jpg",
+        image: "/team/MP7.png",
       },
       {
         name: "Anis Adlina Binti Rohesan",
         role: "Multimedia Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-26.jpg",
+        image: "/team/MP8.png",
       },
       {
         name: "Nurulhayati Binti Ahmad Fauzi",
         role: "Multimedia Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-26.jpg",
+        image: "/team/MP9.png",
       },
     ],
     "Corporate Relations Bureau": [
@@ -239,38 +239,38 @@ const AboutUsPage = () => {
         name: "Aina Batrisyia Binti Zulamri",
         role: "Head of Corporate Relations Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-27.jpg",
+        image: "/team/CR1.png",
       },
       {
         name: "Mohamad Nazmi Aiman Bin Abdullah",
         role: "Corporate Relations Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-28.jpg",
+        image: "/team/CR2.png",
       },
       {
         name: "Amni Aizzati Binti Azmi",
         role: "Corporate Relations Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-29.jpg",
+        image: "/team/CR3.png",
       },
       {
         name: "Nuqman Aqeef Bin Abd Rahman",
         role: "Corporate Relations Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-30.jpg",
+        image: "/team/CR4.png",
       },
 
       {
         name: "Sofea Nur Batrisyia Binti Bisaludin",
         role: "Corporate Relations Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-30.jpg",
+        image: "/team/CR5.png",
       },
       {
         name: "Aisyah Nazihah Binti Ariffin",
         role: "Corporate Relations Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-30.jpg",
+        image: "/team/CR6.png",
       },
     ],
     "Special Task Bureau": [
@@ -278,25 +278,25 @@ const AboutUsPage = () => {
         name: "Dania Farzana",
         role: "Head of Special Task Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-27.jpg",
+        image: "/team/ST1.png",
       },
       {
         name: "Nur Azreena Aiyna Binti Azlan",
         role: "Special Task Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-28.jpg",
+        image: "/team/ST2.png",
       },
       {
         name: "Nursyahirah Binti Mulkiaman",
         role: "Special Task Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-29.jpg",
+        image: "/team/ST3.png",
       },
       {
         name: "Nur Nadia Wahida Binti Zulkifli",
         role: "Special Task Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
-        image: "/team/placeholder-team-30.jpg",
+        image: "/team/ST4.png",
       },
     ],
   };
@@ -486,7 +486,7 @@ const AboutUsPage = () => {
         </BlurFade>
 
         {/* Team Members Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamByBureau[activeTab as keyof typeof teamByBureau].map(
             (member, index) => (
               <BlurFade
@@ -494,10 +494,20 @@ const AboutUsPage = () => {
                 inView
                 delay={0.2 + index * 0.1}
               >
-                <Card className="h-full hover:shadow-lg transition-shadow">
+                <Card className="h-full max-w-[450px] mx-auto hover:shadow-lg transition-shadow">
                   <CardContent>
-                    <div className="relative aspect-video mx-auto mb-4 bg-gradient-to-br from-primary/20 to-primary/40 rounded-lg flex items-center justify-center">
-                      <Users className="h-12 w-12 text-primary" />
+                    <div className="relative aspect-4/3 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-primary/40 rounded-lg flex items-center justify-center">
+                      {member.image ? (
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          width={532}
+                          height={400}
+                          className="rounded-lg object-cover"
+                        />
+                      ) : (
+                        <Users className="h-12 w-12 text-primary" />
+                      )}
                     </div>
                     <Text as="h4" className="font-semibold text-lg mb-0">
                       {member.name}
