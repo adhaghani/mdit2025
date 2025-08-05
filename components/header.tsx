@@ -11,7 +11,9 @@ import {
   SheetTrigger,
 } from "@/components/animate-ui/radix/sheet";
 import { MoreHorizontalIcon } from "lucide-react";
-import { useStartCountdown } from "@/hooks/useStartCountdown";
+import { useCountdown } from "@/contexts/countdown-context";
+import { QRCode } from "@/components/ui/shadcn-io/qr-code";
+import { GOOGLE_FORM_LINK } from "./constant";
 import Image from "next/image";
 import { Text } from "@/components/ui/text";
 import { ModeToggle } from "./mode-toggle";
@@ -24,11 +26,13 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "./animate-ui/radix/dialog";
 const Header = memo(() => {
-  const { hasStarted, isExpired } = useStartCountdown(
-    "2025-08-30T00:00:00+08:00", // Count down to August 30
-    "2025-08-10T00:00:00+08:00" // Optional: Start countdown on August 10
-  );
+  const { hasStarted, isExpired } = useCountdown();
 
   // Memoize button text to prevent recalculation
   const buttonText = useMemo(() => {
@@ -161,7 +165,8 @@ const Header = memo(() => {
               <ModeToggle />
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href={buttonHref}>
+              {/* <Link href={buttonHref}> */}
+              {isButtonDisabled ? (
                 <Button
                   size="sm"
                   className="flex items-center gap-2"
@@ -169,7 +174,45 @@ const Header = memo(() => {
                 >
                   {buttonText}
                 </Button>
-              </Link>
+              ) : (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button
+                      size="sm"
+                      className="flex items-center gap-2"
+                      disabled={isButtonDisabled}
+                    >
+                      {buttonText}
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="!h-fit gap-2">
+                    <Text as="p" className="text-center">
+                      Scan the QR code
+                    </Text>
+                    <QRCode
+                      className="max-w-[200px] mx-auto"
+                      data={GOOGLE_FORM_LINK}
+                      robustness="Q"
+                    />
+                    <Text as="p" className="text-center my-4">
+                      OR
+                    </Text>
+                    <div className="flex justify-center">
+                      <Button
+                        size="lg"
+                        className="w-full justify-center gap-2 font-semibold"
+                        asChild
+                      >
+                        <Link href={GOOGLE_FORM_LINK} target="_blank">
+                          Register Now
+                        </Link>
+                      </Button>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              )}
+
+              {/* </Link> */}
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>

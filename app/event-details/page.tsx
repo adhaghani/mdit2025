@@ -3,7 +3,11 @@
 import React from "react";
 import Image from "next/image";
 import { Text } from "@/components/ui/text";
-import { PROGRAM_TIMELINE } from "@/components/constant";
+import {
+  PROGRAM_TIMELINE,
+  GOOGLE_FORM_LINK,
+  EVENT_JUDGES,
+} from "@/components/constant";
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -28,10 +32,11 @@ import {
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useCountdown } from "@/contexts/countdown-context";
 import Link from "next/link";
-import { EVENT_JUDGES } from "@/components/constant";
 
 const EventDetailsPage = () => {
+  const { hasStarted, isExpired } = useCountdown();
   // Requirements
   const requirements = [
     {
@@ -100,7 +105,7 @@ const EventDetailsPage = () => {
                   decimalPlaces={2}
                   decimalSeparator="."
                   inView
-                  number={11600}
+                  number={9600}
                   className="text-primary "
                 />
               </Text>
@@ -1024,8 +1029,16 @@ const EventDetailsPage = () => {
         </BlurFade>
         <BlurFade inView delay={0.2}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
-              <Link href="/">Register Your Team</Link>
+            <Button size="lg" disabled={isExpired || hasStarted} asChild>
+              <Link
+                href={isExpired ? "#" : hasStarted ? GOOGLE_FORM_LINK : "#"}
+              >
+                {isExpired
+                  ? "Registration Closed"
+                  : hasStarted
+                  ? "Register Now"
+                  : "Coming Soon"}
+              </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link href="/rules-regulation">View Competition Rules</Link>

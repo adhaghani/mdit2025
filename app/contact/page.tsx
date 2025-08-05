@@ -170,18 +170,18 @@ const ContactPage = () => {
     () =>
       Object.freeze([
         {
-          name: "Ahmad Syafiq",
-          role: "Competition Director",
-          number: "+60182017884",
+          name: "Muhammad Fiqri",
+          role: "Support",
+          number: "+60184727274",
           description:
             "General inquiries, registration issues, and competition guidelines",
         },
         {
-          name: "Siti Nurhaliza",
-          role: "Technical Support",
-          number: "+601135212008",
+          name: "Amira Adriana",
+          role: "Support",
+          number: "+60192766323",
           description:
-            "Technical requirements, dataset questions, and submission help",
+            "General inquiries, registration issues, and competition guidelines",
         },
       ] as const),
     []

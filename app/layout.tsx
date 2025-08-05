@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Merriweather, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { CountdownProvider } from "@/contexts/countdown-context";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/next";
@@ -142,19 +143,21 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed h-[100vh] w-[100vw] left-0 top-0 -z-10">
-            <FlickeringGrid
-              className="relative inset-0 z-0"
-              squareSize={5}
-              gridGap={10}
-              color="#8b5cf6"
-              maxOpacity={0.12}
-              flickerChance={0.1}
-            />
-          </div>
-          <Header />
-          <main className="mx-auto px-4 py-2 mt-18">{children}</main>
-          <Footer />
+          <CountdownProvider>
+            <div className="fixed h-[100vh] w-[100vw] left-0 top-0 -z-10">
+              <FlickeringGrid
+                className="relative inset-0 z-0"
+                squareSize={5}
+                gridGap={10}
+                color="#8b5cf6"
+                maxOpacity={0.12}
+                flickerChance={0.1}
+              />
+            </div>
+            <Header />
+            <main className="mx-auto px-4 py-2 mt-18">{children}</main>
+            <Footer />
+          </CountdownProvider>
         </ThemeProvider>
       </body>
     </html>

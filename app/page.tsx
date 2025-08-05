@@ -12,8 +12,9 @@ import {
   Users2Icon,
   ExternalLinkIcon,
 } from "lucide-react";
+import { GOOGLE_FORM_LINK } from "@/components/constant";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useStartCountdown } from "@/hooks/useStartCountdown";
+import { useCountdown } from "@/contexts/countdown-context";
 import { Button } from "@/components/ui/button";
 import { ChevronRightIcon } from "lucide-react";
 import { BlurFade } from "@/components/magicui/blur-fade";
@@ -585,15 +586,9 @@ const SponsorDialog = ({ sponsor, children }: SponsorDialogProps) => {
 };
 
 const Page = memo(() => {
-  // Target date: August 30, 2025, GMT+8 (midnight)
-  const { hasStarted, timeLeft, isExpired } = useStartCountdown(
-    "2025-08-30T00:00:00+08:00", // Count down to August 30
-    "2025-08-10T00:00:00+08:00" // Optional: Start countdown on August 10
-  );
-
-  const { timeLeft: timeUntilRegistration } = useStartCountdown(
-    "2025-08-10T00:00:00+08:00" // Count down to August 10
-  );
+  // Get all countdown data from centralized context
+  const { hasStarted, timeLeft, isExpired, timeUntilRegistration } =
+    useCountdown();
 
   // Memoize competition phases to prevent recreation on every render
   const phases = useMemo(
@@ -650,7 +645,11 @@ const Page = memo(() => {
     if (isExpired)
       return { text: "Registration has closed", href: "#", disabled: true };
     if (hasStarted)
-      return { text: "Register Your Team", href: "#register", disabled: false };
+      return {
+        text: "Register Your Team",
+        href: GOOGLE_FORM_LINK,
+        disabled: false,
+      };
     return { text: "Registration will open soon", href: "#", disabled: true };
   }, [isExpired, hasStarted]);
 
@@ -1018,9 +1017,12 @@ const Page = memo(() => {
             <Button
               size="lg"
               className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+              asChild
             >
-              Discover More Details
-              <ArrowRightIcon className="ml-2 h-5 w-5" />
+              <Link href={"/event-details"}>
+                Discover More Details
+                <ArrowRightIcon className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
           </div>
         </BlurFade>
@@ -1653,12 +1655,22 @@ const Page = memo(() => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                disabled={!hasStarted}
+                disabled={!hasStarted || isExpired}
                 className="text-lg px-8 py-6"
+                asChild
               >
-                {hasStarted ? "Register Now" : "Registration Opening Soon"}
-                <ArrowRightIcon className="ml-2 h-5 w-5" />
+                <Link
+                  href={isExpired ? "#" : hasStarted ? GOOGLE_FORM_LINK : "#"}
+                >
+                  {isExpired
+                    ? "Registration Closed"
+                    : hasStarted
+                    ? "Register Now"
+                    : "Registration Opening Soon"}
+                  <ArrowRightIcon className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
+
               <Button
                 size="lg"
                 variant="outline"
