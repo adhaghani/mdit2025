@@ -21,6 +21,7 @@ import {
   AwardIcon,
   GitGraphIcon,
   InfoIcon,
+  UserIcon,
 } from "lucide-react";
 import {
   Dialog,
@@ -946,13 +947,13 @@ const EventDetailsPage = () => {
         </BlurFade>
 
         {EVENT_JUDGES && EVENT_JUDGES.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {EVENT_JUDGES.map((judge, index) => (
               <BlurFade key={index} inView delay={0.2 + index * 0.05}>
                 <Dialog>
                   <Card className="h-full hover:shadow-lg transition-shadow">
                     <CardContent>
-                      <div className="relative aspect-square border rounded-lg mb-4 bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
+                      <div className="relative aspect-4/3 border rounded-lg mb-4 bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
                         <DialogTrigger asChild>
                           <Button
                             size="sm"
@@ -962,9 +963,23 @@ const EventDetailsPage = () => {
                             View Details
                           </Button>
                         </DialogTrigger>
+                        {judge.image ? (
+                          <Image
+                            src={judge.image.src}
+                            alt={judge.image.alt}
+                            width={300}
+                            height={300}
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                        ) : (
+                          <UserIcon className="h-24 w-24 text-primary  rounded-full" />
+                        )}
                       </div>
-                      <Text as="h4" className="font-semibold mb-1">
+                      <Text as="h4" className="font-semibold">
                         {judge.name}
+                      </Text>
+                      <Text as="p" className="mb-1">
+                        {judge.position}
                       </Text>
                       <Text as="p" styleVariant="muted" className="text-sm">
                         {judge.title}
@@ -973,23 +988,31 @@ const EventDetailsPage = () => {
                   </Card>
                   <DialogContent className="max-w-2xl max-h-[90vh]">
                     <DialogHeader>
-                      <DialogTitle>Judge #{index + 1}</DialogTitle>
+                      <DialogTitle>{judge.position}</DialogTitle>
                     </DialogHeader>
                     <ScrollArea className="max-h-[70vh] pr-4">
                       <div className="flex flex-col sm:flex-row gap-5">
-                        <div className="relative flex-1 aspect-video sm:aspect-square border rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
-                          <Text as="p" styleVariant="muted">
-                            Professional Photo
-                          </Text>
+                        <div className="relative flex-1 aspect-4/3 sm:aspect-square border rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center overflow-hidden justify-center">
+                          {judge.image ? (
+                            <Image
+                              src={judge.image.src}
+                              alt={judge.image.alt}
+                              width={300}
+                              height={300}
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          ) : (
+                            <UserIcon className="h-24 w-24 text-primary rounded-full" />
+                          )}
                         </div>
                         <div className="flex-1">
-                          <Text as="h3" className="text-lg font-semibold mb-2">
+                          <Text as="h3" className="text-lg font-semibold">
                             {judge.name}
-                          </Text>
+                          </Text>{" "}
                           <Text as="p" styleVariant="muted" className="mb-4">
                             {judge.title}
                           </Text>
-                          <Text as="p" className="text-justify leading-relaxed">
+                          <Text as="p" className=" leading-relaxed">
                             {judge.bio}
                           </Text>
                         </div>

@@ -544,6 +544,11 @@ export const COMPETITION_HIGHLIGHTS = [
 interface Judge {
   name: string;
   title: string;
+  position?: string; // Optional position for Chief Judge
+  image?: {
+    src: string;
+    alt: string;
+  };
   bio: string;
 }
 
@@ -584,9 +589,14 @@ interface MediaPartner {
 
 export const EVENT_JUDGES: Judge[] = [
   {
-    name: "AHMAD ADHA BIN MOHD GHANI",
-    title: "PwC Trust Ambassador, PwC Malaysia",
-    bio: "Ahmad Adha is a seasoned professional with extensive experience in data analytics and business intelligence, currently serving as a PwC Trust Ambassador with over 10 years of experience in transforming data into actionable insights.",
+    name: "Dr. Ahmad Fazreen bin Baharudden",
+    position: "Chief Judge",
+    image: {
+      src: "/judges/J1.png",
+      alt: "Dr. Ahmad Fazreen bin Baharudden",
+    },
+    title: "Business Intelligence & Analytics Director, DataMicron",
+    bio: "Experienced practitioner of business and social science analytics with a demonstrated 24 years history of working in the information technology and services industry. Skilled in gap analysis, business problem solving, and analytics story telling.",
   },
   {
     name: "DR. SARAH LIAM",

@@ -15,7 +15,6 @@ import {
   DialogTrigger,
 } from "./animate-ui/radix/dialog";
 import {
-  Phone,
   Mail,
   Calendar,
   Users,

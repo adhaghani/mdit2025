@@ -313,13 +313,13 @@ const FrequentlyAskedQuestionsPage = () => {
               <div className="flex items-center justify-center gap-2">
                 <Phone className="h-4 w-4 text-primary" />
                 <Text as="p" className="font-semibold">
-                  +60 12-345 6789
+                  +60 18-472 727
                 </Text>
               </div>
               <div className="flex items-center justify-center gap-2">
                 <Mail className="h-4 w-4 text-primary" />
                 <Text as="p" className="font-semibold">
-                  info@mdit2025.my
+                  mditxdd2025@gmail.com
                 </Text>
               </div>
               <div className="flex items-center justify-center gap-2">

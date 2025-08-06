@@ -714,7 +714,7 @@ const Page = memo(() => {
                     : "Registration Opens In:"}
                 </Text>
                 <div className="flex items-center justify-center gap-4 md:gap-6">
-                  {countdownValues.map((item, index) => (
+                  {countdownValues.map((item) => (
                     <CountdownCard
                       key={item.label}
                       value={item.value}

@@ -72,13 +72,13 @@ const AboutUsPage = () => {
       {
         name: "Nursufi Al-Insyirah Binti Nazir",
         role: "Program Bureau Member",
-        designation: "Statistics Student, UiTM Shah Alam",
+        designation: "Actuarial Science Student, UiTM Shah Alam",
         image: "/team/PP5.png",
       },
       {
         name: "Nur Dania Binti Sahrulniza",
         role: "Program Bureau Member",
-        designation: "Statistics Student, UiTM Shah Alam",
+        designation: "Actuarial Science Student, UiTM Shah Alam",
         image: "/team/PP6.png",
       },
       {
@@ -116,7 +116,7 @@ const AboutUsPage = () => {
       {
         name: "Muhammad Fiqri Bin Sahrel",
         role: "Management Bureau Member",
-        designation: "Statistics Student, UiTM Shah Alam",
+        designation: "Computer Science Student, UiTM Shah Alam",
         image: "/team/M5.png",
       },
       {
@@ -212,13 +212,13 @@ const AboutUsPage = () => {
       {
         name: "Muhammad 'Irfan Bin Rahmat",
         role: "Multimedia Bureau Member",
-        designation: "Statistics Student, UiTM Shah Alam",
+        designation: "Artificial Intelligence Student, UiTM Shah Alam",
         image: "/team/MP6.png",
       },
       {
         name: "Ahmad Adha bin Mohd Ghani",
         role: "Multimedia Bureau Member",
-        designation: "Statistics Student, UiTM Shah Alam",
+        designation: "Computer Science Student, UiTM Shah Alam",
         image: "/team/MP7.png",
       },
       {
