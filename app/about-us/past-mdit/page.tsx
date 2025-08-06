@@ -15,7 +15,6 @@ import {
   MapPin,
   Award,
   TrendingUp,
-  ExternalLink,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -29,204 +28,89 @@ const PastMDITPage = () => {
   const pastEditions = {
     "2024": {
       year: "2024",
-      theme: "Data for Sustainable Future",
+      theme: "Finding Digital And Green Skills",
       logo: "/mdit2024.png", // Placeholder
-      dates: "September 15 - October 20, 2024",
-      venue: "UiTM Shah Alam, Selangor",
+      dates: "September 27 - November 2, 2024",
+      venue: "PICCA Convention Centre @ Butterworth Arena",
       totalTeams: 80,
       totalParticipants: 320,
-      universities: 23,
+      universities: 13,
       prizePool: "RM9,600",
       winner: {
-        team: "DataMavens",
-        university: "Universiti Malaya",
-        project: "Smart City Traffic Optimization",
-        impact:
-          "Adopted by Kuala Lumpur City Hall for traffic management system",
+        team: "NanoGuardian",
+        university: "Taylors University",
       },
       runnerUp: {
-        team: "StatVanguard",
-        university: "Universiti Teknologi Malaysia",
-        project: "Healthcare Resource Prediction Model",
+        team: "4Cast",
+        university: "Universiti Kebangsaan Malaysia",
       },
       secondRunnerUp: {
-        team: "DataCrafters",
-        university: "Universiti Sains Malaysia",
-        project: "Environmental Monitoring Dashboard",
+        team: "3 + 1 = 400",
+        university: "Universiti Putra Malaysia",
       },
-      highlights: [
-        "First collaboration with Department of Environment Malaysia",
-        "Introduction of real-time data challenges",
-        "87% of participants reported improved data skills",
-        "3 winning solutions implemented by government agencies",
-      ],
       statistics: [
-        { label: "Teams", value: "87", icon: Users },
-        { label: "Participants", value: "348", icon: Users },
-        { label: "Universities", value: "23", icon: University },
-        { label: "Days", value: "36", icon: Calendar },
-      ],
-      gallery: [
-        {
-          src: "/mdit/2024/opening-ceremony.jpg",
-          alt: "MDIT 2024 Opening Ceremony",
-          category: "ceremony",
-        },
-        {
-          src: "/mdit/2024/team-presentation-1.jpg",
-          alt: "Team Presentation Session",
-          category: "competition",
-        },
-        {
-          src: "/mdit/2024/workshop-session.jpg",
-          alt: "Data Science Workshop",
-          category: "workshop",
-        },
-        {
-          src: "/mdit/2024/judging-panel.jpg",
-          alt: "Expert Judging Panel",
-          category: "judging",
-        },
-        {
-          src: "/mdit/2024/winner-announcement.jpg",
-          alt: "Winner Announcement",
-          category: "ceremony",
-        },
-        {
-          src: "/mdit/2024/networking-session.jpg",
-          alt: "Networking Session",
-          category: "networking",
-        },
-        {
-          src: "/mdit/2024/team-collaboration.jpg",
-          alt: "Team Collaboration",
-          category: "competition",
-        },
-        {
-          src: "/mdit/2024/mentorship-session.jpg",
-          alt: "Mentorship Session",
-          category: "workshop",
-        },
+        { label: "Teams", value: "80", icon: Users },
+        { label: "Participants", value: "320", icon: Users },
+        { label: "Universities", value: "13", icon: University },
+        { label: "Days", value: "37", icon: Calendar },
       ],
     },
     "2023": {
       year: "2023",
-      theme: "Pioneering Data Innovation",
+      theme: null,
       logo: "/mdit2023.png", // Placeholder
-      dates: "August 20 - September 25, 2023",
-      venue: "UiTM Shah Alam, Selangor",
+      dates: "August 28 - September 26, 2023",
+      venue: "Bank Negara Malaysia, Kuala Lumpur",
       totalTeams: 100,
       totalParticipants: 400,
       universities: 15,
       prizePool: "RM9,999",
       winner: {
-        team: "StatVanguard",
-        university: "Universiti Teknologi Malaysia",
-        project: "Healthcare Resource Prediction",
-        impact: "Implemented in regional hospitals for capacity planning",
+        team: "Rookie Patchers",
+        university: "Universiti Kebangsaan Malaysia",
       },
       runnerUp: {
-        team: "DataExplorers",
-        university: "Universiti Putra Malaysia",
-        project: "Agricultural Yield Optimization",
+        team: "The Guys",
+        university: "Asia Pacific University",
       },
       secondRunnerUp: {
-        team: "AnalyticsHub",
-        university: "Universiti Kebangsaan Malaysia",
-        project: "Education Performance Analytics",
+        team: "Lion Hearts",
+        university: "University of Nottingham Malaysia",
       },
-      highlights: [
-        "Inaugural MDIT competition launch",
-        "Partnership with Department of Statistics Malaysia established",
-        "First national-level university data competition",
-        "Foundation for annual data innovation talent development",
-      ],
       statistics: [
-        { label: "Teams", value: "52", icon: Users },
-        { label: "Participants", value: "208", icon: Users },
+        { label: "Teams", value: "100", icon: Users },
+        { label: "Participants", value: "400", icon: Users },
         { label: "Universities", value: "15", icon: University },
-        { label: "Days", value: "36", icon: Calendar },
-      ],
-      gallery: [
-        {
-          src: "/mdit/2023/inaugural-launch.jpg",
-          alt: "MDIT 2023 Inaugural Launch",
-          category: "ceremony",
-        },
-        {
-          src: "/mdit/2023/first-briefing.jpg",
-          alt: "Competition Briefing",
-          category: "workshop",
-        },
-        {
-          src: "/mdit/2023/team-registration.jpg",
-          alt: "Team Registration",
-          category: "registration",
-        },
-        {
-          src: "/mdit/2023/data-workshop.jpg",
-          alt: "Data Analysis Workshop",
-          category: "workshop",
-        },
-        {
-          src: "/mdit/2023/final-presentation.jpg",
-          alt: "Final Presentations",
-          category: "competition",
-        },
-        {
-          src: "/mdit/2023/winning-team.jpg",
-          alt: "Winning Team Celebration",
-          category: "ceremony",
-        },
-        {
-          src: "/mdit/2023/panel-discussion.jpg",
-          alt: "Industry Panel Discussion",
-          category: "networking",
-        },
-        {
-          src: "/mdit/2023/closing-ceremony.jpg",
-          alt: "Closing Ceremony",
-          category: "ceremony",
-        },
+        { label: "Days", value: "30", icon: Calendar },
       ],
     },
     "2021": {
       year: "2021",
-      theme: "Pioneering Data Innovation",
+      theme: null,
       logo: "/mdit2021.png", // Placeholder
-      dates: "August 20 - September 25, 2021",
-      venue: "UiTM Shah Alam, Selangor",
+      dates: "November 13 - December 11, 2021",
+      venue: "Online",
       totalTeams: 74,
       totalParticipants: 296,
       universities: 15,
       prizePool: "RM9,999",
       winner: {
-        team: "StatVanguard",
-        university: "Universiti Teknologi Malaysia",
-        project: "Healthcare Resource Prediction",
-        impact: "Implemented in regional hospitals for capacity planning",
+        team: "Fantastic Four",
+        university: "Universiti Tun Hussein Onn Malaysia",
       },
       runnerUp: {
-        team: "DataExplorers",
-        university: "Universiti Putra Malaysia",
-        project: "Agricultural Yield Optimization",
+        team: "SKADOOSH",
+        university: "Universiti Teknologi MARA",
       },
       secondRunnerUp: {
-        team: "AnalyticsHub",
+        team: "Gen Alpha",
         university: "Universiti Kebangsaan Malaysia",
-        project: "Education Performance Analytics",
       },
-      highlights: [
-        "Inaugural MDIT competition launch",
-        "Partnership with Department of Statistics Malaysia established",
-        "First national-level university data competition",
-        "Foundation for annual data innovation talent development",
-      ],
       statistics: [
-        { label: "Teams", value: "52", icon: Users },
-        { label: "Participants", value: "208", icon: Users },
+        { label: "Teams", value: "74", icon: Users },
+        { label: "Participants", value: "296", icon: Users },
         { label: "Universities", value: "15", icon: University },
-        { label: "Days", value: "36", icon: Calendar },
+        { label: "Days", value: "28", icon: Calendar },
       ],
     },
   };
@@ -421,28 +305,6 @@ const PastMDITPage = () => {
                 </div>
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Project:
-                  </Text>
-                  <Text as="p" className="mb-4">
-                    {currentEdition.winner.project}
-                  </Text>
-                </div>
-                <div>
-                  <Text as="h4" className="font-semibold mb-2">
-                    Real-world Impact:
-                  </Text>
-                  <div className="bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg">
-                    <Text as="p" className="text-sm leading-relaxed">
-                      {currentEdition.winner.impact}
-                    </Text>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
           </Card>
         </BlurFade>
 
@@ -470,9 +332,6 @@ const PastMDITPage = () => {
                 <Text as="p" className="text-sm mb-2 font-medium">
                   {currentEdition.runnerUp.university}
                 </Text>
-                <Text as="p" className="text-sm text-muted-foreground">
-                  {currentEdition.runnerUp.project}
-                </Text>
               </CardContent>
             </Card>
           </BlurFade>
@@ -499,39 +358,9 @@ const PastMDITPage = () => {
                 <Text as="p" className="text-sm mb-2 font-medium">
                   {currentEdition.secondRunnerUp.university}
                 </Text>
-                <Text as="p" className="text-sm text-muted-foreground">
-                  {currentEdition.secondRunnerUp.project}
-                </Text>
               </CardContent>
             </Card>
           </BlurFade>
-        </div>
-      </div>
-
-      {/* Highlights Section */}
-      <div className="my-16  max-w-7xl mx-auto">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-8">
-            Key Highlights
-          </Text>
-        </BlurFade>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {currentEdition.highlights.map((highlight, index) => (
-            <BlurFade key={index} inView delay={0.15 + index * 0.1}>
-              <Card className="h-full">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 bg-primary/10 rounded-full flex-shrink-0">
-                      <TrendingUp className="h-5 w-5 text-primary" />
-                    </div>
-                    <Text as="p" className="leading-relaxed">
-                      {highlight}
-                    </Text>
-                  </div>
-                </CardContent>
-              </Card>
-            </BlurFade>
-          ))}
         </div>
       </div>
 

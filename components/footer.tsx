@@ -56,10 +56,10 @@ const Footer = () => {
   ];
 
   const keyStats = [
-    { icon: Users, label: "Expected Teams", value: EVENT_DATA.Expected_Team },
+    { icon: Users, label: "Participating Teams", value: EVENT_DATA.Expected_Team },
     {
       icon: UniversityIcon,
-      label: "Expected Universities",
+      label: "Participating Universities",
       value: EVENT_DATA.Universities,
     },
     { icon: Trophy, label: "Prize Pool", value: EVENT_DATA.Total_Prize_Pool },

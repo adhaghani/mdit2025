@@ -775,5 +775,5 @@ export const EVENT_DATA = {
   Expected_Team: "80+",
   Total_Prize_Pool: "RM 9,600",
   Universities: "10+",
-  Competition_Days: "12",
+  Competition_Days: "43",
 };

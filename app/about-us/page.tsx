@@ -12,9 +12,9 @@ import { Users, Award, Target, Lightbulb, Star } from "lucide-react";
 const AboutUsPage = () => {
   // Team members data organized by bureau
   const teamByBureau = {
-    "High Committee": [
+    "Executive Committee": [
       {
-        name: "Ikhwan Mukminin Abdul Aziz",
+        name: "Ikhwan Mukminin Bin Ahmad Sukri",
         role: "Program Director",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/MT1.png",
@@ -158,7 +158,7 @@ const AboutUsPage = () => {
         image: "/team/TL5.png",
       },
     ],
-    "Judge & Marking Bureau": [
+    "Judging & Scoring Bureau": [
       {
         name: "Imtinan Ilwani Binti Abdul Ghani",
         role: "Head of Judging Bureau",
@@ -273,7 +273,7 @@ const AboutUsPage = () => {
         image: "/team/CR6.png",
       },
     ],
-    "Special Task Bureau": [
+    "Special Tasks Bureau": [
       {
         name: "Dania Farzana",
         role: "Head of Special Task Bureau",
@@ -302,28 +302,25 @@ const AboutUsPage = () => {
   };
 
   // State for active tab
-  const [activeTab, setActiveTab] = React.useState("High Committee");
+  const [activeTab, setActiveTab] = React.useState("Executive Committee");
   const bureauTabs = Object.keys(teamByBureau);
 
   // Past winners data (you can expand this)
   const pastWinners = [
     {
       year: "2024",
-      team: "Team 1",
-      university: "Universiti Teknologi MARA",
-      project: "Smart City Traffic Optimization",
+      team: "NanoGuardian",
+      university: "Taylors University",
     },
     {
       year: "2023",
-      team: "Team 2",
-      university: "Universiti Teknologi MARA",
-      project: "Healthcare Resource Prediction",
+      team: "Rookie Patchers",
+      university: "Universiti Kebangsaan Malaysia",
     },
     {
       year: "2021",
-      team: "Team 2",
-      university: "Universiti Teknologi MARA",
-      project: "Healthcare Resource Prediction",
+      team: "Fantastic Four",
+      university: "Universiti Tun Hussein Onn Malaysia",
     },
   ];
 
@@ -564,7 +561,7 @@ const AboutUsPage = () => {
             <BlurFade key={index} inView delay={0.2 + index * 0.1}>
               <Card className="border-l-4 border-l-yellow-500">
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-6 gap-4 items-center">
+                  <div className="grid grid-cols-1 md:grid-cols-6 gap-2 items-center">
                     <div className="text-center">
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 text-yellow-700 rounded-full mb-2">
                         <Award className="h-8 w-8" />
@@ -574,7 +571,7 @@ const AboutUsPage = () => {
                       </Text>
                     </div>
                     <div className="md:col-span-5 space-y-2">
-                      <div className="flex flex-col md:flex-row md:items-center md:gap-4">
+                      <div className="flex flex-col md:gap-2">
                         <Text as="h4" className="font-semibold text-lg">
                           Team {winner.team}
                         </Text>
@@ -582,9 +579,6 @@ const AboutUsPage = () => {
                           {winner.university}
                         </Text>
                       </div>
-                      <Text as="p" className="font-medium">
-                        Project: {winner.project}
-                      </Text>
                     </div>
                   </div>
                 </CardContent>
