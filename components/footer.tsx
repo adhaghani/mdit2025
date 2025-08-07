@@ -8,7 +8,7 @@ import { useCountdown } from "@/contexts/countdown-context";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "./magicui/blur-fade";
 import { FOOTER_QUICK_LINK, GOOGLE_FORM_LINK, EVENT_DATA } from "./constant";
-
+import { isLowEndDevice } from "@/lib/device-utils";
 import {
   Dialog,
   DialogContent,
@@ -25,7 +25,7 @@ import {
   UniversityIcon,
 } from "lucide-react";
 import { QRCode } from "./ui/shadcn-io/qr-code";
-import { Aurora } from "./optimized-react-bits";
+import { MditAurora } from "./optimized-react-bits";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -74,14 +74,6 @@ const Footer = () => {
     <footer className="relative mt-20 pt-10 overflow-hidden">
       {/* Background Pattern */}
 
-      <div className="absolute bottom-0 w-full h-[300px] rotate-180 md:h-full">
-        <Aurora
-          colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
-          blend={1}
-          amplitude={1}
-          speed={0.3}
-        />
-      </div>
       <div className="max-w-7xl my-10 mx-auto px-4 xl:px-0">
         {/* Key Stats Section */}
         <div className="mb-16">

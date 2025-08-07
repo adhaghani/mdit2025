@@ -7,7 +7,6 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/next";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
-
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
@@ -140,11 +139,11 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          // enableSystem
+          forcedTheme="dark"
           disableTransitionOnChange
         >
           <CountdownProvider>
-            {/* <div className="fixed h-[100vh] w-[100vw] left-0 top-0 -z-10">
+            <div className="fixed h-[100vh] w-[100vw] lg:hidden block left-0 top-0 -z-10">
               <FlickeringGrid
                 className="relative inset-0 z-0"
                 squareSize={5}
@@ -153,7 +152,7 @@ export default function RootLayout({
                 maxOpacity={0.12}
                 flickerChance={0.1}
               />
-            </div> */}
+            </div>
             <Header />
             <main className="mx-auto w-full">{children}</main>
             <Footer />

@@ -660,7 +660,7 @@ const Page = memo(() => {
       {/* Hero Section with Background Pattern */}
 
       <div className=" relative min-h-fit h-[90vh] max-h-[700px]">
-        <div className="absolute w-full h-[500px] sm:h-[3/4]">
+        <div className="absolute w-full h-[500px] hidden lg:block sm:h-[3/4]">
           <MditAurora />
         </div>
         <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">

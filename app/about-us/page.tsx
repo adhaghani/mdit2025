@@ -370,7 +370,7 @@ const AboutUsPage = () => {
         </BlurFade>
       </div>
 
-      <div className="w-full h-[800px] top-0 absolute -z-10">
+      <div className="w-full h-[800px] hidden md:block top-0 absolute -z-10">
         <Threads
           color={[0.5647058823529412, 0.19215686274509805, 0.8666666666666667]}
           amplitude={2}

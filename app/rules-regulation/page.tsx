@@ -149,7 +149,7 @@ const RulesRegulationPage = () => {
   return (
     <>
       {/* Header Section */}
-      <div className="absolute w-full h-[500px] sm:h-[3/4]">
+      <div className="absolute w-full h-[500px] hidden lg:block sm:h-[3/4]">
         <MditAurora />
       </div>
       <div className="absolute opacity-40 hidden lg:block w-full h-fit -z-10">

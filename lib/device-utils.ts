@@ -113,3 +113,59 @@ export function getOptimalFrameRate(): number {
   if (device.isMobile) return 45;
   return 60;
 }
+
+/**
+ * Simple function to check if the current device is low-end
+ * Returns true if the device should use reduced performance mode
+ *
+ * @returns {boolean} true if device is low-end, false otherwise
+ */
+export function isLowEndDevice(): boolean {
+  // Add SSR safety check
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  try {
+    const device = getDeviceInfo();
+    return device.isLowEndDevice;
+  } catch (error) {
+    // Fallback to basic mobile detection if getDeviceInfo fails
+    console.warn(
+      "Device detection failed, falling back to basic mobile check:",
+      error
+    );
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }
+}
+
+/**
+ * Enhanced low-end device detection with additional checks
+ * More comprehensive than isLowEndDevice()
+ *
+ * @returns {boolean} true if device should use minimal performance mode
+ */
+export function isVeryLowEndDevice(): boolean {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  try {
+    const device = getDeviceInfo();
+    const navigatorWithMemory = navigator as NavigatorWithMemory;
+
+    return (
+      device.isLowEndDevice ||
+      (navigatorWithMemory.deviceMemory !== undefined &&
+        navigatorWithMemory.deviceMemory <= 1) || // 1GB or less
+      navigator.hardwareConcurrency <= 1 || // Single core
+      /Android [1-5]\./i.test(navigator.userAgent) || // Very old Android
+      /iPhone [1-6]/i.test(navigator.userAgent) // Very old iPhone
+    );
+  } catch (error) {
+    console.warn("Enhanced device detection failed:", error);
+    return false;
+  }
+}

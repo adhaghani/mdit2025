@@ -1,6 +1,6 @@
 /*
   Performance optimization Higher-Order Component for react-bits components
-  Provides lazy loading, viewport detection, reduced motion support, and memoization
+  Provides lazy loading, viewport detection, reduced motion support, device detection, and memoization
 */
 
 import React, {
@@ -10,12 +10,13 @@ import React, {
   useRef,
   ComponentType,
 } from "react";
+import { getDeviceInfo, shouldDisableWebGL } from "@/lib/device-utils";
 
 interface PerformanceHOCOptions {
   /**
    * Custom fallback component to show while loading or when reduced motion is preferred
    */
-  fallbackComponent?: ComponentType<any>;
+  fallbackComponent?: ComponentType<unknown>;
   /**
    * Intersection observer threshold (0-1)
    */
@@ -28,6 +29,14 @@ interface PerformanceHOCOptions {
    * Whether to unload the component when it goes out of view
    */
   unloadOnExit?: boolean;
+  /**
+   * Whether to respect user's reduced motion preference
+   */
+  respectReducedMotion?: boolean;
+  /**
+   * Whether to respect device capabilities (disable WebGL on low-end devices)
+   */
+  respectDeviceCapabilities?: boolean;
 }
 
 /**
@@ -42,6 +51,8 @@ export const withPerformanceOptimization = <P extends object>(
     threshold = 0.1,
     rootMargin = "50px",
     unloadOnExit = false,
+    respectReducedMotion = true,
+    respectDeviceCapabilities = true,
   } = options;
 
   const DefaultFallback = () => (
@@ -52,14 +63,23 @@ export const withPerformanceOptimization = <P extends object>(
     const [isVisible, setIsVisible] = useState(false);
     const [hasBeenVisible, setHasBeenVisible] = useState(false);
     const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+    const [shouldDisableGraphics, setShouldDisableGraphics] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-      // Check for reduced motion preference
-      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-      setPrefersReducedMotion(mediaQuery.matches);
+      // Check device capabilities and motion preferences
+      const deviceInfo = getDeviceInfo();
+      setPrefersReducedMotion(deviceInfo.hasReducedMotion);
+      setShouldDisableGraphics(shouldDisableWebGL());
 
-      const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+      // Check for reduced motion preference changes
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const handleChange = () => {
+        const newDeviceInfo = getDeviceInfo();
+        setPrefersReducedMotion(newDeviceInfo.hasReducedMotion);
+        setShouldDisableGraphics(shouldDisableWebGL());
+      };
+
       mediaQuery.addEventListener("change", handleChange);
 
       // Intersection Observer for viewport detection
@@ -68,7 +88,7 @@ export const withPerformanceOptimization = <P extends object>(
           const isIntersecting = entry.isIntersecting;
           setIsVisible(isIntersecting);
 
-          if (isIntersecting && !hasBeenVisible) {
+          if (isIntersecting) {
             setHasBeenVisible(true);
           }
         },
@@ -86,13 +106,15 @@ export const withPerformanceOptimization = <P extends object>(
         observer.disconnect();
         mediaQuery.removeEventListener("change", handleChange);
       };
-    }, [hasBeenVisible, threshold, rootMargin]);
+    }, []); // Empty dependency array since we want this to run only once
 
-    const shouldRender = prefersReducedMotion
-      ? false
-      : unloadOnExit
-      ? isVisible
-      : hasBeenVisible;
+    const shouldRender =
+      (!respectDeviceCapabilities || !shouldDisableGraphics) &&
+      (!respectReducedMotion || !prefersReducedMotion)
+        ? unloadOnExit
+          ? isVisible
+          : hasBeenVisible
+        : false;
 
     const Fallback = FallbackComponent || DefaultFallback;
 
@@ -119,17 +141,11 @@ export const withPerformanceOptimization = <P extends object>(
 /**
  * Hook to stabilize props and prevent unnecessary re-renders
  */
-export const useStableProps = <T extends Record<string, any>>(props: T): T => {
+export const useStableProps = <T extends object>(props: T): T => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useMemo(() => {
     return { ...props };
-  }, [
-    // Create stable dependencies
-    Object.keys(props)
-      .map((key) =>
-        Array.isArray(props[key]) ? JSON.stringify(props[key]) : props[key]
-      )
-      .join("|"),
-  ]);
+  }, [JSON.stringify(props)]);
 };
 
 /**
@@ -140,7 +156,7 @@ export const useViewportVisibility = (
   rootMargin: string = "0px"
 ) => {
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -161,20 +177,64 @@ export const useViewportVisibility = (
 };
 
 /**
- * Hook for reduced motion detection
+ * Hook for reduced motion and device capability detection
  */
 export const useReducedMotion = () => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
+    const deviceInfo = getDeviceInfo();
+    setPrefersReducedMotion(deviceInfo.hasReducedMotion);
 
-    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleChange = () => {
+      const newDeviceInfo = getDeviceInfo();
+      setPrefersReducedMotion(newDeviceInfo.hasReducedMotion);
+    };
+
     mediaQuery.addEventListener("change", handleChange);
 
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   return prefersReducedMotion;
+};
+
+/**
+ * Hook for device capability detection
+ */
+export const useDeviceCapabilities = () => {
+  const [deviceInfo, setDeviceInfo] = useState(() => {
+    if (typeof window === "undefined") {
+      return {
+        isMobile: false,
+        isAndroid: false,
+        isIOS: false,
+        isLowEndDevice: false,
+        hasReducedMotion: false,
+        supportsWebGL: false,
+        memoryInfo: undefined,
+      };
+    }
+    return getDeviceInfo();
+  });
+
+  useEffect(() => {
+    const updateDeviceInfo = () => {
+      setDeviceInfo(getDeviceInfo());
+    };
+
+    // Check on mount and when visibility changes
+    updateDeviceInfo();
+
+    // Listen for reduced motion changes
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    mediaQuery.addEventListener("change", updateDeviceInfo);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateDeviceInfo);
+    };
+  }, []);
+
+  return deviceInfo;
 };

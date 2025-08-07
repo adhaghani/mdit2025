@@ -21,6 +21,7 @@ import {
 import { Marquee } from "@/components/magicui/marquee";
 import { MDIT2023_IMAGE, MDIT2024_IMAGE } from "@/components/constant";
 import { Threads } from "@/components/optimized-react-bits";
+import { isLowEndDevice } from "@/lib/device-utils";
 
 const PastMDITPage = () => {
   const [selectedYear, setSelectedYear] = useState("2024");
@@ -152,7 +153,8 @@ const PastMDITPage = () => {
           </Text>
         </BlurFade>
       </div>
-      <div className="w-full h-[500px] top-0 absolute -z-10">
+
+      <div className="w-full h-[500px] hidden md:block top-0 absolute -z-10">
         <Threads
           color={[0.5647058823529412, 0.19215686274509805, 0.8666666666666667]}
           amplitude={2}

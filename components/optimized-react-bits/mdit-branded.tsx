@@ -3,9 +3,11 @@
   
   These components use consistent branding props to eliminate unnecessary re-renders
   and provide a consistent visual experience across the site.
+  Now includes device-aware performance optimizations.
 */
 
 import React from "react";
+import { withPerformanceOptimization } from "./performance-hoc";
 import {
   Aurora as BaseAurora,
   Threads as BaseThreads,
@@ -21,7 +23,7 @@ const MDIT_BRAND = {
   },
   threads: {
     color: [0.7, 0.3, 1] as [number, number, number],
-    distance: 0.5,
+    distance: 0.6,
   },
   textPressure: {
     textColor: "#9031DD",
@@ -36,15 +38,40 @@ const MDIT_BRAND = {
   },
 };
 
+// Create performance-optimized versions with device detection
+const OptimizedAurora = withPerformanceOptimization(BaseAurora, {
+  respectReducedMotion: true,
+  respectDeviceCapabilities: true, // Disable on low-end devices
+  threshold: 0.1,
+  rootMargin: "50px",
+  unloadOnExit: false,
+});
+
+const OptimizedThreads = withPerformanceOptimization(BaseThreads, {
+  respectReducedMotion: true,
+  respectDeviceCapabilities: true, // Disable on low-end devices
+  threshold: 0.1,
+  rootMargin: "50px",
+  unloadOnExit: false,
+});
+
+const OptimizedTextPressure = withPerformanceOptimization(BaseTextPressure, {
+  respectReducedMotion: true,
+  respectDeviceCapabilities: false, // Keep text pressure even on low-end devices
+  threshold: 0.1,
+  rootMargin: "50px",
+  unloadOnExit: false,
+});
+
 // Pre-configured Aurora with MDIT branding
 // No props needed - uses consistent brand colors across all pages
 export const MditAurora = React.memo(() => (
-  <BaseAurora {...MDIT_BRAND.aurora} />
+  <OptimizedAurora {...MDIT_BRAND.aurora} />
 ));
 
 // Variant for pages that need different amplitude
 export const MditAuroraSubtle = React.memo(() => (
-  <BaseAurora {...MDIT_BRAND.aurora} amplitude={0.4} />
+  <OptimizedAurora {...MDIT_BRAND.aurora} amplitude={0.4} />
 ));
 
 // Pre-configured Threads with MDIT branding
@@ -56,7 +83,7 @@ interface MditThreadsProps {
 
 export const MditThreads = React.memo<MditThreadsProps>(
   ({ amplitude = 2, enableMouseInteraction = false, className }) => (
-    <BaseThreads
+    <OptimizedThreads
       {...MDIT_BRAND.threads}
       amplitude={amplitude}
       enableMouseInteraction={enableMouseInteraction}
@@ -73,7 +100,7 @@ interface MditTextPressureProps {
 
 export const MditTextPressure = React.memo<MditTextPressureProps>(
   ({ text, className }) => (
-    <BaseTextPressure
+    <OptimizedTextPressure
       {...MDIT_BRAND.textPressure}
       text={text}
       className={className}

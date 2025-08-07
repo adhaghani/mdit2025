@@ -92,7 +92,7 @@ const FrequentlyAskedQuestionsPage = () => {
 
   return (
     <>
-      <div className="absolute w-full h-[300px] sm:h-[500px]">
+      <div className="absolute w-full h-[300px] hidden lg:block sm:h-[500px]">
         <MditAuroraSubtle />
       </div>
       <div className="absolute h-[800px] -left-64 translate-y-32 rotate-0 !overflow-visible">

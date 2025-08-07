@@ -3,9 +3,39 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
-import { AlertTriangleIcon } from "lucide-react";
+import { AlertTriangleIcon, MonitorIcon, SmartphoneIcon } from "lucide-react";
+import {
+  MditAurora,
+  MditThreads,
+  MditTextPressure,
+} from "@/components/optimized-react-bits";
+import { getDeviceInfo, shouldDisableWebGL } from "@/lib/device-utils";
+import { useState, useEffect } from "react";
+
+interface DeviceInfo {
+  isMobile: boolean;
+  isAndroid: boolean;
+  isIOS: boolean;
+  isLowEndDevice: boolean;
+  hasReducedMotion: boolean;
+  supportsWebGL: boolean;
+  memoryInfo?: {
+    jsHeapSizeLimit: number;
+    totalJSHeapSize: number;
+    usedJSHeapSize: number;
+  };
+}
 
 export default function TestErrorPage() {
+  const [deviceInfo, setDeviceInfo] = useState<DeviceInfo | null>(null);
+  const [shouldDisableGraphics, setShouldDisableGraphics] = useState(false);
+
+  useEffect(() => {
+    const info = getDeviceInfo();
+    setDeviceInfo(info);
+    setShouldDisableGraphics(shouldDisableWebGL());
+  }, []);
+
   const triggerError = () => {
     throw new Error("This is a test error to demonstrate the error boundary");
   };
@@ -22,7 +52,7 @@ export default function TestErrorPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center p-4">
-      <div className="max-w-2xl mx-auto space-y-6">
+      <div className="max-w-2xl mt-32 mx-auto space-y-6">
         <Card className="p-6">
           <CardHeader>
             <div className="flex items-center gap-3">
@@ -92,6 +122,99 @@ export default function TestErrorPage() {
                   Planned maintenance page
                 </li>
               </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Device Detection Testing */}
+        <Card className="p-6">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              {deviceInfo?.isMobile ? (
+                <SmartphoneIcon className="h-6 w-6 text-blue-500" />
+              ) : (
+                <MonitorIcon className="h-6 w-6 text-green-500" />
+              )}
+              <CardTitle>Device Detection & Performance</CardTitle>
+            </div>
+            <Text as="p" styleVariant="muted">
+              Testing device detection and performance optimizations for
+              react-bits components.
+            </Text>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {deviceInfo && (
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <strong>Device Type:</strong>{" "}
+                  {deviceInfo.isMobile ? "Mobile" : "Desktop"}
+                </div>
+                <div>
+                  <strong>Platform:</strong>{" "}
+                  {deviceInfo.isAndroid
+                    ? "Android"
+                    : deviceInfo.isIOS
+                    ? "iOS"
+                    : "Other"}
+                </div>
+                <div>
+                  <strong>Low-end Device:</strong>{" "}
+                  {deviceInfo.isLowEndDevice ? "Yes" : "No"}
+                </div>
+                <div>
+                  <strong>WebGL Disabled:</strong>{" "}
+                  {shouldDisableGraphics ? "Yes" : "No"}
+                </div>
+                <div>
+                  <strong>Reduced Motion:</strong>{" "}
+                  {deviceInfo.hasReducedMotion ? "Yes" : "No"}
+                </div>
+                <div>
+                  <strong>Memory:</strong>{" "}
+                  {deviceInfo.memoryInfo?.jsHeapSizeLimit
+                    ? `${Math.round(
+                        deviceInfo.memoryInfo.jsHeapSizeLimit / 1024 / 1024
+                      )}MB`
+                    : "Unknown"}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-6">
+              <Text as="h3" className="mb-4 text-lg font-semibold">
+                Performance Optimized Components
+              </Text>
+              <Text as="p" styleVariant="muted" className="mb-4">
+                These components automatically disable on low-end devices or
+                when reduced motion is preferred:
+              </Text>
+
+              {/* Test Aurora component */}
+              <div className="relative h-40 mb-4 border border-border rounded-lg overflow-hidden">
+                <Text
+                  as="h4"
+                  className="absolute top-2 left-2 z-10 bg-background/80 px-2 py-1 rounded text-sm"
+                >
+                  MditAurora {shouldDisableGraphics && "(Disabled)"}
+                </Text>
+                <MditAurora />
+              </div>
+
+              {/* Test Threads component */}
+              <div className="relative h-40 mb-4 border border-border rounded-lg overflow-hidden">
+                <Text
+                  as="h4"
+                  className="absolute top-2 left-2 z-10 bg-background/80 px-2 py-1 rounded text-sm"
+                >
+                  MditThreads {shouldDisableGraphics && "(Disabled)"}
+                </Text>
+                <MditThreads />
+              </div>
+
+              {/* Test TextPressure component */}
+              <div className="relative h-20 mb-4 border border-border rounded-lg overflow-hidden flex items-center justify-center">
+                <MditTextPressure text="Device Detection Test" />
+              </div>
             </div>
           </CardContent>
         </Card>
