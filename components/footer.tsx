@@ -8,7 +8,6 @@ import { useCountdown } from "@/contexts/countdown-context";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "./magicui/blur-fade";
 import { FOOTER_QUICK_LINK, GOOGLE_FORM_LINK, EVENT_DATA } from "./constant";
-import { isLowEndDevice } from "@/lib/device-utils";
 import {
   Dialog,
   DialogContent,
@@ -25,7 +24,6 @@ import {
   UniversityIcon,
 } from "lucide-react";
 import { QRCode } from "./ui/shadcn-io/qr-code";
-import { MditAurora } from "./optimized-react-bits";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -71,7 +69,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative mt-20 pt-10 overflow-hidden">
+    <footer className="relative mt-20 pt-10 overflow-visible">
       {/* Background Pattern */}
 
       <div className="max-w-7xl my-10 mx-auto px-4 xl:px-0">
@@ -100,7 +98,7 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="bg-white/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 rounded-3xl p-8 lg:p-12 shadow-2xl">
+        <div className="bg-white/80 dark:bg-black/40 backdrop-blur-2xl border border-border/50 rounded-3xl p-8 lg:p-12 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-5 space-y-6">
@@ -306,6 +304,25 @@ const Footer = () => {
             </BlurFade>
           </div>
         </div>
+      </div>
+
+      <div className="absolute bottom-0 -z-10 -right-0 w-screen lg:h-[600px] lg:w-auto rotate-90 overflow-hidden pointer-events-none">
+        <Image
+          src={"/assets/bg-gradients/13.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="w-full h-full object-cover object-left !overflow-visible"
+        />
+      </div>
+      <div className="absolute top-0 -z-10 left-0 w-screen lg:h-[800px] lg:w-auto rotate-90 overflow-hidden pointer-events-none">
+        <Image
+          src={"/assets/bg-gradients/10.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="w-full h-full object-cover object-left !overflow-visible"
+        />
       </div>
     </footer>
   );

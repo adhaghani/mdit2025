@@ -235,6 +235,7 @@ const ContactPage = () => {
       <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
         <MditTextPressure text="Contact" />
       </div>
+      {/* Generic 2025 text for smaller screens */}
       {/* Header Section */}
       <div className="text-center px-4 space-y-4 py-32 pt-48 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -286,7 +287,7 @@ const ContactPage = () => {
         </div>
       </div>
 
-      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[300px] lg:h-[1200px] rotate-90 overflow-hidden pointer-events-none">
+      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[300px] lg:h-[1200px] rotate-90 overflow-visible pointer-events-none">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"

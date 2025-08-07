@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Users, Award, Target, Lightbulb, Star } from "lucide-react";
 import { Threads } from "@/components/optimized-react-bits";
 import SpotlightCard from "@/components/react-bits/Components/SpotlightCard/SpotlightCard";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 const AboutUsPage = () => {
   // Team members data organized by bureau
   const teamByBureau = {
@@ -327,7 +328,7 @@ const AboutUsPage = () => {
 
   return (
     <>
-      {/* <div className="absolute w-screen lg:w-auto lg:h-[1200px]  lg:-left-128 -left-64 rotate-90 !overflow-visible">
+      <div className="absolute w-screen lg:hidden -left-64 rotate-90 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/11.svg"}
           alt="Background Gradient"
@@ -335,7 +336,7 @@ const AboutUsPage = () => {
           height={1080}
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
-      </div> */}
+      </div>
 
       {/* Header Section */}
       <div className="text-center space-y-4 py-32 lg:py-48 px-4 max-w-4xl mx-auto">
@@ -370,7 +371,7 @@ const AboutUsPage = () => {
         </BlurFade>
       </div>
 
-      <div className="w-full h-[800px] hidden md:block top-0 absolute -z-10">
+      <div className="w-full h-[800px] hidden lg:block top-0 absolute -z-10">
         <Threads
           color={[0.5647058823529412, 0.19215686274509805, 0.8666666666666667]}
           amplitude={2}
@@ -450,7 +451,7 @@ const AboutUsPage = () => {
           </BlurFade>
         </div>
       </div>
-      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-[800px] rotate-90 overflow-hidden pointer-events-none">
+      <div className="absolute right-0 w-screen lg:h-[800px] lg:w-auto rotate-90 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/10.svg"}
           alt="Background Gradient"
@@ -478,16 +479,19 @@ const AboutUsPage = () => {
         {/* Bureau Tabs */}
         <BlurFade inView delay={0.2}>
           <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {bureauTabs.map((bureau) => (
-              <Button
-                key={bureau}
-                variant={activeTab === bureau ? "default" : "outline"}
-                onClick={() => setActiveTab(bureau)}
-                className="text-sm px-4 py-2"
-              >
-                {bureau}
-              </Button>
-            ))}
+            <ScrollArea className="w-full max-w-3xl whitespace-nowrap py-4">
+              {bureauTabs.map((bureau) => (
+                <Button
+                  key={bureau}
+                  variant={activeTab === bureau ? "default" : "outline"}
+                  onClick={() => setActiveTab(bureau)}
+                  className="text-sm px-4 py-2 mr-4"
+                >
+                  {bureau}
+                </Button>
+              ))}
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
           </div>
         </BlurFade>
 
@@ -600,7 +604,7 @@ const AboutUsPage = () => {
         </div>
       </div>
 
-      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[800px] rotate-180 overflow-hidden pointer-events-none">
+      <div className="absolute -left-0 lg:-left-32 w-screen lg:w-auto h-[800px] rotate-180 !overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/13.svg"}
           alt="Background Gradient"
