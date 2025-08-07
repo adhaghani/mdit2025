@@ -684,7 +684,7 @@ const Page = memo(() => {
             />
           </BlurFade>
 
-          <div className="relative z-10 space-y-6">
+          <div className="relative px-4 z-10 space-y-6">
             <BlurFade inView delay={0.1}>
               <Text
                 as="h1"
