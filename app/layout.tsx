@@ -105,7 +105,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <head>
         <link
           rel="icon"
@@ -135,16 +135,16 @@ export default function RootLayout({
       </head>
       <Analytics />
       <body
-        className={`${outfit.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased`}
+        className={`${outfit.variable} ${merriweather.variable} ${sourceCodePro.variable} overflow-x-hidden`}
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
+          // enableSystem
           disableTransitionOnChange
         >
           <CountdownProvider>
-            <div className="fixed h-[100vh] w-[100vw] left-0 top-0 -z-10">
+            {/* <div className="fixed h-[100vh] w-[100vw] left-0 top-0 -z-10">
               <FlickeringGrid
                 className="relative inset-0 z-0"
                 squareSize={5}
@@ -153,9 +153,9 @@ export default function RootLayout({
                 maxOpacity={0.12}
                 flickerChance={0.1}
               />
-            </div>
+            </div> */}
             <Header />
-            <main className="mx-auto px-4 py-2 mt-18">{children}</main>
+            <main className="mx-auto w-full">{children}</main>
             <Footer />
           </CountdownProvider>
         </ThemeProvider>

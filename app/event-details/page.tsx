@@ -72,7 +72,7 @@ const EventDetailsPage = () => {
   return (
     <>
       {/* Prize Pool Section */}
-      <div className="text-center py-24 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 rounded-2xl my-20">
+      <div className="text-center px-4 py-24 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 rounded-2xl my-20">
         {/* Background decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full">
           {" "}
@@ -369,7 +369,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Event Details */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20 px-4 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-12">
             Event Information
@@ -461,7 +461,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Detailed Requirements */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20 px-4 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-12">
             Eligibility & Team Requirements
@@ -932,7 +932,7 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Judges Section */}
-      <div className="mt-20 mb-10 max-w-7xl mx-auto">
+      <div className="mt-20 px-4 mb-10 max-w-7xl mx-auto">
         <BlurFade delay={0.1} inView>
           <Text as="h2" className="text-center mb-6">
             Meet Our Expert Judges
@@ -1037,40 +1037,46 @@ const EventDetailsPage = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="text-center max-w-7xl mx-auto py-20 bg-secondary/20 rounded-lg">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="mb-4">
-            Ready to Showcase Your Data Skills?
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text as="p" styleVariant="muted" className="mb-8 max-w-2xl mx-auto">
-            Join hundreds of talented students from across Malaysia in this
-            prestigious data innovation competition. Register your team today
-            and start your journey towards data excellence!
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.2}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" disabled={isExpired || hasStarted} asChild>
-              <Link
-                href={isExpired ? "#" : hasStarted ? GOOGLE_FORM_LINK : "#"}
-              >
-                {isExpired
-                  ? "Registration Closed"
-                  : hasStarted
-                  ? "Register Now"
-                  : "Coming Soon"}
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/rules-regulation">View Competition Rules</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/frequently-asked-questions">View FAQ</Link>
-            </Button>
-          </div>
-        </BlurFade>
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center  max-w-7xl py-20 bg-secondary/20 rounded-lg">
+          <BlurFade inView delay={0.1}>
+            <Text as="h2" className="mb-4">
+              Ready to Showcase Your Data Skills?
+            </Text>
+          </BlurFade>
+          <BlurFade inView delay={0.15}>
+            <Text
+              as="p"
+              styleVariant="muted"
+              className="mb-8 max-w-2xl mx-auto"
+            >
+              Join hundreds of talented students from across Malaysia in this
+              prestigious data innovation competition. Register your team today
+              and start your journey towards data excellence!
+            </Text>
+          </BlurFade>
+          <BlurFade inView delay={0.2}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" disabled={isExpired || hasStarted} asChild>
+                <Link
+                  href={isExpired ? "#" : hasStarted ? GOOGLE_FORM_LINK : "#"}
+                >
+                  {isExpired
+                    ? "Registration Closed"
+                    : hasStarted
+                    ? "Register Now"
+                    : "Coming Soon"}
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/rules-regulation">View Competition Rules</Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/frequently-asked-questions">View FAQ</Link>
+              </Button>
+            </div>
+          </BlurFade>
+        </div>
       </div>
     </>
   );

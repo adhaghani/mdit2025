@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Text } from "@/components/ui/text";
 import Link from "next/link";
@@ -16,6 +18,8 @@ import {
   Download,
   ExternalLink,
 } from "lucide-react";
+import Aurora from "@/components/react-bits/Backgrounds/Aurora/Aurora";
+import TextPressure from "@/components/react-bits/TextAnimations/TextPressure/TextPressure";
 
 const RulesRegulationPage = () => {
   const sections = [
@@ -144,7 +148,29 @@ const RulesRegulationPage = () => {
   return (
     <>
       {/* Header Section */}
-      <div className="text-center space-y-4 py-20 max-w-4xl mx-auto">
+      <div className="absolute w-full h-[500px] sm:h-full">
+        <Aurora
+          colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
+          blend={1}
+          amplitude={1}
+          speed={0.3}
+        />
+      </div>
+      <div className="absolute opacity-40 hidden lg:block w-full h-fit -z-10">
+        <TextPressure
+          text="Rules"
+          flex={false}
+          alpha={true}
+          stroke={false}
+          width={true}
+          weight={true}
+          italic={false}
+          textColor="#9031DD"
+          strokeColor="#ff0000"
+          minFontSize={24}
+        />
+      </div>
+      <div className="text-center space-y-4 py-32 relative lg:py-64 px-4 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h1" className="text-primary">
             Rules & Regulations
@@ -177,7 +203,7 @@ const RulesRegulationPage = () => {
       </div>
 
       {/* Rules Sections */}
-      <div className="my-20 grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
+      <div className="my-20 grid grid-cols-1 px-4 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
         {sections.map((section, index) => (
           <BlurFade key={index} inView delay={0.1 + index * 0.05}>
             <Card className="h-full">
@@ -207,7 +233,7 @@ const RulesRegulationPage = () => {
       </div>
 
       {/* Important Notes */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-20 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 px-4 gap-8 my-20 max-w-7xl mx-auto">
         {importantNotes.map((note, index) => (
           <BlurFade key={index} inView delay={0.3 + index * 0.1}>
             <Card
@@ -262,35 +288,37 @@ const RulesRegulationPage = () => {
       </div>
       {/* Timeline Reminder */}
       <BlurFade inView delay={0.5} className="">
-        <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20 max-w-7xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-center text-primary">
-              Important Dates to Remember
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-center space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <Text as="h4" className="font-semibold text-primary">
-                  Registration Deadline
-                </Text>
-                <Text as="p">August 30, 2025</Text>
+        <div className="my-20 px-4  max-w-7xl mx-auto">
+          <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
+            <CardHeader>
+              <CardTitle className="text-center text-primary">
+                Important Dates to Remember
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-center space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <Text as="h4" className="font-semibold text-primary">
+                    Registration Deadline
+                  </Text>
+                  <Text as="p">August 30, 2025</Text>
+                </div>
+                <div>
+                  <Text as="h4" className="font-semibold text-primary">
+                    Competition Period
+                  </Text>
+                  <Text as="p">Sept 6 - Oct 18, 2025</Text>
+                </div>
+                <div>
+                  <Text as="h4" className="font-semibold text-primary">
+                    Final Presentation
+                  </Text>
+                  <Text as="p">October 17, 2025</Text>
+                </div>
               </div>
-              <div>
-                <Text as="h4" className="font-semibold text-primary">
-                  Competition Period
-                </Text>
-                <Text as="p">Sept 6 - Oct 18, 2025</Text>
-              </div>
-              <div>
-                <Text as="h4" className="font-semibold text-primary">
-                  Final Presentation
-                </Text>
-                <Text as="p">October 17, 2025</Text>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
       </BlurFade>
 
       {/* Download Section */}

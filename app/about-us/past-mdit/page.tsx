@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { Marquee } from "@/components/magicui/marquee";
 import { MDIT2023_IMAGE, MDIT2024_IMAGE } from "@/components/constant";
+import Threads from "@/src/components/react-bits/Backgrounds/Threads/Threads";
 
 const PastMDITPage = () => {
   const [selectedYear, setSelectedYear] = useState("2024");
@@ -122,7 +123,7 @@ const PastMDITPage = () => {
   return (
     <div className="relative">
       {/* Header Section */}
-      <div className="text-center space-y-4 py-20 max-w-4xl mx-auto">
+      <div className="text-center space-y-4 px-4 pt-32 pb-20 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Link
             href="/about-us"
@@ -150,6 +151,13 @@ const PastMDITPage = () => {
             evolved and contributed to Malaysia&apos;s digital transformation.
           </Text>
         </BlurFade>
+      </div>
+      <div className="w-full h-[500px] top-0 absolute -z-10">
+        <Threads
+          color={[0.5647058823529412, 0.19215686274509805, 0.8666666666666667]}
+          amplitude={2}
+          distance={0.6}
+        />
       </div>
 
       <div className="absolute w-screen lg:w-auto lg:h-[1200px] -left-32  lg:-left-64 rotate-90 !overflow-visible">
@@ -181,7 +189,7 @@ const PastMDITPage = () => {
       </div>
 
       {/* Edition Header */}
-      <div className="my-16  max-w-7xl mx-auto">
+      <div className="my-16 px-4  max-w-7xl mx-auto">
         <BlurFade inView delay={0.1} className="backdrop-blur-lg">
           <Card className="bg-card/50">
             <CardContent className="p-8">
@@ -246,7 +254,7 @@ const PastMDITPage = () => {
       </div>
 
       {/* Statistics Section */}
-      <div className="my-16  max-w-7xl mx-auto">
+      <div className="my-16 px-4  max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-8">
             MDIT {currentEdition.year} by Numbers
@@ -277,7 +285,7 @@ const PastMDITPage = () => {
       </div>
 
       {/* Winners Section */}
-      <div className="my-16  max-w-7xl mx-auto">
+      <div className="my-16 px-4  max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-8">
             MDIT {currentEdition.year} Champions
@@ -364,27 +372,25 @@ const PastMDITPage = () => {
         </div>
       </div>
 
-      <div className="absolute lg:w-auto w-screen lg:h-[1200px]  -right-0 rotate-90 !overflow-visible">
-        <Image
-          src={"/assets/bg-gradients/9.svg"}
-          alt="Background Gradient"
-          width={1920}
-          height={1080}
-          className="inset-0 w-full h-full object-cover !overflow-visible"
-        />
-      </div>
+      {/* Gallery Marquees */}
+      {selectedYear === "2024" || selectedYear === "2023" ? (
+        <>
+          <div className="absolute lg:w-auto w-screen lg:h-[1200px]  -right-0 rotate-90 !overflow-visible">
+            <Image
+              src={"/assets/bg-gradients/9.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="inset-0 w-full h-full object-cover !overflow-visible"
+            />
+          </div>
 
-      {/* Photo Gallery Section */}
-      <div className="my-16  max-w-7xl mx-auto">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-8">
-            Photo Gallery - MDIT {currentEdition.year}
-          </Text>
-        </BlurFade>
-
-        {/* Gallery Marquees */}
-        {selectedYear === "2024" || selectedYear === "2023" ? (
-          <>
+          <div className="my-16 px-4  max-w-7xl mx-auto">
+            <BlurFade inView delay={0.1}>
+              <Text as="h2" className="text-center mb-8">
+                Photo Gallery - MDIT {currentEdition.year}
+              </Text>
+            </BlurFade>
             <BlurFade delay={0.4} className="my-6">
               <Card>
                 <CardContent className="relative">
@@ -456,18 +462,12 @@ const PastMDITPage = () => {
                 </CardContent>
               </Card>
             </BlurFade>
-          </>
-        ) : (
-          <>
-            <div className="flex items-center justify-center h-64 bg-background/50 rounded-lg">
-              <Text as="h3">Photo gallery Unavailable</Text>
-            </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      ) : null}
 
       {/* Navigation */}
-      <div className="my-16  max-w-7xl mx-auto">
+      <div className="my-16 px-4  max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <div className="flex justify-between items-center">
             <div>

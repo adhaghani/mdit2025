@@ -26,6 +26,8 @@ import {
   Users,
   Trophy,
 } from "lucide-react";
+import Aurora from "@/components/react-bits/Backgrounds/Aurora/Aurora";
+import TextPressure from "@/components/react-bits/TextAnimations/TextPressure/TextPressure";
 
 const FrequentlyAskedQuestionsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -92,18 +94,25 @@ const FrequentlyAskedQuestionsPage = () => {
 
   return (
     <>
-      <div className="absolute h-[1200px]  -left-128 rotate-0 !overflow-visible">
+      <div className="absolute w-full h-[300px] sm:h-[500px]">
+        <Aurora
+          colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
+          blend={1}
+          amplitude={0.4}
+          speed={0.3}
+        />
+      </div>
+      <div className="absolute h-[800px] -left-64 translate-y-32 rotate-0 !overflow-visible">
         <Image
-          src={"/assets/bg-gradients/9.svg"}
+          src={"/assets/bg-gradients/13.svg"}
           alt="Background Gradient"
           width={1920}
           height={1080}
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
       </div>
-
       {/* Header Section */}
-      <div className="text-center space-y-4 py-20 max-w-4xl mx-auto">
+      <div className="text-center space-y-4 px-4 py-32 lg:py-48 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h1" className="text-primary">
             Frequently Asked Questions
@@ -155,7 +164,7 @@ const FrequentlyAskedQuestionsPage = () => {
       </BlurFade>
 
       {/* Category Filter */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 px-4 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 max-w-7xl mx-auto">
         {faqCategories.map((category, index) => (
           <BlurFade key={index} inView delay={0.3 + index * 0.05}>
             <Card
@@ -174,7 +183,7 @@ const FrequentlyAskedQuestionsPage = () => {
       </div>
 
       {/* FAQ Accordion */}
-      <div className="pb-20">
+      <div className="pb-20 px-4">
         {filteredFAQs.length > 0 ? (
           <Accordion type="single" collapsible className="w-full">
             {filteredFAQs.map((faq, index) => (
@@ -218,7 +227,7 @@ const FrequentlyAskedQuestionsPage = () => {
         )}
       </div>
 
-      <div className="absolute h-[800px]  -right-0 rotate-0 !overflow-visible">
+      <div className="absolute h-[800px] -right-0 rotate-0 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"
@@ -229,7 +238,7 @@ const FrequentlyAskedQuestionsPage = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-20 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 px-4 md:grid-cols-3 gap-6 my-20 max-w-7xl mx-auto">
         <BlurFade inView delay={0.5}>
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardHeader>

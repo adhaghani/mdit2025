@@ -68,9 +68,9 @@ import {
   MediaPlayerVolume,
   MediaPlayerVolumeIndicator,
 } from "@/components/ui/media-player";
-
-import { BubbleBackground } from "@/components/animate-ui/backgrounds/bubble";
+import Aurora from "@/components/react-bits/Backgrounds/Aurora/Aurora";
 import MuxVideo from "@mux/mux-video-react";
+import TextPressure from "@/components/react-bits/TextAnimations/TextPressure/TextPressure";
 
 // Type definitions
 interface CompetitionPhase {
@@ -656,12 +656,31 @@ const Page = memo(() => {
   return (
     <div className="relative">
       {/* Hero Section with Background Pattern */}
-      <div className="relative min-h-fit h-[90vh] max-h-[700px] overflow-hidden">
-        <BubbleBackground
-          interactive
-          className="absolute inset-0 z-0 rounded-lg opacity-30 hidden lg:block"
-        />
-        <div className="relative text-center py-24 flex flex-col item-center justify-center gap-4 z-10">
+
+      <div className=" relative min-h-fit h-[90vh] max-h-[700px]">
+        <div className="absolute w-full h-[500px] sm:h-full">
+          <Aurora
+            colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
+            blend={1}
+            amplitude={1}
+            speed={0.3}
+          />
+        </div>
+        <div className="absolute z-10 opacity-40 hidden lg:block w-full h-fit">
+          <TextPressure
+            text="2025"
+            flex={false}
+            alpha={true}
+            stroke={false}
+            width={true}
+            weight={true}
+            italic={false}
+            textColor="#9031DD"
+            strokeColor="#ff0000"
+            minFontSize={24}
+          />
+        </div>
+        <div className="relative text-center py-32 flex flex-col item-center justify-center gap-4 z-10">
           <BlurFade
             inView
             delay={0.15}
@@ -727,7 +746,7 @@ const Page = memo(() => {
 
             {/* Call to Action Buttons */}
             <BlurFade inView delay={0.3}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <div className="flex flex-col sm:flex-row px-4 gap-4 justify-center mt-8">
                 <Button
                   size="lg"
                   disabled={!hasStarted || isExpired}
@@ -778,7 +797,7 @@ const Page = memo(() => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="max-w-4xl mx-auto space-y-6 px-4">
             <Text as="p" className="text-lg leading-relaxed text-center">
               The Malaysia Data Innovation Talent x DOSM Datathon 2025 is a
               premier national competition that brings together the brightest
@@ -1039,7 +1058,7 @@ const Page = memo(() => {
       </div>
 
       {/* Competition Phases */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20 max-w-7xl mx-auto px-4">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Competition Phases
@@ -1065,7 +1084,7 @@ const Page = memo(() => {
       </div>
 
       {/* Current Statistics Section */}
-      <div className="py-20 rounded-lg my-20 relative overflow-hidden">
+      <div className="py-20 rounded-lg px-4 my-20 relative overflow-hidden">
         <div className="relative z-10">
           <BlurFade inView delay={0.1}>
             <Text as="h2" className="text-center font-mono mb-6">
@@ -1219,7 +1238,7 @@ const Page = memo(() => {
       </div>
 
       {/* Partnerships & Collaborations Section */}
-      <div className="my-32 max-w-7xl mx-auto relative">
+      <div className="my-32 px-4 max-w-7xl mx-auto relative">
         <BlurFade inView delay={0.1}>
           <div className="text-center mb-20 space-y-4 relative z-10">
             <Text
@@ -1633,7 +1652,7 @@ const Page = memo(() => {
       </div>
 
       {/* Registration Section */}
-      <div id="register" className="my-20 py-20 bg-primary/10 rounded-lg">
+      <div id="register" className="my-20 px-4 py-20 bg-primary/10 rounded-lg">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
             Ready to Register?
@@ -1698,7 +1717,7 @@ const Page = memo(() => {
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
       </div>
-      <div className="max-w-7xl mx-auto py-16">
+      <div className="max-w-7xl mx-auto py-16 px-4">
         <Text as="h2" className="text-3xl font-bold mb-4">
           Watch Our recap video for the past MDIT!
         </Text>
@@ -1731,7 +1750,7 @@ const Page = memo(() => {
         </MediaPlayer>
       </div>
       {/* MDIT 2024 Memories */}
-      <div className="max-w-7xl mx-auto py-16">
+      <div className="max-w-7xl mx-auto py-16 px-4">
         <BlurFade delay={0.2}>
           <Text
             as="h2"
@@ -1797,7 +1816,7 @@ const Page = memo(() => {
       </div>
 
       {/* MDIT 2023 Memories */}
-      <div className="max-w-7xl mx-auto py-16">
+      <div className="max-w-7xl mx-auto py-16 px-4">
         <BlurFade delay={0.2}>
           <Text
             as="h2"

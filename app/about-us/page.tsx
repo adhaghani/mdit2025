@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Users, Award, Target, Lightbulb, Star } from "lucide-react";
+import Threads from "@/src/components/react-bits/Backgrounds/Threads/Threads";
 
 const AboutUsPage = () => {
   // Team members data organized by bureau
@@ -326,7 +327,7 @@ const AboutUsPage = () => {
 
   return (
     <>
-      <div className="absolute w-screen lg:w-auto lg:h-[1200px]  lg:-left-128 -left-64 rotate-90 !overflow-visible">
+      {/* <div className="absolute w-screen lg:w-auto lg:h-[1200px]  lg:-left-128 -left-64 rotate-90 !overflow-visible">
         <Image
           src={"/assets/bg-gradients/11.svg"}
           alt="Background Gradient"
@@ -334,10 +335,10 @@ const AboutUsPage = () => {
           height={1080}
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
-      </div>
+      </div> */}
 
       {/* Header Section */}
-      <div className="text-center space-y-4 py-20 max-w-4xl mx-auto">
+      <div className="text-center space-y-4 py-32 lg:py-48 px-4 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h1" className="font-mono text-primary">
             About Us
@@ -369,8 +370,16 @@ const AboutUsPage = () => {
         </BlurFade>
       </div>
 
+      <div className="w-full h-[800px] top-0 absolute -z-10">
+        <Threads
+          color={[0.5647058823529412, 0.19215686274509805, 0.8666666666666667]}
+          amplitude={2}
+          distance={0.6}
+        />
+      </div>
+
       {/* Our Story / About MDIT Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20 max-w-7xl px-4 mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center font-mono mb-12">
             Our Story & Vision
@@ -452,7 +461,7 @@ const AboutUsPage = () => {
       </div>
 
       {/* Meet the Team Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20 px-4 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center font-mono mb-6">
             Meet Our Team
@@ -539,7 +548,7 @@ const AboutUsPage = () => {
       </div>
 
       {/* Hall of Fame / Past Editions Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20 px-4 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center font-mono mb-6">
             Hall of Fame
@@ -599,7 +608,7 @@ const AboutUsPage = () => {
       </div>
 
       {/* About inStats Association Section */}
-      <div className="mt-20 mb-10 max-w-7xl mx-auto">
+      <div className="mt-20 px-4 mb-10 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center font-mono mb-12">
             About inStats Association
@@ -695,32 +704,38 @@ const AboutUsPage = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="text-center max-w-7xl mx-auto py-20 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="mb-4 font-mono">
-            Ready to Be Part of Our Story?
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text as="p" styleVariant="muted" className="mb-6 max-w-2xl mx-auto">
-            Join MDIT 2025 and contribute to Malaysia&apos;s data innovation
-            journey. Together, we can build a data-driven future that benefits
-            all Malaysians.
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.2}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
-              <Link href="/event-details">Register Your Team</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/contact">
-                <Users className="h-5 w-5 mr-2" />
-                Contact Us
-              </Link>
-            </Button>
-          </div>
-        </BlurFade>
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="bg-gradient-to-r from-primary/5 to-primary/10 text-center  rounded-lg  py-20">
+          <BlurFade inView delay={0.1}>
+            <Text as="h2" className="mb-4 font-mono">
+              Ready to Be Part of Our Story?
+            </Text>
+          </BlurFade>
+          <BlurFade inView delay={0.15}>
+            <Text
+              as="p"
+              styleVariant="muted"
+              className="mb-6 max-w-2xl mx-auto"
+            >
+              Join MDIT 2025 and contribute to Malaysia&apos;s data innovation
+              journey. Together, we can build a data-driven future that benefits
+              all Malaysians.
+            </Text>
+          </BlurFade>
+          <BlurFade inView delay={0.2}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" asChild>
+                <Link href="/event-details">Register Your Team</Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/contact">
+                  <Users className="h-5 w-5 mr-2" />
+                  Contact Us
+                </Link>
+              </Button>
+            </div>
+          </BlurFade>
+        </div>
       </div>
     </>
   );

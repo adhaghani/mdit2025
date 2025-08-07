@@ -202,3 +202,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Prevent horizontal scrolling while allowing elements to overflow */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Ensure main container doesn't cause horizontal overflow */
+main {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Hide horizontal scrollbar on all elements but allow content to overflow */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar:horizontal {
+  display: none; /* Chrome, Safari, Opera */
+}

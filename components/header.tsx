@@ -16,7 +16,7 @@ import { QRCode } from "@/components/ui/shadcn-io/qr-code";
 import { GOOGLE_FORM_LINK } from "./constant";
 import Image from "next/image";
 import { Text } from "@/components/ui/text";
-import { ModeToggle } from "./mode-toggle";
+// import { ModeToggle } from "./mode-toggle";
 import { ScrollArea } from "./ui/scroll-area";
 import {
   NavigationMenu,
@@ -52,8 +52,8 @@ const Header = memo(() => {
   }, [isExpired, hasStarted]);
 
   return (
-    <header className="max-w-7xl z-50 h-14 fixed top-4 left-[50%] translate-x-[-50%] w-full lg:mx-auto px-4  xl:px-0">
-      <div className="flex justify-between h-full items-center bg-white/50 dark:bg-black/20 backdrop-blur-lg gap-4 border rounded-lg shadow-sm px-4 py-2 ">
+    <header className="max-w-7xl z-50 h-14 fixed top-4 left-[50%] translate-x-[-50%] w-full lg:mx-auto px-4">
+      <div className="flex justify-between h-full items-center bg-white/50 dark:bg-black/20 backdrop-blur-lg gap-2 md:gap-4 border rounded-lg shadow-sm px-2 md:px-4 py-2 ">
         <Link href={"/"} className=" flex items-center justify-center gap-2">
           <Image
             src="/mdit.svg"
@@ -76,15 +76,15 @@ const Header = memo(() => {
             <NavigationMenuItem>
               <NavigationMenuTrigger>About</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid grid-cols-2 gap-3 p-6 md:w-[500px] lg:w-[600px]">
+                <div className="grid grid-cols-1 gap-3 p-4 w-[95vw] max-w-[300px]">
                   <NavigationMenuLink asChild>
                     <Link
                       href="/about-us"
-                      className="group block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
+                      className="group block select-none space-y-2 rounded-lg p-3 md:p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
                     >
                       <div className="flex items-center space-x-2 mb-2">
                         <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <div className="text-sm font-semibold leading-none group-hover:text-primary transition-colors">
+                        <div className="text-xs md:text-sm font-semibold leading-none group-hover:text-primary transition-colors">
                           About Us
                         </div>
                       </div>
@@ -98,11 +98,11 @@ const Header = memo(() => {
                   <NavigationMenuLink asChild>
                     <Link
                       href="/about-us/past-mdit"
-                      className="group block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
+                      className="group block select-none space-y-2 rounded-lg p-3 md:p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
                     >
                       <div className="flex items-center space-x-2 mb-2">
                         <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                        <div className="text-sm font-semibold leading-none group-hover:text-purple-600 transition-colors">
+                        <div className="text-xs md:text-sm font-semibold leading-none group-hover:text-purple-600 transition-colors">
                           View Past MDIT
                         </div>
                       </div>
@@ -116,11 +116,11 @@ const Header = memo(() => {
                   <NavigationMenuLink asChild>
                     <Link
                       href="/event-details"
-                      className="group block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
+                      className="group block select-none space-y-2 rounded-lg p-3 md:p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
                     >
                       <div className="flex items-center space-x-2 mb-2">
                         <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <div className="text-sm font-semibold leading-none group-hover:text-blue-600 transition-colors">
+                        <div className="text-xs md:text-sm font-semibold leading-none group-hover:text-blue-600 transition-colors">
                           Event Details
                         </div>
                       </div>
@@ -134,11 +134,11 @@ const Header = memo(() => {
                   <NavigationMenuLink asChild>
                     <Link
                       href="/rules-regulation"
-                      className="group block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
+                      className="group block select-none space-y-2 rounded-lg p-3 md:p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:shadow-md"
                     >
                       <div className="flex items-center space-x-2 mb-2">
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <div className="text-sm font-semibold leading-none group-hover:text-green-600 transition-colors">
+                        <div className="text-xs md:text-sm font-semibold leading-none group-hover:text-green-600 transition-colors">
                           Rules & Regulation
                         </div>
                       </div>
@@ -161,9 +161,9 @@ const Header = memo(() => {
                 <Link href="/frequently-asked-questions">FAQs</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
               <ModeToggle />
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
             <NavigationMenuItem>
               {/* <Link href={buttonHref}> */}
               {isButtonDisabled ? (
@@ -331,9 +331,9 @@ const Header = memo(() => {
               </ScrollArea>
             </SheetContent>
           </Sheet>
-          <div className="flex">
+          {/* <div className="flex">
             <ModeToggle />
-          </div>
+          </div> */}
           <div className="hidden sm:flex">
             <Link href={buttonHref}>
               <Button
