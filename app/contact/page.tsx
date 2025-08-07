@@ -286,7 +286,7 @@ const ContactPage = () => {
         </div>
       </div>
 
-      <div className="absolute lg:w-auto w-screen h-[300px] lg:h-[1200px]  -left-0 rotate-90 overflow-visible">
+      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[300px] lg:h-[1200px] rotate-90 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"

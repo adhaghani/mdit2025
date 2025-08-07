@@ -588,31 +588,31 @@ interface MediaPartner {
 }
 
 export const EVENT_JUDGES: Judge[] = [
-  {
-    name: "Dr. Ahmad Fazreen bin Baharudden",
-    position: "Chief Judge",
-    image: {
-      src: "/judges/J1.png",
-      alt: "Dr. Ahmad Fazreen bin Baharudden",
-    },
-    title: "Business Intelligence & Analytics Director, DataMicron",
-    bio: "Experienced practitioner of business and social science analytics with a demonstrated 24 years history of working in the information technology and services industry. Skilled in gap analysis, business problem solving, and analytics story telling.",
-  },
-  {
-    name: "DR. SARAH LIAM",
-    title: "Senior Data Scientist, Department of Statistics Malaysia",
-    bio: "Dr. Sarah leads the data innovation initiatives at DOSM with a PhD in Applied Statistics and 15 years of experience in government data systems and policy-making through data-driven insights.",
-  },
-  {
-    name: "PROF. AHMAD HASSAN",
-    title: "Dean, Faculty of Computer Science and Mathematics, UiTM",
-    bio: "Professor Ahmad Hassan is an expert in machine learning and data mining with over 20 years of academic experience and numerous publications in top-tier journals.",
-  },
-  {
-    name: "MS. NURUL AISYAH",
-    title: "Head of Analytics, Grab Malaysia",
-    bio: "Nurul leads data science teams at Grab Malaysia, focusing on predictive analytics and machine learning solutions for Southeast Asia super app ecosystem.",
-  },
+  // {
+  //   name: "Dr. Ahmad Fazreen bin Baharudden",
+  //   position: "Chief Judge",
+  //   image: {
+  //     src: "/judges/J1.png",
+  //     alt: "Dr. Ahmad Fazreen bin Baharudden",
+  //   },
+  //   title: "Business Intelligence & Analytics Director, DataMicron",
+  //   bio: "Experienced practitioner of business and social science analytics with a demonstrated 24 years history of working in the information technology and services industry. Skilled in gap analysis, business problem solving, and analytics story telling.",
+  // },
+  // {
+  //   name: "DR. SARAH LIAM",
+  //   title: "Senior Data Scientist, Department of Statistics Malaysia",
+  //   bio: "Dr. Sarah leads the data innovation initiatives at DOSM with a PhD in Applied Statistics and 15 years of experience in government data systems and policy-making through data-driven insights.",
+  // },
+  // {
+  //   name: "PROF. AHMAD HASSAN",
+  //   title: "Dean, Faculty of Computer Science and Mathematics, UiTM",
+  //   bio: "Professor Ahmad Hassan is an expert in machine learning and data mining with over 20 years of academic experience and numerous publications in top-tier journals.",
+  // },
+  // {
+  //   name: "MS. NURUL AISYAH",
+  //   title: "Head of Analytics, Grab Malaysia",
+  //   bio: "Nurul leads data science teams at Grab Malaysia, focusing on predictive analytics and machine learning solutions for Southeast Asia super app ecosystem.",
+  // },
 ];
 
 // Organizers data

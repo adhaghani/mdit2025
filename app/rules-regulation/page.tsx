@@ -177,7 +177,7 @@ const RulesRegulationPage = () => {
         </BlurFade>
       </div>
 
-      <div className="absolute h-[700px]  -right-0 rotate-0 !overflow-visible">
+      <div className="absolute right-0 lg:-right-32 h-[700px] rotate-0 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/12.svg"}
           alt="Background Gradient"
@@ -224,8 +224,8 @@ const RulesRegulationPage = () => {
             <Card
               className={`h-full ${
                 note.type === "warning"
-                  ? "border-red-200 bg-red-50/50"
-                  : "border-blue-200 bg-blue-50/50"
+                  ? "border-red-200 bg-red-50/50 dark:bg-red-900/50 dark:border-red-700"
+                  : "border-blue-200 bg-blue-50/50 dark:bg-blue-900/50 dark:border-blue-700"
               }`}
             >
               <CardHeader>
@@ -262,7 +262,7 @@ const RulesRegulationPage = () => {
           </BlurFade>
         ))}
       </div>
-      <div className="absolute h-[900px]  -left-128 rotate-0 !overflow-visible">
+      <div className="absolute left-0 lg:-left-32 h-[900px] rotate-0 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"

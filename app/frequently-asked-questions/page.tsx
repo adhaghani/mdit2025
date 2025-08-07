@@ -95,15 +95,7 @@ const FrequentlyAskedQuestionsPage = () => {
       <div className="absolute w-full h-[300px] hidden lg:block sm:h-[500px]">
         <MditAuroraSubtle />
       </div>
-      <div className="absolute h-[800px] -left-64 translate-y-32 rotate-0 !overflow-visible">
-        <Image
-          src={"/assets/bg-gradients/13.svg"}
-          alt="Background Gradient"
-          width={1920}
-          height={1080}
-          className="inset-0 w-full h-full object-cover !overflow-visible"
-        />
-      </div>
+
       {/* Header Section */}
       <div className="text-center space-y-4 px-4 py-32 lg:py-48 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -125,6 +117,15 @@ const FrequentlyAskedQuestionsPage = () => {
         </BlurFade>
       </div>
 
+      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[800px] overflow-hidden pointer-events-none">
+        <Image
+          src={"/assets/bg-gradients/13.svg"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="w-full h-full object-cover object-right !overflow-visible"
+        />
+      </div>
       {/* Search Bar */}
       <BlurFade inView delay={0.25}>
         <div className="max-w-2xl mx-auto mb-12 ">
@@ -220,7 +221,7 @@ const FrequentlyAskedQuestionsPage = () => {
         )}
       </div>
 
-      <div className="absolute h-[800px] -right-0 rotate-0 !overflow-visible">
+      <div className="absolute right-0 lg:-right-32 h-[800px] rotate-0 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"
@@ -298,8 +299,12 @@ const FrequentlyAskedQuestionsPage = () => {
       </div>
 
       {/* Emergency Contact Info */}
-      <BlurFade inView delay={0.65}>
-        <Card className="bg-primary/5 border-primary/20 max-w-3xl mx-auto">
+      <BlurFade
+        inView
+        delay={0.65}
+        className="bg-primary/5 border-primary/20 max-w-3xl mx-auto backdrop-blur-xl"
+      >
+        <Card className="bg-transparent border border-primary/20 shadow-lg">
           <CardHeader className="text-center">
             <CardTitle className="text-primary flex items-center justify-center gap-2">
               <Clock className="h-5 w-5" />

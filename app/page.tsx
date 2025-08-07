@@ -74,6 +74,7 @@ import {
   MditAurora,
   MditTextPressure,
 } from "@/components/optimized-react-bits";
+import { MobileGradientBackground } from "@/components/animate-ui/backgrounds/mobile-gradient";
 // Type definitions
 interface CompetitionPhase {
   phase: string;
@@ -659,9 +660,12 @@ const Page = memo(() => {
     <div className="relative">
       {/* Hero Section with Background Pattern */}
 
-      <div className=" relative min-h-fit h-[90vh] max-h-[700px]">
+      <div className=" relative min-h-fit h-[90vh] rounded-lg overflow-hidden lg:overflow-visible max-h-[700px]">
         <div className="absolute w-full h-[500px] hidden lg:block sm:h-[3/4]">
           <MditAurora />
+        </div>
+        <div className="absolute w-full rounded-lg px-4 overflow-hidden lg:hidden block h-full">
+          <MobileGradientBackground />
         </div>
         <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
           <MditTextPressure text="2025" />
@@ -765,13 +769,13 @@ const Page = memo(() => {
         </div>
       </div>
 
-      <div className="absolute lg:w-auto w-screen lg:h-[600px]  -right-0 rotate-180 !overflow-visible">
+      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-[600px] rotate-180 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/13.svg"}
           alt="Background Gradient"
           width={1920}
           height={1080}
-          className="inset-0 w-full h-full object-cover !overflow-visible"
+          className="w-full h-full object-cover object-left !overflow-visible"
         />
       </div>
       {/* About MDIT Section */}
@@ -999,7 +1003,7 @@ const Page = memo(() => {
         </div>
 
         {/* Call to action section */}
-        <BlurFade inView delay={0.8}>
+        <BlurFade inView delay={0.8} className="px-4">
           <div className="text-center max-w-7xl mx-auto mt-16 p-8 rounded-2xl bg-gradient-to-r from-primary/10 via-purple-500/10 to-blue-500/10 border border-primary/20">
             <Text
               as="h3"
@@ -1030,13 +1034,13 @@ const Page = memo(() => {
         </BlurFade>
       </div>
 
-      <div className="absolute lg:w-auto w-screen lg:h-[900px]  -left-128 lg:-left-64  !overflow-visible">
+      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[900px] overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/8.svg"}
           alt="Background Gradient"
           width={1920}
           height={1080}
-          className="inset-0 w-full h-full object-cover !overflow-visible"
+          className="w-full h-full object-cover object-right !overflow-visible"
         />
       </div>
 
@@ -1210,13 +1214,13 @@ const Page = memo(() => {
         </div>
       </div>
 
-      <div className="absolute lg:w-auto w-screen lg:h-[600px]  -right-0  !overflow-visible">
+      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-[600px] overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"
           width={1920}
           height={1080}
-          className="inset-0 w-full h-full object-cover !overflow-visible"
+          className="w-full h-full object-cover object-left !overflow-visible"
         />
       </div>
 
@@ -1691,13 +1695,13 @@ const Page = memo(() => {
         </BlurFade>
       </div>
 
-      <div className="absolute lg:w-auto w-screen lg:h-[1200px] -z-10 -left-40 rotate-180 !overflow-visible">
+      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[1200px] -z-10 rotate-180 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/11.svg"}
           alt="Background Gradient"
           width={1920}
           height={1080}
-          className="inset-0 w-full h-full object-cover !overflow-visible"
+          className="w-full h-full object-cover object-right !overflow-visible"
         />
       </div>
       <div className="max-w-7xl mx-auto py-16 px-4">
