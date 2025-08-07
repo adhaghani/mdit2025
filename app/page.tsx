@@ -719,7 +719,7 @@ const Page = memo(() => {
               <div className="mt-12 mb-8">
                 <Text as="h3" className="mb-6">
                   {hasStarted
-                    ? "Registration Closes In:"
+                    ? "Registration Currently open! it will close in:"
                     : "Registration Opens In:"}
                 </Text>
                 <div className="flex items-center justify-center gap-4 md:gap-6">
@@ -882,7 +882,7 @@ const Page = memo(() => {
             {COMPETITION_HIGHLIGHTS.slice(0, 3).map((highlight, index) => (
               <BlurFade key={index} inView delay={0.2 + index * 0.1}>
                 <Card
-                  className={`group relative h-full overflow-hidden border-0 hover:shadow-2xl transition-all duration-500 hover:scale-105 ${highlight.bgColor} backdrop-blur-sm`}
+                  className={`cursor-default group relative h-full overflow-hidden border-0 hover:shadow-2xl transition-all duration-500 hover:scale-105 ${highlight.bgColor} backdrop-blur-sm`}
                 >
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

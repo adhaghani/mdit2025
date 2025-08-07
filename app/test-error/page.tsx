@@ -51,7 +51,7 @@ export default function TestErrorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="max-w-2xl mt-32 mx-auto space-y-6">
         <Card className="p-6">
           <CardHeader>
