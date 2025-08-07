@@ -148,7 +148,7 @@ const RulesRegulationPage = () => {
   return (
     <>
       {/* Header Section */}
-      <div className="absolute w-full h-[500px] sm:h-full">
+      <div className="absolute w-full h-[500px] sm:h-[3/4]">
         <Aurora
           colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
           blend={1}

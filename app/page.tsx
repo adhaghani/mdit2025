@@ -71,7 +71,6 @@ import {
 import Aurora from "@/components/react-bits/Backgrounds/Aurora/Aurora";
 import MuxVideo from "@mux/mux-video-react";
 import TextPressure from "@/components/react-bits/TextAnimations/TextPressure/TextPressure";
-
 // Type definitions
 interface CompetitionPhase {
   phase: string;
@@ -658,7 +657,7 @@ const Page = memo(() => {
       {/* Hero Section with Background Pattern */}
 
       <div className=" relative min-h-fit h-[90vh] max-h-[700px]">
-        <div className="absolute w-full h-[500px] sm:h-full">
+        <div className="absolute w-full h-[500px] sm:h-[3/4]">
           <Aurora
             colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
             blend={1}
@@ -666,7 +665,7 @@ const Page = memo(() => {
             speed={0.3}
           />
         </div>
-        <div className="absolute z-10 opacity-40 hidden lg:block w-full h-fit">
+        <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
           <TextPressure
             text="2025"
             flex={false}
@@ -788,7 +787,6 @@ const Page = memo(() => {
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
       </div>
-
       {/* About MDIT Section */}
       <div className="my-20 relative">
         <BlurFade inView delay={0.1}>
@@ -861,7 +859,6 @@ const Page = memo(() => {
           </div>
         </BlurFade>
       </div>
-
       {/* Competition Highlights */}
       <div className="my-20 px-4 relative">
         <BlurFade inView delay={0.1}>
@@ -887,7 +884,6 @@ const Page = memo(() => {
             before.
           </Text>
         </BlurFade>
-
         {/* Enhanced Grid Layout */}
         <div className="max-w-7xl mx-auto">
           {/* Top row - 3 columns with enhanced cards */}

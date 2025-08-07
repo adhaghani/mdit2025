@@ -25,6 +25,7 @@ import {
   UniversityIcon,
 } from "lucide-react";
 import { QRCode } from "./ui/shadcn-io/qr-code";
+import Aurora from "./react-bits/Backgrounds/Aurora/Aurora";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -55,7 +56,11 @@ const Footer = () => {
   ];
 
   const keyStats = [
-    { icon: Users, label: "Participating Teams", value: EVENT_DATA.Expected_Team },
+    {
+      icon: Users,
+      label: "Participating Teams",
+      value: EVENT_DATA.Expected_Team,
+    },
     {
       icon: UniversityIcon,
       label: "Participating Universities",
@@ -66,11 +71,18 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative mt-20 pt-10 pb-10 overflow-hidden">
+    <footer className="relative mt-20 pt-10 overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 xl:px-0">
+      <div className="absolute bottom-0 w-full h-[300px] rotate-180 md:h-full">
+        <Aurora
+          colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
+          blend={1}
+          amplitude={1}
+          speed={0.3}
+        />
+      </div>
+      <div className="max-w-7xl my-10 mx-auto px-4 xl:px-0">
         {/* Key Stats Section */}
         <div className="mb-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">

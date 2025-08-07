@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Users, Award, Target, Lightbulb, Star } from "lucide-react";
-import Threads from "@/src/components/react-bits/Backgrounds/Threads/Threads";
-
+import Threads from "@/components/react-bits/Backgrounds/Threads/Threads";
+import SpotlightCard from "@/components/react-bits/Components/SpotlightCard/SpotlightCard";
 const AboutUsPage = () => {
   // Team members data organized by bureau
   const teamByBureau = {
@@ -130,31 +130,31 @@ const AboutUsPage = () => {
     "Technical & Logistic Bureau": [
       {
         name: "Ikhmal Hakimi Bin Mohd Zunaidi",
-        role: "Head of Technical Bureau",
+        role: "Head of Technical & Logistic Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/TL1.png",
       },
       {
         name: "Nurul Hanis Nadhirah Binti Norman",
-        role: "Deputy Head of Technical Bureau",
+        role: "Deputy Head of Technical & Logistic Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/TL2.png",
       },
       {
         name: "Mashitah Binti Rahman",
-        role: "Technical Bureau Member",
+        role: "Technical & Logistic Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/TL3.png",
       },
       {
         name: "Muhammad Fadhil Rais bin Mohd Harris",
-        role: "Technical Bureau Member",
+        role: "Technical & Logistic Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/TL4.png",
       },
       {
         name: "Emran Hafiz Bin M Abd Kohar",
-        role: "Technical Bureau Member",
+        role: "Technical & Logistic Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/TL5.png",
       },
@@ -162,19 +162,19 @@ const AboutUsPage = () => {
     "Judging & Scoring Bureau": [
       {
         name: "Imtinan Ilwani Binti Abdul Ghani",
-        role: "Head of Judging Bureau",
+        role: "Head of Judging & Scoring Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/JM1.png",
       },
       {
         name: "Nur Ain Adriana Binti Zulfiqar",
-        role: "Deputy Head of Judging Bureau",
+        role: "Judging & Scoring Bureau Member",
         designation: "Third Year Statistics Student, UiTM Shah Alam",
         image: "/team/JM2.png",
       },
       {
         name: "Siti Nurfarhah Binti Zahari",
-        role: "Judging Bureau Member",
+        role: "Judging Bureau & Scoring Member",
         designation: "Third Year Statistics Student, UiTM Shah Alam",
         image: "/team/JM3.png",
       },
@@ -182,55 +182,55 @@ const AboutUsPage = () => {
     "Multimedia & Publicity Bureau": [
       {
         name: "Puteri Nurain Binti Mazlan",
-        role: "Head of Multimedia Bureau",
+        role: "Head of Multimedia & Publicity Bureau",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/MP1.png",
       },
       {
         name: "Nur Afrina Firzana Binti Othman",
-        role: "Multimedia Bureau Member",
+        role: "Multimedia & Publicity Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/MP2.png",
       },
       {
         name: "Megdelenny Anak Sim",
-        role: "Multimedia Bureau Member",
+        role: "Multimedia & Publicity Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/MP3.png",
       },
       {
         name: "Nik Nayly Alya Binti Nik Salimi",
-        role: "Multimedia Bureau Member",
+        role: "Multimedia & Publicity Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/MP4.png",
       },
       {
         name: "Aliyah Nadine Binti Azma Yazuddin",
-        role: "Multimedia Bureau Member",
+        role: "Multimedia & Publicity Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/MP5.png",
       },
       {
         name: "Muhammad 'Irfan Bin Rahmat",
-        role: "Multimedia Bureau Member",
+        role: "Multimedia & Publicity Bureau Member",
         designation: "Artificial Intelligence Student, UiTM Shah Alam",
         image: "/team/MP6.png",
       },
       {
         name: "Ahmad Adha bin Mohd Ghani",
-        role: "Multimedia Bureau Member",
+        role: "Multimedia & Publicity Bureau Member",
         designation: "Computer Science Student, UiTM Shah Alam",
         image: "/team/MP7.png",
       },
       {
         name: "Anis Adlina Binti Rohesan",
-        role: "Multimedia Bureau Member",
+        role: "Multimedia & Publicity Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/MP8.png",
       },
       {
         name: "Nurulhayati Binti Ahmad Fauzi",
-        role: "Multimedia Bureau Member",
+        role: "Multimedia & Publicity Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/MP9.png",
       },
@@ -500,8 +500,11 @@ const AboutUsPage = () => {
                 inView
                 delay={0.2 + index * 0.1}
               >
-                <Card className="h-full max-w-[450px] mx-auto hover:shadow-lg transition-shadow">
-                  <CardContent>
+                <SpotlightCard
+                  className="bg-card h-full"
+                  spotlightColor="rgba(144, 49, 221, 0.5)"
+                >
+                  <CardContent className="p-0 !bg-none">
                     <div className="relative aspect-4/3 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-primary/40 rounded-lg flex items-center justify-center">
                       {member.image ? (
                         <Image
@@ -525,7 +528,7 @@ const AboutUsPage = () => {
                       {member.role}
                     </Text>
                   </CardContent>
-                </Card>
+                </SpotlightCard>
               </BlurFade>
             )
           )}

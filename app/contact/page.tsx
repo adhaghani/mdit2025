@@ -8,6 +8,8 @@ import { MailIcon, MessageCircleIcon } from "lucide-react";
 import { Instagram } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import Aurora from "@/components/react-bits/Backgrounds/Aurora/Aurora";
+import TextPressure from "@/components/react-bits/TextAnimations/TextPressure/TextPressure";
 
 // Type definitions
 interface ContactInfo {
@@ -226,17 +228,30 @@ const ContactPage = () => {
 
   return (
     <>
-      <div className="absolute h-[900px]  -left-128 rotate-0 !overflow-visible">
-        <Image
-          src={"/assets/bg-gradients/9.svg"}
-          alt="Background Gradient"
-          width={1920}
-          height={1080}
-          className="inset-0 w-full h-full object-cover !overflow-visible"
+      <div className="absolute w-full h-[500px] sm:h-[3/4]">
+        <Aurora
+          colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
+          blend={1}
+          amplitude={1}
+          speed={0.3}
+        />
+      </div>
+      <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
+        <TextPressure
+          text="Contact"
+          flex={false}
+          alpha={true}
+          stroke={false}
+          width={true}
+          weight={true}
+          italic={false}
+          textColor="#9031DD"
+          strokeColor="#ff0000"
+          minFontSize={24}
         />
       </div>
       {/* Header Section */}
-      <div className="text-center space-y-4 py-20 max-w-7xl mx-auto">
+      <div className="text-center space-y-4 py-32 pt-48 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h1" className="text-primary">
             Contact Us
@@ -286,7 +301,7 @@ const ContactPage = () => {
         </div>
       </div>
 
-      <div className="absolute lg:w-auto w-screen lg:h-[1200px]  -right-0 rotate-90 !overflow-visible">
+      <div className="absolute lg:w-auto w-screen h-[300px] lg:h-[1200px]  -left-0 rotate-90 overflow-visible">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"
