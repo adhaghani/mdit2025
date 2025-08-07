@@ -68,9 +68,12 @@ import {
   MediaPlayerVolume,
   MediaPlayerVolumeIndicator,
 } from "@/components/ui/media-player";
-import Aurora from "@/components/react-bits/Backgrounds/Aurora/Aurora";
+
 import MuxVideo from "@mux/mux-video-react";
-import TextPressure from "@/components/react-bits/TextAnimations/TextPressure/TextPressure";
+import {
+  MditAurora,
+  MditTextPressure,
+} from "@/components/optimized-react-bits";
 // Type definitions
 interface CompetitionPhase {
   phase: string;
@@ -658,26 +661,10 @@ const Page = memo(() => {
 
       <div className=" relative min-h-fit h-[90vh] max-h-[700px]">
         <div className="absolute w-full h-[500px] sm:h-[3/4]">
-          <Aurora
-            colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
-            blend={1}
-            amplitude={1}
-            speed={0.3}
-          />
+          <MditAurora />
         </div>
         <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
-          <TextPressure
-            text="2025"
-            flex={false}
-            alpha={true}
-            stroke={false}
-            width={true}
-            weight={true}
-            italic={false}
-            textColor="#9031DD"
-            strokeColor="#ff0000"
-            minFontSize={24}
-          />
+          <MditTextPressure text="2025" />
         </div>
         <div className="relative text-center py-32 flex flex-col item-center justify-center gap-4 z-10">
           <BlurFade

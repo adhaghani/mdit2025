@@ -18,9 +18,10 @@ import {
   Download,
   ExternalLink,
 } from "lucide-react";
-import Aurora from "@/components/react-bits/Backgrounds/Aurora/Aurora";
-import TextPressure from "@/components/react-bits/TextAnimations/TextPressure/TextPressure";
-
+import {
+  MditAurora,
+  MditTextPressure,
+} from "@/components/optimized-react-bits";
 const RulesRegulationPage = () => {
   const sections = [
     {
@@ -149,26 +150,10 @@ const RulesRegulationPage = () => {
     <>
       {/* Header Section */}
       <div className="absolute w-full h-[500px] sm:h-[3/4]">
-        <Aurora
-          colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
-          blend={1}
-          amplitude={1}
-          speed={0.3}
-        />
+        <MditAurora />
       </div>
       <div className="absolute opacity-40 hidden lg:block w-full h-fit -z-10">
-        <TextPressure
-          text="Rules"
-          flex={false}
-          alpha={true}
-          stroke={false}
-          width={true}
-          weight={true}
-          italic={false}
-          textColor="#9031DD"
-          strokeColor="#ff0000"
-          minFontSize={24}
-        />
+        <MditTextPressure text="Rules" />
       </div>
       <div className="text-center space-y-4 py-32 relative lg:py-64 px-4 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -322,7 +307,7 @@ const RulesRegulationPage = () => {
       </BlurFade>
 
       {/* Download Section */}
-      <div className="text-center py-20">
+      <div className="text-center px-4 py-20">
         <BlurFade inView delay={0.6}>
           <Text as="h2" className="mb-4">
             Download Complete Guidelines
@@ -349,7 +334,7 @@ const RulesRegulationPage = () => {
       </div>
 
       {/* Contact Section */}
-      <div className="pb-20">
+      <div className="pb-20 px-4">
         <BlurFade inView delay={0.75}>
           <Text as="h2" className="text-center mb-4">
             Still have questions?

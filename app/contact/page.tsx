@@ -8,9 +8,10 @@ import { MailIcon, MessageCircleIcon } from "lucide-react";
 import { Instagram } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import Aurora from "@/components/react-bits/Backgrounds/Aurora/Aurora";
-import TextPressure from "@/components/react-bits/TextAnimations/TextPressure/TextPressure";
-
+import {
+  MditAurora,
+  MditTextPressure,
+} from "@/components/optimized-react-bits";
 // Type definitions
 interface ContactInfo {
   icon: React.ComponentType<{ className?: string }>;
@@ -229,26 +230,10 @@ const ContactPage = () => {
   return (
     <>
       <div className="absolute w-full h-[500px] sm:h-[3/4]">
-        <Aurora
-          colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
-          blend={1}
-          amplitude={1}
-          speed={0.3}
-        />
+        <MditAurora />
       </div>
       <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
-        <TextPressure
-          text="Contact"
-          flex={false}
-          alpha={true}
-          stroke={false}
-          width={true}
-          weight={true}
-          italic={false}
-          textColor="#9031DD"
-          strokeColor="#ff0000"
-          minFontSize={24}
-        />
+        <MditTextPressure text="Contact" />
       </div>
       {/* Header Section */}
       <div className="text-center space-y-4 py-32 pt-48 max-w-7xl mx-auto">

@@ -25,7 +25,7 @@ import {
   UniversityIcon,
 } from "lucide-react";
 import { QRCode } from "./ui/shadcn-io/qr-code";
-import Aurora from "./react-bits/Backgrounds/Aurora/Aurora";
+import { Aurora } from "./optimized-react-bits";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

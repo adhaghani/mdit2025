@@ -26,9 +26,7 @@ import {
   Users,
   Trophy,
 } from "lucide-react";
-import Aurora from "@/components/react-bits/Backgrounds/Aurora/Aurora";
-import TextPressure from "@/components/react-bits/TextAnimations/TextPressure/TextPressure";
-
+import { MditAuroraSubtle } from "@/components/optimized-react-bits";
 const FrequentlyAskedQuestionsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -95,12 +93,7 @@ const FrequentlyAskedQuestionsPage = () => {
   return (
     <>
       <div className="absolute w-full h-[300px] sm:h-[500px]">
-        <Aurora
-          colorStops={["#F7F7F7", "#C25AFF", "#7869FE"]}
-          blend={1}
-          amplitude={0.4}
-          speed={0.3}
-        />
+        <MditAuroraSubtle />
       </div>
       <div className="absolute h-[800px] -left-64 translate-y-32 rotate-0 !overflow-visible">
         <Image
@@ -343,7 +336,7 @@ const FrequentlyAskedQuestionsPage = () => {
       </BlurFade>
 
       {/* Call to Action */}
-      <div className="text-center py-20">
+      <div className="text-center px-4 py-20">
         <BlurFade inView delay={0.7}>
           <Text as="h2" className="mb-4">
             Ready to Join MDIT 2025?

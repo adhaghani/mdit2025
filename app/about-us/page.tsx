@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Users, Award, Target, Lightbulb, Star } from "lucide-react";
-import Threads from "@/components/react-bits/Backgrounds/Threads/Threads";
+import { Threads } from "@/components/optimized-react-bits";
 import SpotlightCard from "@/components/react-bits/Components/SpotlightCard/SpotlightCard";
 const AboutUsPage = () => {
   // Team members data organized by bureau

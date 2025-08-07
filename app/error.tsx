@@ -124,7 +124,7 @@ const ErrorPage = memo(({ error, reset }: ErrorPageProps) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="max-w-3xl mx-auto text-center space-y-8">
+      <div className="max-w-3xl mt-32 mx-auto text-center space-y-8">
         {/* Logo Section */}
         <BlurFade delay={0.1}>
           <div className="flex justify-center mb-6">

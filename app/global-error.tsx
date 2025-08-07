@@ -107,7 +107,7 @@ const GlobalError = memo(({ error, reset }: ErrorPageProps) => {
     <html>
       <body>
         <div className="min-h-screen bg-gradient-to-br from-background via-background to-destructive/5 flex items-center justify-center p-4">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
+          <div className="max-w-4xl mt-32 mx-auto text-center space-y-8">
             {/* Logo Section */}
             <BlurFade delay={0.1}>
               <div className="flex justify-center mb-6">

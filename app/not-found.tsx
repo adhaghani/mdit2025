@@ -112,7 +112,7 @@ const NotFoundPage = memo(() => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center p-4">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="max-w-4xl mt-32 mx-auto text-center space-y-8">
         {/* Logo Section */}
         <BlurFade delay={0.1}>
           <div className="flex justify-center mb-6">
@@ -143,8 +143,9 @@ const NotFoundPage = memo(() => {
               styleVariant="muted"
               className="text-lg max-w-2xl mx-auto leading-relaxed"
             >
-              Oops! It looks like you&apos;ve ventured into uncharted data territory.
-              The page you&apos;re looking for doesn&apos;t exist or may have been moved.
+              Oops! It looks like you&apos;ve ventured into uncharted data
+              territory. The page you&apos;re looking for doesn&apos;t exist or
+              may have been moved.
             </Text>
           </div>
         </BlurFade>

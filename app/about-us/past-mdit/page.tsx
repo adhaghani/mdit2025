@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { Marquee } from "@/components/magicui/marquee";
 import { MDIT2023_IMAGE, MDIT2024_IMAGE } from "@/components/constant";
-import Threads from "@/components/react-bits/Backgrounds/Threads/Threads";
+import { Threads } from "@/components/optimized-react-bits";
 
 const PastMDITPage = () => {
   const [selectedYear, setSelectedYear] = useState("2024");
