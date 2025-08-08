@@ -3,9 +3,7 @@ import React, { useMemo, useCallback } from "react";
 import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BlurFade } from "@/components/magicui/blur-fade";
-import { MailIcon, MessageCircleIcon } from "lucide-react";
-import { Instagram } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -14,6 +12,26 @@ import {
 } from "@/components/optimized-react-bits";
 
 import { useDevice } from "@/contexts/device-context";
+
+const DynamicIcons = {
+  Clock: dynamic(() => import("lucide-react").then((m) => m.Clock)),
+  MailIcon: dynamic(() => import("lucide-react").then((m) => m.Mail)),
+  MessageCircleIcon: dynamic(() =>
+    import("lucide-react").then((m) => m.MessageCircle)
+  ),
+  Instagram: dynamic(() => import("lucide-react").then((m) => m.Instagram)),
+};
+
+const BlurFade = dynamic(
+  () =>
+    import("@/components/magicui/blur-fade").then((m) => ({
+      default: m.BlurFade,
+    })),
+  {
+    ssr: false,
+  }
+);
+
 // Type definitions
 interface ContactInfo {
   icon: React.ComponentType<{ className?: string }>;
@@ -130,7 +148,7 @@ const ContactPage = () => {
     () =>
       Object.freeze([
         {
-          icon: MailIcon,
+          icon: DynamicIcons.MailIcon,
           title: "Email Us",
           content: "mditxdd2025@gmail.com",
           description: "Send us an email and we will respond within 24 hours",
@@ -148,7 +166,7 @@ const ContactPage = () => {
           handle: "@mdit2025",
           link: "https://instagram.com/mdit2025",
           description: "Photos, stories, and highlights from the competition",
-          icon: Instagram,
+          icon: DynamicIcons.Instagram,
           cardClass:
             "bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 border-pink-200 dark:border-pink-800",
           iconBg: "bg-gradient-to-r from-pink-500 to-purple-600",
@@ -343,7 +361,7 @@ const ContactPage = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <MessageCircleIcon className="h-5 w-5 text-green-600" />
+                <DynamicIcons.MessageCircleIcon className="h-5 w-5 text-green-600" />
                 Contact Our Team via WhatsApp
               </CardTitle>
               <Text as="p" styleVariant="muted">
@@ -389,7 +407,7 @@ const ContactPage = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <MessageCircleIcon className="h-4 w-4 mr-2" />
+                          <DynamicIcons.MessageCircleIcon className="h-4 w-4 mr-2" />
                           Chat on WhatsApp
                         </Link>
                       </Button>

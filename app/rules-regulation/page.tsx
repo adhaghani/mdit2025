@@ -4,31 +4,66 @@ import React from "react";
 import { Text } from "@/components/ui/text";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { BlurFade } from "@/components/magicui/blur-fade";
+import dynamic from "next/dynamic";
+
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Users,
-  Calendar,
-  FileText,
-  Shield,
-  Trophy,
-  AlertTriangle,
-  CheckCircle,
-  Download,
-  ExternalLink,
-} from "lucide-react";
+
 import {
   MditAurora,
   MditTextPressure,
 } from "@/components/optimized-react-bits";
 import { useDevice } from "@/contexts/device-context";
 
+const DynamicIcons = {
+  Users: dynamic(() => import("lucide-react").then((m) => m.Users), {
+    ssr: false,
+  }),
+  Calendar: dynamic(() => import("lucide-react").then((m) => m.Calendar), {
+    ssr: false,
+  }),
+  FileText: dynamic(() => import("lucide-react").then((m) => m.FileText), {
+    ssr: false,
+  }),
+  Shield: dynamic(() => import("lucide-react").then((m) => m.Shield), {
+    ssr: false,
+  }),
+  Trophy: dynamic(() => import("lucide-react").then((m) => m.Trophy), {
+    ssr: false,
+  }),
+  AlertTriangle: dynamic(
+    () => import("lucide-react").then((m) => m.AlertTriangle),
+    {
+      ssr: false,
+    }
+  ),
+  CheckCircle: dynamic(
+    () => import("lucide-react").then((m) => m.CheckCircle),
+    {
+      ssr: false,
+    }
+  ),
+  Download: dynamic(() => import("lucide-react").then((m) => m.Download), {
+    ssr: false,
+  }),
+  ExternalLink: dynamic(
+    () => import("lucide-react").then((m) => m.ExternalLink),
+    {
+      ssr: false,
+    }
+  ),
+};
+
+const BlurFade = dynamic(
+  () => import("@/components/magicui/blur-fade").then((mod) => mod.BlurFade),
+  { ssr: false }
+);
+
 const RulesRegulationPage = () => {
   const sections = [
     {
       title: "Eligibility & Team Formation",
-      icon: Users,
+      icon: DynamicIcons.Users,
       rules: [
         "Open to all university students currently enrolled in Malaysian institutions",
         "Teams must consist of 3-4 members maximum",
@@ -41,7 +76,7 @@ const RulesRegulationPage = () => {
     },
     {
       title: "Registration Requirements",
-      icon: FileText,
+      icon: DynamicIcons.FileText,
       rules: [
         "Registration fee: RM150.00 per team (non-refundable)",
         "Complete online registration form must be submitted",
@@ -54,7 +89,7 @@ const RulesRegulationPage = () => {
     },
     {
       title: "Competition Guidelines",
-      icon: Trophy,
+      icon: DynamicIcons.Trophy,
       rules: [
         "Competition period: September 6 - October 18, 2025",
         "Dataset will be provided at the start of competition",
@@ -67,7 +102,7 @@ const RulesRegulationPage = () => {
     },
     {
       title: "Submission Requirements",
-      icon: Calendar,
+      icon: DynamicIcons.Calendar,
       rules: [
         "Final submissions due: October 18, 2025, 11:59 PM",
         "Submissions must include complete code and documentation",
@@ -80,7 +115,7 @@ const RulesRegulationPage = () => {
     },
     {
       title: "Code of Conduct",
-      icon: Shield,
+      icon: DynamicIcons.Shield,
       rules: [
         "Respectful behavior towards all participants and organizers",
         "No sharing of solutions or approaches with other teams",
@@ -93,7 +128,7 @@ const RulesRegulationPage = () => {
     },
     {
       title: "Technical Requirements",
-      icon: CheckCircle,
+      icon: DynamicIcons.CheckCircle,
       rules: [
         "Stable internet connection required throughout competition",
         "Backup systems recommended for critical work",
@@ -239,7 +274,7 @@ const RulesRegulationPage = () => {
                 <ul className="space-y-3">
                   {section.rules.map((rule, ruleIndex) => (
                     <li key={ruleIndex} className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <DynamicIcons.CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                       <Text as="p" className="text-sm">
                         {rule}
                       </Text>
@@ -270,9 +305,9 @@ const RulesRegulationPage = () => {
                   }`}
                 >
                   {note.type === "warning" ? (
-                    <AlertTriangle className="h-5 w-5" />
+                    <DynamicIcons.AlertTriangle className="h-5 w-5" />
                   ) : (
-                    <CheckCircle className="h-5 w-5" />
+                    <DynamicIcons.CheckCircle className="h-5 w-5" />
                   )}
                   {note.title}
                 </CardTitle>
@@ -357,11 +392,11 @@ const RulesRegulationPage = () => {
         <BlurFade inView delay={0.7}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg">
-              <Download className="h-4 w-4 mr-2" />
+              <DynamicIcons.Download className="h-4 w-4 mr-2" />
               Download Rules PDF
             </Button>
             <Button size="lg" variant="outline">
-              <ExternalLink className="h-4 w-4 mr-2" />
+              <DynamicIcons.ExternalLink className="h-4 w-4 mr-2" />
               View Online Guidelines
             </Button>
           </div>

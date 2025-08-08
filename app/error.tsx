@@ -2,19 +2,52 @@
 
 import React, { memo, useMemo, useEffect } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
-import { BlurFade } from "@/components/magicui/blur-fade";
-import {
-  HomeIcon,
-  RefreshCwIcon,
-  AlertTriangleIcon,
-  WifiOffIcon,
-  ServerIcon,
-  ArrowLeftIcon,
-} from "lucide-react";
 import Image from "next/image";
+
+// Dynamic imports for icons to reduce bundle size
+const DynamicIcons = {
+  Home: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.HomeIcon })),
+    { ssr: true }
+  ),
+  RefreshCw: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.RefreshCwIcon })),
+    { ssr: true }
+  ),
+  AlertTriangle: dynamic(
+    () =>
+      import("lucide-react").then((m) => ({ default: m.AlertTriangleIcon })),
+    { ssr: true }
+  ),
+  WifiOff: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.WifiOffIcon })),
+    { ssr: true }
+  ),
+  Server: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.ServerIcon })),
+    { ssr: true }
+  ),
+  ArrowLeft: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.ArrowLeftIcon })),
+    { ssr: true }
+  ),
+};
+
+// Dynamic import for BlurFade component
+const BlurFade = dynamic(
+  () =>
+    import("@/components/magicui/blur-fade").then((m) => ({
+      default: m.BlurFade,
+    })),
+  {
+    loading: () => <div className="animate-pulse bg-muted/20 rounded" />,
+    ssr: true,
+  }
+);
 
 // Type definitions
 interface ErrorPageProps {
@@ -46,7 +79,7 @@ const ErrorPage = memo(({ error, reset }: ErrorPageProps) => {
         type: "Network Error",
         description:
           "Unable to connect to our servers. Please check your internet connection.",
-        icon: WifiOffIcon,
+        icon: DynamicIcons.WifiOff,
         color: "text-orange-500",
         bgColor: "bg-orange-500/10",
       };
@@ -55,7 +88,7 @@ const ErrorPage = memo(({ error, reset }: ErrorPageProps) => {
         type: "Server Error",
         description:
           "Our servers are experiencing issues. We're working to fix this.",
-        icon: ServerIcon,
+        icon: DynamicIcons.Server,
         color: "text-red-500",
         bgColor: "bg-red-500/10",
       };
@@ -64,7 +97,7 @@ const ErrorPage = memo(({ error, reset }: ErrorPageProps) => {
         type: "Application Error",
         description:
           "Something unexpected happened. This error has been logged.",
-        icon: AlertTriangleIcon,
+        icon: DynamicIcons.AlertTriangle,
         color: "text-destructive",
         bgColor: "bg-destructive/10",
       };
@@ -79,7 +112,7 @@ const ErrorPage = memo(({ error, reset }: ErrorPageProps) => {
         description: "Reload the page to attempt recovery",
         action: "Retry",
         onClick: reset,
-        icon: RefreshCwIcon,
+        icon: DynamicIcons.RefreshCw,
         variant: "default",
       },
       {
@@ -91,7 +124,7 @@ const ErrorPage = memo(({ error, reset }: ErrorPageProps) => {
             window.history.back();
           }
         },
-        icon: ArrowLeftIcon,
+        icon: DynamicIcons.ArrowLeft,
         variant: "outline",
       },
       {
@@ -103,7 +136,7 @@ const ErrorPage = memo(({ error, reset }: ErrorPageProps) => {
             window.location.href = "/";
           }
         },
-        icon: HomeIcon,
+        icon: DynamicIcons.Home,
         variant: "secondary",
       },
     ],

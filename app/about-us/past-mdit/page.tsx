@@ -1,28 +1,42 @@
 "use client";
 
 import React, { useState } from "react";
-import { BlurFade } from "@/components/magicui/blur-fade";
 import { Text } from "@/components/ui/text";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import {
-  Calendar,
-  Users,
-  Trophy,
-  University,
-  MapPin,
-  Award,
-  TrendingUp,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
 import { Marquee } from "@/components/magicui/marquee";
 import { MDIT2023_IMAGE, MDIT2024_IMAGE } from "@/components/constant";
 import { Threads } from "@/components/optimized-react-bits";
 
 import { useDevice } from "@/contexts/device-context";
+
+const DynamicIcons = {
+  Calendar: dynamic(() => import("lucide-react").then((m) => m.Calendar)),
+  Users: dynamic(() => import("lucide-react").then((m) => m.Users)),
+  Trophy: dynamic(() => import("lucide-react").then((m) => m.Trophy)),
+  University: dynamic(() => import("lucide-react").then((m) => m.University)),
+  MapPin: dynamic(() => import("lucide-react").then((m) => m.MapPin)),
+  Award: dynamic(() => import("lucide-react").then((m) => m.Award)),
+  TrendingUp: dynamic(() => import("lucide-react").then((m) => m.TrendingUp)),
+  ChevronLeft: dynamic(() => import("lucide-react").then((m) => m.ChevronLeft)),
+  ChevronRight: dynamic(() =>
+    import("lucide-react").then((m) => m.ChevronRight)
+  ),
+};
+
+const BlurFade = dynamic(
+  () =>
+    import("@/components/magicui/blur-fade").then((m) => ({
+      default: m.BlurFade,
+    })),
+  {
+    ssr: false,
+  }
+);
+
 const PastMDITPage = () => {
   const [selectedYear, setSelectedYear] = useState("2024");
 
@@ -51,10 +65,10 @@ const PastMDITPage = () => {
         university: "Universiti Putra Malaysia",
       },
       statistics: [
-        { label: "Teams", value: "80", icon: Users },
-        { label: "Participants", value: "320", icon: Users },
-        { label: "Universities", value: "13", icon: University },
-        { label: "Days", value: "37", icon: Calendar },
+        { label: "Teams", value: "80", icon: DynamicIcons.Users },
+        { label: "Participants", value: "320", icon: DynamicIcons.Users },
+        { label: "Universities", value: "13", icon: DynamicIcons.University },
+        { label: "Days", value: "37", icon: DynamicIcons.Calendar },
       ],
     },
     "2023": {
@@ -80,10 +94,10 @@ const PastMDITPage = () => {
         university: "University of Nottingham Malaysia",
       },
       statistics: [
-        { label: "Teams", value: "100", icon: Users },
-        { label: "Participants", value: "400", icon: Users },
-        { label: "Universities", value: "15", icon: University },
-        { label: "Days", value: "30", icon: Calendar },
+        { label: "Teams", value: "100", icon: DynamicIcons.Users },
+        { label: "Participants", value: "400", icon: DynamicIcons.Users },
+        { label: "Universities", value: "15", icon: DynamicIcons.University },
+        { label: "Days", value: "30", icon: DynamicIcons.Calendar },
       ],
     },
     "2021": {
@@ -109,10 +123,10 @@ const PastMDITPage = () => {
         university: "Universiti Kebangsaan Malaysia",
       },
       statistics: [
-        { label: "Teams", value: "74", icon: Users },
-        { label: "Participants", value: "296", icon: Users },
-        { label: "Universities", value: "15", icon: University },
-        { label: "Days", value: "28", icon: Calendar },
+        { label: "Teams", value: "74", icon: DynamicIcons.Users },
+        { label: "Participants", value: "296", icon: DynamicIcons.Users },
+        { label: "Universities", value: "15", icon: DynamicIcons.University },
+        { label: "Days", value: "28", icon: DynamicIcons.Calendar },
       ],
     },
   };
@@ -162,7 +176,7 @@ const PastMDITPage = () => {
             href="/about-us"
             className="inline-flex items-center gap-2 text-primary hover:underline mb-4"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <DynamicIcons.ChevronLeft className="h-4 w-4" />
             Back to About Us
           </Link>
         </BlurFade>
@@ -254,19 +268,19 @@ const PastMDITPage = () => {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-primary" />
+                      <DynamicIcons.Calendar className="h-4 w-4 text-primary" />
                       <Text as="p">{currentEdition.dates}</Text>
                     </div>
                     <div className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-primary" />
+                      <DynamicIcons.MapPin className="h-4 w-4 text-primary" />
                       <Text as="p">{currentEdition.venue}</Text>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Trophy className="h-4 w-4 text-primary" />
+                      <DynamicIcons.Trophy className="h-4 w-4 text-primary" />
                       <Text as="p">Prize Pool: {currentEdition.prizePool}</Text>
                     </div>
                     <div className="flex items-center gap-2">
-                      <TrendingUp className="h-4 w-4 text-primary" />
+                      <DynamicIcons.TrendingUp className="h-4 w-4 text-primary" />
                       <Text as="p">
                         {currentEdition.totalTeams} Participating Teams
                       </Text>
@@ -324,7 +338,7 @@ const PastMDITPage = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <div className="p-2 bg-yellow-400 rounded-full">
-                  <Trophy className="h-6 w-6 text-yellow-800" />
+                  <DynamicIcons.Trophy className="h-6 w-6 text-yellow-800" />
                 </div>
                 <div>
                   <Text as="h3" className="text-xl">
@@ -349,7 +363,7 @@ const PastMDITPage = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <div className="p-2 bg-gray-400 rounded-full">
-                    <Award className="h-5 w-5 text-gray-700" />
+                    <DynamicIcons.Award className="h-5 w-5 text-gray-700" />
                   </div>
                   <div>
                     <Text as="h4">🥈 1st Runner-up</Text>
@@ -375,7 +389,7 @@ const PastMDITPage = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <div className="p-2 bg-orange-400 rounded-full">
-                    <Award className="h-5 w-5 text-orange-700" />
+                    <DynamicIcons.Award className="h-5 w-5 text-orange-700" />
                   </div>
                   <div>
                     <Text as="h4">🥉 2nd Runner-up</Text>
@@ -508,7 +522,7 @@ const PastMDITPage = () => {
                   }
                   className="flex items-center gap-2"
                 >
-                  <ChevronLeft className="h-4 w-4" />
+                  <DynamicIcons.ChevronLeft className="h-4 w-4" />
                   MDIT{" "}
                   {availableYears[availableYears.indexOf(selectedYear) + 1]}
                 </Button>
@@ -527,7 +541,7 @@ const PastMDITPage = () => {
                 >
                   MDIT{" "}
                   {availableYears[availableYears.indexOf(selectedYear) - 1]}
-                  <ChevronRight className="h-4 w-4" />
+                  <DynamicIcons.ChevronRight className="h-4 w-4" />
                 </Button>
               )}
             </div>

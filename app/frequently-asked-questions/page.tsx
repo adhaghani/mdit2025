@@ -9,26 +9,41 @@ import {
   AccordionContent,
 } from "@/components/animate-ui/radix/accordion";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { FAQ } from "@/components/constant";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { BlurFade } from "@/components/magicui/blur-fade";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Search,
-  Download,
-  MessageCircle,
-  Phone,
-  Mail,
-  Clock,
-  HelpCircle,
-  FileText,
-  Users,
-  Trophy,
-} from "lucide-react";
 import { MditAuroraSubtle } from "@/components/optimized-react-bits";
-
 import { useDevice } from "@/contexts/device-context";
+
+const DynamicIcons = {
+  Search: dynamic(() => import("lucide-react").then((mod) => mod.Search)),
+  Download: dynamic(() => import("lucide-react").then((mod) => mod.Download)),
+  MessageCircle: dynamic(() =>
+    import("lucide-react").then((mod) => mod.MessageCircle)
+  ),
+  Phone: dynamic(() => import("lucide-react").then((mod) => mod.Phone)),
+  Mail: dynamic(() => import("lucide-react").then((mod) => mod.Mail)),
+  Clock: dynamic(() => import("lucide-react").then((mod) => mod.Clock)),
+  HelpCircle: dynamic(() =>
+    import("lucide-react").then((mod) => mod.HelpCircle)
+  ),
+  FileText: dynamic(() => import("lucide-react").then((mod) => mod.FileText)),
+  Users: dynamic(() => import("lucide-react").then((mod) => mod.Users)),
+  Trophy: dynamic(() => import("lucide-react").then((mod) => mod.Trophy)),
+};
+
+const BlurFade = dynamic(
+  () =>
+    import("@/components/magicui/blur-fade").then((m) => ({
+      default: m.BlurFade,
+    })),
+  {
+    ssr: false,
+  }
+);
+
 const FrequentlyAskedQuestionsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -43,25 +58,25 @@ const FrequentlyAskedQuestionsPage = () => {
   const faqCategories = [
     {
       title: "General Information",
-      icon: HelpCircle,
+      icon: DynamicIcons.HelpCircle,
       keywords: ["what is"],
       color: "bg-blue-100 text-blue-700 border-blue-200",
     },
     {
       title: "Registration",
-      icon: Users,
+      icon: DynamicIcons.Users,
       keywords: ["registration"],
       color: "bg-green-100 text-green-700 border-green-200",
     },
     {
       title: "Competition Details",
-      icon: Trophy,
+      icon: DynamicIcons.Trophy,
       keywords: ["competition"],
       color: "bg-purple-100 text-purple-700 border-purple-200",
     },
     {
       title: "Technical Requirements",
-      icon: FileText,
+      icon: DynamicIcons.FileText,
       keywords: ["technical"],
       color: "bg-orange-100 text-orange-700 border-orange-200",
     },
@@ -162,7 +177,7 @@ const FrequentlyAskedQuestionsPage = () => {
       <BlurFade inView delay={0.25}>
         <div className="max-w-2xl mx-auto mb-12 ">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <DynamicIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search FAQs..."
@@ -236,7 +251,7 @@ const FrequentlyAskedQuestionsPage = () => {
           <BlurFade inView delay={0.4}>
             <Card className="max-w-2xl mx-auto text-center">
               <CardContent className="p-8">
-                <Search className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                <DynamicIcons.Search className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
                 <Text as="h3" className="text-lg font-semibold mb-2">
                   No FAQs found
                 </Text>
@@ -269,7 +284,7 @@ const FrequentlyAskedQuestionsPage = () => {
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="mx-auto mb-2 p-3 bg-primary/10 rounded-full w-fit">
-                <Download className="h-6 w-6 text-primary" />
+                <DynamicIcons.Download className="h-6 w-6 text-primary" />
               </div>
               <CardTitle>Download Resources</CardTitle>
             </CardHeader>
@@ -278,7 +293,7 @@ const FrequentlyAskedQuestionsPage = () => {
                 Get comprehensive guidelines and documentation
               </Text>
               <Button className="w-full">
-                <Download className="h-4 w-4 mr-2" />
+                <DynamicIcons.Download className="h-4 w-4 mr-2" />
                 Download FAQ PDF
               </Button>
             </CardContent>
@@ -289,7 +304,7 @@ const FrequentlyAskedQuestionsPage = () => {
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="mx-auto mb-2 p-3 bg-primary/10 rounded-full w-fit">
-                <MessageCircle className="h-6 w-6 text-primary" />
+                <DynamicIcons.MessageCircle className="h-6 w-6 text-primary" />
               </div>
               <CardTitle>Contact Support</CardTitle>
             </CardHeader>
@@ -299,7 +314,7 @@ const FrequentlyAskedQuestionsPage = () => {
               </Text>
               <Button className="w-full" variant="outline" asChild>
                 <Link href="/contact">
-                  <MessageCircle className="h-4 w-4 mr-2" />
+                  <DynamicIcons.MessageCircle className="h-4 w-4 mr-2" />
                   Contact Us
                 </Link>
               </Button>
@@ -311,7 +326,7 @@ const FrequentlyAskedQuestionsPage = () => {
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="mx-auto mb-2 p-3 bg-primary/10 rounded-full w-fit">
-                <FileText className="h-6 w-6 text-primary" />
+                <DynamicIcons.FileText className="h-6 w-6 text-primary" />
               </div>
               <CardTitle>Rules & Guidelines</CardTitle>
             </CardHeader>
@@ -321,7 +336,7 @@ const FrequentlyAskedQuestionsPage = () => {
               </Text>
               <Button className="w-full" variant="outline" asChild>
                 <Link href="/rules-regulation">
-                  <FileText className="h-4 w-4 mr-2" />
+                  <DynamicIcons.FileText className="h-4 w-4 mr-2" />
                   View Rules
                 </Link>
               </Button>
@@ -339,7 +354,7 @@ const FrequentlyAskedQuestionsPage = () => {
         <Card className="bg-transparent border border-primary/20 shadow-lg">
           <CardHeader className="text-center">
             <CardTitle className="text-primary flex items-center justify-center gap-2">
-              <Clock className="h-5 w-5" />
+              <DynamicIcons.Clock className="h-5 w-5" />
               Need Immediate Help?
             </CardTitle>
           </CardHeader>
@@ -350,19 +365,19 @@ const FrequentlyAskedQuestionsPage = () => {
             </Text>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="flex items-center justify-center gap-2">
-                <Phone className="h-4 w-4 text-primary" />
+                <DynamicIcons.Phone className="h-4 w-4 text-primary" />
                 <Text as="p" className="font-semibold">
                   +60 18-472 727
                 </Text>
               </div>
               <div className="flex items-center justify-center gap-2">
-                <Mail className="h-4 w-4 text-primary" />
+                <DynamicIcons.Mail className="h-4 w-4 text-primary" />
                 <Text as="p" className="font-semibold">
                   mditxdd2025@gmail.com
                 </Text>
               </div>
               <div className="flex items-center justify-center gap-2">
-                <Clock className="h-4 w-4 text-primary" />
+                <DynamicIcons.Clock className="h-4 w-4 text-primary" />
                 <Text as="p" className="font-semibold">
                   24/7 During Competition
                 </Text>

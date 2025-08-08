@@ -20,11 +20,7 @@ interface ThreadsProps {
 
 // Custom fallback for Threads
 const ThreadsFallback = () => (
-  <div className="w-full h-full bg-gradient-to-br from-purple-100/30 to-blue-100/30 dark:from-purple-900/20 dark:to-blue-900/20">
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-32 h-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full animate-pulse" />
-    </div>
-  </div>
+  null
 );
 
 // Create the performance-optimized component

@@ -40,24 +40,27 @@ function CountingNumber({
   const localRef = React.useRef<HTMLSpanElement>(null);
   React.useImperativeHandle(ref, () => localRef.current as HTMLSpanElement);
 
-  // Helper function to add thousand separators
-  const addThousandSeparator = (num: string, separator: string): string => {
-    if (!separator) return num;
+  // Helper function to add thousand separators - memoized to prevent useEffect re-runs
+  const addThousandSeparator = React.useCallback(
+    (num: string, separator: string): string => {
+      if (!separator) return num;
 
-    const parts = num.split(".");
-    const integerPart = parts[0];
-    const decimalPart = parts[1];
+      const parts = num.split(".");
+      const integerPart = parts[0];
+      const decimalPart = parts[1];
 
-    // Add thousand separators to integer part
-    const formattedInteger = integerPart.replace(
-      /\B(?=(\d{3})+(?!\d))/g,
-      separator
-    );
+      // Add thousand separators to integer part
+      const formattedInteger = integerPart.replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        separator
+      );
 
-    return decimalPart
-      ? `${formattedInteger}.${decimalPart}`
-      : formattedInteger;
-  };
+      return decimalPart
+        ? `${formattedInteger}.${decimalPart}`
+        : formattedInteger;
+    },
+    []
+  ); // Empty dependency array since this function doesn't depend on any props or state
 
   const numberStr = number.toString();
   const decimals =

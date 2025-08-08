@@ -27,11 +27,7 @@ interface TextPressureProps {
 
 // Custom fallback for TextPressure
 const TextPressureFallback = ({ text = "Loading..." }: { text?: string }) => (
-  <div className="w-full h-full flex items-center justify-center">
-    <div className="text-4xl md:text-6xl lg:text-8xl font-bold text-gray-300 dark:text-gray-700 animate-pulse">
-      {text}
-    </div>
-  </div>
+  null
 );
 
 // Create the performance-optimized component

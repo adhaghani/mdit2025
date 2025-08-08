@@ -56,7 +56,7 @@ export const withPerformanceOptimization = <P extends object>(
   } = options;
 
   const DefaultFallback = () => (
-    <div className="w-full h-full bg-gradient-to-br from-gray-100/50 to-gray-200/50 dark:from-gray-800/50 dark:to-gray-900/50 animate-pulse" />
+    null
   );
 
   const WrappedComponent = React.memo<P>((props) => {

@@ -2,22 +2,11 @@
 import React, { memo, useMemo, lazy, Suspense, useState } from "react";
 import { Text } from "@/components/ui/text";
 import NumberFlow from "@number-flow/react";
-import {
-  UsersIcon,
-  TrophyIcon,
-  ArrowRightIcon,
-  BookOpenIcon,
-  TargetIcon,
-  LightbulbIcon,
-  Users2Icon,
-  ExternalLinkIcon,
-} from "lucide-react";
+import dynamic from "next/dynamic";
 import { GOOGLE_FORM_LINK } from "@/components/constant";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCountdown } from "@/contexts/countdown-context";
 import { Button } from "@/components/ui/button";
-import { ChevronRightIcon } from "lucide-react";
-import { BlurFade } from "@/components/magicui/blur-fade";
 import {
   Tooltip,
   TooltipContent,
@@ -69,12 +58,15 @@ import {
   MediaPlayerVolumeIndicator,
 } from "@/components/ui/media-player";
 
-import MuxVideo from "@mux/mux-video-react";
 import {
   MditAurora,
   MditTextPressure,
 } from "@/components/optimized-react-bits";
 import { useDevice } from "@/contexts/device-context";
+
+const DynamicMux = dynamic(() => import("@mux/mux-video-react"), {
+  ssr: false,
+});
 
 // Type definitions
 interface CompetitionPhase {
@@ -136,6 +128,46 @@ interface MarqueeImageData {
 // Lazy load heavy components
 const Marquee = lazy(() =>
   import("@/components/magicui/marquee").then((m) => ({ default: m.Marquee }))
+);
+
+const DynamicIcons = {
+  UsersIcon: dynamic(() =>
+    import("lucide-react").then((m) => ({ default: m.UsersIcon }))
+  ),
+  TrophyIcon: dynamic(() =>
+    import("lucide-react").then((m) => ({ default: m.TrophyIcon }))
+  ),
+  ArrowRightIcon: dynamic(() =>
+    import("lucide-react").then((m) => ({ default: m.ArrowRightIcon }))
+  ),
+  BookOpenIcon: dynamic(() =>
+    import("lucide-react").then((m) => ({ default: m.BookOpenIcon }))
+  ),
+  TargetIcon: dynamic(() =>
+    import("lucide-react").then((m) => ({ default: m.TargetIcon }))
+  ),
+  LightbulbIcon: dynamic(() =>
+    import("lucide-react").then((m) => ({ default: m.LightbulbIcon }))
+  ),
+  Users2Icon: dynamic(() =>
+    import("lucide-react").then((m) => ({ default: m.Users2Icon }))
+  ),
+  ExternalLinkIcon: dynamic(() =>
+    import("lucide-react").then((m) => ({ default: m.ExternalLinkIcon }))
+  ),
+  ChevronRightIcon: dynamic(() =>
+    import("lucide-react").then((m) => ({ default: m.ChevronRightIcon }))
+  ),
+};
+
+const BlurFade = dynamic(
+  () =>
+    import("@/components/magicui/blur-fade").then((m) => ({
+      default: m.BlurFade,
+    })),
+  {
+    ssr: false,
+  }
 );
 
 // Memoized components for better performance
@@ -213,7 +245,9 @@ const PhaseCard = memo(
           </CardContent>
           {index < 3 && (
             <div className="hidden lg:block absolute top-1/2 -right-7 transform -translate-y-1/2">
-              <ArrowRightIcon className={`size-8 ${colorScheme.icon}/50`} />
+              <DynamicIcons.ArrowRightIcon
+                className={`size-8 ${colorScheme.icon}/50`}
+              />
             </div>
           )}
         </Card>
@@ -577,7 +611,7 @@ const SponsorDialog = ({ sponsor, children }: SponsorDialogProps) => {
                     rel="noopener noreferrer"
                   >
                     Visit Website
-                    <ExternalLinkIcon className="ml-2 h-4 w-4" />
+                    <DynamicIcons.ExternalLinkIcon className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>
@@ -609,7 +643,7 @@ const Page = memo(() => {
         date: "Aug 15-30, 2025",
         description:
           "Complete team registration and confirm participation via payment.",
-        icon: UsersIcon,
+        icon: DynamicIcons.UsersIcon,
         status: "upcoming",
       },
       {
@@ -617,7 +651,7 @@ const Page = memo(() => {
         date: "Sep 6-20, 2025",
         description:
           "Overview of competition structure, themes, and deliverables, followed by a workshop to enhance data and presentation skills.",
-        icon: BookOpenIcon,
+        icon: DynamicIcons.BookOpenIcon,
         status: "upcoming",
       },
       {
@@ -625,7 +659,7 @@ const Page = memo(() => {
         date: "Sep 21 - Oct 15, 2025",
         description:
           "Project Development, Report submission, and online video presentation.",
-        icon: LightbulbIcon,
+        icon: DynamicIcons.LightbulbIcon,
         status: "upcoming",
       },
       {
@@ -633,7 +667,7 @@ const Page = memo(() => {
         date: "Oct 17-18, 2025",
         description:
           "Shortlisted teams will pitch their projects physically to expert judges, demonstrating analytical clarity and impact",
-        icon: TrophyIcon,
+        icon: DynamicIcons.TrophyIcon,
         status: "upcoming",
       },
     ],
@@ -673,7 +707,7 @@ const Page = memo(() => {
           <MobileGradientBackground />
         </div> */}
         {!deviceLoading && isWebGLSupported ? (
-          <div className="absolute -z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
+          <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
             <MditTextPressure text="2025" />
           </div>
         ) : null}
@@ -797,7 +831,7 @@ const Page = memo(() => {
                   ) : (
                     <Link href={buttonState.href}>
                       {buttonState.text}
-                      <ArrowRightIcon className="ml-2 h-5 w-5" />
+                      <DynamicIcons.ArrowRightIcon className="ml-2 h-5 w-5" />
                     </Link>
                   )}
                 </Button>
@@ -809,7 +843,7 @@ const Page = memo(() => {
                 >
                   <Link href="/event-details">
                     Learn More
-                    <ChevronRightIcon className="ml-2 h-5 w-5" />
+                    <DynamicIcons.ChevronRightIcon className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
               </div>
@@ -854,7 +888,7 @@ const Page = memo(() => {
               <BlurFade inView delay={0.2}>
                 <div className="text-center">
                   <div className="mx-auto mb-4 p-4 bg-primary/20 rounded-full w-fit">
-                    <TargetIcon className="h-8 w-8 text-primary" />
+                    <DynamicIcons.TargetIcon className="h-8 w-8 text-primary" />
                   </div>
                   <Text as="h4" className="font-semibold mb-2">
                     Our Mission
@@ -869,7 +903,7 @@ const Page = memo(() => {
               <BlurFade inView delay={0.25}>
                 <div className="text-center">
                   <div className="mx-auto mb-4 p-4 bg-primary/20 rounded-full w-fit">
-                    <LightbulbIcon className="h-8 w-8 text-primary" />
+                    <DynamicIcons.LightbulbIcon className="h-8 w-8 text-primary" />
                   </div>
                   <Text as="h4" className="font-semibold mb-2">
                     Innovation Focus
@@ -884,7 +918,7 @@ const Page = memo(() => {
               <BlurFade inView delay={0.3}>
                 <div className="text-center">
                   <div className="mx-auto mb-4 p-4 bg-primary/20 rounded-full w-fit">
-                    <Users2Icon className="h-8 w-8 text-primary" />
+                    <DynamicIcons.Users2Icon className="h-8 w-8 text-primary" />
                   </div>
                   <Text as="h4" className="font-semibold mb-2">
                     Collaboration
@@ -1076,7 +1110,7 @@ const Page = memo(() => {
             >
               <Link href={"/event-details"}>
                 Discover More Details
-                <ArrowRightIcon className="ml-2 h-5 w-5" />
+                <DynamicIcons.ArrowRightIcon className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>
@@ -1142,7 +1176,7 @@ const Page = memo(() => {
               <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
                 <CardContent className="p-6">
                   <div className="mx-auto mb-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full w-fit">
-                    <Users2Icon className="h-6 w-6 text-blue-600" />
+                    <DynamicIcons.Users2Icon className="h-6 w-6 text-blue-600" />
                   </div>
                   <Text
                     as="h3"
@@ -1164,7 +1198,7 @@ const Page = memo(() => {
               <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
                 <CardContent className="p-6">
                   <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                    <BookOpenIcon className="h-6 w-6 text-purple-600" />
+                    <DynamicIcons.BookOpenIcon className="h-6 w-6 text-purple-600" />
                   </div>
                   <Text
                     as="h3"
@@ -1186,7 +1220,7 @@ const Page = memo(() => {
               <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
                 <CardContent className="p-6">
                   <div className="mx-auto mb-4 p-3 bg-teal-100 dark:bg-teal-900/30 rounded-full w-fit">
-                    <UsersIcon className="h-6 w-6 text-teal-600" />
+                    <DynamicIcons.UsersIcon className="h-6 w-6 text-teal-600" />
                   </div>
                   <Text
                     as="h3"
@@ -1208,7 +1242,7 @@ const Page = memo(() => {
               <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
                 <CardContent className="p-6">
                   <div className="mx-auto mb-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-full w-fit">
-                    <TrophyIcon className="h-6 w-6 text-green-600" />
+                    <DynamicIcons.TrophyIcon className="h-6 w-6 text-green-600" />
                   </div>
                   <Text
                     as="h3"
@@ -1508,7 +1542,7 @@ const Page = memo(() => {
                 ) : (
                   <div className="text-center">
                     <div className="mx-auto mb-6 p-4 bg-purple-100/50 dark:bg-purple-900/30 rounded-full w-fit">
-                      <TrophyIcon className="h-16 w-16 text-purple-400" />
+                      <DynamicIcons.TrophyIcon className="h-16 w-16 text-purple-400" />
                     </div>
                     <Text
                       as="h4"
@@ -1617,7 +1651,7 @@ const Page = memo(() => {
                   ) : (
                     <div className="text-center">
                       <div className="mx-auto mb-6 p-4 bg-blue-100/50 dark:bg-blue-900/30 rounded-full w-fit">
-                        <Users2Icon className="h-16 w-16 text-blue-400" />
+                        <DynamicIcons.Users2Icon className="h-16 w-16 text-blue-400" />
                       </div>
                       <Text
                         as="h4"
@@ -1675,7 +1709,7 @@ const Page = memo(() => {
                 >
                   <Link href="/contact">
                     Become a Partner
-                    <ArrowRightIcon className="ml-2 h-5 w-5" />
+                    <DynamicIcons.ArrowRightIcon className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
@@ -1722,7 +1756,7 @@ const Page = memo(() => {
                     : hasStarted
                     ? "Register Now"
                     : "Registration Opening Soon"}
-                  <ArrowRightIcon className="ml-2 h-5 w-5" />
+                  <DynamicIcons.ArrowRightIcon className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
 
@@ -1759,7 +1793,7 @@ const Page = memo(() => {
         </Text>
         <MediaPlayer autoHide>
           <MediaPlayerVideo asChild>
-            <MuxVideo playbackId="OUmM1TFY4k7n7WQBbo01600YTa9Y00x8PWaHGvaVNbLG00g" />
+            <DynamicMux playbackId="OUmM1TFY4k7n7WQBbo01600YTa9Y00x8PWaHGvaVNbLG00g" />
           </MediaPlayerVideo>
           <MediaPlayerLoading />
           <MediaPlayerError />

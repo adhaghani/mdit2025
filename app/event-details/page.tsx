@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { Text } from "@/components/ui/text";
 import {
   PROGRAM_TIMELINE,
@@ -11,37 +12,60 @@ import {
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  CalendarIcon,
-  MapPinIcon,
-  UsersIcon,
-  TrophyIcon,
-  CheckIcon,
-  GraduationCapIcon,
-  DollarSignIcon,
-  AwardIcon,
-  GitGraphIcon,
-  InfoIcon,
-  UserIcon,
-} from "lucide-react";
-import {
   Dialog,
   DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/animate-ui/radix/dialog";
-import { BlurFade } from "@/components/magicui/blur-fade";
+
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useCountdown } from "@/contexts/countdown-context";
 import Link from "next/link";
+
+const DynamicIcons = {
+  CalendarIcon: dynamic(() =>
+    import("lucide-react").then((mod) => mod.CalendarIcon)
+  ),
+  MapPinIcon: dynamic(() =>
+    import("lucide-react").then((mod) => mod.MapPinIcon)
+  ),
+  UsersIcon: dynamic(() => import("lucide-react").then((mod) => mod.UsersIcon)),
+  TrophyIcon: dynamic(() =>
+    import("lucide-react").then((mod) => mod.TrophyIcon)
+  ),
+  CheckIcon: dynamic(() => import("lucide-react").then((mod) => mod.CheckIcon)),
+  GraduationCapIcon: dynamic(() =>
+    import("lucide-react").then((mod) => mod.GraduationCapIcon)
+  ),
+  DollarSignIcon: dynamic(() =>
+    import("lucide-react").then((mod) => mod.DollarSignIcon)
+  ),
+  AwardIcon: dynamic(() => import("lucide-react").then((mod) => mod.AwardIcon)),
+  GitGraphIcon: dynamic(() =>
+    import("lucide-react").then((mod) => mod.GitGraphIcon)
+  ),
+  InfoIcon: dynamic(() => import("lucide-react").then((mod) => mod.InfoIcon)),
+  UserIcon: dynamic(() => import("lucide-react").then((mod) => mod.UserIcon)),
+};
+
+const BlurFade = dynamic(
+  () =>
+    import("@/components/magicui/blur-fade").then((m) => ({
+      default: m.BlurFade,
+    })),
+  {
+    ssr: false,
+  }
+);
 
 const EventDetailsPage = () => {
   const { hasStarted, isExpired } = useCountdown();
   // Requirements
   const requirements = [
     {
-      icon: GraduationCapIcon,
+      icon: DynamicIcons.GraduationCapIcon,
       title: "Educational Background",
       items: [
         "Currently enrolled as Diploma/Undergraduate program",
@@ -50,7 +74,7 @@ const EventDetailsPage = () => {
       ],
     },
     {
-      icon: GitGraphIcon,
+      icon: DynamicIcons.GitGraphIcon,
       title: "Technical Skills",
       items: [
         "Fundamental understanding of data analysis and visualization concepts",
@@ -59,7 +83,7 @@ const EventDetailsPage = () => {
       ],
     },
     {
-      icon: UsersIcon,
+      icon: DynamicIcons.UsersIcon,
       title: "Team Composition",
       items: [
         "Each team must consist of 4 members with 1 advisor",
@@ -126,7 +150,7 @@ const EventDetailsPage = () => {
                   {/* Crown decoration */}
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
-                      <TrophyIcon className="h-8 w-8 text-white" />
+                      <DynamicIcons.TrophyIcon className="h-8 w-8 text-white" />
                     </div>
                   </div>
 
@@ -168,7 +192,7 @@ const EventDetailsPage = () => {
                 <Card className="bg-gradient-to-br from-gray-50 via-slate-100 to-gray-100 border-2 border-gray-300 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 relative">
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className="w-12 h-12 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full flex items-center justify-center shadow-lg">
-                      <AwardIcon className="h-6 w-6 text-white" />
+                      <DynamicIcons.AwardIcon className="h-6 w-6 text-white" />
                     </div>
                   </div>
 
@@ -203,7 +227,7 @@ const EventDetailsPage = () => {
                 <Card className="bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 border-2 border-orange-300 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 relative">
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
-                      <AwardIcon className="h-6 w-6 text-white" />
+                      <DynamicIcons.AwardIcon className="h-6 w-6 text-white" />
                     </div>
                   </div>
 
@@ -241,11 +265,11 @@ const EventDetailsPage = () => {
                 <Card className="w-full max-w-lg bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 border border-blue-200 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105">
                   <CardHeader className="text-center pb-4">
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <CheckIcon className="h-6 w-6 text-blue-600" />
+                      <DynamicIcons.CheckIcon className="h-6 w-6 text-blue-600" />
                       <CardTitle className="text-lg font-bold text-blue-800">
                         FINALISTS
                       </CardTitle>
-                      <CheckIcon className="h-6 w-6 text-blue-600" />
+                      <DynamicIcons.CheckIcon className="h-6 w-6 text-blue-600" />
                     </div>
                     <Text as="p" className="text-blue-600 font-medium">
                       4th - 10th Place (7 Teams)
@@ -286,7 +310,7 @@ const EventDetailsPage = () => {
                   <div className="absolute top-0 right-0 w-16 h-16 bg-purple-200/50 rounded-bl-full"></div>
                   <CardHeader className="text-center pt-8 pb-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                      <AwardIcon className="h-6 w-6 text-white" />
+                      <DynamicIcons.AwardIcon className="h-6 w-6 text-white" />
                     </div>
                     <CardTitle className="text-purple-800 text-lg font-bold">
                       Pitching Excellence
@@ -314,7 +338,7 @@ const EventDetailsPage = () => {
                   <div className="absolute top-0 right-0 w-16 h-16 bg-green-200/50 rounded-bl-full"></div>
                   <CardHeader className="text-center pt-8 pb-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                      <AwardIcon className="h-6 w-6 text-white" />
+                      <DynamicIcons.AwardIcon className="h-6 w-6 text-white" />
                     </div>
                     <CardTitle className="text-green-800 text-lg font-bold">
                       Critical Thinking & Defence
@@ -342,7 +366,7 @@ const EventDetailsPage = () => {
                   <div className="absolute top-0 right-0 w-16 h-16 bg-indigo-200/50 rounded-bl-full"></div>
                   <CardHeader className="text-center pt-8 pb-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-blue-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                      <AwardIcon className="h-6 w-6 text-white" />
+                      <DynamicIcons.AwardIcon className="h-6 w-6 text-white" />
                     </div>
                     <CardTitle className="text-indigo-800 text-lg font-bold">
                       Innovation Excellence
@@ -381,7 +405,7 @@ const EventDetailsPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <CalendarIcon className="text-pink-600" />
+                  <DynamicIcons.CalendarIcon className="text-pink-600" />
                   <Text as="h4">Competition Period</Text>
                 </CardTitle>
               </CardHeader>
@@ -405,7 +429,7 @@ const EventDetailsPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <MapPinIcon className="text-cyan-600" />
+                  <DynamicIcons.MapPinIcon className="text-cyan-600" />
                   <Text as="h4">Event Format</Text>
                 </CardTitle>
               </CardHeader>
@@ -429,7 +453,7 @@ const EventDetailsPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSignIcon className="text-green-600" />
+                  <DynamicIcons.DollarSignIcon className="text-green-600" />
                   <Text as="h4">Registration</Text>
                 </CardTitle>
               </CardHeader>
@@ -483,7 +507,7 @@ const EventDetailsPage = () => {
                     <ul className="space-y-2">
                       {req.items.map((item, itemIndex) => (
                         <li key={itemIndex} className="flex items-start gap-2">
-                          <CheckIcon className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                          <DynamicIcons.CheckIcon className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                           <Text as="p" className="text-sm">
                             {item}
                           </Text>
@@ -594,7 +618,7 @@ const EventDetailsPage = () => {
                               {item.type.charAt(0).toUpperCase() +
                                 item.type.slice(1)}
                             </span>
-                            <InfoIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            <DynamicIcons.InfoIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                           </div>
                         </div>
                         <Text
@@ -686,7 +710,7 @@ const EventDetailsPage = () => {
                                         key={agendaIndex}
                                         className="flex items-start gap-2"
                                       >
-                                        <CalendarIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                        <DynamicIcons.CalendarIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
                                         <span>{agendaItem}</span>
                                       </li>
                                     )
@@ -710,7 +734,7 @@ const EventDetailsPage = () => {
                                         key={speakerIndex}
                                         className="flex items-start gap-2"
                                       >
-                                        <UsersIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                        <DynamicIcons.UsersIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
                                         <span>{speaker}</span>
                                       </li>
                                     )
@@ -734,7 +758,7 @@ const EventDetailsPage = () => {
                                         key={instructorIndex}
                                         className="flex items-start gap-2"
                                       >
-                                        <GraduationCapIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                        <DynamicIcons.GraduationCapIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
                                         <span>{instructor}</span>
                                       </li>
                                     )
@@ -782,7 +806,7 @@ const EventDetailsPage = () => {
                                         key={materialIndex}
                                         className="flex items-start gap-2"
                                       >
-                                        <CheckIcon className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
+                                        <DynamicIcons.CheckIcon className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
                                         <span>{material}</span>
                                       </li>
                                     )
@@ -823,7 +847,7 @@ const EventDetailsPage = () => {
                                   key={reqIndex}
                                   className="flex items-start gap-2"
                                 >
-                                  <CheckIcon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                                  <DynamicIcons.CheckIcon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                                   <span>{req}</span>
                                 </li>
                               )
@@ -973,7 +997,7 @@ const EventDetailsPage = () => {
                             className="w-full h-full object-cover rounded-lg"
                           />
                         ) : (
-                          <UserIcon className="h-24 w-24 text-primary  rounded-full" />
+                          <DynamicIcons.UserIcon className="h-24 w-24 text-primary  rounded-full" />
                         )}
                       </div>
                       <Text as="h4" className="font-semibold">
@@ -1003,7 +1027,7 @@ const EventDetailsPage = () => {
                               className="w-full h-full object-cover rounded-lg"
                             />
                           ) : (
-                            <UserIcon className="h-24 w-24 text-primary rounded-full" />
+                            <DynamicIcons.UserIcon className="h-24 w-24 text-primary rounded-full" />
                           )}
                         </div>
                         <div className="flex-1">

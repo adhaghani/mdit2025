@@ -1,17 +1,44 @@
 "use client";
 
 import React from "react";
-import { BlurFade } from "@/components/magicui/blur-fade";
+import dynamic from "next/dynamic";
 import { Text } from "@/components/ui/text";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Users, Award, Target, Lightbulb, Star } from "lucide-react";
+
 import { Threads } from "@/components/optimized-react-bits";
 import SpotlightCard from "@/components/react-bits/Components/SpotlightCard/SpotlightCard";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useDevice } from "@/contexts/device-context";
+
+const DynamicIcons = {
+  UsersIcon: dynamic(() => import("lucide-react").then((m) => m.Users), {
+    ssr: false,
+  }),
+  AwardIcon: dynamic(() => import("lucide-react").then((m) => m.Award), {
+    ssr: false,
+  }),
+  TargetIcon: dynamic(() => import("lucide-react").then((m) => m.Target), {
+    ssr: false,
+  }),
+  LightbulbIcon: dynamic(() => import("lucide-react").then((m) => m.Lightbulb)),
+  StarIcon: dynamic(() => import("lucide-react").then((m) => m.Star), {
+    ssr: false,
+  }),
+};
+
+const BlurFade = dynamic(
+  () =>
+    import("@/components/magicui/blur-fade").then((m) => ({
+      default: m.BlurFade,
+    })),
+  {
+    ssr: false,
+  }
+);
+
 const AboutUsPage = () => {
   // Get device information from context
   const {
@@ -382,7 +409,7 @@ const AboutUsPage = () => {
           <div className="flex justify-center mt-6">
             <Button variant="outline" asChild>
               <Link href="/about-us/past-mdit">
-                <Award className="h-4 w-4 mr-2" />
+                <DynamicIcons.AwardIcon className="h-4 w-4 mr-2" />
                 Explore Past MDIT Editions
               </Link>
             </Button>
@@ -402,7 +429,7 @@ const AboutUsPage = () => {
           <BlurFade inView delay={0.15}>
             <div className="space-y-6">
               <div className="flex items-center gap-3 mb-4">
-                <Target className="h-6 w-6 text-primary" />
+                <DynamicIcons.TargetIcon className="h-6 w-6 text-primary" />
                 <Text as="h3" className="text-xl font-semibold">
                   Why MDIT Was Created
                 </Text>
@@ -427,7 +454,7 @@ const AboutUsPage = () => {
           <BlurFade inView delay={0.2}>
             <div className="space-y-6">
               <div className="flex items-center gap-3 mb-4">
-                <Lightbulb className="h-6 w-6 text-primary" />
+                <DynamicIcons.LightbulbIcon className="h-6 w-6 text-primary" />
                 <Text as="h3" className="text-xl font-semibold">
                   Problems We Aim to Solve
                 </Text>
@@ -530,7 +557,7 @@ const AboutUsPage = () => {
                           className="rounded-lg object-cover"
                         />
                       ) : (
-                        <Users className="h-12 w-12 text-primary" />
+                        <DynamicIcons.UsersIcon className="h-12 w-12 text-primary" />
                       )}
                     </div>
                     <Text as="h4" className="font-semibold text-lg mb-0">
@@ -591,7 +618,7 @@ const AboutUsPage = () => {
                   <div className="grid grid-cols-1 md:grid-cols-6 gap-2 items-center">
                     <div className="text-center">
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 text-yellow-700 rounded-full mb-2">
-                        <Award className="h-8 w-8" />
+                        <DynamicIcons.AwardIcon className="h-8 w-8" />
                       </div>
                       <Text as="p" className="font-bold text-yellow-700">
                         {winner.year} Winner
@@ -640,14 +667,14 @@ const AboutUsPage = () => {
                 Leading Statistics Club at Universiti Teknologi MARA (UiTM) Shah
                 Alam
               </Text>
-              <Text as="p" styleVariant="muted" className="leading-relaxed">
+              <Text as="p" className="leading-relaxed">
                 inStats Association is the premier statistics club at UiTM,
                 dedicated to fostering a vibrant community of data enthusiasts
                 and professionals. Our mission is to empower students with the
                 skills, knowledge, and networks needed to excel in the field of
                 data science and analytics.
               </Text>
-              <Text as="p" styleVariant="muted" className="leading-relaxed">
+              <Text as="p" className="leading-relaxed">
                 We organize a wide range of activities including workshops,
                 seminars, and competitions to enhance practical skills and
                 industry readiness. Our flagship event, MDIT, exemplifies our
@@ -655,7 +682,7 @@ const AboutUsPage = () => {
                 real-world data challenges.
               </Text>
               <div className="flex items-center gap-3">
-                <Star className="h-5 w-5 text-primary" />
+                <DynamicIcons.StarIcon className="h-5 w-5 text-primary" />
                 <Text as="p" className="font-medium">
                   Empowering the next generation of data professionals
                 </Text>
@@ -747,7 +774,7 @@ const AboutUsPage = () => {
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="/contact">
-                  <Users className="h-5 w-5 mr-2" />
+                  <DynamicIcons.UsersIcon className="h-5 w-5 mr-2" />
                   Contact Us
                 </Link>
               </Button>

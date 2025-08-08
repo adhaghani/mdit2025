@@ -119,7 +119,7 @@ export const PROGRAM_TIMELINE = [
     type: "milestone", // milestone, workshop, event, deadline
     hasDetails: true,
     extendedDetails: {
-      time: "12:00 AM GMT+8",
+      time: "10:00 AM GMT+8",
       location: "Online Platform",
       description:
         "Teams can begin their registration process through the official MDIT website. Early registration is encouraged as slots are limited and allocated on a first-come, first-served basis.",

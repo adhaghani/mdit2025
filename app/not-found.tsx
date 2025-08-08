@@ -2,19 +2,51 @@
 
 import React, { memo, useMemo } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
-import { BlurFade } from "@/components/magicui/blur-fade";
-import {
-  HomeIcon,
-  SearchIcon,
-  ArrowLeftIcon,
-  MapPinIcon,
-  AlertTriangleIcon,
-  RefreshCwIcon,
-} from "lucide-react";
 import Image from "next/image";
+
+// Dynamic imports for better performance
+const DynamicIcons = {
+  Home: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.HomeIcon })),
+    { ssr: true }
+  ),
+  Search: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.SearchIcon })),
+    { ssr: true }
+  ),
+  ArrowLeft: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.ArrowLeftIcon })),
+    { ssr: true }
+  ),
+  MapPin: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.MapPinIcon })),
+    { ssr: true }
+  ),
+  AlertTriangle: dynamic(
+    () =>
+      import("lucide-react").then((m) => ({ default: m.AlertTriangleIcon })),
+    { ssr: true }
+  ),
+  RefreshCw: dynamic(
+    () => import("lucide-react").then((m) => ({ default: m.RefreshCwIcon })),
+    { ssr: true }
+  ),
+};
+
+const BlurFade = dynamic(
+  () =>
+    import("@/components/magicui/blur-fade").then((m) => ({
+      default: m.BlurFade,
+    })),
+  {
+    loading: () => <div className="animate-pulse bg-muted/20 rounded" />,
+    ssr: true,
+  }
+);
 
 // Type definitions
 interface QuickLink {
@@ -41,25 +73,25 @@ const NotFoundPage = memo(() => {
         href: "/",
         label: "Homepage",
         description: "Back to MDIT 2025 main page",
-        icon: HomeIcon,
+        icon: DynamicIcons.Home,
       },
       {
         href: "/about-us",
         label: "About Us",
         description: "Learn about MDIT 2025",
-        icon: MapPinIcon,
+        icon: DynamicIcons.MapPin,
       },
       {
         href: "/event-details",
         label: "Event Details",
         description: "Competition information",
-        icon: SearchIcon,
+        icon: DynamicIcons.Search,
       },
       {
         href: "/contact",
         label: "Contact",
         description: "Get in touch with us",
-        icon: SearchIcon,
+        icon: DynamicIcons.Search,
       },
     ],
     []
@@ -73,7 +105,7 @@ const NotFoundPage = memo(() => {
         description: "Return to the previous page",
         action: "Go Back",
         href: "#",
-        icon: ArrowLeftIcon,
+        icon: DynamicIcons.ArrowLeft,
         variant: "outline",
       },
       {
@@ -81,7 +113,7 @@ const NotFoundPage = memo(() => {
         description: "Try reloading this page",
         action: "Refresh",
         href: "#",
-        icon: RefreshCwIcon,
+        icon: DynamicIcons.RefreshCw,
         variant: "secondary",
       },
       {
@@ -89,7 +121,7 @@ const NotFoundPage = memo(() => {
         description: "Need help? Contact our team",
         action: "Contact Us",
         href: "/contact",
-        icon: AlertTriangleIcon,
+        icon: DynamicIcons.AlertTriangle,
         variant: "default",
       },
     ],
