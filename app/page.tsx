@@ -63,67 +63,20 @@ import {
   MditTextPressure,
 } from "@/components/optimized-react-bits";
 import { useDevice } from "@/contexts/device-context";
+import {
+  CompetitionPhase,
+  CompetitionHighlight,
+  Statistic,
+  Organizer,
+  Sponsor,
+  MediaPartner,
+  MarqueeImageData,
+  SponsorDialogProps,
+} from "@/types";
 
 const DynamicMux = dynamic(() => import("@mux/mux-video-react"), {
   ssr: false,
 });
-
-// Type definitions
-interface CompetitionPhase {
-  phase: string;
-  date: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-  status: string;
-}
-
-interface CompetitionHighlight {
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-  color: string;
-  bgColor: string;
-  gradient: string;
-}
-
-interface Statistic {
-  label: string;
-  value: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-
-interface Organizer {
-  name: string;
-  logo: string;
-  logoLight?: string;
-  logoAlt: string;
-  width: number;
-  height: number;
-  className: string;
-}
-
-interface Sponsor {
-  logo: string;
-  logoAlt: string;
-  name: string;
-  width: number;
-  height: number;
-  className: string;
-}
-
-interface MediaPartner {
-  logo: string;
-  logoAlt: string;
-  name: string;
-  width: number;
-  height: number;
-  className: string;
-}
-
-interface MarqueeImageData {
-  src: string;
-  alt: string;
-}
 
 // Lazy load heavy components
 const Marquee = lazy(() =>
@@ -483,22 +436,6 @@ const MarqueeImage = memo(
 );
 
 MarqueeImage.displayName = "MarqueeImage";
-
-// Sponsor Dialog Component
-interface SponsorDialogProps {
-  sponsor: {
-    name: string;
-    logo: string;
-    logoAlt: string;
-    tier: string;
-    description?: string;
-    website?: string;
-    industry?: string;
-    founded?: string;
-    headquarters?: string;
-  };
-  children: React.ReactNode;
-}
 
 const SponsorDialog = ({ sponsor, children }: SponsorDialogProps) => {
   const [open, setOpen] = useState(false);

@@ -167,6 +167,7 @@ export const PROGRAM_TIMELINE = [
         "Stable internet connection for online participants",
         "Notebook for taking notes",
       ],
+      // TODO: TOBE ADJUSTED
       eventDetails: {
         speakers: ["Prof. Dr. Ahmad Rahman - UiTM", "Dato' Sarah Lim - DOSM"],
         agenda: [
@@ -199,6 +200,7 @@ export const PROGRAM_TIMELINE = [
         "Stable internet connection",
         "Workshop materials (provided)",
       ],
+      // TODO: TO BE ADJUSTED
       eventDetails: {
         instructors: [
           "Dr. Nurul Ain - Data Scientist",
@@ -323,6 +325,7 @@ export const PROGRAM_TIMELINE = [
         "Demo-ready solutions",
         "Professional attire",
       ],
+      // TODO: TO BE CHANGED
       eventDetails: {
         venue: "Auditorium Dewan Latihan, UiTM Shah Alam",
         judges: [
@@ -361,6 +364,7 @@ export const PROGRAM_TIMELINE = [
         "Networking opportunities",
         "Group photos and media sessions",
       ],
+      // TODO: TO BE CHANGED
       eventDetails: {
         venue: "Dewan Resital, UiTM Shah Alam",
         agenda: [

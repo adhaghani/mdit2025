@@ -15,21 +15,7 @@ import {
   ArrowLeftIcon,
 } from "lucide-react";
 import Image from "next/image";
-
-// Type definitions
-interface ErrorPageProps {
-  error: Error & { digest?: string };
-  reset: () => void;
-}
-
-interface ErrorAction {
-  title: string;
-  description: string;
-  action: string;
-  onClick: () => void;
-  icon: React.ComponentType<{ className?: string }>;
-  variant: "default" | "outline" | "destructive";
-}
+import { ErrorPageProps, ErrorAction } from "@/types";
 
 const GlobalError = memo(({ error, reset }: ErrorPageProps) => {
   // Log error for debugging

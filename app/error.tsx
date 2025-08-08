@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import Image from "next/image";
+import { ErrorPageProps, ErrorSolution } from "@/types";
 
 // Dynamic imports for icons to reduce bundle size
 const DynamicIcons = {
@@ -48,21 +49,6 @@ const BlurFade = dynamic(
     ssr: true,
   }
 );
-
-// Type definitions
-interface ErrorPageProps {
-  error: Error & { digest?: string };
-  reset: () => void;
-}
-
-interface ErrorSolution {
-  title: string;
-  description: string;
-  action: string;
-  onClick: () => void;
-  icon: React.ComponentType<{ className?: string }>;
-  variant: "default" | "outline" | "secondary";
-}
 
 const ErrorPage = memo(({ error, reset }: ErrorPageProps) => {
   // Log error for debugging

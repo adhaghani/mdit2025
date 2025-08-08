@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import Image from "next/image";
+import { QuickLink, SupportOption } from "@/types";
 
 // Dynamic imports for better performance
 const DynamicIcons = {
@@ -48,22 +49,6 @@ const BlurFade = dynamic(
   }
 );
 
-// Type definitions
-interface QuickLink {
-  href: string;
-  label: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-
-interface SupportOption {
-  title: string;
-  description: string;
-  action: string;
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
-  variant: "default" | "outline" | "secondary";
-}
 
 const NotFoundPage = memo(() => {
   // Memoize quick navigation links

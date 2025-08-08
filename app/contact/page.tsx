@@ -10,6 +10,7 @@ import {
   MditAurora,
   MditTextPressure,
 } from "@/components/optimized-react-bits";
+import { ContactInfo, SocialPlatform } from "@/types";
 
 import { useDevice } from "@/contexts/device-context";
 
@@ -31,27 +32,6 @@ const BlurFade = dynamic(
     ssr: false,
   }
 );
-
-// Type definitions
-interface ContactInfo {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  content: string;
-  description: string;
-  link: string;
-}
-
-interface SocialPlatform {
-  name: string;
-  handle: string;
-  link: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }> | string;
-  cardClass: string;
-  iconBg: string;
-  titleClass: string;
-  linkClass: string;
-}
 
 // Memoized ContactInfo component
 const ContactInfoCard = React.memo(

@@ -15,23 +15,8 @@ import {
   AlertCircleIcon,
 } from "lucide-react";
 import Image from "next/image";
-
+import { MaintenanceInfo, MaintenanceUpdate } from "@/types";
 // Type definitions
-interface MaintenanceInfo {
-  title: string;
-  description: string;
-  estimatedDuration: string;
-  startTime: Date;
-  endTime: Date;
-  reason: string;
-  status: "scheduled" | "in-progress" | "completed";
-}
-
-interface MaintenanceUpdate {
-  timestamp: Date;
-  message: string;
-  type: "info" | "warning" | "success";
-}
 
 const MaintenancePage = memo(() => {
   // State for countdown timer
