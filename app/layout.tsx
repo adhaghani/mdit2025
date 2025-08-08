@@ -84,7 +84,7 @@ export const metadata: Metadata = {
       "National inter-varsity datathon competition fostering innovation in data science and analytics among Malaysian university students.",
     images: ["/mdit2025.png"],
   },
-  metadataBase: new URL("https://mdit2025.vercel.app"),
+  metadataBase: new URL("https://www.mdit2025.my"),
   alternates: {
     canonical: "/",
   },
