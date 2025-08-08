@@ -121,42 +121,40 @@ const PastMDITPage = () => {
     pastEditions[selectedYear as keyof typeof pastEditions];
   const availableYears = Object.keys(pastEditions).sort().reverse();
 
-  
-    // Get device information from context
-    const {
-      isWebGLSupported,
-      shouldReducePerformance,
-      isLoading: deviceLoading,
-    } = useDevice();
-
+  // Get device information from context
+  const {
+    isWebGLSupported,
+    shouldReducePerformance,
+    isLoading: deviceLoading,
+  } = useDevice();
 
   return (
     <div className="relative">
       {/* Header Section */}
 
-            {!deviceLoading && shouldReducePerformance ? (
-              <>
-                <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
-                  <Image
-                    src={"/assets/bg-gradients/12.svg"}
-                    alt="Background Gradient"
-                    width={1920}
-                    height={1080}
-                    className="w-full h-full object-cover object-left !overflow-visible"
-                  />
-                </div>
-              </>
-            ) : isWebGLSupported ? (
-              <div className="w-full h-[800px] hidden lg:block top-0 absolute -z-10">
-                <Threads
-                  color={[
-                    0.5647058823529412, 0.19215686274509805, 0.8666666666666667,
-                  ]}
-                  amplitude={2}
-                  distance={0.6}
-                />
-              </div>
-            ) : null}
+      {!deviceLoading && shouldReducePerformance ? (
+        <>
+          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/12.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+        </>
+      ) : isWebGLSupported ? (
+        <div className="w-full h-[800px] hidden lg:block top-0 absolute -z-10">
+          <Threads
+            color={[
+              0.5647058823529412, 0.19215686274509805, 0.8666666666666667,
+            ]}
+            amplitude={2}
+            distance={0.6}
+          />
+        </div>
+      ) : null}
 
       <div className="text-center space-y-4 px-4 pt-32 pb-20 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
@@ -188,7 +186,7 @@ const PastMDITPage = () => {
         </BlurFade>
       </div>
 
-      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[1200px] rotate-90 overflow-hidden pointer-events-none">
+      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-90 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/8.svg"}
           alt="Background Gradient"

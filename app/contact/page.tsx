@@ -249,7 +249,7 @@ const ContactPage = () => {
               className="w-full h-full object-cover object-left !overflow-visible"
             />
           </div>
-          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
+          <div className="absolute right-1/2 lg:-right-128 w-[200px] lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
             <Image
               src={"/assets/bg-gradients/12.svg"}
               alt="Background Gradient"

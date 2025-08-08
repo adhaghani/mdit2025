@@ -345,28 +345,7 @@ const AboutUsPage = () => {
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
       </div>
-      {!deviceLoading && shouldReducePerformance ? (
-        <>
-          <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
-            <Image
-              src={"/assets/bg-gradients/13.svg"}
-              alt="Background Gradient"
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover object-left !overflow-visible"
-            />
-          </div>
-          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
-            <Image
-              src={"/assets/bg-gradients/12.svg"}
-              alt="Background Gradient"
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover object-left !overflow-visible"
-            />
-          </div>
-        </>
-      ) : isWebGLSupported ? (
+      {!deviceLoading && shouldReducePerformance ? null : isWebGLSupported ? (
         <div className="w-full h-[800px] hidden lg:block top-0 absolute -z-10">
           <Threads
             color={[
