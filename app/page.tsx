@@ -84,25 +84,32 @@ const Page = memo(() => {
           interactive
           className="absolute inset-0 z-0 rounded-lg opacity-30 hidden md:block"
         />
-        
+
         {/* Mobile Background - Optimized Gradient */}
-        <MobileGradientBackground
-          className="absolute inset-0 z-0 rounded-lg opacity-60 block md:hidden"
-        />
-        
+        <MobileGradientBackground className="absolute inset-0 z-0 rounded-lg opacity-60 block md:hidden" />
+
         <div className="relative text-center py-10 px-4 flex flex-col item-center justify-center gap-4 z-10">
           <BlurFade
             inView
             delay={0.15}
             className="grid place-items-center w-fit mx-auto rounded-full"
           >
-            <Image
-              alt="Logo of MDIT"
-              src={"/mdit_hires.png"}
-              width={100}
-              height={100}
-              quality={100}
-            />
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Image
+                alt="Logo of MDIT"
+                src={"/mdit_hires.png"}
+                width={100}
+                height={100}
+                quality={100}
+              />
+              <Image
+                alt="Logo of MDIT"
+                src={"/DOSM_Light.svg"}
+                width={200}
+                height={100}
+                quality={100}
+              />
+            </div>
           </BlurFade>
 
           <div className="relative z-10 space-y-6">
