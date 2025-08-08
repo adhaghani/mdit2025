@@ -710,7 +710,7 @@ const Page = memo(() => {
               >
                 Join 100+ talented students from across Malaysia in this
                 prestigious national datathon. Work with real government
-                datasets and compete for RM11,000 in prizes.
+                datasets and compete for RM9,600 in prizes.
               </Text>
             </BlurFade>
 

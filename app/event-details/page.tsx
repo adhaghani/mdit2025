@@ -105,6 +105,7 @@ const EventDetailsPage = () => {
                 <CountingNumber
                   decimalPlaces={2}
                   decimalSeparator="."
+                  thousandSeparator=","
                   inView
                   number={9600}
                   className="text-primary "

@@ -17,6 +17,7 @@ type CountingNumberProps = React.ComponentProps<"span"> & {
   inViewMargin?: UseInViewOptions["margin"];
   inViewOnce?: boolean;
   decimalSeparator?: string;
+  thousandSeparator?: string;
   transition?: SpringOptions;
   decimalPlaces?: number;
 };
@@ -30,6 +31,7 @@ function CountingNumber({
   inViewMargin = "0px",
   inViewOnce = true,
   decimalSeparator = ".",
+  thousandSeparator = "",
   transition = { stiffness: 90, damping: 50 },
   decimalPlaces = 0,
   className,
@@ -37,6 +39,25 @@ function CountingNumber({
 }: CountingNumberProps) {
   const localRef = React.useRef<HTMLSpanElement>(null);
   React.useImperativeHandle(ref, () => localRef.current as HTMLSpanElement);
+
+  // Helper function to add thousand separators
+  const addThousandSeparator = (num: string, separator: string): string => {
+    if (!separator) return num;
+
+    const parts = num.split(".");
+    const integerPart = parts[0];
+    const decimalPart = parts[1];
+
+    // Add thousand separators to integer part
+    const formattedInteger = integerPart.replace(
+      /\B(?=(\d{3})+(?!\d))/g,
+      separator
+    );
+
+    return decimalPart
+      ? `${formattedInteger}.${decimalPart}`
+      : formattedInteger;
+  };
 
   const numberStr = number.toString();
   const decimals =
@@ -66,6 +87,11 @@ function CountingNumber({
             ? latest.toFixed(decimals)
             : Math.round(latest).toString();
 
+        // Apply thousand separators before replacing decimal separator
+        if (thousandSeparator) {
+          formatted = addThousandSeparator(formatted, thousandSeparator);
+        }
+
         if (decimals > 0) {
           formatted = formatted.replace(".", decimalSeparator);
         }
@@ -83,13 +109,31 @@ function CountingNumber({
       }
     });
     return () => unsubscribe();
-  }, [springVal, decimals, padStart, number, decimalSeparator]);
+  }, [
+    springVal,
+    decimals,
+    padStart,
+    number,
+    decimalSeparator,
+    thousandSeparator,
+    addThousandSeparator,
+  ]);
 
   const finalIntLength = Math.floor(Math.abs(number)).toString().length;
-  const initialText = padStart
+  let initialText = padStart
     ? "0".padStart(finalIntLength, "0") +
       (decimals > 0 ? decimalSeparator + "0".repeat(decimals) : "")
     : "0" + (decimals > 0 ? decimalSeparator + "0".repeat(decimals) : "");
+
+  // Apply thousand separators to initial text if needed
+  if (thousandSeparator && !padStart) {
+    const initialNumber =
+      "0" + (decimals > 0 ? "." + "0".repeat(decimals) : "");
+    initialText = addThousandSeparator(initialNumber, thousandSeparator);
+    if (decimals > 0) {
+      initialText = initialText.replace(".", decimalSeparator);
+    }
+  }
 
   return (
     <span
