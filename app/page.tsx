@@ -74,7 +74,8 @@ import {
   MditAurora,
   MditTextPressure,
 } from "@/components/optimized-react-bits";
-import { MobileGradientBackground } from "@/components/animate-ui/backgrounds/mobile-gradient";
+import { useDevice } from "@/contexts/device-context";
+
 // Type definitions
 interface CompetitionPhase {
   phase: string;
@@ -593,6 +594,13 @@ const Page = memo(() => {
   const { hasStarted, timeLeft, isExpired, timeUntilRegistration } =
     useCountdown();
 
+  // Get device information from context
+  const {
+    isWebGLSupported,
+    shouldReducePerformance,
+    isLoading: deviceLoading,
+  } = useDevice();
+
   // Memoize competition phases to prevent recreation on every render
   const phases = useMemo(
     () => [
@@ -661,16 +669,50 @@ const Page = memo(() => {
       {/* Hero Section with Background Pattern */}
 
       <div className=" relative min-h-fit h-[90vh] rounded-lg overflow-hidden lg:overflow-visible max-h-[700px]">
-        <div className="absolute w-full h-[500px] hidden lg:block sm:h-[3/4]">
-          <MditAurora />
-        </div>
-        <div className="absolute w-full rounded-lg px-4 overflow-hidden lg:hidden block h-full">
+        {/* <div className="absolute w-full rounded-lg px-4 overflow-hidden lg:hidden block h-full">
           <MobileGradientBackground />
+        </div> */}
+        {!deviceLoading && isWebGLSupported ? (
+          <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
+            <MditTextPressure text="2025" />
+          </div>
+        ) : null}
+        {/* Generic 2025 text for smaller screens */}
+        <div className="absolute z-10 opacity-30 lg:hidden w-full h-full flex items-center justify-center pointer-events-none">
+          <div className="text-[12rem] sm:text-[16rem] md:text-[20rem] font-black text-primary/20 select-none tracking-wider font-mono">
+            2025
+          </div>
         </div>
-        <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
-          <MditTextPressure text="2025" />
-        </div>
-        <div className="relative text-center py-32 flex flex-col item-center justify-center gap-4 z-10">
+        {!deviceLoading && shouldReducePerformance ? (
+          <>
+            <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
+              <Image
+                src={"/assets/bg-gradients/13.svg"}
+                alt="Background Gradient"
+                width={1920}
+                height={1080}
+                className="w-full h-full object-cover object-left !overflow-visible"
+              />
+            </div>
+            <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
+              <Image
+                src={"/assets/bg-gradients/12.svg"}
+                alt="Background Gradient"
+                width={1920}
+                height={1080}
+                className="w-full h-full object-cover object-left !overflow-visible"
+              />
+            </div>
+          </>
+        ) : (
+          !deviceLoading &&
+          !shouldReducePerformance && (
+            <div className="absolute w-full h-[500px] hidden lg:block sm:h-[3/4]">
+              <MditAurora />
+            </div>
+          )
+        )}
+        <div className="relative text-center py-32 overflow-visible flex flex-col item-center justify-center gap-4">
           <BlurFade
             inView
             delay={0.15}
@@ -697,7 +739,7 @@ const Page = memo(() => {
             <BlurFade inView delay={0.15}>
               <Text
                 as="h2"
-                className="text-2xl md:text-3xl lg:text-4xl font-bold max-w-4xl mx-auto"
+                className="text-2xl font-extrabold md:text-3xl lg:text-4xl max-w-4xl mx-auto"
               >
                 Malaysia&apos;s Premier Data Innovation Competition
               </Text>
@@ -705,7 +747,6 @@ const Page = memo(() => {
             <BlurFade inView delay={0.2}>
               <Text
                 as="p"
-                styleVariant="muted"
                 className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
               >
                 Join 100+ talented students from across Malaysia in this
@@ -769,7 +810,7 @@ const Page = memo(() => {
         </div>
       </div>
 
-      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-[600px] rotate-180 overflow-hidden pointer-events-none">
+      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-auto lg:h-[800px] rotate-180 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/13.svg"}
           alt="Background Gradient"
@@ -878,7 +919,7 @@ const Page = memo(() => {
         {/* Enhanced Grid Layout */}
         <div className="max-w-7xl mx-auto">
           {/* Top row - 3 columns with enhanced cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
             {COMPETITION_HIGHLIGHTS.slice(0, 3).map((highlight, index) => (
               <BlurFade key={index} inView delay={0.2 + index * 0.1}>
                 <Card
@@ -1214,7 +1255,7 @@ const Page = memo(() => {
         </div>
       </div>
 
-      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-[600px] overflow-hidden pointer-events-none">
+      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto lg:h-[600px] overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/9.svg"}
           alt="Background Gradient"
@@ -1695,7 +1736,7 @@ const Page = memo(() => {
         </BlurFade>
       </div>
 
-      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[1200px] -z-10 rotate-180 overflow-hidden pointer-events-none">
+      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto lg:h-[1200px] h-auto -z-10 rotate-180 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/11.svg"}
           alt="Background Gradient"

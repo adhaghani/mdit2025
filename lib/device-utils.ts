@@ -66,7 +66,7 @@ export function getDeviceInfo(): DeviceInfo {
     isMobile &&
     (navigator.hardwareConcurrency <= 2 || // 2 or fewer CPU cores
       (navigatorWithMemory.deviceMemory !== undefined &&
-        navigatorWithMemory.deviceMemory <= 2) || // 2GB or less RAM (if available)
+        navigatorWithMemory.deviceMemory <= 3) || // 2GB or less RAM (if available)
       /Android [1-6]\./i.test(navigator.userAgent)); // Older Android versions
 
   // Memory info (Chrome only)
@@ -104,6 +104,13 @@ export function shouldDisableWebGL(): boolean {
   const device = getDeviceInfo();
   return (
     device.isLowEndDevice || !device.supportsWebGL || device.hasReducedMotion
+  );
+}
+
+export function isWebGLSupported(): boolean {
+  const device = getDeviceInfo();
+  return (
+    device.supportsWebGL && !device.hasReducedMotion && !device.isLowEndDevice
   );
 }
 

@@ -27,6 +27,8 @@ import {
   Trophy,
 } from "lucide-react";
 import { MditAuroraSubtle } from "@/components/optimized-react-bits";
+
+import { useDevice } from "@/contexts/device-context";
 const FrequentlyAskedQuestionsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -74,6 +76,13 @@ const FrequentlyAskedQuestionsPage = () => {
     setSearchTerm("");
   };
 
+  // Get device information from context
+  const {
+    isWebGLSupported,
+    shouldReducePerformance,
+    isLoading: deviceLoading,
+  } = useDevice();
+
   const isReleased = true;
 
   if (!isReleased) {
@@ -92,9 +101,32 @@ const FrequentlyAskedQuestionsPage = () => {
 
   return (
     <>
-      <div className="absolute w-full h-[300px] hidden lg:block sm:h-[500px]">
-        <MditAuroraSubtle />
-      </div>
+      {!deviceLoading && shouldReducePerformance ? (
+        <>
+          <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/13.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/12.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+        </>
+      ) : isWebGLSupported ? (
+        <div className="absolute w-full h-[300px] hidden lg:block sm:h-[500px]">
+          <MditAuroraSubtle />
+        </div>
+      ) : null}
 
       {/* Header Section */}
       <div className="text-center space-y-4 px-4 py-32 lg:py-48 max-w-4xl mx-auto">
@@ -104,12 +136,12 @@ const FrequentlyAskedQuestionsPage = () => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
-          <Text as="p" className="text-lg">
+          <Text as="p" className="text-xl">
             Find answers to common questions about MDIT 2025 Datathon
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.2}>
-          <Text as="p" styleVariant="muted" className="max-w-2xl mx-auto">
+          <Text as="p" className="max-w-2xl mx-auto">
             Could not find what you are looking for? Use the search function
             below or browse by category. If you still need help, don not
             hesitate to contact our support team.

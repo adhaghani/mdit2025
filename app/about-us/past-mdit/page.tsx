@@ -21,8 +21,8 @@ import {
 import { Marquee } from "@/components/magicui/marquee";
 import { MDIT2023_IMAGE, MDIT2024_IMAGE } from "@/components/constant";
 import { Threads } from "@/components/optimized-react-bits";
-import { isLowEndDevice } from "@/lib/device-utils";
 
+import { useDevice } from "@/contexts/device-context";
 const PastMDITPage = () => {
   const [selectedYear, setSelectedYear] = useState("2024");
 
@@ -121,9 +121,43 @@ const PastMDITPage = () => {
     pastEditions[selectedYear as keyof typeof pastEditions];
   const availableYears = Object.keys(pastEditions).sort().reverse();
 
+  
+    // Get device information from context
+    const {
+      isWebGLSupported,
+      shouldReducePerformance,
+      isLoading: deviceLoading,
+    } = useDevice();
+
+
   return (
     <div className="relative">
       {/* Header Section */}
+
+            {!deviceLoading && shouldReducePerformance ? (
+              <>
+                <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
+                  <Image
+                    src={"/assets/bg-gradients/12.svg"}
+                    alt="Background Gradient"
+                    width={1920}
+                    height={1080}
+                    className="w-full h-full object-cover object-left !overflow-visible"
+                  />
+                </div>
+              </>
+            ) : isWebGLSupported ? (
+              <div className="w-full h-[800px] hidden lg:block top-0 absolute -z-10">
+                <Threads
+                  color={[
+                    0.5647058823529412, 0.19215686274509805, 0.8666666666666667,
+                  ]}
+                  amplitude={2}
+                  distance={0.6}
+                />
+              </div>
+            ) : null}
+
       <div className="text-center space-y-4 px-4 pt-32 pb-20 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Link
@@ -140,26 +174,18 @@ const PastMDITPage = () => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.2}>
-          <Text as="p" className="text-lg">
+          <Text as="p" className="text-xl">
             Celebrating the journey of Malaysia&apos;s premier data innovation
             competition
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.25}>
-          <Text as="p" styleVariant="muted" className="max-w-3xl mx-auto">
+          <Text as="p" className="max-w-3xl mx-auto">
             Explore the history, achievements, and memorable moments from
             previous MDIT competitions. Witness how data science talents have
             evolved and contributed to Malaysia&apos;s digital transformation.
           </Text>
         </BlurFade>
-      </div>
-
-      <div className="w-full h-[500px] hidden md:block top-0 absolute -z-10">
-        <Threads
-          color={[0.5647058823529412, 0.19215686274509805, 0.8666666666666667]}
-          amplitude={2}
-          distance={0.6}
-        />
       </div>
 
       <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[1200px] rotate-90 overflow-hidden pointer-events-none">

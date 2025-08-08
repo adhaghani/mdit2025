@@ -11,7 +11,15 @@ import { Users, Award, Target, Lightbulb, Star } from "lucide-react";
 import { Threads } from "@/components/optimized-react-bits";
 import SpotlightCard from "@/components/react-bits/Components/SpotlightCard/SpotlightCard";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { useDevice } from "@/contexts/device-context";
 const AboutUsPage = () => {
+  // Get device information from context
+  const {
+    isWebGLSupported,
+    shouldReducePerformance,
+    isLoading: deviceLoading,
+  } = useDevice();
+
   // Team members data organized by bureau
   const teamByBureau = {
     "Executive Committee": [
@@ -337,6 +345,38 @@ const AboutUsPage = () => {
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
       </div>
+      {!deviceLoading && shouldReducePerformance ? (
+        <>
+          <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/13.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/12.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+        </>
+      ) : isWebGLSupported ? (
+        <div className="w-full h-[800px] hidden lg:block top-0 absolute -z-10">
+          <Threads
+            color={[
+              0.5647058823529412, 0.19215686274509805, 0.8666666666666667,
+            ]}
+            amplitude={2}
+            distance={0.6}
+          />
+        </div>
+      ) : null}
 
       {/* Header Section */}
       <div className="text-center space-y-4 py-32 lg:py-48 px-4 max-w-4xl mx-auto">
@@ -369,14 +409,6 @@ const AboutUsPage = () => {
             </Button>
           </div>
         </BlurFade>
-      </div>
-
-      <div className="w-full h-[800px] hidden lg:block top-0 absolute -z-10">
-        <Threads
-          color={[0.5647058823529412, 0.19215686274509805, 0.8666666666666667]}
-          amplitude={2}
-          distance={0.6}
-        />
       </div>
 
       {/* Our Story / About MDIT Section */}

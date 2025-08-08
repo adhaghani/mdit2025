@@ -12,6 +12,8 @@ import {
   MditAurora,
   MditTextPressure,
 } from "@/components/optimized-react-bits";
+
+import { useDevice } from "@/contexts/device-context";
 // Type definitions
 interface ContactInfo {
   icon: React.ComponentType<{ className?: string }>;
@@ -227,16 +229,46 @@ const ContactPage = () => {
     []
   );
 
+  // Get device information from context
+  const {
+    isWebGLSupported,
+    shouldReducePerformance,
+    isLoading: deviceLoading,
+  } = useDevice();
+
   return (
     <>
-      <div className="absolute w-full h-[500px] hidden lg:block sm:h-[3/4]">
-        <MditAurora />
-      </div>
-      <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
-        <MditTextPressure text="Contact" />
-      </div>
-      {/* Generic 2025 text for smaller screens */}
-      {/* Header Section */}
+      {!deviceLoading && shouldReducePerformance ? (
+        <>
+          <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/13.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/12.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+        </>
+      ) : isWebGLSupported ? (
+        <div className="absolute w-full h-[500px] hidden lg:block sm:h-[3/4]">
+          <MditAurora />
+        </div>
+      ) : null}
+      {isWebGLSupported ? (
+        <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
+          <MditTextPressure text="Contact" />
+        </div>
+      ) : null}
       <div className="text-center px-4 space-y-4 py-32 pt-48 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h1" className="text-primary">
@@ -244,13 +276,13 @@ const ContactPage = () => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
-          <Text as="p" className="text-lg">
+          <Text as="p" className="text-xl">
             Have questions about MDIT 2025? We are here to help! Reach out to us
             through any of the channels below.
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.2}>
-          <Text as="p" styleVariant="muted" className="max-w-2xl mx-auto">
+          <Text as="p" className="max-w-2xl mx-auto">
             Whether you need clarification about registration, competition
             rules, or technical requirements, our team is ready to assist you on
             your journey to data innovation excellence.

@@ -22,6 +22,8 @@ import {
   MditAurora,
   MditTextPressure,
 } from "@/components/optimized-react-bits";
+import { useDevice } from "@/contexts/device-context";
+
 const RulesRegulationPage = () => {
   const sections = [
     {
@@ -132,6 +134,13 @@ const RulesRegulationPage = () => {
 
   const isReleased = true;
 
+  // Get device information from context
+  const {
+    isWebGLSupported,
+    shouldReducePerformance,
+    isLoading: deviceLoading,
+  } = useDevice();
+
   if (!isReleased) {
     return (
       <div className="text-center py-64">
@@ -149,12 +158,38 @@ const RulesRegulationPage = () => {
   return (
     <>
       {/* Header Section */}
-      <div className="absolute w-full h-[500px] hidden lg:block sm:h-[3/4]">
-        <MditAurora />
-      </div>
-      <div className="absolute opacity-40 hidden lg:block w-full h-fit -z-10">
-        <MditTextPressure text="Rules" />
-      </div>
+      {!deviceLoading && shouldReducePerformance ? (
+        <>
+          <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/13.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/12.svg"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+        </>
+      ) : isWebGLSupported ? (
+        <div className="absolute w-full h-[500px] hidden lg:block sm:h-[3/4]">
+          <MditAurora />
+        </div>
+      ) : null}
+
+      {isWebGLSupported ? (
+        <div className="absolute opacity-40 hidden lg:block w-full h-fit -z-10">
+          <MditTextPressure text="Rules" />
+        </div>
+      ) : null}
       <div className="text-center space-y-4 py-32 relative lg:py-64 px-4 max-w-4xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h1" className="text-primary">
@@ -162,13 +197,13 @@ const RulesRegulationPage = () => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
-          <Text as="p" className="text-lg">
+          <Text as="p" className="text-xl">
             Complete guidelines and requirements for participating in MDIT 2025
             Datathon
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.2}>
-          <Text as="p" styleVariant="muted" className="max-w-3xl mx-auto">
+          <Text as="p" className="max-w-3xl mx-auto">
             Please read all rules carefully before registering. By participating
             in MDIT 2025, you agree to abide by all the rules and regulations
             outlined below. Violation of any rule may result in

@@ -136,7 +136,7 @@ const MaintenancePage = memo(() => {
       <div className="max-w-4xl mx-auto text-center space-y-8">
         {/* Logo Section */}
         <BlurFade delay={0.1}>
-          <div className="flex justify-center mb-6">
+          <div className="flex mt-32 justify-center mb-6">
             <Image
               src="/mdit.svg"
               alt="MDIT 2025 Logo"
