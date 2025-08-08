@@ -673,7 +673,7 @@ const Page = memo(() => {
           <MobileGradientBackground />
         </div> */}
         {!deviceLoading && isWebGLSupported ? (
-          <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
+          <div className="absolute -z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
             <MditTextPressure text="2025" />
           </div>
         ) : null}
@@ -718,12 +718,20 @@ const Page = memo(() => {
             delay={0.15}
             className="grid place-items-center w-fit mx-auto rounded-full"
           >
-            <Image
-              alt="Logo of MDIT"
-              src={"/mdit.svg"}
-              width={100}
-              height={100}
-            />
+            <div className="flex items-center justify-center gap-4 flex-wrap">
+              <Image
+                alt="Logo of MDIT"
+                src={"/mdit.svg"}
+                width={100}
+                height={100}
+              />
+              <Image
+                alt="Logo of DOSM"
+                src={"/DOSM_Light.svg"}
+                width={200}
+                height={100}
+              />
+            </div>
           </BlurFade>
 
           <div className="relative px-4 z-10 space-y-6">
