@@ -1249,7 +1249,7 @@ const Page = memo(() => {
                     className="text-2xl font-bold text-green-600 mb-2"
                   >
                     <NumberFlow
-                      value={0}
+                      value={timeLeft.days}
                       format={{ minimumIntegerDigits: 1 }}
                     />
                   </Text>
