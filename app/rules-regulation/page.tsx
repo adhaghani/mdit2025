@@ -71,7 +71,6 @@ const RulesRegulationPage = () => {
         "All team members must be from the same university",
         "Each participant can only be part of one team",
         "Mixed-year teams are allowed (undergraduate and postgraduate)",
-        "International students studying in Malaysia are eligible",
       ],
     },
     {

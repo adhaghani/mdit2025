@@ -25,7 +25,7 @@ export const FAQ = [
   {
     question: "Who can participate in MDIT 2025?",
     answer:
-      "MDIT 2025 is open to all university students currently enrolled in Malaysian institutions. This includes both undergraduate and postgraduate students, as well as international students studying in Malaysia. Teams must consist of 3-4 members, all from the same university.",
+      "MDIT 2025 is open to all university students currently enrolled in Malaysian institutions. This includes both undergraduate and postgraduate students. Teams must consist of 3-4 members, all from the same university.",
   },
   {
     question: "What is the registration fee and when is the deadline?",
@@ -76,11 +76,6 @@ export const FAQ = [
     question: "What technical support is available during the competition?",
     answer:
       "Technical support is available during business hours (Mon-Fri, 9:00 AM - 5:00 PM). For urgent matters during the competition period, emergency WhatsApp support (+60 12-345 6789) is available 24/7 from September 6-October 18, 2025.",
-  },
-  {
-    question: "Can international students participate?",
-    answer:
-      "Yes, international students currently enrolled in Malaysian universities are eligible to participate. However, all team members must be from the same Malaysian institution.",
   },
   {
     question: "What happens if we submit late?",

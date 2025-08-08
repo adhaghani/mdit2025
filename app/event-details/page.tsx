@@ -69,7 +69,7 @@ const EventDetailsPage = () => {
       title: "Educational Background",
       items: [
         "Currently enrolled as Diploma/Undergraduate program",
-        "From any Malaysian university or institution (IPTA/IPTS), including international students",
+        "From any Malaysian university or institution (IPTA/IPTS)",
         "Student from all academic disciplines (STEM and non-STEM) are encouraged to participate",
       ],
     },
