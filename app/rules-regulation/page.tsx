@@ -167,7 +167,7 @@ const RulesRegulationPage = () => {
     },
   ];
 
-  const isReleased = true;
+  const isReleased = false;
 
   // Get device information from context
   const {

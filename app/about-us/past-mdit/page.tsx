@@ -148,13 +148,13 @@ const PastMDITPage = () => {
 
       {!deviceLoading && shouldReducePerformance ? (
         <>
-          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
+          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50  -z-10 pointer-events-none">
             <Image
               src={"/assets/bg-gradients/12.svg"}
               alt="Background Gradient"
               width={1920}
               height={1080}
-              className="w-full h-full object-cover object-left !overflow-visible"
+              className="w-full h-full object-cover object-left "
             />
           </div>
         </>
@@ -200,13 +200,13 @@ const PastMDITPage = () => {
         </BlurFade>
       </div>
 
-      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-90 overflow-hidden pointer-events-none">
+      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto lg:h-[1000px] h-auto rotate-90  pointer-events-none">
         <Image
           src={"/assets/bg-gradients/8.svg"}
           alt="Background Gradient"
           width={1920}
           height={1080}
-          className="w-full h-full object-cover object-right !overflow-visible"
+          className="w-full h-full object-cover object-right "
         />
       </div>
 
@@ -415,7 +415,7 @@ const PastMDITPage = () => {
       {/* Gallery Marquees */}
       {selectedYear === "2024" || selectedYear === "2023" ? (
         <>
-          <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-[1200px] rotate-90 overflow-hidden pointer-events-none">
+          <div className="absolute right-0 bottom-0 lg:-right-32 w-screen lg:w-auto h-[1200px] rotate-90 overflow-hidden pointer-events-none">
             <Image
               src={"/assets/bg-gradients/9.svg"}
               alt="Background Gradient"

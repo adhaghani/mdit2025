@@ -98,7 +98,7 @@ const FrequentlyAskedQuestionsPage = () => {
     isLoading: deviceLoading,
   } = useDevice();
 
-  const isReleased = true;
+  const isReleased = false;
 
   if (!isReleased) {
     return (

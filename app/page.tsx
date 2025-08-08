@@ -887,13 +887,13 @@ const Page = memo(() => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <BlurFade inView delay={0.2}>
                 <div className="text-center">
-                  <div className="mx-auto mb-4 p-4 bg-primary/20 rounded-full w-fit">
-                    <DynamicIcons.TargetIcon className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4 p-4 bg-emerald-500/20 rounded-full w-fit">
+                    <DynamicIcons.TargetIcon className="h-8 w-8 text-emerald-500" />
                   </div>
                   <Text as="h4" className="font-semibold mb-2">
                     Our Mission
                   </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
+                  <Text as="p" className="text-sm">
                     Foster innovation and collaboration among students in data
                     science and analytics while bridging the gap between
                     academia and industry.
@@ -902,13 +902,13 @@ const Page = memo(() => {
               </BlurFade>
               <BlurFade inView delay={0.25}>
                 <div className="text-center">
-                  <div className="mx-auto mb-4 p-4 bg-primary/20 rounded-full w-fit">
-                    <DynamicIcons.LightbulbIcon className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4 p-4 bg-blue-500/20 rounded-full w-fit">
+                    <DynamicIcons.LightbulbIcon className="h-8 w-8 text-blue-500" />
                   </div>
                   <Text as="h4" className="font-semibold mb-2">
                     Innovation Focus
                   </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
+                  <Text as="p" className="text-sm">
                     Encourage creative thinking and innovative approaches to
                     solve real-world data challenges using cutting-edge
                     technologies.
@@ -917,13 +917,13 @@ const Page = memo(() => {
               </BlurFade>
               <BlurFade inView delay={0.3}>
                 <div className="text-center">
-                  <div className="mx-auto mb-4 p-4 bg-primary/20 rounded-full w-fit">
-                    <DynamicIcons.Users2Icon className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4 p-4 bg-green-500/20 rounded-full w-fit">
+                    <DynamicIcons.Users2Icon className="h-8 w-8 text-green-500" />
                   </div>
                   <Text as="h4" className="font-semibold mb-2">
                     Collaboration
                   </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
+                  <Text as="p" className="text-sm">
                     Build a network of future data scientists and create lasting
                     partnerships between students, academia, and industry.
                   </Text>
@@ -1381,7 +1381,7 @@ const Page = memo(() => {
                         )}
                         <Text
                           as="p"
-                          className="mt-4 text-sm font-medium text-center text-primary group-hover:text-purple-600 transition-colors"
+                          className="mt-4 text-sm text-center group-hover:text-purple-300 transition-colors"
                         >
                           {organizer.name}
                         </Text>

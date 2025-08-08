@@ -646,9 +646,9 @@ export const ORGANIZERS: Organizer[] = [
   },
 
   {
-    name: "InStats UiTM Shah Alam",
+    name: "inStats UiTM Shah Alam",
     logo: "/instats.svg",
-    logoAlt: "InStats UiTM",
+    logoAlt: "inStats UiTM",
     width: 120,
     height: 120,
     className: "w-24 h-24 sm:w-24 sm:h-24",

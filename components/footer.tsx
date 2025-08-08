@@ -119,13 +119,13 @@ const Footer = () => {
                   <div>
                     <Text
                       as="h2"
-                      className="text-xl font-bold font-mono bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+                      className="text-xl font-bold font-mono text-primary bg-clip-text"
                     >
                       MDIT x DOSM Datathon
                     </Text>
                     <Text
                       as="p"
-                      className="text-sm text-muted-foreground font-medium"
+                      className="text-sm font-medium"
                     >
                       2025 National Competition
                     </Text>
@@ -134,7 +134,7 @@ const Footer = () => {
               </BlurFade>
 
               <BlurFade inView delay={0.15}>
-                <Text as="p" className="text-muted-foreground leading-relaxed">
+                <Text as="p" className="leading-relaxed">
                   MDIT x DOSM Datathon 2025 is Malaysia&apos;s premier national
                   inter-varsity program fostering innovation and collaboration
                   among students in data science and analytics. Join us in
@@ -145,7 +145,7 @@ const Footer = () => {
               {/* Contact Info */}
               <BlurFade inView delay={0.2}>
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+                  <div className="flex items-center space-x-3 text-sm ">
                     <Mail className="w-4 h-4 text-primary flex-shrink-0" />
                     <span>mditxdd2025@gmail.com</span>
                   </div>

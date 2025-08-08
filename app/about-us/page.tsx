@@ -392,13 +392,13 @@ const AboutUsPage = () => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
-          <Text as="p" className="text-lg">
+          <Text as="p" className="text-xl">
             Discover the vision, team, and partnerships behind Malaysia&apos;s
             premier data innovation competition
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.2}>
-          <Text as="p" styleVariant="muted" className="max-w-3xl mx-auto">
+          <Text as="p" className="max-w-3xl mx-auto">
             Learn about our mission to nurture the next generation of data
             scientists and how we&apos;re contributing to Malaysia&apos;s
             digital transformation journey through innovative education and
@@ -656,23 +656,34 @@ const AboutUsPage = () => {
       <div className="mt-20 px-4 mb-10 max-w-7xl mx-auto">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center font-mono mb-12">
-            About inStats Association
+            About inStats
           </Text>
         </BlurFade>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           <BlurFade inView delay={0.15}>
             <div className="space-y-6">
-              <Text as="h3" className="text-xl font-semibold">
-                Leading Statistics Club at Universiti Teknologi MARA (UiTM) Shah
-                Alam
-              </Text>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-primary/10 p-2 rounded-full">
+                  <Image
+                    src="/instats.svg"
+                    alt="inStats Logo"
+                    width={120}
+                    height={120}
+                    className="hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <Text as="h3" className="text-xl font-semibold">
+                  Leading Statistics Association at Universiti Teknologi MARA
+                  (UiTM) Shah Alam
+                </Text>
+              </div>
               <Text as="p" className="leading-relaxed">
-                inStats Association is the premier statistics club at UiTM,
-                dedicated to fostering a vibrant community of data enthusiasts
-                and professionals. Our mission is to empower students with the
-                skills, knowledge, and networks needed to excel in the field of
-                data science and analytics.
+                Statistic Association (inStats) is the premier statistics club
+                at UiTM, dedicated to fostering a vibrant community of data
+                enthusiasts and professionals. Our mission is to empower
+                students with the skills, knowledge, and networks needed to
+                excel in the field of data science and analytics.
               </Text>
               <Text as="p" className="leading-relaxed">
                 We organize a wide range of activities including workshops,
@@ -681,12 +692,6 @@ const AboutUsPage = () => {
                 commitment to bridging the gap between academic learning and
                 real-world data challenges.
               </Text>
-              <div className="flex items-center gap-3">
-                <DynamicIcons.StarIcon className="h-5 w-5 text-primary" />
-                <Text as="p" className="font-medium">
-                  Empowering the next generation of data professionals
-                </Text>
-              </div>
             </div>
           </BlurFade>
 

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   title:
     "MDIT 2025 - Malaysia Data Innovation Talent | National Inter-Varsity Datathon",
   description:
-    "MDIT 2025 is a national inter-varsity program aimed at fostering innovation and collaboration among students in the fields of computer science and mathematics. Join the datathon competition organized by UiTM INSTATS Club in collaboration with Department of Statistics Malaysia (DOSM).",
+    "MDIT 2025 is a national inter-varsity program aimed at fostering innovation and collaboration among students in the fields of computer science and mathematics. Join the datathon competition organized by Statistic Association (inStats) in collaboration with Department of Statistics Malaysia (DOSM).",
   keywords: [
     "MDIT 2025",
     "Malaysia Data Innovation Talent",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     "statistics",
     "UiTM",
     "DOSM",
-    "INSTATS",
+    "inStats",
     "university students",
     "data analytics",
     "innovation",
