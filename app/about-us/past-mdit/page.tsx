@@ -148,7 +148,7 @@ const PastMDITPage = () => {
 
       {!deviceLoading && shouldReducePerformance ? (
         <>
-          <div className="absolute -left-64 lg:-left-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50  -z-10 pointer-events-none">
+          <div className="absolute -left-64 lg:-left-128 w-screen lg:w-auto  h-auto lg:h-[800px]   -z-10 pointer-events-none">
             <Image
               src={"/assets/bg-gradients/12.png"}
               alt="Background Gradient"
@@ -200,7 +200,7 @@ const PastMDITPage = () => {
         </BlurFade>
       </div>
 
-      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto lg:h-[1000px] h-auto rotate-90  pointer-events-none">
+      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto lg:h-[1000px] h-auto  pointer-events-none">
         <Image
           src={"/assets/bg-gradients/8.png"}
           alt="Background Gradient"
@@ -415,7 +415,7 @@ const PastMDITPage = () => {
       {/* Gallery Marquees */}
       {selectedYear === "2024" || selectedYear === "2023" ? (
         <>
-          <div className="absolute right-0 -z-10 bottom-0 lg:-right-32 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-90 overflow-hidden pointer-events-none">
+          <div className="absolute right-0 -z-10 bottom-0 lg:-right-32 w-screen lg:w-auto lg:h-[1200px] h-auto  overflow-hidden pointer-events-none">
             <Image
               src={"/assets/bg-gradients/9.png"}
               alt="Background Gradient"

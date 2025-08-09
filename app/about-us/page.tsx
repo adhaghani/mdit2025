@@ -489,7 +489,7 @@ const AboutUsPage = () => {
           </BlurFade>
         </div>
       </div>
-      <div className="absolute right-0 w-screen lg:h-[800px] lg:w-auto rotate-90 overflow-hidden pointer-events-none">
+      <div className="absolute -z-10 right-0 w-screen lg:h-[800px] lg:w-auto overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/10.png"}
           alt="Background Gradient"
@@ -643,7 +643,7 @@ const AboutUsPage = () => {
         </div>
       </div>
 
-      <div className="absolute -left-0 lg:-left-32 w-screen lg:w-auto h-[800px] rotate-180 !overflow-hidden pointer-events-none">
+      <div className="absolute !-z-100 -left-0 w-screen lg:w-auto h-[800px] pointer-events-none">
         <Image
           src={"/assets/bg-gradients/13.png"}
           alt="Background Gradient"
@@ -763,11 +763,7 @@ const AboutUsPage = () => {
             </Text>
           </BlurFade>
           <BlurFade inView delay={0.15}>
-            <Text
-              as="p"
-              styleVariant="muted"
-              className="mb-6 max-w-2xl mx-auto"
-            >
+            <Text as="p" className="mb-6 max-w-2xl mx-auto">
               Join MDIT 2025 and contribute to Malaysia&apos;s data innovation
               journey. Together, we can build a data-driven future that benefits
               all Malaysians.

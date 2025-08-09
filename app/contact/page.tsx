@@ -308,7 +308,7 @@ const ContactPage = () => {
         </div>
       </div>
 
-      <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[300px] lg:h-[1200px] rotate-90 overflow-visible pointer-events-none">
+      <div className="absolute left-0 w-screen lg:w-auto h-auto lg:h-[1200px] overflow-visible pointer-events-none">
         <Image
           src={"/assets/bg-gradients/9.png"}
           alt="Background Gradient"
