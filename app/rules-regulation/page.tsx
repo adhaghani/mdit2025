@@ -757,6 +757,16 @@ const RulesRegulationPage = () => {
           );
         })}
       </div>
+      <div className="absolute left-0 lg:-left-32 h-[900px] rotate-0 overflow-hidden pointer-events-none">
+        <Image
+          src={"/assets/bg-gradients/9.png"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          unoptimized
+          className="inset-0 w-full h-full object-cover !overflow-visible"
+        />
+      </div>
 
       {/* Important Notes - Enhanced Design */}
       <div className="my-20 px-4 max-w-7xl mx-auto">
@@ -937,16 +947,6 @@ const RulesRegulationPage = () => {
           </BlurFade>
         </div>
       </div>
-      <div className="absolute left-0 lg:-left-32 h-[900px] rotate-0 overflow-hidden pointer-events-none">
-        <Image
-          src={"/assets/bg-gradients/9.png"}
-          alt="Background Gradient"
-          width={1920}
-          height={1080}
-          unoptimized
-          className="inset-0 w-full h-full object-cover !overflow-visible"
-        />
-      </div>
 
       {/* Download Section - Enhanced */}
       {/* <div>
@@ -1074,7 +1074,7 @@ const RulesRegulationPage = () => {
       <div className="pb-20 px-4">
         <div className="max-w-7xl mx-auto px-4">
           <BlurFade inView delay={0.75}>
-            <Card className="bg-gradient-to-br from-muted/50 to-background border-border/50">
+            <Card>
               <CardContent className="p-8 text-center">
                 <div className="bg-primary/10 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
                   <DynamicIcons.Users className="h-10 w-10 text-primary" />
