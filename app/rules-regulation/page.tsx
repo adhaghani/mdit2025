@@ -1063,7 +1063,7 @@ const RulesRegulationPage = () => {
               </div>
               <div className="mt-8 pt-6 border-t border-primary/20 text-center">
                 <Text as="p" className="text-sm text-muted-foreground mb-4">
-                  All dates are in Malaysia Standard Time (UTC+8)
+                  All dates are in Malaysia Standard Time (GMT+8)
                 </Text>
               </div>
             </CardContent>
