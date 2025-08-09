@@ -665,15 +665,6 @@ const Page = memo(() => {
                 className="w-full h-full object-cover object-left !overflow-visible"
               />
             </div>
-            <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
-              <Image
-                src={"/assets/bg-gradients/12.png"}
-                alt="Background Gradient"
-                width={1920}
-                height={1080}
-                className="w-full h-full object-cover object-left !overflow-visible"
-              />
-            </div>
           </>
         ) : (
           !deviceLoading &&
@@ -789,7 +780,7 @@ const Page = memo(() => {
         </div>
       </div>
 
-      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-auto lg:h-[800px] rotate-180 overflow-hidden pointer-events-none">
+      <div className="absolute right-0 lg:right-32 w-screen lg:w-auto h-auto rotate-180 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/13.png"}
           alt="Background Gradient"

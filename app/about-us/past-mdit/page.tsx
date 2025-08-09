@@ -148,7 +148,7 @@ const PastMDITPage = () => {
 
       {!deviceLoading && shouldReducePerformance ? (
         <>
-          <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50  -z-10 pointer-events-none">
+          <div className="absolute -left-64 lg:-left-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50  -z-10 pointer-events-none">
             <Image
               src={"/assets/bg-gradients/12.png"}
               alt="Background Gradient"

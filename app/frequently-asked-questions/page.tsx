@@ -141,15 +141,6 @@ const FrequentlyAskedQuestionsPage = () => {
               className="w-full h-full object-cover object-left !overflow-visible"
             />
           </div>
-          <div className="absolute right-1/2 lg:-right-128 w-[200px] lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
-            <Image
-              src={"/assets/bg-gradients/12.png"}
-              alt="Background Gradient"
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover object-left !overflow-visible"
-            />
-          </div>
         </>
       ) : isWebGLSupported ? (
         <div className="absolute w-full h-[300px] hidden lg:block sm:h-[500px]">
