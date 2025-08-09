@@ -175,10 +175,10 @@ const EventDetailsPage = () => {
                     </Text>
                     <div className="space-y-2">
                       <Text as="p" className="text-yellow-600 font-semibold">
-                        📜 Winner Certificates
+                        🏆 1st Place Trophy
                       </Text>
                       <Text as="p" className="text-yellow-600 font-semibold">
-                        🎖️ Medal of Excellence
+                        📜 Winner Certificates
                       </Text>
                     </div>
                   </CardContent>

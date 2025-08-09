@@ -1054,7 +1054,7 @@ const RulesRegulationPage = () => {
                     Final Presentation
                   </Text>
                   <Text as="p" className="text-lg font-medium">
-                    October 17, 2025
+                    17 October, 2025
                   </Text>
                   <Text as="p" className="text-sm ]mt-1">
                     Live pitching by the top 10 finalists
