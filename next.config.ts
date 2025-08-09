@@ -8,23 +8,18 @@ const nextConfig: NextConfig = {
   experimental: {
     // Removed optimizeCss: true to fix critters module error
     optimizePackageImports: [
-      "@radix-ui/react-dropdown-menu",
-      "@radix-ui/react-navigation-menu",
-      "@radix-ui/react-scroll-area",
-      "@radix-ui/react-select",
-      "@radix-ui/react-slider",
-      "@radix-ui/react-slot",
-      "@radix-ui/react-tooltip",
-      "@radix-ui/react-label",
       "lucide-react",
-      "motion",
-      "embla-carousel-react",
+      "@radix-ui/react-*", // Wildcard for all Radix packages
+      "motion/react", // Specific motion imports
     ],
-  },
 
+    turbo: {
+      resolveExtensions: [".tsx", ".ts", ".jsx", ".js", ".mjs", ".json"],
+    },
+  },
   // Optimize images
   images: {
-    formats: ["image/webp", "image/avif"],
+    formats: ["image/webp"],
     minimumCacheTTL: 31536000, // 1 year
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -34,7 +29,7 @@ const nextConfig: NextConfig = {
     // Optimize for your specific use case
     domains: [], // Add external domains if needed
     remotePatterns: [], // For external images
-    qualities: [70, 80, 90], // Define quality levels for optimization
+    qualities: [85], // Define quality levels for optimization
   },
 
   // Compress responses
