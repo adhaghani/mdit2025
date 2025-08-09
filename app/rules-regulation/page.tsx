@@ -1024,7 +1024,7 @@ const RulesRegulationPage = () => {
                     Registration Deadline
                   </Text>
                   <Text as="p" className="text-lg font-medium">
-                    August 30, 2025
+                    30 August, 2025
                   </Text>
                   <Text as="p" className="text-sm ]mt-1">
                     Last day to register your team
@@ -1039,7 +1039,7 @@ const RulesRegulationPage = () => {
                     Competition Period
                   </Text>
                   <Text as="p" className="text-lg font-medium">
-                    Sept 6 - 21, 2025
+                    6 September - 21 September, 2025
                   </Text>
                   <Text as="p" className="text-sm ]mt-1">
                     Development and submission phase
