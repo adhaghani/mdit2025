@@ -1090,16 +1090,6 @@ const Page = memo(() => {
         </div>
       </div>
 
-      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-[900px] overflow-hidden pointer-events-none">
-        <Image
-          src={"/assets/bg-gradients/10.png"}
-          alt="Background Gradient"
-          width={1920}
-          height={1080}
-          className="w-full h-full object-cover object-right !overflow-visible"
-        />
-      </div>
-
       {/* Current Statistics Section */}
       <div className="py-20 rounded-lg px-4 my-20 relative overflow-hidden">
         <div className="relative z-10">
