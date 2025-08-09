@@ -693,146 +693,148 @@ const EventDetailsPage = () => {
                         </div>
 
                         {/* Event-specific details for workshops and events */}
-                        {item.extendedDetails?.eventDetails && (
-                          <div className="space-y-3">
-                            {item.extendedDetails.eventDetails.agenda && (
-                              <div>
-                                <Text
-                                  as="p"
-                                  className="font-medium text-muted-foreground text-sm mb-2"
-                                >
-                                  Agenda:
-                                </Text>
-                                <ul className="text-sm space-y-1">
-                                  {item.extendedDetails.eventDetails.agenda.map(
-                                    (agendaItem, agendaIndex) => (
-                                      <li
-                                        key={agendaIndex}
-                                        className="flex items-start gap-2"
-                                      >
-                                        <DynamicIcons.CalendarIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
-                                        <span>{agendaItem}</span>
-                                      </li>
-                                    )
-                                  )}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.extendedDetails.eventDetails.speakers && (
-                              <div>
-                                <Text
-                                  as="p"
-                                  className="font-medium text-muted-foreground text-sm mb-2"
-                                >
-                                  Speakers:
-                                </Text>
-                                <ul className="text-sm space-y-1">
-                                  {item.extendedDetails.eventDetails.speakers.map(
-                                    (speaker, speakerIndex) => (
-                                      <li
-                                        key={speakerIndex}
-                                        className="flex items-start gap-2"
-                                      >
-                                        <DynamicIcons.UsersIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
-                                        <span>{speaker}</span>
-                                      </li>
-                                    )
-                                  )}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.extendedDetails.eventDetails.instructors && (
-                              <div>
-                                <Text
-                                  as="p"
-                                  className="font-medium text-muted-foreground text-sm mb-2"
-                                >
-                                  Instructors:
-                                </Text>
-                                <ul className="text-sm space-y-1">
-                                  {item.extendedDetails.eventDetails.instructors.map(
-                                    (instructor, instructorIndex) => (
-                                      <li
-                                        key={instructorIndex}
-                                        className="flex items-start gap-2"
-                                      >
-                                        <DynamicIcons.GraduationCapIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
-                                        <span>{instructor}</span>
-                                      </li>
-                                    )
-                                  )}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.extendedDetails.eventDetails.tools && (
-                              <div>
-                                <Text
-                                  as="p"
-                                  className="font-medium text-muted-foreground text-sm mb-2"
-                                >
-                                  Tools & Technologies:
-                                </Text>
-                                <div className="flex flex-wrap gap-2">
-                                  {item.extendedDetails.eventDetails.tools.map(
-                                    (tool, toolIndex) => (
-                                      <span
-                                        key={toolIndex}
-                                        className="px-2 py-1 bg-secondary rounded-md text-xs"
-                                      >
-                                        {tool}
-                                      </span>
-                                    )
-                                  )}
+                        <>
+                          {item.extendedDetails?.eventDetails && (
+                            <div className="space-y-3">
+                              {item.extendedDetails.eventDetails.agenda && (
+                                <div>
+                                  <Text
+                                    as="p"
+                                    className="font-medium text-muted-foreground text-sm mb-2"
+                                  >
+                                    Agenda:
+                                  </Text>
+                                  <ul className="text-sm space-y-1">
+                                    {item.extendedDetails.eventDetails.agenda.map(
+                                      (agendaItem, agendaIndex) => (
+                                        <li
+                                          key={agendaIndex}
+                                          className="flex items-start gap-2"
+                                        >
+                                          <DynamicIcons.CalendarIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                          <span>{agendaItem}</span>
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
                                 </div>
-                              </div>
-                            )}
-
-                            {item.extendedDetails.eventDetails
-                              .materialsProvided && (
-                              <div>
-                                <Text
-                                  as="p"
-                                  className="font-medium text-muted-foreground text-sm mb-2"
-                                >
-                                  Materials Provided:
-                                </Text>
-                                <ul className="text-sm space-y-1">
-                                  {item.extendedDetails.eventDetails.materialsProvided.map(
-                                    (material, materialIndex) => (
-                                      <li
-                                        key={materialIndex}
-                                        className="flex items-start gap-2"
-                                      >
-                                        <DynamicIcons.CheckIcon className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
-                                        <span>{material}</span>
-                                      </li>
-                                    )
-                                  )}
-                                </ul>
-                              </div>
-                            )}
-
-                            {/* Special indicators */}
-                            <div className="flex flex-wrap gap-2 pt-2">
-                              {item.extendedDetails.eventDetails
-                                .recordingAvailable && (
-                                <span className="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-xs font-medium">
-                                  Recording Available
-                                </span>
                               )}
-                              {item.extendedDetails.eventDetails
-                                .liveStreaming && (
-                                <span className="px-3 py-1 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 rounded-full text-xs font-medium">
-                                  Live Streaming
-                                </span>
+
+                              {item.extendedDetails.eventDetails.speakers && (
+                                <div>
+                                  <Text
+                                    as="p"
+                                    className="font-medium text-muted-foreground text-sm mb-2"
+                                  >
+                                    Speakers:
+                                  </Text>
+                                  <ul className="text-sm space-y-1">
+                                    {item.extendedDetails.eventDetails.speakers.map(
+                                      (speaker, speakerIndex) => (
+                                        <li
+                                          key={speakerIndex}
+                                          className="flex items-start gap-2"
+                                        >
+                                          <DynamicIcons.UsersIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                          <span>{speaker}</span>
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
                               )}
+
+                              {item.extendedDetails.eventDetails
+                                .instructors && (
+                                <div>
+                                  <Text
+                                    as="p"
+                                    className="font-medium text-muted-foreground text-sm mb-2"
+                                  >
+                                    Instructors:
+                                  </Text>
+                                  <ul className="text-sm space-y-1">
+                                    {item.extendedDetails.eventDetails.instructors.map(
+                                      (instructor, instructorIndex) => (
+                                        <li
+                                          key={instructorIndex}
+                                          className="flex items-start gap-2"
+                                        >
+                                          <DynamicIcons.GraduationCapIcon className="h-3 w-3 text-primary mt-1 flex-shrink-0" />
+                                          <span>{instructor}</span>
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                              )}
+
+                              {item.extendedDetails.eventDetails.tools && (
+                                <div>
+                                  <Text
+                                    as="p"
+                                    className="font-medium text-muted-foreground text-sm mb-2"
+                                  >
+                                    Tools & Technologies:
+                                  </Text>
+                                  <div className="flex flex-wrap gap-2">
+                                    {item.extendedDetails.eventDetails.tools.map(
+                                      (tool, toolIndex) => (
+                                        <span
+                                          key={toolIndex}
+                                          className="px-2 py-1 bg-secondary rounded-md text-xs"
+                                        >
+                                          {tool}
+                                        </span>
+                                      )
+                                    )}
+                                  </div>
+                                </div>
+                              )}
+
+                              {item.extendedDetails.eventDetails
+                                .materialsProvided && (
+                                <div>
+                                  <Text
+                                    as="p"
+                                    className="font-medium text-muted-foreground text-sm mb-2"
+                                  >
+                                    Materials Provided:
+                                  </Text>
+                                  <ul className="text-sm space-y-1">
+                                    {item.extendedDetails.eventDetails.materialsProvided.map(
+                                      (material, materialIndex) => (
+                                        <li
+                                          key={materialIndex}
+                                          className="flex items-start gap-2"
+                                        >
+                                          <DynamicIcons.CheckIcon className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
+                                          <span>{material}</span>
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                              )}
+
+                              {/* Special indicators */}
+                              <div className="flex flex-wrap gap-2 pt-2">
+                                {item.extendedDetails.eventDetails
+                                  .recordingAvailable && (
+                                  <span className="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-xs font-medium">
+                                    Recording Available
+                                  </span>
+                                )}
+                                {item.extendedDetails.eventDetails
+                                  .liveStreaming && (
+                                  <span className="px-3 py-1 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 rounded-full text-xs font-medium">
+                                    Live Streaming
+                                  </span>
+                                )}
+                              </div>
                             </div>
-                          </div>
-                        )}
-
+                          )}
+                        </>
                         <div>
                           <Text
                             as="p"

@@ -112,7 +112,7 @@ export const PROGRAM_TIMELINE = [
     event: "Registration Opens",
     details: "Registration for MDIT 2025 opens.",
     type: "milestone", // milestone, workshop, event, deadline
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "10:00 AM GMT+8",
       location: "Online Platform",
@@ -131,7 +131,7 @@ export const PROGRAM_TIMELINE = [
     event: "Registration Closes",
     details: "Registration for MDIT 2025 closes.",
     type: "deadline",
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "11:59 PM GMT+8",
       location: "Online Platform",
@@ -151,7 +151,7 @@ export const PROGRAM_TIMELINE = [
     details:
       "Covers competition briefing and pitching essentials to guide your team toward an effective project presentation.",
     type: "event",
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "2:00 PM - 4:00 PM GMT+8",
       location: "Online Platform (Microsoft Teams)",
@@ -173,18 +173,18 @@ export const PROGRAM_TIMELINE = [
           "4:00 PM - Closing",
         ],
         meetingLink: "https://teams.microsoft.com/meet/...",
-        recordingAvailable: true,
+        recordingAvailable: false,
       },
     },
   },
   {
     icon: BrainIcon,
     date: new Date(2025, 8, 7),
-    event: "Software Workshop by PwC Malaysia",
+    event: "Software Workshop",
     details:
       "Learn to enhance your project using statistical and data visualization tools.",
     type: "workshop",
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "10:00 AM - 4:00 PM GMT+8",
       location: "Online Platform (Zoom)",
@@ -230,7 +230,7 @@ export const PROGRAM_TIMELINE = [
     details:
       "Submission window is now open for your team to upload their report, dashboard, and video.",
     type: "milestone",
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "9:00 AM GMT+8",
       location: "Online Platform",
@@ -250,7 +250,7 @@ export const PROGRAM_TIMELINE = [
     details:
       "All your submitted materials will now proceed to the evaluation phase.",
     type: "deadline",
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "11:59 PM GMT+8",
       location: "Online",
@@ -269,7 +269,7 @@ export const PROGRAM_TIMELINE = [
     event: "Evaluation Period Begins",
     details: "Shortlisting of groups begins.",
     type: "milestone",
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "9:00 AM GMT+8",
       location: "Judge Panel Review",
@@ -288,7 +288,7 @@ export const PROGRAM_TIMELINE = [
     event: "Top 10 Finalists Announced",
     details: "Shortlisting of groups is completed.",
     type: "milestone",
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "6:00 PM GMT+8",
       location: "Online Announcement",
@@ -308,7 +308,7 @@ export const PROGRAM_TIMELINE = [
     details:
       "Top 10 finalist will present their pitches live to expert judges.",
     type: "event",
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "9:00 AM - 5:00 PM GMT+8",
       location: "UiTM Shah Alam, Selangor",
@@ -337,7 +337,7 @@ export const PROGRAM_TIMELINE = [
           "4:00 PM - Deliberation",
           "5:00 PM - Preliminary Results",
         ],
-        liveStreaming: true,
+        liveStreaming: false,
         presentationFormat: "15 min presentation + 10 min Q&A",
       },
     },
@@ -348,7 +348,7 @@ export const PROGRAM_TIMELINE = [
     event: "Awards Ceremony & Closing",
     details: "Winners are announced and the event concludes.",
     type: "event",
-    hasDetails: true,
+    hasDetails: false,
     extendedDetails: {
       time: "2:00 PM - 6:00 PM GMT+8",
       location: "UiTM Shah Alam, Selangor",
@@ -372,8 +372,8 @@ export const PROGRAM_TIMELINE = [
           "5:30 PM - Closing Remarks",
         ],
         keynoteSpeker: "Dato' Ahmad Rahman - Chief Statistician Malaysia",
-        dinnerIncluded: true,
-        liveStreaming: true,
+        dinnerIncluded: false,
+        liveStreaming: false,
       },
     },
   },
