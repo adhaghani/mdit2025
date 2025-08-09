@@ -814,7 +814,7 @@ const Page = memo(() => {
               challenges.
             </Text>
             <Text as="p" className="text-lg leading-relaxed text-center">
-              Organized in collaboration with the Department of Statistics
+              Organised in collaboration with the Department of Statistics
               Malaysia (DOSM) and Statistics Association (inStats) at UiTM Shah
               Alam,this competition encourages participants to utilize official
               government datasets alongside other open data sources to develop
@@ -1257,7 +1257,7 @@ const Page = memo(() => {
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto rounded-full"></div>
             <Text as="p" className="text-lg max-w-3xl mx-auto leading-relaxed">
               MDIT 2025 is made possible through strategic partnerships with
-              leading institutions, organizations, and media partners who share
+              leading institutions, organisations, and media partners who share
               our vision of advancing data science innovation in Malaysia.
             </Text>
           </div>
@@ -1268,7 +1268,7 @@ const Page = memo(() => {
           <div className="mb-16">
             <div className="text-center mb-8">
               <Text as="h3" className="text-2xl font-bold text-primary mb-2">
-                Organizing Partners
+                Organising Partners
               </Text>
               <Text as="p" className="text-sm">
                 Leading institutions driving data science education and
@@ -1491,7 +1491,7 @@ const Page = memo(() => {
                       as="p"
                       className="text-sm text-purple-500/70 mb-4 max-w-xs"
                     >
-                      We are actively seeking partnerships with organizations
+                      We are actively seeking partnerships with organisations
                       that share our vision
                     </Text>
                     <Button
@@ -1601,7 +1601,7 @@ const Page = memo(() => {
                         className="text-sm text-blue-500/70 mb-4 max-w-xs"
                       >
                         We are building partnerships with leading media
-                        organizations
+                        organisations
                       </Text>
                       <Button
                         variant="outline"
@@ -1635,7 +1635,7 @@ const Page = memo(() => {
                 className="mb-6 max-w-2xl mx-auto"
               >
                 Interested in partnering with MDIT 2025? We welcome
-                collaborations with organizations that share our commitment to
+                collaborations with organisations that share our commitment to
                 advancing data science education and innovation in Malaysia.
               </Text>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

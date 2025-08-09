@@ -686,7 +686,7 @@ const AboutUsPage = () => {
                 excel in the field of data science and analytics.
               </Text>
               <Text as="p" className="leading-relaxed">
-                We organize a wide range of activities including workshops,
+                We organise a wide range of activities including workshops,
                 seminars, and competitions to enhance practical skills and
                 industry readiness. Our flagship event, MDIT, exemplifies our
                 commitment to bridging the gap between academic learning and
