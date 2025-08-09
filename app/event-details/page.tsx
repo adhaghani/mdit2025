@@ -536,8 +536,9 @@ const EventDetailsPage = () => {
         <BlurFade inView delay={0.15}>
           <Text as="p" className="text-center mb-12 max-w-2xl mx-auto">
             Stay informed about all important dates and milestones throughout
-            the competition period. Click on events with details to view more
-            information.
+            the competition period.
+            {/* Click on events with details to view more
+            information. */}
           </Text>
         </BlurFade>
 

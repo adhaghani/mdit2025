@@ -46,7 +46,7 @@ const Header = memo(() => {
   const buttonHref = useMemo(() => {
     return isExpired || !hasStarted ? "#" : "/register";
   }, [isExpired, hasStarted]);
-
+  
   // Memoize button disabled state
   const isButtonDisabled = useMemo(() => {
     return isExpired || !hasStarted;
