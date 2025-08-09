@@ -143,8 +143,8 @@ const ContactPage = () => {
       Object.freeze([
         {
           name: "Instagram",
-          handle: "@mdit2025",
-          link: "https://instagram.com/mdit2025",
+          handle: "@mdit_2025",
+          link: "https://instagram.com/mdit_2025",
           description: "Photos, stories, and highlights from the competition",
           icon: DynamicIcons.Instagram,
           cardClass:
@@ -156,7 +156,7 @@ const ContactPage = () => {
         {
           name: "TikTok",
           handle: "@mdit2025",
-          link: "https://tiktok.com/@mdit2025",
+          link: "https://tiktok.com/@mdit_2025",
           description: "Quick tips, announcements, and fun competition moments",
           icon: "/tiktok.svg",
           cardClass:
