@@ -1083,122 +1083,127 @@ const Page = memo(() => {
 
       {/* Current Statistics Section */}
       <div className="py-20 rounded-lg px-4 max-w-7xl mx-auto my-20 relative overflow-hidden">
+        {/* Background decorative elements */}
+
         <div className="relative z-10">
           <BlurFade inView delay={0.1}>
-            <Text as="h2" className="text-center font-mono mb-6">
-              MDIT 2025 Current Statistics
-            </Text>
+            <div className="text-center mb-12 space-y-4">
+              <Text as="h2" className="text-4xl md:text-5xl font-mono font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                MDIT 2025 Current Statistics
+              </Text>
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto rounded-full"></div>
+            </div>
           </BlurFade>
           <BlurFade inView delay={0.15}>
             <Text
               as="p"
               styleVariant="muted"
-              className="text-center mb-12 max-w-2xl mx-auto"
+              className="text-center text-lg mb-16 max-w-3xl mx-auto leading-relaxed"
             >
               Live statistics showing the growing participation and excitement
               for MDIT 2025 across Malaysian universities.
             </Text>
           </BlurFade>
+
+          {/* Main Statistics Grid */}
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <BlurFade
-                inView
-                delay={0.2}
-                className="backdrop-blur-3xl rounded-xl"
-              >
-                <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
-                  <CardContent className="p-6">
-                    <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                      <DynamicIcons.Users2Icon className="h-6 w-6 text-purple-600" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+              <BlurFade inView delay={0.2}>
+                <Card className="group relative h-full text-center bg-gradient-to-br from-primary/10 via-purple-500/5 to-primary/10 border-2 border-primary/20 hover:border-primary/40 hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+                  {/* Animated background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                  
+                  <CardContent className="relative p-8 z-10">
+                    <div className="mx-auto mb-6 p-4 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40 rounded-2xl w-fit shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <DynamicIcons.Users2Icon className="h-8 w-8 text-purple-600 group-hover:text-purple-500 transition-colors duration-300" />
                     </div>
                     <Text
                       as="h3"
-                      className="text-2xl font-bold text-purple-600 mb-2"
+                      className="text-3xl lg:text-4xl font-black text-purple-600 mb-3 group-hover:text-purple-500 transition-colors duration-300"
                     >
                       <NumberFlow
                         value={0}
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
-                    <Text as="p" className="text-sm">
+                    <Text as="p" className="text-sm font-medium group-hover:text-foreground/90 transition-colors duration-300">
                       Teams registered
                     </Text>
                   </CardContent>
                 </Card>
               </BlurFade>
 
-              <BlurFade
-                inView
-                delay={0.25}
-                className="backdrop-blur-3xl rounded-xl"
-              >
-                <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
-                  <CardContent className="p-6">
-                    <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                      <DynamicIcons.BookOpenIcon className="h-6 w-6 text-purple-600" />
+              <BlurFade inView delay={0.25}>
+                <Card className="group relative h-full text-center bg-gradient-to-br from-blue-500/10 via-primary/5 to-blue-500/10 border-2 border-blue-500/20 hover:border-blue-500/40 hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                  
+                  <CardContent className="relative p-8 z-10">
+                    <div className="mx-auto mb-6 p-4 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 rounded-2xl w-fit shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <DynamicIcons.BookOpenIcon className="h-8 w-8 text-blue-600 group-hover:text-blue-500 transition-colors duration-300" />
                     </div>
                     <Text
                       as="h3"
-                      className="text-2xl font-bold text-purple-600 mb-2"
+                      className="text-3xl lg:text-4xl font-black text-blue-600 mb-3 group-hover:text-blue-500 transition-colors duration-300"
                     >
                       <NumberFlow
                         value={0}
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
-                    <Text as="p" className="text-sm">
+                    <Text as="p" className="text-sm font-medium group-hover:text-foreground/90 transition-colors duration-300">
                       Universities participating
                     </Text>
                   </CardContent>
                 </Card>
               </BlurFade>
 
-              <BlurFade
-                inView
-                delay={0.3}
-                className="backdrop-blur-3xl rounded-xl"
-              >
-                <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
-                  <CardContent className="p-6">
-                    <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                      <DynamicIcons.UsersIcon className="h-6 w-6 text-purple-600" />
+              <BlurFade inView delay={0.3}>
+                <Card className="group relative h-full text-center bg-gradient-to-br from-emerald-500/10 via-green-500/5 to-emerald-500/10 border-2 border-emerald-500/20 hover:border-emerald-500/40 hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-emerald-500/20 to-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                  
+                  <CardContent className="relative p-8 z-10">
+                    <div className="mx-auto mb-6 p-4 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900/40 dark:to-emerald-800/40 rounded-2xl w-fit shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <DynamicIcons.UsersIcon className="h-8 w-8 text-emerald-600 group-hover:text-emerald-500 transition-colors duration-300" />
                     </div>
                     <Text
                       as="h3"
-                      className="text-2xl font-bold text-purple-600 mb-2"
+                      className="text-3xl lg:text-4xl font-black text-emerald-600 mb-3 group-hover:text-emerald-500 transition-colors duration-300"
                     >
                       <NumberFlow
                         value={0}
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
-                    <Text as="p" className="text-sm">
+                    <Text as="p" className="text-sm font-medium group-hover:text-foreground/90 transition-colors duration-300">
                       Total participants
                     </Text>
                   </CardContent>
                 </Card>
               </BlurFade>
 
-              <BlurFade
-                inView
-                delay={0.35}
-                className="backdrop-blur-3xl rounded-xl"
-              >
-                <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
-                  <CardContent className="p-6">
-                    <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                      <DynamicIcons.TrophyIcon className="h-6 w-6 text-purple-600" />
+              <BlurFade inView delay={0.35}>
+                <Card className="group relative h-full text-center bg-gradient-to-br from-amber-500/10 via-yellow-500/5 to-amber-500/10 border-2 border-amber-500/20 hover:border-amber-500/40 hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/20 to-yellow-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                  
+                  <CardContent className="relative p-8 z-10">
+                    <div className="mx-auto mb-6 p-4 bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-900/40 dark:to-amber-800/40 rounded-2xl w-fit shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <DynamicIcons.TrophyIcon className="h-8 w-8 text-amber-600 group-hover:text-amber-500 transition-colors duration-300" />
                     </div>
                     <Text
                       as="h3"
-                      className="text-2xl font-bold text-purple-600 mb-2"
+                      className="text-3xl lg:text-4xl font-black text-amber-600 mb-3 group-hover:text-amber-500 transition-colors duration-300"
                     >
                       <NumberFlow
                         value={timeLeft.days}
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
-                    <Text as="p" className="text-sm">
+                    <Text as="p" className="text-sm font-medium group-hover:text-foreground/90 transition-colors duration-300">
                       Days until registration closes
                     </Text>
                   </CardContent>
@@ -1206,30 +1211,36 @@ const Page = memo(() => {
               </BlurFade>
             </div>
           </div>
-          {/* Additional Statistics Row */}
-          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto mt-8">
-            <BlurFade
-              inView
-              delay={0.4}
-              className="backdrop-blur-3xl rounded-xl"
-            >
-              <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20">
-                <CardContent className="p-6">
-                  <Text
-                    as="h4"
-                    className="text-lg font-semibold text-primary mb-2"
-                  >
-                    Registration progress
-                  </Text>
-                  <div className="w-full bg-muted rounded-full h-3 mb-3">
-                    <div
-                      className="bg-gradient-to-r from-primary to-purple-500 h-3 rounded-full transition-all duration-1000"
-                      style={{ width: "0%" }}
-                    ></div>
+
+          {/* Registration Progress Card */}
+          <div className="grid grid-cols-1 gap-6 max-w-5xl mx-auto mt-12">
+            <BlurFade inView delay={0.4}>
+              <Card className="group relative text-center hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 border-2 border-primary/20 hover:border-primary/40 overflow-hidden">
+                {/* Enhanced background effects */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                
+                <CardContent className="relative p-8 z-10">
+                  <div className="mb-6">
+                    <Text
+                      as="h4"
+                      className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent mb-4"
+                    >
+                      Registration progress
+                    </Text>
+                    <div className="w-full bg-muted/50 rounded-full h-4 mb-4 overflow-hidden shadow-inner">
+                      <div
+                        className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 h-4 rounded-full transition-all duration-1000 relative overflow-hidden"
+                        style={{ width: "0%" }}
+                      >
+                        {/* Animated shine effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-pulse"></div>
+                      </div>
+                    </div>
+                    <Text as="p" className="text-base font-medium">
+                      0 out of 120 slots filled
+                    </Text>
                   </div>
-                  <Text as="p" className="text-sm">
-                    0 out of 120 slots filled
-                  </Text>
                 </CardContent>
               </Card>
             </BlurFade>
@@ -1237,10 +1248,13 @@ const Page = memo(() => {
 
           {/* Real-time Update Notice */}
           <BlurFade inView delay={0.6}>
-            <div className="text-center mt-8">
-              <Text as="p" styleVariant="muted" className="text-xs mt-2">
-                Last updated: 28 July 2025 at 16:43 GMT+8
-              </Text>
+            <div className="text-center mt-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-full border border-primary/20">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <Text as="p" styleVariant="muted" className="text-sm">
+                  Last updated: 28 July 2025 at 16:43 GMT+8
+                </Text>
+              </div>
             </div>
           </BlurFade>
         </div>
