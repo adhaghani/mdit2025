@@ -592,7 +592,7 @@ const Page = memo(() => {
         status: "upcoming",
       },
       {
-        phase: "Preliminary round",
+        phase: "Preliminary Round",
         date: "Sep 8-21, 2025",
         description:
           "Project Development, Report submission, and online video presentation.",
@@ -816,7 +816,7 @@ const Page = memo(() => {
             <Text as="p" className="text-lg leading-relaxed text-center">
               Organised in collaboration with the Department of Statistics
               Malaysia (DOSM) and Statistics Association (inStats) at UiTM Shah
-              Alam,this competition encourages participants to utilize official
+              Alam, this competition encourages participants to utilize official
               government datasets alongside other open data sources to develop
               innovative, data-driven solutions that address real-world national
               challenges.

@@ -411,14 +411,18 @@ const EventDetailsPage = () => {
               </CardHeader>
               <CardContent>
                 <Text as="p" className="font-semibold mb-2">
-                  September 6 - October 18, 2025
+                  September 8 - October 17, 2025
                 </Text>
                 <Text as="p" styleVariant="muted" className="text-sm">
-                  • Registration: Aug 15-30, 2025
+                  • Registration: Aug 10-30, 2025
                   <br />
-                  • Competition: Sept 6 - Oct 18
+                  • Preliminary Round: Sep 8 - 21
                   <br />
-                  • Final Presentation: Oct 17
+                  • Evaluation Phase: Sep 22 - Oct 2
+                  <br />
+                  • Top 10 Announcement: Oct 3
+                  <br />
+                  • Final Round: Oct 17
                   <br />• Closing Ceremony: Oct 18
                 </Text>
               </CardContent>
@@ -442,7 +446,7 @@ const EventDetailsPage = () => {
                   <br />
                   • Physical final presentations
                   <br />
-                  • Venue: UiTM Shah Alam
+                  • Venue: Pahang
                   <br />• Live streaming available
                 </Text>
               </CardContent>

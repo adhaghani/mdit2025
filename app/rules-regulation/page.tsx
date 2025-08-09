@@ -1038,7 +1038,7 @@ const RulesRegulationPage = () => {
                     Competition Period
                   </Text>
                   <Text as="p" className="text-lg font-medium">
-                    Sept 6 - Oct 18, 2025
+                    Sept 6 - 21, 2025
                   </Text>
                   <Text as="p" className="text-sm ]mt-1">
                     Development and submission phase
@@ -1056,7 +1056,7 @@ const RulesRegulationPage = () => {
                     October 17, 2025
                   </Text>
                   <Text as="p" className="text-sm ]mt-1">
-                    Live pitching for finalists
+                    Live pitching for top 10 finalists
                   </Text>
                 </div>
               </div>
