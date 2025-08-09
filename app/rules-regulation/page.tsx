@@ -1057,7 +1057,7 @@ const RulesRegulationPage = () => {
                     October 17, 2025
                   </Text>
                   <Text as="p" className="text-sm ]mt-1">
-                    Live pitching for top 10 finalists
+                    Live pitching by the top 10 finalists
                   </Text>
                 </div>
               </div>
