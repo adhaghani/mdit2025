@@ -946,91 +946,11 @@ const RulesRegulationPage = () => {
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
       </div>
-      {/* Timeline Reminder - Enhanced */}
-      <BlurFade inView delay={0.5}>
-        <div className="my-20 px-4 max-w-7xl mx-auto">
-          <Card className="bg-gradient-to-br from-primary/10 via-primary/5 to-background border-primary/20 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-16 translate-x-16" />
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full translate-y-12 -translate-x-12" />
-            <CardHeader className="text-center relative">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <DynamicIcons.Calendar className="h-6 w-6 text-primary" />
-                <CardTitle className="text-primary text-2xl">
-                  Important Dates to Remember
-                </CardTitle>
-              </div>
-              <Text as="p" className="text-muted-foreground">
-                Mark your calendar with these critical deadlines
-              </Text>
-            </CardHeader>
-            <CardContent className="relative">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center group">
-                  <div className="bg-primary/10 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <DynamicIcons.FileText className="h-8 w-8 text-primary" />
-                  </div>
-                  <Badge variant="outline" className="mb-2">
-                    Phase 1
-                  </Badge>
-                  <Text as="h4" className="font-semibold text-primary mb-1">
-                    Registration Deadline
-                  </Text>
-                  <Text as="p" className="text-lg font-medium">
-                    August 30, 2025
-                  </Text>
-                  <Text as="p" className="text-sm text-muted-foreground mt-1">
-                    Last day to register your team
-                  </Text>
-                </div>
-                <div className="text-center group">
-                  <div className="bg-primary/10 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <DynamicIcons.Shield className="h-8 w-8 text-primary" />
-                  </div>
-                  <Badge variant="outline" className="mb-2">
-                    Phase 2
-                  </Badge>
-                  <Text as="h4" className="font-semibold text-primary mb-1">
-                    Competition Period
-                  </Text>
-                  <Text as="p" className="text-lg font-medium">
-                    Sept 6 - Oct 18, 2025
-                  </Text>
-                  <Text as="p" className="text-sm text-muted-foreground mt-1">
-                    Development and submission phase
-                  </Text>
-                </div>
-                <div className="text-center group">
-                  <div className="bg-primary/10 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <DynamicIcons.Award className="h-8 w-8 text-primary" />
-                  </div>
-                  <Badge variant="outline" className="mb-2">
-                    Phase 3
-                  </Badge>
-                  <Text as="h4" className="font-semibold text-primary mb-1">
-                    Final Presentation
-                  </Text>
-                  <Text as="p" className="text-lg font-medium">
-                    October 17, 2025
-                  </Text>
-                  <Text as="p" className="text-sm text-muted-foreground mt-1">
-                    Live pitching for finalists
-                  </Text>
-                </div>
-              </div>
-              <div className="mt-8 pt-6 border-t border-primary/20 text-center">
-                <Text as="p" className="text-sm text-muted-foreground mb-4">
-                  All dates are in Malaysia Standard Time (UTC+8)
-                </Text>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </BlurFade>
 
       {/* Download Section - Enhanced */}
-      <div className="px-4 py-20">
-        <div className="max-w-4xl mx-auto">
-          <BlurFade inView delay={0.6}>
+      <div>
+        <div className="max-w-7xl mx-auto px-4">
+          <BlurFade inView delay={0.6} className="">
             <div className="text-center mb-8">
               <Text as="h2" className="text-3xl font-bold mb-4">
                 Download Complete Guidelines
@@ -1045,33 +965,110 @@ const RulesRegulationPage = () => {
             </div>
           </BlurFade>
 
-          <BlurFade inView delay={0.65}>
-            <div className="grid grid-cols-1 gap-6 mb-8">
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <div className="bg-primary/10 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <DynamicIcons.Download className="h-8 w-8 text-primary" />
-                  </div>
-                  <Text as="h3" className="font-semibold mb-2">
-                    Official Rules PDF
-                  </Text>
-                  <Text as="p" className="text-sm text-muted-foreground mb-4">
-                    Complete documentation including all 30 rules and
-                    regulations
-                  </Text>
-                  <Button size="lg" className="w-full" asChild>
-                    <Link href="/assets/documents/MDIT_2025_RULES_AND_REGULATIONS.pdf">
-                      <DynamicIcons.Download className="h-4 w-4 mr-2" />
-                      Download PDF
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+          <BlurFade
+            inView
+            delay={0.65}
+            className="max-w-2xl  mx-auto backdrop-blur-3xl bg-gradient-to-br p-6 shadow-md rounded-lg h-full from-primary/10 via-primary/5 to-background border-primary/20 overflow-hidden relative "
+          >
+            <div className="bg-primary/10 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+              <DynamicIcons.Download className="h-8 w-8 text-primary" />
             </div>
+            <Text as="h3" className="text-center font-semibold mb-2">
+              Official Rules PDF
+            </Text>
+            <Text
+              as="p"
+              className="text-center text-sm text-muted-foreground mb-4"
+            >
+              Complete documentation including all 30 rules and regulations
+            </Text>
+            <Button size="lg" className="w-full" asChild>
+              <Link href="/assets/documents/MDIT_2025_RULES_AND_REGULATIONS.pdf">
+                <DynamicIcons.Download className="h-4 w-4 mr-2" />
+                Download PDF
+              </Link>
+            </Button>
           </BlurFade>
         </div>
       </div>
-
+      {/* Timeline Reminder - Enhanced */}
+      <div className="px-4 max-w-7xl mx-auto">
+        <BlurFade
+          inView
+          delay={0.5}
+          className="shadow-lg backdrop-blur-3xl rounded-lg bg-gradient-to-br from-primary/10 via-primary/5 to-background border-primary/20 overflow-hidden relative  my-20 px-4 max-w-7xl mx-auto"
+        >
+          <Card className="bg-transparent border-0 shadow-none">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-16 translate-x-16" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full translate-y-12 -translate-x-12" />
+            <CardHeader className="text-center relative">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <DynamicIcons.Calendar className="h-6 w-6 text-primary" />
+                <CardTitle className=" text-2xl">
+                  Important Dates to Remember
+                </CardTitle>
+              </div>
+              <Text as="p" className="text-muted-foreground">
+                Mark your calendar with these critical deadlines
+              </Text>
+            </CardHeader>
+            <CardContent className="relative">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center group">
+                  <div className="bg-green-500/20 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <DynamicIcons.FileText className="h-8 w-8 text-green-200" />
+                  </div>
+                  <Badge className="mb-2">Phase 1</Badge>
+                  <Text as="h4" className="font-semibold text-primary mb-1">
+                    Registration Deadline
+                  </Text>
+                  <Text as="p" className="text-lg font-medium">
+                    August 30, 2025
+                  </Text>
+                  <Text as="p" className="text-sm ]mt-1">
+                    Last day to register your team
+                  </Text>
+                </div>
+                <div className="text-center group">
+                  <div className="bg-primary/20 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <DynamicIcons.Shield className="h-8 w-8 text-primary" />
+                  </div>
+                  <Badge className="mb-2">Phase 2</Badge>
+                  <Text as="h4" className="font-semibold text-primary mb-1">
+                    Competition Period
+                  </Text>
+                  <Text as="p" className="text-lg font-medium">
+                    Sept 6 - Oct 18, 2025
+                  </Text>
+                  <Text as="p" className="text-sm ]mt-1">
+                    Development and submission phase
+                  </Text>
+                </div>
+                <div className="text-center group">
+                  <div className="bg-cyan-500/20 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <DynamicIcons.Award className="h-8 w-8 text-cyan-200" />
+                  </div>
+                  <Badge className="mb-2">Phase 3</Badge>
+                  <Text as="h4" className="font-semibold text-primary mb-1">
+                    Final Presentation
+                  </Text>
+                  <Text as="p" className="text-lg font-medium">
+                    October 17, 2025
+                  </Text>
+                  <Text as="p" className="text-sm ]mt-1">
+                    Live pitching for finalists
+                  </Text>
+                </div>
+              </div>
+              <div className="mt-8 pt-6 border-t border-primary/20 text-center">
+                <Text as="p" className="text-sm text-muted-foreground mb-4">
+                  All dates are in Malaysia Standard Time (UTC+8)
+                </Text>
+              </div>
+            </CardContent>
+          </Card>
+        </BlurFade>
+      </div>
       {/* Contact Section - Enhanced */}
       <div className="pb-20 px-4">
         <div className="max-w-7xl mx-auto px-4">
