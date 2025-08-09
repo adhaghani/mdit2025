@@ -135,14 +135,14 @@ export const FAQ: FAQItem[] = [
     ],
   },
   {
-    question: " Can we change team members after registration?",
+    question: "Can we change team members after registration?",
     answer:
-      " No, once the team has been registered and approved, changes to team members are not allowed.",
+      "No, once the team has been registered and approved, changes to team members are not allowed.",
   },
   {
     question: "Can we use AI tools like ChatGPT during the competition?",
     answer:
-      " Yes, but with limitations. Teams must ensure originality and critical thinking in their submissions. Plagiarised or AI-generated content without proper human input may lead to disqualification.",
+      "Yes, but with limitations. Teams must ensure originality and critical thinking in their submissions. Plagiarised or AI-generated content without proper human input may lead to disqualification.",
   },
   {
     question: "Will mentors or advisors be assigned during the competition?",
@@ -152,7 +152,7 @@ export const FAQ: FAQItem[] = [
   {
     question: "Will there be a live presentation?",
     answer:
-      " Yes, only the Top 10 shortlisted teams will be invited to present their solutions during a live pitching session in front of a panel of expert judges. This session will be held physically. Further instructions will be shared with the selected teams.",
+      "Yes, only the Top 10 shortlisted teams will be invited to present their solutions during a live pitching session in front of a panel of expert judges. This session will be held physically. Further instructions will be shared with the selected teams.",
   },
   {
     question: "Can the same university send more than one team?",
@@ -577,7 +577,7 @@ export const COMPETITION_HIGHLIGHTS = [
     icon: TrophyIcon,
     title: "Massive Prize Pool",
     description:
-      "RM9,600 in total prizes with RM3,500 for first place plus special awards",
+      "RM9,600 in total prizes with RM3,500 for first place plus special awards.",
     color: " text-yellow-600 dark:text-yellow-400",
     bgColor: " bg-yellow-50 dark:bg-yellow-900/30",
   },
@@ -585,21 +585,21 @@ export const COMPETITION_HIGHLIGHTS = [
     icon: BrainIcon,
     title: "Real-World Datasets",
     description:
-      "Opportunity to push yourself to work with Open Data provided by DOSM such as OpenDOSM, e-Statistik, StatsDW IDL facility",
+      "Opportunity to push yourself to work with Open Data provided by DOSM such as OpenDOSM, e-Statistik, StatsDW IDL facility.",
     color: " text-blue-600 dark:text-blue-400",
     bgColor: " bg-blue-50 dark:bg-blue-900/30",
   },
   {
     icon: PresentationIcon,
     title: "Industry Exposure",
-    description: "Present to experts from the industry",
+    description: "Present to experts from the industry.",
     color: " text-green-600 dark:text-green-400",
     bgColor: " bg-green-50 dark:bg-green-900/30",
   },
   {
     icon: AwardIcon,
     title: "National Recognition",
-    description: "Prestigious competition with certificates and trophies",
+    description: "Prestigious competition with certificates and trophies.",
     color: " text-purple-600 dark:text-purple-400",
     bgColor: " bg-purple-50 dark:bg-purple-900/30",
   },

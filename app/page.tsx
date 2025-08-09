@@ -603,7 +603,7 @@ const Page = memo(() => {
         phase: "Final Round ",
         date: "Oct 17-18, 2025",
         description:
-          "Shortlisted teams will pitch their projects physically to expert judges, demonstrating analytical clarity and impact",
+          "Shortlisted teams will pitch their projects physically to expert judges, demonstrating analytical clarity and impact.",
         icon: DynamicIcons.TrophyIcon,
         status: "upcoming",
       },
