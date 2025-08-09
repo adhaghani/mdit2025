@@ -1023,7 +1023,7 @@ const Page = memo(() => {
         </div>
 
         {/* Call to action section */}
-        <BlurFade inView delay={0.8} className="px-4">
+        <BlurFade inView delay={0.8} className="max-w-7xl mx-auto">
           <div className="text-center max-w-7xl mx-auto mt-16 p-8 rounded-2xl bg-gradient-to-r from-primary/10 via-purple-500/10 to-blue-500/10 border border-primary/20">
             <Text
               as="h3"
@@ -1090,6 +1090,16 @@ const Page = memo(() => {
         </div>
       </div>
 
+      <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto h-[900px] overflow-hidden pointer-events-none">
+        <Image
+          src={"/assets/bg-gradients/10.png"}
+          alt="Background Gradient"
+          width={1920}
+          height={1080}
+          className="w-full h-full object-cover object-right !overflow-visible"
+        />
+      </div>
+
       {/* Current Statistics Section */}
       <div className="py-20 rounded-lg px-4 my-20 relative overflow-hidden">
         <div className="relative z-10">
@@ -1109,30 +1119,38 @@ const Page = memo(() => {
             </Text>
           </BlurFade>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <BlurFade inView delay={0.2}>
-              <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+            <BlurFade
+              inView
+              delay={0.2}
+              className="backdrop-blur-3xl rounded-xl"
+            >
+              <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
                 <CardContent className="p-6">
-                  <div className="mx-auto mb-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full w-fit">
-                    <DynamicIcons.Users2Icon className="h-6 w-6 text-blue-600" />
+                  <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
+                    <DynamicIcons.Users2Icon className="h-6 w-6 text-purple-600" />
                   </div>
                   <Text
                     as="h3"
-                    className="text-2xl font-bold text-blue-600 mb-2"
+                    className="text-2xl font-bold text-purple-600 mb-2"
                   >
                     <NumberFlow
                       value={0}
                       format={{ minimumIntegerDigits: 1 }}
                     />
                   </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
+                  <Text as="p" className="text-sm">
                     Teams registered
                   </Text>
                 </CardContent>
               </Card>
             </BlurFade>
 
-            <BlurFade inView delay={0.25}>
-              <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+            <BlurFade
+              inView
+              delay={0.25}
+              className="backdrop-blur-3xl rounded-xl"
+            >
+              <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
                 <CardContent className="p-6">
                   <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
                     <DynamicIcons.BookOpenIcon className="h-6 w-6 text-purple-600" />
@@ -1146,51 +1164,59 @@ const Page = memo(() => {
                       format={{ minimumIntegerDigits: 1 }}
                     />
                   </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
+                  <Text as="p" className="text-sm">
                     Universities participating
                   </Text>
                 </CardContent>
               </Card>
             </BlurFade>
 
-            <BlurFade inView delay={0.3}>
-              <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+            <BlurFade
+              inView
+              delay={0.3}
+              className="backdrop-blur-3xl rounded-xl"
+            >
+              <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
                 <CardContent className="p-6">
-                  <div className="mx-auto mb-4 p-3 bg-teal-100 dark:bg-teal-900/30 rounded-full w-fit">
-                    <DynamicIcons.UsersIcon className="h-6 w-6 text-teal-600" />
+                  <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
+                    <DynamicIcons.UsersIcon className="h-6 w-6 text-purple-600" />
                   </div>
                   <Text
                     as="h3"
-                    className="text-2xl font-bold text-teal-600 mb-2"
+                    className="text-2xl font-bold text-purple-600 mb-2"
                   >
                     <NumberFlow
                       value={0}
                       format={{ minimumIntegerDigits: 1 }}
                     />
                   </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
+                  <Text as="p" className="text-sm">
                     Total participants
                   </Text>
                 </CardContent>
               </Card>
             </BlurFade>
 
-            <BlurFade inView delay={0.35}>
-              <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background border-2">
+            <BlurFade
+              inView
+              delay={0.35}
+              className="backdrop-blur-3xl rounded-xl"
+            >
+              <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
                 <CardContent className="p-6">
-                  <div className="mx-auto mb-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-full w-fit">
-                    <DynamicIcons.TrophyIcon className="h-6 w-6 text-green-600" />
+                  <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
+                    <DynamicIcons.TrophyIcon className="h-6 w-6 text-purple-600" />
                   </div>
                   <Text
                     as="h3"
-                    className="text-2xl font-bold text-green-600 mb-2"
+                    className="text-2xl font-bold text-purple-600 mb-2"
                   >
                     <NumberFlow
                       value={timeLeft.days}
                       format={{ minimumIntegerDigits: 1 }}
                     />
                   </Text>
-                  <Text as="p" styleVariant="muted" className="text-sm">
+                  <Text as="p" className="text-sm">
                     Days until registration closes
                   </Text>
                 </CardContent>
@@ -1200,7 +1226,11 @@ const Page = memo(() => {
 
           {/* Additional Statistics Row */}
           <div className="grid grid-cols-1 gap-6 max-w-xl mx-auto mt-8">
-            <BlurFade inView delay={0.4}>
+            <BlurFade
+              inView
+              delay={0.4}
+              className="backdrop-blur-3xl rounded-xl"
+            >
               <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20">
                 <CardContent className="p-6">
                   <Text
@@ -1215,7 +1245,7 @@ const Page = memo(() => {
                       style={{ width: "0%" }}
                     ></div>
                   </div>
-                  <Text as="p" styleVariant="muted" className="text-sm">
+                  <Text as="p" className="text-sm">
                     0 out of 120 slots filled
                   </Text>
                 </CardContent>
@@ -1767,8 +1797,8 @@ const Page = memo(() => {
           </Text>
           <Text as="p" className=" text-center mb-12 max-w-2xl mx-auto">
             Relive the excitement and innovation from last year&apos;s Malaysian
-            Data Innovation Talent. See the passion, dedication, and
-            brilliant minds that made MDIT 2024 an unforgettable experience.
+            Data Innovation Talent. See the passion, dedication, and brilliant
+            minds that made MDIT 2024 an unforgettable experience.
           </Text>
         </BlurFade>
 
@@ -1833,8 +1863,8 @@ const Page = memo(() => {
           </Text>
           <Text as="p" className="text-center mb-12 max-w-2xl mx-auto">
             Relive the excitement and innovation from last year&apos;s Malaysian
-            Data Innovation Talent. See the passion, dedication, and
-            brilliant minds that made MDIT 2023 an unforgettable experience.
+            Data Innovation Talent. See the passion, dedication, and brilliant
+            minds that made MDIT 2023 an unforgettable experience.
           </Text>
         </BlurFade>
 
