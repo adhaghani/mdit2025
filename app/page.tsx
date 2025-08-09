@@ -427,9 +427,9 @@ const MarqueeImage = memo(
       className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
       src={image.src}
       alt={image.alt}
-      quality={75}
       width={500}
       height={200}
+      quality={75}
       loading="lazy"
     />
   )

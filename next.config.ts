@@ -12,10 +12,6 @@ const nextConfig: NextConfig = {
       "@radix-ui/react-*", // Wildcard for all Radix packages
       "motion/react", // Specific motion imports
     ],
-
-    turbo: {
-      resolveExtensions: [".tsx", ".ts", ".jsx", ".js", ".mjs", ".json"],
-    },
   },
   // Optimize images
   images: {
@@ -29,7 +25,7 @@ const nextConfig: NextConfig = {
     // Optimize for your specific use case
     domains: [], // Add external domains if needed
     remotePatterns: [], // For external images
-    qualities: [85], // Define quality levels for optimization
+    qualities: [75, 85], // Define quality levels for optimization
   },
 
   // Compress responses
