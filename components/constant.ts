@@ -183,8 +183,8 @@ export const PROGRAM_TIMELINE = [
   {
     icon: DoorOpenIcon,
     date: new Date(2025, 7, 10),
-    event: "Registration Opens",
-    details: "Registration for MDIT 2025 opens.",
+    event: "Registration Open",
+    details: "Registration for MDIT X DOSM Datathon 2025 Officially Open.",
     type: "milestone", // milestone, workshop, event, deadline
     hasDetails: false,
     extendedDetails: {
@@ -203,7 +203,7 @@ export const PROGRAM_TIMELINE = [
     icon: DoorClosedIcon,
     date: new Date(2025, 7, 30),
     event: "Registration Closes",
-    details: "Registration for MDIT 2025 closes.",
+    details: "Registration for MDIT X DOSM Datathon 2025 Officially Closes.",
     type: "deadline",
     hasDetails: false,
     extendedDetails: {
@@ -223,7 +223,7 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 8, 6),
     event: "Opening Ceremony & Competition Briefing",
     details:
-      "Covers competition briefing and pitching essentials to guide your team toward an effective project presentation.",
+      "Covers competition briefing and pitching essentials to guide participants toward an effective project presentation.",
     type: "event",
     hasDetails: false,
     extendedDetails: {
@@ -256,7 +256,7 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 8, 7),
     event: "Software Workshop",
     details:
-      "Learn to enhance your project using statistical and data visualization tools.",
+      "A software workshop to upskill participants and enhance projects using statistical and data visualization tools.",
     type: "workshop",
     hasDetails: false,
     extendedDetails: {
@@ -302,7 +302,7 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 8, 8),
     event: "Preliminary Round Begins",
     details:
-      "Submission window is now open for your team to upload their report, dashboard, and video.",
+      "Submission window is now open for all team to upload their report, dashboard, and video.",
     type: "milestone",
     hasDetails: false,
     extendedDetails: {
@@ -322,7 +322,7 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 8, 21),
     event: "Submission Period Ended",
     details:
-      "All your submitted materials will now proceed to the evaluation phase.",
+      "Participant submissions will now proceed to the evaluation phase.",
     type: "deadline",
     hasDetails: false,
     extendedDetails: {
@@ -341,7 +341,7 @@ export const PROGRAM_TIMELINE = [
     icon: AlignJustifyIcon,
     date: new Date(2025, 8, 21),
     event: "Evaluation Period Begins",
-    details: "Shortlisting of groups begins.",
+    details: "Shortlisting of group begin.",
     type: "milestone",
     hasDetails: false,
     extendedDetails: {
