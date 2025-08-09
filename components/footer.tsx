@@ -69,239 +69,240 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative mt-20 pt-10 overflow-visible">
+    <footer className="relative mt-20 pt-10  overflow-visible">
       {/* Background Pattern */}
-
-      <div className="max-w-7xl my-10 mx-auto px-4 xl:px-0">
-        {/* Key Stats Section */}
-        <div className="mb-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {keyStats.map((stat) => (
-              <BlurFade
-                inView
-                delay={0.1}
-                key={stat.label}
-                className="bg-white/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 text-center"
-              >
-                <div>
-                  <stat.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
-                  <Text as="h3" className="text-2xl font-bold mb-1">
-                    {stat.value}
-                  </Text>
-                  <Text as="p" className="text-muted-foreground text-sm">
-                    {stat.label}
-                  </Text>
-                </div>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-
-        {/* Main Footer Content */}
-        <div className="bg-white/80 dark:bg-black/40 backdrop-blur-2xl border border-border/50 rounded-3xl p-8 lg:p-12 shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-            {/* Brand Section */}
-            <div className="lg:col-span-5 space-y-6">
-              <BlurFade inView delay={0.1}>
-                <div className="flex items-center space-x-4">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl" />
-                    <div className="relative size-12 flex items-center justify-center bg-white dark:bg-black/50 rounded-full border border-border/50">
-                      <Image
-                        src="/mdit.svg"
-                        alt="MDIT 2025 Logo"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8"
-                      />
-                    </div>
-                  </div>
+      <div className="max-w-7xl  mx-auto px-4">
+        <div className="my-10">
+          {/* Key Stats Section */}
+          <div className="mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {keyStats.map((stat) => (
+                <BlurFade
+                  inView
+                  delay={0.1}
+                  key={stat.label}
+                  className="bg-white/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 text-center"
+                >
                   <div>
-                    <Text
-                      as="h2"
-                      className="text-xl font-bold font-mono text-primary bg-clip-text"
-                    >
-                      MDIT x DOSM Datathon
+                    <stat.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
+                    <Text as="h3" className="text-2xl font-bold mb-1">
+                      {stat.value}
                     </Text>
-                    <Text
-                      as="p"
-                      className="text-sm font-medium"
-                    >
-                      2025 National Competition
+                    <Text as="p" className="text-muted-foreground text-sm">
+                      {stat.label}
                     </Text>
                   </div>
-                </div>
-              </BlurFade>
-
-              <BlurFade inView delay={0.15}>
-                <Text as="p" className="leading-relaxed">
-                  MDIT x DOSM Datathon 2025 is Malaysia&apos;s premier national
-                  inter-varsity program fostering innovation and collaboration
-                  among students in data science and analytics. Join us in
-                  shaping the future of data-driven solutions.
-                </Text>
-              </BlurFade>
-
-              {/* Contact Info */}
-              <BlurFade inView delay={0.2}>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3 text-sm ">
-                    <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span>mditxdd2025@gmail.com</span>
-                  </div>
-                </div>
-              </BlurFade>
+                </BlurFade>
+              ))}
             </div>
+          </div>
 
-            {/* Quick Links */}
-            <div className="lg:col-span-3 space-y-6">
-              <BlurFade inView delay={0.25}>
-                <Text as="h3" className="text-lg font-semibold text-foreground">
-                  Quick Links
-                </Text>
-              </BlurFade>
-              <ul className="space-y-3">
-                {FOOTER_QUICK_LINK.map((link, index) => (
-                  <li key={link.href}>
-                    <BlurFade inView delay={0.3 + index * 0.05}>
-                      <Link
-                        href={link.href}
-                        className="group flex items-center justify-between text-muted-foreground hover:text-primary transition-colors text-sm py-1"
-                      >
-                        <span>{link.title}</span>
-                        <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transform translate-x-1 group-hover:translate-x-0 transition-all duration-200" />
-                      </Link>
-                    </BlurFade>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Social Media */}
-              <BlurFade inView delay={0.5}>
-                <div className="pt-4">
-                  <Text
-                    as="h4"
-                    className="text-sm font-semibold text-foreground mb-3"
-                  >
-                    Follow Us
-                  </Text>
-                  <div className="flex space-x-3">
-                    {socialLinks.map((social) => (
-                      <Link
-                        key={social.name}
-                        href={social.href}
-                        className={`group flex items-center justify-center w-10 h-10 rounded-full bg-muted/50 text-muted-foreground transition-all duration-300 ${social.color} hover:scale-110 hover:shadow-lg`}
-                        aria-label={social.name}
-                      >
-                        {social.icon}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </BlurFade>
-            </div>
-
-            {/* Registration CTA */}
-            <div className="lg:col-span-4 space-y-6">
-              <BlurFade inView delay={0.6}>
-                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-6 border border-primary/20">
-                  <div className="text-center space-y-4">
-                    <div className="w-12 h-12 mx-auto bg-primary/20 rounded-full flex items-center justify-center">
-                      <Trophy className="w-6 h-6 text-primary" />
+          {/* Main Footer Content */}
+          <div className="bg-white/80 dark:bg-black/40 backdrop-blur-2xl border border-border/50 rounded-3xl p-8 lg:p-12 shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+              {/* Brand Section */}
+              <div className="lg:col-span-5 space-y-6">
+                <BlurFade inView delay={0.1}>
+                  <div className="flex items-center space-x-4">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl" />
+                      <div className="relative size-12 flex items-center justify-center bg-white dark:bg-black/50 rounded-full border border-border/50">
+                        <Image
+                          src="/mdit.svg"
+                          alt="MDIT 2025 Logo"
+                          width={32}
+                          height={32}
+                          className="w-8 h-8"
+                        />
+                      </div>
                     </div>
                     <div>
-                      <Text as="h3" className="text-lg font-bold mb-2">
-                        {isExpired
-                          ? "Registration Closed"
-                          : hasStarted
-                          ? "Registration Open!"
-                          : "Registration Opening Soon"}
-                      </Text>
                       <Text
-                        as="p"
-                        className="text-sm text-muted-foreground mb-4"
+                        as="h2"
+                        className="text-xl font-bold font-mono text-primary bg-clip-text"
                       >
-                        {isExpired
-                          ? "Stay tuned for future datathon events and competitions!"
-                          : hasStarted
-                          ? "Secure your spot in Malaysia's biggest datathon competition!"
-                          : "Get ready to showcase your data science skills with the best teams nationwide!"}
+                        MDIT x DOSM Datathon
+                      </Text>
+                      <Text as="p" className="text-sm font-medium">
+                        2025 National Competition
                       </Text>
                     </div>
-                    {!hasStarted ? (
-                      <Button
-                        size="lg"
-                        className="flex items-center gap-2 w-full"
-                        disabled={true}
-                      >
-                        {isExpired
-                          ? "Registration Closed"
-                          : "Registration Opening Soon"}
-                      </Button>
-                    ) : (
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button
-                            size="lg"
-                            className="flex items-center gap-2 w-full"
-                            disabled={isExpired}
-                          >
-                            Register your Team
-                            <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="!h-fit gap-2">
-                          <Text as="p" className="text-center">
-                            Scan the QR code
-                          </Text>
-                          <QRCode
-                            className="max-w-[200px] mx-auto"
-                            data={GOOGLE_FORM_LINK}
-                            robustness="Q"
-                          />
-                          <Text as="p" className="text-center my-4">
-                            OR
-                          </Text>
-                          <div className="flex justify-center">
+                  </div>
+                </BlurFade>
+
+                <BlurFade inView delay={0.15}>
+                  <Text as="p" className="leading-relaxed">
+                    MDIT x DOSM Datathon 2025 is Malaysia&apos;s premier
+                    national inter-varsity program fostering innovation and
+                    collaboration among students in data science and analytics.
+                    Join us in shaping the future of data-driven solutions.
+                  </Text>
+                </BlurFade>
+
+                {/* Contact Info */}
+                <BlurFade inView delay={0.2}>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3 text-sm ">
+                      <Mail className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>mditxdd2025@gmail.com</span>
+                    </div>
+                  </div>
+                </BlurFade>
+              </div>
+
+              {/* Quick Links */}
+              <div className="lg:col-span-3 space-y-6">
+                <BlurFade inView delay={0.25}>
+                  <Text
+                    as="h3"
+                    className="text-lg font-semibold text-foreground"
+                  >
+                    Quick Links
+                  </Text>
+                </BlurFade>
+                <ul className="space-y-3">
+                  {FOOTER_QUICK_LINK.map((link, index) => (
+                    <li key={link.href}>
+                      <BlurFade inView delay={0.3 + index * 0.05}>
+                        <Link
+                          href={link.href}
+                          className="group flex items-center justify-between text-muted-foreground hover:text-primary transition-colors text-sm py-1"
+                        >
+                          <span>{link.title}</span>
+                          <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transform translate-x-1 group-hover:translate-x-0 transition-all duration-200" />
+                        </Link>
+                      </BlurFade>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Social Media */}
+                <BlurFade inView delay={0.5}>
+                  <div className="pt-4">
+                    <Text
+                      as="h4"
+                      className="text-sm font-semibold text-foreground mb-3"
+                    >
+                      Follow Us
+                    </Text>
+                    <div className="flex space-x-3">
+                      {socialLinks.map((social) => (
+                        <Link
+                          key={social.name}
+                          href={social.href}
+                          className={`group flex items-center justify-center w-10 h-10 rounded-full bg-muted/50 text-muted-foreground transition-all duration-300 ${social.color} hover:scale-110 hover:shadow-lg`}
+                          aria-label={social.name}
+                        >
+                          {social.icon}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </BlurFade>
+              </div>
+
+              {/* Registration CTA */}
+              <div className="lg:col-span-4 space-y-6">
+                <BlurFade inView delay={0.6}>
+                  <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-6 border border-primary/20">
+                    <div className="text-center space-y-4">
+                      <div className="w-12 h-12 mx-auto bg-primary/20 rounded-full flex items-center justify-center">
+                        <Trophy className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <Text as="h3" className="text-lg font-bold mb-2">
+                          {isExpired
+                            ? "Registration Closed"
+                            : hasStarted
+                            ? "Registration Open!"
+                            : "Registration Opening Soon"}
+                        </Text>
+                        <Text
+                          as="p"
+                          className="text-sm text-muted-foreground mb-4"
+                        >
+                          {isExpired
+                            ? "Stay tuned for future datathon events and competitions!"
+                            : hasStarted
+                            ? "Secure your spot in Malaysia's biggest datathon competition!"
+                            : "Get ready to showcase your data science skills with the best teams nationwide!"}
+                        </Text>
+                      </div>
+                      {!hasStarted ? (
+                        <Button
+                          size="lg"
+                          className="flex items-center gap-2 w-full"
+                          disabled={true}
+                        >
+                          {isExpired
+                            ? "Registration Closed"
+                            : "Registration Opening Soon"}
+                        </Button>
+                      ) : (
+                        <Dialog>
+                          <DialogTrigger asChild>
                             <Button
                               size="lg"
-                              className="w-full justify-center gap-2 font-semibold"
-                              asChild
+                              className="flex items-center gap-2 w-full"
+                              disabled={isExpired}
                             >
-                              <Link href={GOOGLE_FORM_LINK} target="_blank">
-                                Register Now
-                              </Link>
+                              Register your Team
+                              <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                             </Button>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                    )}
+                          </DialogTrigger>
+                          <DialogContent className="!h-fit gap-2">
+                            <Text as="p" className="text-center">
+                              Scan the QR code
+                            </Text>
+                            <QRCode
+                              className="max-w-[200px] mx-auto"
+                              data={GOOGLE_FORM_LINK}
+                              robustness="Q"
+                            />
+                            <Text as="p" className="text-center my-4">
+                              OR
+                            </Text>
+                            <div className="flex justify-center">
+                              <Button
+                                size="lg"
+                                className="w-full justify-center gap-2 font-semibold"
+                                asChild
+                              >
+                                <Link href={GOOGLE_FORM_LINK} target="_blank">
+                                  Register Now
+                                </Link>
+                              </Button>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      )}
+                    </div>
+                  </div>
+                </BlurFade>
+              </div>
+            </div>
+
+            {/* Bottom Section */}
+            <div className="mt-12 pt-8 border-t border-border/50">
+              <BlurFade inView delay={0.7}>
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                  <Text
+                    as="p"
+                    className="text-sm text-muted-foreground flex items-center gap-2"
+                  >
+                    © {currentYear} MDIT x DOSM Datathon. Made with
+                    <Heart className="w-4 h-4 text-red-500 fill-current" />
+                    for data enthusiasts.
+                  </Text>
+                  <div className="flex items-center space-x-6 text-xs text-muted-foreground">
+                    <span className="flex items-center gap-1">
+                      <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      this is a Live Event
+                    </span>
                   </div>
                 </div>
               </BlurFade>
             </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="mt-12 pt-8 border-t border-border/50">
-            <BlurFade inView delay={0.7}>
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <Text
-                  as="p"
-                  className="text-sm text-muted-foreground flex items-center gap-2"
-                >
-                  © {currentYear} MDIT x DOSM Datathon. Made with
-                  <Heart className="w-4 h-4 text-red-500 fill-current" />
-                  for data enthusiasts.
-                </Text>
-                <div className="flex items-center space-x-6 text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1">
-                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    this is a Live Event
-                  </span>
-                </div>
-              </div>
-            </BlurFade>
           </div>
         </div>
       </div>
