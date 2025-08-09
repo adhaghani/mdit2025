@@ -458,7 +458,7 @@ const FrequentlyAskedQuestionsPage = () => {
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.75}>
-          <Text as="p" styleVariant="muted" className="mb-6 max-w-2xl mx-auto">
+          <Text as="p" className="mb-6 max-w-2xl mx-auto">
             Now that you have all the information you need, it is time to
             register your team and start your data innovation journey!
           </Text>
