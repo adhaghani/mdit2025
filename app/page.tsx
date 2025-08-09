@@ -1091,7 +1091,7 @@ const Page = memo(() => {
       </div>
 
       {/* Current Statistics Section */}
-      <div className="py-20 rounded-lg px-4 my-20 relative overflow-hidden">
+      <div className="py-20 rounded-lg px-4 max-w-7xl mx-auto my-20 relative overflow-hidden">
         <div className="relative z-10">
           <BlurFade inView delay={0.1}>
             <Text as="h2" className="text-center font-mono mb-6">
@@ -1108,114 +1108,115 @@ const Page = memo(() => {
               for MDIT 2025 across Malaysian universities.
             </Text>
           </BlurFade>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <BlurFade
-              inView
-              delay={0.2}
-              className="backdrop-blur-3xl rounded-xl"
-            >
-              <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
-                <CardContent className="p-6">
-                  <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                    <DynamicIcons.Users2Icon className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <Text
-                    as="h3"
-                    className="text-2xl font-bold text-purple-600 mb-2"
-                  >
-                    <NumberFlow
-                      value={0}
-                      format={{ minimumIntegerDigits: 1 }}
-                    />
-                  </Text>
-                  <Text as="p" className="text-sm">
-                    Teams registered
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <BlurFade
+                inView
+                delay={0.2}
+                className="backdrop-blur-3xl rounded-xl"
+              >
+                <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
+                  <CardContent className="p-6">
+                    <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
+                      <DynamicIcons.Users2Icon className="h-6 w-6 text-purple-600" />
+                    </div>
+                    <Text
+                      as="h3"
+                      className="text-2xl font-bold text-purple-600 mb-2"
+                    >
+                      <NumberFlow
+                        value={0}
+                        format={{ minimumIntegerDigits: 1 }}
+                      />
+                    </Text>
+                    <Text as="p" className="text-sm">
+                      Teams registered
+                    </Text>
+                  </CardContent>
+                </Card>
+              </BlurFade>
 
-            <BlurFade
-              inView
-              delay={0.25}
-              className="backdrop-blur-3xl rounded-xl"
-            >
-              <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
-                <CardContent className="p-6">
-                  <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                    <DynamicIcons.BookOpenIcon className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <Text
-                    as="h3"
-                    className="text-2xl font-bold text-purple-600 mb-2"
-                  >
-                    <NumberFlow
-                      value={0}
-                      format={{ minimumIntegerDigits: 1 }}
-                    />
-                  </Text>
-                  <Text as="p" className="text-sm">
-                    Universities participating
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
+              <BlurFade
+                inView
+                delay={0.25}
+                className="backdrop-blur-3xl rounded-xl"
+              >
+                <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
+                  <CardContent className="p-6">
+                    <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
+                      <DynamicIcons.BookOpenIcon className="h-6 w-6 text-purple-600" />
+                    </div>
+                    <Text
+                      as="h3"
+                      className="text-2xl font-bold text-purple-600 mb-2"
+                    >
+                      <NumberFlow
+                        value={0}
+                        format={{ minimumIntegerDigits: 1 }}
+                      />
+                    </Text>
+                    <Text as="p" className="text-sm">
+                      Universities participating
+                    </Text>
+                  </CardContent>
+                </Card>
+              </BlurFade>
 
-            <BlurFade
-              inView
-              delay={0.3}
-              className="backdrop-blur-3xl rounded-xl"
-            >
-              <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
-                <CardContent className="p-6">
-                  <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                    <DynamicIcons.UsersIcon className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <Text
-                    as="h3"
-                    className="text-2xl font-bold text-purple-600 mb-2"
-                  >
-                    <NumberFlow
-                      value={0}
-                      format={{ minimumIntegerDigits: 1 }}
-                    />
-                  </Text>
-                  <Text as="p" className="text-sm">
-                    Total participants
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
+              <BlurFade
+                inView
+                delay={0.3}
+                className="backdrop-blur-3xl rounded-xl"
+              >
+                <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
+                  <CardContent className="p-6">
+                    <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
+                      <DynamicIcons.UsersIcon className="h-6 w-6 text-purple-600" />
+                    </div>
+                    <Text
+                      as="h3"
+                      className="text-2xl font-bold text-purple-600 mb-2"
+                    >
+                      <NumberFlow
+                        value={0}
+                        format={{ minimumIntegerDigits: 1 }}
+                      />
+                    </Text>
+                    <Text as="p" className="text-sm">
+                      Total participants
+                    </Text>
+                  </CardContent>
+                </Card>
+              </BlurFade>
 
-            <BlurFade
-              inView
-              delay={0.35}
-              className="backdrop-blur-3xl rounded-xl"
-            >
-              <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
-                <CardContent className="p-6">
-                  <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
-                    <DynamicIcons.TrophyIcon className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <Text
-                    as="h3"
-                    className="text-2xl font-bold text-purple-600 mb-2"
-                  >
-                    <NumberFlow
-                      value={timeLeft.days}
-                      format={{ minimumIntegerDigits: 1 }}
-                    />
-                  </Text>
-                  <Text as="p" className="text-sm">
-                    Days until registration closes
-                  </Text>
-                </CardContent>
-              </Card>
-            </BlurFade>
+              <BlurFade
+                inView
+                delay={0.35}
+                className="backdrop-blur-3xl rounded-xl"
+              >
+                <Card className="h-full text-center bg-primary/10 border-primary/20 hover:shadow-lg transition-shadow border-1">
+                  <CardContent className="p-6">
+                    <div className="mx-auto mb-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit">
+                      <DynamicIcons.TrophyIcon className="h-6 w-6 text-purple-600" />
+                    </div>
+                    <Text
+                      as="h3"
+                      className="text-2xl font-bold text-purple-600 mb-2"
+                    >
+                      <NumberFlow
+                        value={timeLeft.days}
+                        format={{ minimumIntegerDigits: 1 }}
+                      />
+                    </Text>
+                    <Text as="p" className="text-sm">
+                      Days until registration closes
+                    </Text>
+                  </CardContent>
+                </Card>
+              </BlurFade>
+            </div>
           </div>
-
           {/* Additional Statistics Row */}
-          <div className="grid grid-cols-1 gap-6 max-w-xl mx-auto mt-8">
+          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto mt-8">
             <BlurFade
               inView
               delay={0.4}
