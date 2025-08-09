@@ -601,7 +601,7 @@ const Page = memo(() => {
       },
       {
         phase: "Final Round ",
-        date: "17-18 October, 2025",
+        date: "17 October, 2025",
         description:
           "Shortlisted teams will pitch their projects physically to expert judges, demonstrating analytical clarity and impact.",
         icon: DynamicIcons.TrophyIcon,
