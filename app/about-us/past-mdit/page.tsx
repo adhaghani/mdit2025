@@ -415,7 +415,7 @@ const PastMDITPage = () => {
       {/* Gallery Marquees */}
       {selectedYear === "2024" || selectedYear === "2023" ? (
         <>
-          <div className="absolute right-0 bottom-0 lg:-right-32 w-screen lg:w-auto h-[1200px] rotate-90 overflow-hidden pointer-events-none">
+          <div className="absolute right-0 -z-10 bottom-0 lg:-right-32 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-90 overflow-hidden pointer-events-none">
             <Image
               src={"/assets/bg-gradients/9.svg"}
               alt="Background Gradient"

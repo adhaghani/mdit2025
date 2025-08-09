@@ -32,6 +32,11 @@ const DynamicIcons = {
   FileText: dynamic(() => import("lucide-react").then((mod) => mod.FileText)),
   Users: dynamic(() => import("lucide-react").then((mod) => mod.Users)),
   Trophy: dynamic(() => import("lucide-react").then((mod) => mod.Trophy)),
+  CheckCircle: dynamic(() =>
+    import("lucide-react").then((mod) => mod.CheckCircle)
+  ),
+  Info: dynamic(() => import("lucide-react").then((mod) => mod.Info)),
+  List: dynamic(() => import("lucide-react").then((mod) => mod.List)),
 };
 
 const BlurFade = dynamic(
@@ -48,11 +53,26 @@ const FrequentlyAskedQuestionsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   // Filter FAQs based on search term
-  const filteredFAQs = FAQ.filter(
-    (faq) =>
-      faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredFAQs = FAQ.filter((faq) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    // Search in question and answer
+    const matchesQuestionOrAnswer =
+      faq.question.toLowerCase().includes(searchLower) ||
+      faq.answer.toLowerCase().includes(searchLower);
+
+    // Search in list items if they exist
+    const matchesList = faq.list
+      ? faq.list.some((item) => item.toLowerCase().includes(searchLower))
+      : false;
+
+    // Search in subtext if it exists
+    const matchesSubtext = faq.subtext
+      ? faq.subtext.toLowerCase().includes(searchLower)
+      : false;
+
+    return matchesQuestionOrAnswer || matchesList || matchesSubtext;
+  });
 
   // FAQ categories for easy navigation
   const faqCategories = [
@@ -74,12 +94,6 @@ const FrequentlyAskedQuestionsPage = () => {
       keywords: ["competition"],
       color: "bg-purple-100 text-purple-700 border-purple-200",
     },
-    {
-      title: "Technical Requirements",
-      icon: DynamicIcons.FileText,
-      keywords: ["technical"],
-      color: "bg-orange-100 text-orange-700 border-orange-200",
-    },
   ];
 
   const handleCategoryFilter = (keywords: string[]) => {
@@ -98,7 +112,7 @@ const FrequentlyAskedQuestionsPage = () => {
     isLoading: deviceLoading,
   } = useDevice();
 
-  const isReleased = false;
+  const isReleased = true;
 
   if (!isReleased) {
     return (
@@ -205,7 +219,7 @@ const FrequentlyAskedQuestionsPage = () => {
       </BlurFade>
 
       {/* Category Filter */}
-      <div className="grid grid-cols-1 px-4 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 px-4 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12 max-w-7xl mx-auto">
         {faqCategories.map((category, index) => (
           <BlurFade key={index} inView delay={0.3 + index * 0.05}>
             <Card
@@ -239,9 +253,65 @@ const FrequentlyAskedQuestionsPage = () => {
                     </Text>
                   </AccordionTrigger>
                   <AccordionContent className="pt-2">
-                    <Text as="p" className=" leading-relaxed">
-                      {faq.answer}
-                    </Text>
+                    <div className="space-y-4">
+                      <Text as="p" className="leading-relaxed">
+                        {faq.answer}
+                      </Text>
+
+                      {faq.list && (
+                        <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg p-4 border border-primary/20">
+                          <div className="flex items-center gap-2 mb-3">
+                            <DynamicIcons.List className="h-4 w-4 text-primary" />
+                            <Text
+                              as="h4"
+                              className="font-semibold text-primary text-sm"
+                            >
+                              Details:
+                            </Text>
+                          </div>
+                          <div className="space-y-3">
+                            {faq.list.map((item, itemIndex) => (
+                              <div
+                                key={itemIndex}
+                                className="flex items-start gap-3"
+                              >
+                                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/20 mt-0.5 flex-shrink-0">
+                                  <DynamicIcons.CheckCircle className="h-3 w-3 text-primary" />
+                                </div>
+                                <Text
+                                  as="p"
+                                  className="text-sm leading-relaxed"
+                                >
+                                  {item}
+                                </Text>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {faq.subtext && (
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+                          <div className="flex items-start gap-3">
+                            <DynamicIcons.Info className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                            <div>
+                              <Text
+                                as="h4"
+                                className="font-semibold text-blue-800 dark:text-blue-300 text-sm mb-1"
+                              >
+                                Important Note:
+                              </Text>
+                              <Text
+                                as="p"
+                                className="text-sm text-blue-700 dark:text-blue-300 leading-relaxed"
+                              >
+                                {faq.subtext}
+                              </Text>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </BlurFade>
@@ -292,9 +362,11 @@ const FrequentlyAskedQuestionsPage = () => {
               <Text as="p" styleVariant="muted" className="mb-4">
                 Get comprehensive guidelines and documentation
               </Text>
-              <Button className="w-full">
-                <DynamicIcons.Download className="h-4 w-4 mr-2" />
-                Download FAQ PDF
+              <Button className="w-full" asChild>
+                <Link href="/assets/documents/MDIT_2025_FAQ.pdf">
+                  <DynamicIcons.Download className="h-4 w-4 mr-2" />
+                  Download FAQ PDF
+                </Link>
               </Button>
             </CardContent>
           </Card>

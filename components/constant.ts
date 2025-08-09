@@ -16,11 +16,26 @@ import {
   BrainIcon,
 } from "lucide-react";
 
-export const FAQ = [
+export const FAQ: FAQItem[] = [
   {
-    question: "What is MDIT 2025?",
+    question: "What is MDIT?",
     answer:
-      "MDIT 2025 (Malaysia Data Innovation Talent) is a national inter-varsity datathon competition aimed at fostering innovation and collaboration among students in the fields of computer science and mathematics. This competition motivates participants to think critically about data studies and become skilled in precise and transparent analysis.",
+      "Malaysia Data Innovation Talent (MDIT) is a prestigious national datathon competition organized by the Statistics Club (inStats), Faculty Computer and Mathematical Sciences, Universiti Teknologi MARA (UiTM), Shah Alam. This competition aims to cultivate data innovation skills among university students through real-world data challenges aligned with global sustainability goals.",
+  },
+  {
+    question:
+      "Which Sustainable Development Goals (SDGs) does this competition focus on?",
+    answer: "MDIT 2025 will focus on the following SDGs:",
+    list: [
+      "SDG 1 – No Poverty",
+      "SDG 3 – Good Health and Well-being",
+      "SDG 4 – Quality Education",
+      "SDG 8 – Decent Work and Economic Growth",
+      "SDG 9 – Industry, Innovation and Infrastructure",
+      "SDG 10 – Reduced Inequalities",
+    ],
+    subtext:
+      "Participants are expected to design data-driven solutions that support and address issues within these six SDGs.",
   },
   {
     question: "Who can participate in MDIT 2025?",
@@ -28,80 +43,139 @@ export const FAQ = [
       "MDIT 2025 is open to all university students currently enrolled in Malaysian institutions. This includes both undergraduate and postgraduate students. Teams must consist of 3-4 members, all from the same university.",
   },
   {
-    question: "What is the registration fee and when is the deadline?",
+    question: "Who can participate in the MDIT?",
     answer:
-      "The registration fee is RM150.00 per team (non-refundable). Registration opens on August 15, 2025, and closes on August 30, 2025, at 11:59 PM. Limited slots are available on a first-come, first-served basis.",
+      " The competition is open to all diploma and undergraduate students from both Public Universities (IPTA) and Private Universities (IPTS) within Malaysia.",
   },
   {
-    question: "What are the team requirements?",
+    question: "How many team members are allowed?",
     answer:
-      "Teams must have 3-4 members maximum, with at least 3 members required to participate. All team members must be from the same university. Mixed-year teams are allowed (undergraduate and postgraduate students can team up). Each participant can only be part of one team.",
-  },
-  {
-    question: "When does the competition take place?",
-    answer:
-      "The competition period runs from September 6, 2025, to October 18, 2025. The final presentations for finalists will be held on October 17, 2025, with the winner announcement and closing ceremony on October 18, 2025.",
-  },
-  {
-    question: "What programming languages and tools can we use?",
-    answer:
-      "Teams may use any programming language or analytical tools they prefer. Popular choices include Python, R, SQL, Java, and various data science libraries. Virtual environments are encouraged for reproducibility, and version control (Git) is strongly recommended.",
-  },
-  {
-    question: "Will datasets be provided or do we need to find our own?",
-    answer:
-      "Datasets will be provided at the start of the competition. Teams must use only the provided dataset - external data sources are strictly prohibited. This ensures fairness and focuses the competition on analytical skills rather than data collection.",
-  },
-  {
-    question: "What should be included in our final submission?",
-    answer:
-      "Final submissions must include: complete code with proper comments, a PDF report (maximum 20 pages), documentation for reproducibility, and presentation slides if you reach the finals. The complete submission package must be under 100MB in file size.",
-  },
-  {
-    question: "How will teams be judged?",
-    answer:
-      "Teams will be evaluated based on: Technical Innovation (25%), Data Analysis Quality (25%), Practical Application (20%), Presentation & Communication (15%), and Code Quality & Documentation (15%). The top 10 teams will be selected as finalists for live pitching.",
-  },
-  {
-    question: "Is there a prize pool?",
-    answer:
-      "Yes! MDIT 2025 features a substantial prize pool for winning teams. Specific prize amounts and categories will be announced closer to the competition date. All finalists will receive recognition and certificates.",
-  },
-  {
-    question: "Do I need to be physically present for the competition?",
-    answer:
-      "The competition is conducted in a hybrid format - both online and physical participation. The initial competition phase can be completed remotely, but finalists may need to attend the final presentation in person. Specific venue details will be announced later.",
-  },
-  {
-    question: "What technical support is available during the competition?",
-    answer:
-      "Technical support is available during business hours (Mon-Fri, 9:00 AM - 5:00 PM). For urgent matters during the competition period, emergency WhatsApp support (+60 12-345 6789) is available 24/7 from September 6-October 18, 2025.",
-  },
-  {
-    question: "What happens if we submit late?",
-    answer:
-      "Late submissions will not be accepted under any circumstances. The deadline is October 18, 2025, at 11:59 PM. We strongly recommend submitting well before the deadline to avoid any technical issues.",
-  },
-  {
-    question: "How do we register and what documents are needed?",
-    answer:
-      "Registration is done through our online platform (details will be announced). You'll need to provide: complete team information, all team members' student IDs, valid university enrollment verification, and team leader's active contact information.",
-  },
-  {
-    question: "Can we change team members after registration?",
-    answer:
-      "Team changes after registration are generally not allowed to maintain fairness. In exceptional circumstances, please contact our support team immediately. Any changes must be approved by the organizing committee.",
-  },
-  {
-    question: "Who are the organizers and partners?",
-    answer:
-      "MDIT 2025 is organized by the INSTATS club of Universiti Teknologi MARA (UiTM) Shah Alam, with support from the Faculty of Computer Science and Mathematics UiTM Shah Alam, and in collaboration with the Department of Statistics Malaysia (DOSM).",
+      " Each team must consist of four (4) student members and one (1) lecturer as academic advisor to be eligible to participate in the competition.",
   },
   {
     question:
-      "What should I do if I encounter technical issues during submission?",
+      "How much is the registration fee for participating in the competition? ",
     answer:
-      "Contact our technical support team immediately through the contact page or emergency WhatsApp line. Document the issue with screenshots if possible. For last-minute submission issues, our emergency support line is available 24/7 during competition dates.",
+      "Each team is required to pay a non-refundable entrance fee of RM 150.00.",
+  },
+  {
+    question: "Does each participant need to register individually?",
+    answer:
+      "No, only the team leader is required to register on behalf of the team. The registration form must include the details of all team members and the advisor.",
+  },
+  {
+    question: "When is the registration fee due?",
+    answer:
+      "The registration fee can only be paid after the team receives a confirmation email stating that their registration has been successfully approved. Payment should only be made after the team has received the official payment instruction email. Please note that registration will only be confirmed upon successful payment.",
+  },
+  {
+    question:
+      "Do all team members need to pay the registration fee individually?",
+    answer:
+      "Only the team leader needs to make the payment on behalf of the entire team.",
+  },
+  {
+    question: "What is the format of the competition?",
+    answer: " Each participating team is required to submit the following:",
+    list: [
+      "A video presentation (maximum duration will be stated in the guidelines)",
+      "A comprehensive report detailing their findings, methodology, and insights",
+      "A data dashboard to visualize their data solutions effectively",
+    ],
+  },
+  {
+    question: "Is there a submission deadline for the preliminary round?",
+    answer:
+      "Yes, all teams must submit their final work by the official deadline, which will be announced via WhatsApp group and our official platforms. Late submissions will not be accepted.",
+  },
+  {
+    question: "Are there any specific rules that participants must follow?",
+    answer:
+      "Participants are required to fully comply with the official rules and regulations as stated in the MDIT Rules and Regulations section.",
+  },
+  {
+    question: "Can teams withdraw from the competition?",
+    answer:
+      "Yes, teams may withdraw. However, they must notify the organizing committee in advance via official communication channels. Please note that the registration fee will not be refunded under any circumstances.",
+  },
+  {
+    question: "Will a certificate be provided?",
+    answer:
+      " Yes, all participants and advisors will receive a certificate of participation. Winners will receive additional certificates of achievement.",
+  },
+  {
+    question: "Can students from different universities form one team?",
+    answer:
+      "No, all team members and the advisor must be from the same university.",
+  },
+  {
+    question: "Are the datasets provided, or do we need to find our own?",
+    answer:
+      "Datasets will not be provided by the organizer. Teams will need to source their own datasets. However, they are encouraged to use reliable and credible sources and must provide proper citations.",
+  },
+  {
+    question: "Can we use any programming language or software?",
+    answer:
+      "Yes, participants may use any programming language or software tools that support data analysis and dashboard creation. Common tools include Python, R, Excel, Power BI, and Tableau.",
+  },
+  {
+    question: "Will training or workshops be provided before the competition?",
+    answer:
+      "Yes, there will be pre-event workshops covering relevant topics such as data visualization, analysis techniques, and dashboard building. More details on this will be shared shortly.",
+  },
+  {
+    question: " How will the judging process work?",
+    answer: "Submissions will be evaluated based on criteria such as:",
+    list: [
+      "Relevance to the selected SDG(s)",
+      "Data accuracy and depth of analysis",
+      "Innovation and creativity of the solution",
+      "Effectiveness and clarity of the dashboard",
+      "Quality of the report and video presentation",
+    ],
+  },
+  {
+    question: " Can we change team members after registration?",
+    answer:
+      " No, once the team has been registered and approved, changes to team members are not allowed.",
+  },
+  {
+    question: "Can we use AI tools like ChatGPT during the competition?",
+    answer:
+      " Yes, but with limitations. Teams must ensure originality and critical thinking in their submissions. Plagiarised or AI-generated content without proper human input may lead to disqualification.",
+  },
+  {
+    question: "Will mentors or advisors be assigned during the competition?",
+    answer:
+      "No mentors will be assigned by the organiser. However, each team must have their own advisor (a lecturer from their university) to guide them throughout the competition.",
+  },
+  {
+    question: "Will there be a live presentation?",
+    answer:
+      " Yes, only the Top 10 shortlisted teams will be invited to present their solutions during a live pitching session in front of a panel of expert judges. This session will be held physically. Further instructions will be shared with the selected teams.",
+  },
+  {
+    question: "Can the same university send more than one team?",
+    answer: "Yes, multiple teams from the same university are allowed.",
+  },
+  {
+    question: "What are the prizes for the winners?",
+    answer: "Attractive cash prizes await the top-performing teams.",
+    list: [
+      "Champion: RM3,500",
+      "1st Runner-up: RM2,500",
+      "2nd Runner-up: RM1,500",
+    ],
+  },
+  {
+    question: "Is this competition only open to statistics students?",
+    answer:
+      "No, it is open to all students regardless of their course or background. The competition does not require any prior knowledge in statistics, so anyone is welcome to join.",
+  },
+  {
+    question: "Who can I approach for more information?",
+    answer:
+      "You may contact the Management Bureau for any inquiries. visit the contact page.",
   },
 ];
 
@@ -518,7 +592,7 @@ export const COMPETITION_HIGHLIGHTS = [
   {
     icon: PresentationIcon,
     title: "Industry Exposure",
-    description: "Present to experts from Maybank, SAS and DOSM",
+    description: "Present to experts from the industry",
     color: " text-green-600 dark:text-green-400",
     bgColor: " bg-green-50 dark:bg-green-900/30",
   },
@@ -533,11 +607,19 @@ export const COMPETITION_HIGHLIGHTS = [
     icon: CrownIcon,
     title: "Collaborative Under Pressure",
     description:
-      "manage conflict, manage responsibilities, handle time constraints, and deliver your work under pressure.",
+      "Manage conflict, manage responsibilities, handle time constraints, and deliver your work under pressure.",
     color: " text-purple-600 dark:text-purple-400",
     bgColor: " bg-purple-50 dark:bg-purple-900/30",
   },
 ];
+
+// FAQ interface for type safety
+interface FAQItem {
+  question: string;
+  answer: string;
+  list?: string[];
+  subtext?: string;
+}
 
 // Judge interface for type safety
 interface Judge {
