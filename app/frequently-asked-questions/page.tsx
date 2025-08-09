@@ -329,7 +329,7 @@ const FrequentlyAskedQuestionsPage = () => {
         )}
       </div>
 
-      <div className="absolute right-0 lg:-right-32 h-[800px] rotate-0 overflow-hidden pointer-events-none">
+      <div className="absolute right-0 h-[800px] rotate-0 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/9.png"}
           alt="Background Gradient"
