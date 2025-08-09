@@ -183,13 +183,13 @@ const AboutUsPage = () => {
         image: "/team/TL3.png",
       },
       {
-        name: "Muhammad Fadhil Rais bin Mohd Harris",
+        name: "Emran Hafiz Bin M Abd Kohar",
         role: "Technical & Logistic Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/TL4.png",
       },
       {
-        name: "Emran Hafiz Bin M Abd Kohar",
+        name: "Muhammad Fadhil Rais bin Mohd Harris",
         role: "Technical & Logistic Bureau Member",
         designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/TL5.png",
