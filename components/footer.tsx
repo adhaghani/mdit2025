@@ -65,7 +65,11 @@ const Footer = () => {
       value: EVENT_DATA.Universities,
     },
     { icon: Trophy, label: "Prize pool", value: EVENT_DATA.Total_Prize_Pool },
-    { icon: Calendar, label: "Day duration", value: EVENT_DATA.Competition_Days },
+    {
+      icon: Calendar,
+      label: "Day duration",
+      value: EVENT_DATA.Competition_Days,
+    },
   ];
 
   return (
@@ -307,7 +311,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 -z-10 -right-0 w-screen lg:h-[600px] lg:w-auto rotate-90 overflow-hidden pointer-events-none">
+      <div className="absolute bottom-0 -z-10 -right-0 w-screen lg:h-[600px] lg:w-auto overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/13.png"}
           alt="Background Gradient"

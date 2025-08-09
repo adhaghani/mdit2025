@@ -953,7 +953,7 @@ const EventDetailsPage = () => {
         </div>
       </div>
 
-      <div className="absolute right-0 lg:-right-32  w-screen lg:w-auto h-[800px] rotate-180 overflow-hidden pointer-events-none">
+      <div className="absolute right-0  w-screen lg:w-auto h-[800px] rotate-180 overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/13.png"}
           alt="Background Gradient"
