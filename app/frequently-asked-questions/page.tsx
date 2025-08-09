@@ -259,7 +259,7 @@ const FrequentlyAskedQuestionsPage = () => {
                       </Text>
 
                       {faq.list && (
-                        <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg p-4 border border-primary/20">
+                        <div className="backdrop-blur-3xl bg-card rounded-lg p-4 border border-primary/20">
                           <div className="flex items-center gap-2 mb-3">
                             <DynamicIcons.List className="h-4 w-4 text-primary" />
                             <Text
@@ -349,8 +349,8 @@ const FrequentlyAskedQuestionsPage = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 px-4 md:grid-cols-3 gap-6 my-20 max-w-7xl mx-auto">
-        <BlurFade inView delay={0.5}>
+      <div className="grid grid-cols-1 px-4 md:grid-cols-2 gap-6 my-20 max-w-7xl mx-auto">
+        {/* <BlurFade inView delay={0.5}>
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="mx-auto mb-2 p-3 bg-primary/10 rounded-full w-fit">
@@ -370,7 +370,7 @@ const FrequentlyAskedQuestionsPage = () => {
               </Button>
             </CardContent>
           </Card>
-        </BlurFade>
+        </BlurFade> */}
 
         <BlurFade inView delay={0.55}>
           <Card className="text-center hover:shadow-lg transition-shadow">

@@ -61,7 +61,7 @@ const PastMDITPage = () => {
         university: "Universiti Kebangsaan Malaysia",
       },
       secondRunnerUp: {
-        team: "3 + 1 = 400",
+        team: "3 + 1 = 4.00",
         university: "Universiti Putra Malaysia",
       },
       statistics: [

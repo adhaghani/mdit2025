@@ -65,7 +65,7 @@ const Footer = () => {
       value: EVENT_DATA.Universities,
     },
     { icon: Trophy, label: "Prize Pool", value: EVENT_DATA.Total_Prize_Pool },
-    { icon: Calendar, label: "Duration", value: EVENT_DATA.Competition_Days },
+    { icon: Calendar, label: "Day Duration", value: EVENT_DATA.Competition_Days },
   ];
 
   return (

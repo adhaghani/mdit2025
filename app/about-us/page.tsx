@@ -552,6 +552,7 @@ const AboutUsPage = () => {
                         <Image
                           src={member.image}
                           alt={member.name}
+                          unoptimized
                           width={532}
                           height={400}
                           className="rounded-lg object-cover"

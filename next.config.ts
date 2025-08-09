@@ -15,17 +15,7 @@ const nextConfig: NextConfig = {
   },
   // Optimize images
   images: {
-    formats: ["image/webp"],
-    minimumCacheTTL: 31536000, // 1 year
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    // Enhanced optimization settings
-    dangerouslyAllowSVG: true, // Allow SVG optimization
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Optimize for your specific use case
-    domains: [], // Add external domains if needed
-    remotePatterns: [], // For external images
-    qualities: [75, 85], // Define quality levels for optimization
+    unoptimized: true, // Keep basic optimization but minimal processin
   },
 
   // Compress responses

@@ -182,7 +182,7 @@ const RulesRegulationPage = () => {
       id: 6,
       title: "Mandatory WhatsApp Group Participation",
       details: {
-        text: "Upon confirmation of registration, participants must join the official WhatsApp group ‘MDIT 2025 PARTICIPANTS’ using the provided link. All official announcements and updates will be made through this group.",
+        text: "Upon confirmation of registration, participants must join the official WhatsApp group ‘MDIT X DD 2025’ using the provided link. All official announcements and updates will be made through this group.",
         list: null,
       },
     },
@@ -943,6 +943,7 @@ const RulesRegulationPage = () => {
           alt="Background Gradient"
           width={1920}
           height={1080}
+          unoptimized
           className="inset-0 w-full h-full object-cover !overflow-visible"
         />
       </div>
