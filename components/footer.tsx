@@ -56,16 +56,16 @@ const Footer = () => {
   const keyStats = [
     {
       icon: Users,
-      label: "Participating Teams",
+      label: "Participating teams",
       value: EVENT_DATA.Expected_Team,
     },
     {
       icon: UniversityIcon,
-      label: "Participating Universities",
+      label: "Participating universities",
       value: EVENT_DATA.Universities,
     },
-    { icon: Trophy, label: "Prize Pool", value: EVENT_DATA.Total_Prize_Pool },
-    { icon: Calendar, label: "Day Duration", value: EVENT_DATA.Competition_Days },
+    { icon: Trophy, label: "Prize pool", value: EVENT_DATA.Total_Prize_Pool },
+    { icon: Calendar, label: "Day duration", value: EVENT_DATA.Competition_Days },
   ];
 
   return (
@@ -246,7 +246,7 @@ const Footer = () => {
                               className="flex items-center gap-2 w-full"
                               disabled={isExpired}
                             >
-                              Register your Team
+                              Register your team
                               <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                             </Button>
                           </DialogTrigger>

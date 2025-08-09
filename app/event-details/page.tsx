@@ -411,19 +411,19 @@ const EventDetailsPage = () => {
               </CardHeader>
               <CardContent>
                 <Text as="p" className="font-semibold mb-2">
-                  September 8 - October 17, 2025
+                  8 September - 17 October, 2025
                 </Text>
                 <Text as="p" styleVariant="muted" className="text-sm">
-                  • Registration: Aug 10-30, 2025
+                  • Registration: 10 August - 30 August, 2025
                   <br />
-                  • Preliminary Round: Sep 8 - 21
+                  • Preliminary Round: 8 September - 21 September, 2025
                   <br />
-                  • Evaluation Phase: Sep 22 - Oct 2
+                  • Evaluation Phase: 22 September - 2 October, 2025
                   <br />
-                  • Top 10 Announcement: Oct 3
+                  • Top 10 Announcement: 3 October, 2025
                   <br />
-                  • Final Round: Oct 17
-                  <br />• Closing Ceremony: Oct 18
+                  • Final Round: 17 October, 2025
+                  <br />• Closing Ceremony: 18 October, 2025
                 </Text>
               </CardContent>
             </Card>

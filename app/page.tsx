@@ -577,7 +577,7 @@ const Page = memo(() => {
     () => [
       {
         phase: "Registration",
-        date: "Aug 10-30, 2025",
+        date: "10-30 August, 2025",
         description:
           "Complete team registration and confirm participation via payment.",
         icon: DynamicIcons.UsersIcon,
@@ -585,7 +585,7 @@ const Page = memo(() => {
       },
       {
         phase: "Briefing & Workshops",
-        date: "Sep 6-7, 2025",
+        date: "6-7 September, 2025",
         description:
           "Overview of competition structure, themes, and deliverables, followed by a workshop to enhance data and presentation skills.",
         icon: DynamicIcons.BookOpenIcon,
@@ -593,15 +593,15 @@ const Page = memo(() => {
       },
       {
         phase: "Preliminary Round",
-        date: "Sep 8-21, 2025",
+        date: "8-21 September, 2025",
         description:
-          "Project Development, Report submission, and online video presentation.",
+          "Project development, report submission, and online video presentation.",
         icon: DynamicIcons.LightbulbIcon,
         status: "upcoming",
       },
       {
         phase: "Final Round ",
-        date: "Oct 17-18, 2025",
+        date: "17-18 October, 2025",
         description:
           "Shortlisted teams will pitch their projects physically to expert judges, demonstrating analytical clarity and impact.",
         icon: DynamicIcons.TrophyIcon,
@@ -1125,7 +1125,7 @@ const Page = memo(() => {
                     />
                   </Text>
                   <Text as="p" styleVariant="muted" className="text-sm">
-                    Teams Registered
+                    Teams registered
                   </Text>
                 </CardContent>
               </Card>
@@ -1147,7 +1147,7 @@ const Page = memo(() => {
                     />
                   </Text>
                   <Text as="p" styleVariant="muted" className="text-sm">
-                    Universities Participating
+                    Universities participating
                   </Text>
                 </CardContent>
               </Card>
@@ -1169,7 +1169,7 @@ const Page = memo(() => {
                     />
                   </Text>
                   <Text as="p" styleVariant="muted" className="text-sm">
-                    Total Participants
+                    Total participants
                   </Text>
                 </CardContent>
               </Card>
@@ -1191,7 +1191,7 @@ const Page = memo(() => {
                     />
                   </Text>
                   <Text as="p" styleVariant="muted" className="text-sm">
-                    Days Until Registration Closes
+                    Days until registration closes
                   </Text>
                 </CardContent>
               </Card>
@@ -1207,7 +1207,7 @@ const Page = memo(() => {
                     as="h4"
                     className="text-lg font-semibold text-primary mb-2"
                   >
-                    Registration Progress
+                    Registration progress
                   </Text>
                   <div className="w-full bg-muted rounded-full h-3 mb-3">
                     <div
@@ -1216,7 +1216,7 @@ const Page = memo(() => {
                     ></div>
                   </div>
                   <Text as="p" styleVariant="muted" className="text-sm">
-                    0 out of 100 slots filled
+                    0 out of 120 slots filled
                   </Text>
                 </CardContent>
               </Card>
@@ -1485,7 +1485,7 @@ const Page = memo(() => {
                       as="h4"
                       className="text-xl font-semibold mb-3 text-purple-600"
                     >
-                      Sponsors Coming Soon
+                      Sponsors list coming soon
                     </Text>
                     <Text
                       as="p"
@@ -1594,7 +1594,7 @@ const Page = memo(() => {
                         as="h4"
                         className="text-xl font-semibold mb-3 text-blue-600"
                       >
-                        Media Partners Coming Soon
+                        Media Partners list coming soon
                       </Text>
                       <Text
                         as="p"
@@ -1627,7 +1627,7 @@ const Page = memo(() => {
                 as="h3"
                 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
               >
-                Join Our Partnership Network
+                Join our partnership network
               </Text>
               <Text
                 as="p"
@@ -1662,7 +1662,7 @@ const Page = memo(() => {
       <div id="register" className="my-20 px-4 py-20 bg-primary/10 rounded-lg">
         <BlurFade inView delay={0.1}>
           <Text as="h2" className="text-center mb-6">
-            Ready to Register?
+            Ready to register?
           </Text>
         </BlurFade>
         <BlurFade inView delay={0.15}>
@@ -1726,7 +1726,7 @@ const Page = memo(() => {
       </div>
       <div className="max-w-7xl mx-auto py-16 px-4">
         <Text as="h2" className="text-3xl font-bold mb-4">
-          Watch Our recap video for the past MDIT!
+          Watch our recap video for the past MDIT!
         </Text>
         <MediaPlayer autoHide>
           <MediaPlayerVideo asChild>
@@ -1767,7 +1767,7 @@ const Page = memo(() => {
           </Text>
           <Text as="p" className=" text-center mb-12 max-w-2xl mx-auto">
             Relive the excitement and innovation from last year&apos;s Malaysian
-            Data Innovation Tournament. See the passion, dedication, and
+            Data Innovation Talent. See the passion, dedication, and
             brilliant minds that made MDIT 2024 an unforgettable experience.
           </Text>
         </BlurFade>
@@ -1833,7 +1833,7 @@ const Page = memo(() => {
           </Text>
           <Text as="p" className="text-center mb-12 max-w-2xl mx-auto">
             Relive the excitement and innovation from last year&apos;s Malaysian
-            Data Innovation Tournament. See the passion, dedication, and
+            Data Innovation Talent. See the passion, dedication, and
             brilliant minds that made MDIT 2023 an unforgettable experience.
           </Text>
         </BlurFade>

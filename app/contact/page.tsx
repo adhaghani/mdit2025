@@ -155,7 +155,7 @@ const ContactPage = () => {
         },
         {
           name: "TikTok",
-          handle: "@mdit2025",
+          handle: "@mdit_2025",
           link: "https://tiktok.com/@mdit_2025",
           description: "Quick tips, announcements, and fun competition moments",
           icon: "/tiktok.svg",
@@ -263,7 +263,7 @@ const ContactPage = () => {
         </div>
       ) : null}
       {isWebGLSupported ? (
-        <div className="absolute z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
+        <div className="absolute -z-10 opacity-40 hidden lg:block w-full max-h-[500px] h-fit">
           <MditTextPressure text="Contact" />
         </div>
       ) : null}
