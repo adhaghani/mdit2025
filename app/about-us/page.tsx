@@ -365,7 +365,7 @@ const AboutUsPage = () => {
     <>
       <div className="absolute w-screen lg:hidden -left-64 rotate-90 !overflow-visible">
         <Image
-          src={"/assets/bg-gradients/11.svg"}
+          src={"/assets/bg-gradients/11.png"}
           alt="Background Gradient"
           width={1920}
           height={1080}
@@ -491,7 +491,7 @@ const AboutUsPage = () => {
       </div>
       <div className="absolute right-0 w-screen lg:h-[800px] lg:w-auto rotate-90 overflow-hidden pointer-events-none">
         <Image
-          src={"/assets/bg-gradients/10.svg"}
+          src={"/assets/bg-gradients/10.png"}
           alt="Background Gradient"
           width={1920}
           height={1080}
@@ -644,7 +644,7 @@ const AboutUsPage = () => {
 
       <div className="absolute -left-0 lg:-left-32 w-screen lg:w-auto h-[800px] rotate-180 !overflow-hidden pointer-events-none">
         <Image
-          src={"/assets/bg-gradients/13.svg"}
+          src={"/assets/bg-gradients/13.png"}
           alt="Background Gradient"
           width={1920}
           height={1080}

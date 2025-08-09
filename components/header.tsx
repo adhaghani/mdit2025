@@ -46,7 +46,7 @@ const Header = memo(() => {
   const buttonHref = useMemo(() => {
     return isExpired || !hasStarted ? "#" : "/register";
   }, [isExpired, hasStarted]);
-  
+
   // Memoize button disabled state
   const isButtonDisabled = useMemo(() => {
     return isExpired || !hasStarted;
@@ -58,7 +58,7 @@ const Header = memo(() => {
         <div className="flex justify-between h-full items-center bg-white/50 dark:bg-black/20 backdrop-blur-lg gap-2 md:gap-4 border rounded-lg shadow-sm px-2 md:px-4 py-2 ">
           <Link href={"/"} className=" flex items-center justify-center gap-2">
             <Image
-              src="/mdit.svg"
+              src="/mdit2025.png"
               alt="MDIT 2025 Logo"
               width={40}
               height={40}
@@ -232,7 +232,7 @@ const Header = memo(() => {
                   <SheetHeader className="space-y-4">
                     <div className="flex items-center justify-center">
                       <Image
-                        src="/mdit.svg"
+                        src="/mdit2025.png"
                         alt="MDIT 2025 Logo"
                         width={50}
                         height={50}

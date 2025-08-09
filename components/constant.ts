@@ -497,70 +497,70 @@ export const FOOTER_QUICK_LINK = [
 // Freeze arrays for better performance and prevent mutations
 export const MDIT2024_IMAGE = Object.freeze([
   {
-    src: "/assets/mdit2024/DSC_0088.jpg",
+    src: "/assets/mdit2024/DSC_0088.png",
     alt: "MDIT 2024 Image 1",
   },
   {
-    src: "/assets/mdit2024/DSC_0148.jpg",
+    src: "/assets/mdit2024/DSC_0148.png",
     alt: "MDIT 2024 Image 2",
   },
   {
-    src: "/assets/mdit2024/DSC_0180.jpg",
+    src: "/assets/mdit2024/DSC_0180.png",
     alt: "MDIT 2024 Image 3",
   },
   {
-    src: "/assets/mdit2024/DSC_0198.jpg",
+    src: "/assets/mdit2024/DSC_0198.png",
     alt: "MDIT 2024 Image 4",
   },
   {
-    src: "/assets/mdit2024/DSC_0216.jpg",
+    src: "/assets/mdit2024/DSC_0216.png",
     alt: "MDIT 2024 Image 5",
   },
   {
-    src: "/assets/mdit2024/DSC_0248.jpg",
+    src: "/assets/mdit2024/DSC_0248.png",
     alt: "MDIT 2024 Image 6",
   },
   {
-    src: "/assets/mdit2024/DSC_0290.jpg",
+    src: "/assets/mdit2024/DSC_0290.png",
     alt: "MDIT 2024 Image 7",
   },
 ] as const);
 
 export const MDIT2023_IMAGE = Object.freeze([
   {
-    src: "/assets/mdit2023/DSC_0127.jpg",
+    src: "/assets/mdit2023/DSC_0127.png",
     alt: "MDIT 2023 Image 1",
   },
   {
-    src: "/assets/mdit2023/DSC_0133.jpg",
+    src: "/assets/mdit2023/DSC_0133.png",
     alt: "MDIT 2023 Image 2",
   },
   {
-    src: "/assets/mdit2023/DSC_0141.jpg",
+    src: "/assets/mdit2023/DSC_0141.png",
     alt: "MDIT 2023 Image 3",
   },
   {
-    src: "/assets/mdit2023/DSC_0143.jpg",
+    src: "/assets/mdit2023/DSC_0143.png",
     alt: "MDIT 2023 Image 4",
   },
   {
-    src: "/assets/mdit2023/DSC_0194.jpg",
+    src: "/assets/mdit2023/DSC_0194.png",
     alt: "MDIT 2023 Image 5",
   },
   {
-    src: "/assets/mdit2023/DSC_0221.jpg",
+    src: "/assets/mdit2023/DSC_0221.png",
     alt: "MDIT 2023 Image 6",
   },
   {
-    src: "/assets/mdit2023/DSC_0239.jpg",
+    src: "/assets/mdit2023/DSC_0239.png",
     alt: "MDIT 2023 Image 7",
   },
   {
-    src: "/assets/mdit2023/DSC_0255.jpg",
+    src: "/assets/mdit2023/DSC_0255.png",
     alt: "MDIT 2023 Image 8",
   },
   {
-    src: "/assets/mdit2023/DSC_0256.jpg",
+    src: "/assets/mdit2023/DSC_0256.png",
     alt: "MDIT 2023 Image 9",
   },
 ] as const);

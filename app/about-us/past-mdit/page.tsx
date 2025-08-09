@@ -150,7 +150,7 @@ const PastMDITPage = () => {
         <>
           <div className="absolute -right-64 lg:-right-128 w-screen lg:w-auto  h-auto lg:h-[800px] rotate-50  -z-10 pointer-events-none">
             <Image
-              src={"/assets/bg-gradients/12.svg"}
+              src={"/assets/bg-gradients/12.png"}
               alt="Background Gradient"
               width={1920}
               height={1080}
@@ -202,7 +202,7 @@ const PastMDITPage = () => {
 
       <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto lg:h-[1000px] h-auto rotate-90  pointer-events-none">
         <Image
-          src={"/assets/bg-gradients/8.svg"}
+          src={"/assets/bg-gradients/8.png"}
           alt="Background Gradient"
           width={1920}
           height={1080}
@@ -417,7 +417,7 @@ const PastMDITPage = () => {
         <>
           <div className="absolute right-0 -z-10 bottom-0 lg:-right-32 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-90 overflow-hidden pointer-events-none">
             <Image
-              src={"/assets/bg-gradients/9.svg"}
+              src={"/assets/bg-gradients/9.png"}
               alt="Background Gradient"
               width={1920}
               height={1080}
@@ -442,7 +442,6 @@ const PastMDITPage = () => {
                             className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
                             src={image.src}
                             alt={image.alt}
-                            quality={100}
                             width={500}
                             height={200}
                           />
@@ -453,7 +452,6 @@ const PastMDITPage = () => {
                             className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
                             src={image.src}
                             alt={image.alt}
-                            quality={100}
                             width={500}
                             height={200}
                           />
@@ -479,7 +477,6 @@ const PastMDITPage = () => {
                             className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
                             src={image.src}
                             alt={image.alt}
-                            quality={100}
                             width={500}
                             height={200}
                           />
@@ -490,7 +487,6 @@ const PastMDITPage = () => {
                             className="aspect-video object-cover md:max-w-xl max-w-[200px] w-full rounded-lg object-center"
                             src={image.src}
                             alt={image.alt}
-                            quality={100}
                             width={500}
                             height={200}
                           />

@@ -108,7 +108,7 @@ const Footer = () => {
                       <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl" />
                       <div className="relative size-12 flex items-center justify-center bg-white dark:bg-black/50 rounded-full border border-border/50">
                         <Image
-                          src="/mdit.svg"
+                          src="/mdit2025.png"
                           alt="MDIT 2025 Logo"
                           width={32}
                           height={32}
@@ -309,7 +309,7 @@ const Footer = () => {
 
       <div className="absolute bottom-0 -z-10 -right-0 w-screen lg:h-[600px] lg:w-auto rotate-90 overflow-hidden pointer-events-none">
         <Image
-          src={"/assets/bg-gradients/13.svg"}
+          src={"/assets/bg-gradients/13.png"}
           alt="Background Gradient"
           width={1920}
           height={1080}
@@ -318,7 +318,7 @@ const Footer = () => {
       </div>
       <div className="absolute top-0 -z-10 left-0 w-screen lg:h-[800px] lg:w-auto rotate-90 overflow-hidden pointer-events-none">
         <Image
-          src={"/assets/bg-gradients/10.svg"}
+          src={"/assets/bg-gradients/10.png"}
           alt="Background Gradient"
           width={1920}
           height={1080}

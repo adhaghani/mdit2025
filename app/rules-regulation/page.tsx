@@ -503,7 +503,7 @@ const RulesRegulationPage = () => {
         <>
           <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
             <Image
-              src={"/assets/bg-gradients/13.svg"}
+              src={"/assets/bg-gradients/13.png"}
               alt="Background Gradient"
               width={1920}
               height={1080}
@@ -512,7 +512,7 @@ const RulesRegulationPage = () => {
           </div>
           <div className="absolute right-1/2 lg:-right-128 w-[200px] lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
             <Image
-              src={"/assets/bg-gradients/12.svg"}
+              src={"/assets/bg-gradients/12.png"}
               alt="Background Gradient"
               width={1920}
               height={1080}
@@ -555,7 +555,7 @@ const RulesRegulationPage = () => {
 
       <div className="absolute right-0 lg:-right-32 h-[700px] rotate-0 overflow-hidden pointer-events-none">
         <Image
-          src={"/assets/bg-gradients/12.svg"}
+          src={"/assets/bg-gradients/12.png"}
           alt="Background Gradient"
           width={1920}
           height={1080}
@@ -939,7 +939,7 @@ const RulesRegulationPage = () => {
       </div>
       <div className="absolute left-0 lg:-left-32 h-[900px] rotate-0 overflow-hidden pointer-events-none">
         <Image
-          src={"/assets/bg-gradients/9.svg"}
+          src={"/assets/bg-gradients/9.png"}
           alt="Background Gradient"
           width={1920}
           height={1080}

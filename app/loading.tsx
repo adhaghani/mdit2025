@@ -45,7 +45,7 @@ const Loading = memo(() => {
         <BlurFade delay={0.1}>
           <div className="flex justify-center mb-6">
             <Image
-              src="/mdit.svg"
+              src="/mdit2025.png"
               alt="MDIT 2025 Logo"
               width={80}
               height={80}

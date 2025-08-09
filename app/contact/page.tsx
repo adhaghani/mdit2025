@@ -240,7 +240,7 @@ const ContactPage = () => {
         <>
           <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
             <Image
-              src={"/assets/bg-gradients/13.svg"}
+              src={"/assets/bg-gradients/13.png"}
               alt="Background Gradient"
               width={1920}
               height={1080}
@@ -249,7 +249,7 @@ const ContactPage = () => {
           </div>
           <div className="absolute right-1/2 lg:-right-128 w-[200px] lg:w-auto  h-auto lg:h-[800px] rotate-50 overflow-hidden -z-10 pointer-events-none">
             <Image
-              src={"/assets/bg-gradients/12.svg"}
+              src={"/assets/bg-gradients/12.png"}
               alt="Background Gradient"
               width={1920}
               height={1080}
@@ -319,7 +319,7 @@ const ContactPage = () => {
 
       <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto h-[300px] lg:h-[1200px] rotate-90 overflow-visible pointer-events-none">
         <Image
-          src={"/assets/bg-gradients/9.svg"}
+          src={"/assets/bg-gradients/9.png"}
           alt="Background Gradient"
           width={1920}
           height={1080}
