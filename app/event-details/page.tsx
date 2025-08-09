@@ -402,7 +402,7 @@ const EventDetailsPage = () => {
         </BlurFade>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <BlurFade inView delay={0.15}>
-            <Card>
+            <Card className="h-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <DynamicIcons.CalendarIcon className="text-pink-600" />
@@ -430,7 +430,7 @@ const EventDetailsPage = () => {
           </BlurFade>
 
           <BlurFade inView delay={0.2}>
-            <Card>
+            <Card className="h-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <DynamicIcons.MapPinIcon className="text-cyan-600" />
@@ -454,7 +454,7 @@ const EventDetailsPage = () => {
           </BlurFade>
 
           <BlurFade inView delay={0.25}>
-            <Card>
+            <Card className="h-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <DynamicIcons.DollarSignIcon className="text-green-600" />

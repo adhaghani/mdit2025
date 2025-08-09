@@ -948,7 +948,7 @@ const RulesRegulationPage = () => {
       </div>
 
       {/* Download Section - Enhanced */}
-      <div>
+      {/* <div>
         <div className="max-w-7xl mx-auto px-4">
           <BlurFade inView delay={0.6} className="">
             <div className="text-center mb-8">
@@ -990,7 +990,7 @@ const RulesRegulationPage = () => {
             </Button>
           </BlurFade>
         </div>
-      </div>
+      </div> */}
       {/* Timeline Reminder - Enhanced */}
       <div className="px-4 max-w-7xl mx-auto">
         <BlurFade
