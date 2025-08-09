@@ -577,7 +577,7 @@ const Page = memo(() => {
     () => [
       {
         phase: "Registration",
-        date: "Aug 15-30, 2025",
+        date: "Aug 10-30, 2025",
         description:
           "Complete team registration and confirm participation via payment.",
         icon: DynamicIcons.UsersIcon,
@@ -585,7 +585,7 @@ const Page = memo(() => {
       },
       {
         phase: "Briefing & Workshops",
-        date: "Sep 6-20, 2025",
+        date: "Sep 6-7, 2025",
         description:
           "Overview of competition structure, themes, and deliverables, followed by a workshop to enhance data and presentation skills.",
         icon: DynamicIcons.BookOpenIcon,
@@ -593,7 +593,7 @@ const Page = memo(() => {
       },
       {
         phase: "Preliminary round",
-        date: "Sep 21 - Oct 15, 2025",
+        date: "Sep 8-21, 2025",
         description:
           "Project Development, Report submission, and online video presentation.",
         icon: DynamicIcons.LightbulbIcon,
