@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo } from "react";
 import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,6 +13,7 @@ import {
 import { ContactInfo, SocialPlatform } from "@/types";
 
 import { useDevice } from "@/contexts/device-context";
+import { createWhatsAppLink } from "@/lib/contact-utils";
 
 const DynamicIcons = {
   Clock: dynamic(() => import("lucide-react").then((m) => m.Clock)),
@@ -214,16 +215,6 @@ const ContactPage = () => {
             "Information about venues, schedules, accommodation, or travel arrangements.",
         },
       ] as const),
-    []
-  );
-
-  const createWhatsAppLink = useCallback(
-    (number: string, name: string, role: string) => {
-      const message = encodeURIComponent(
-        `Hello ${name}, I would like to inquire about MDIT 2025. I understand you handle ${role.toLowerCase()} matters.`
-      );
-      return `https://wa.me/${number.replace(/[^0-9]/g, "")}?text=${message}`;
-    },
     []
   );
 

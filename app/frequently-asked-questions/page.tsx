@@ -15,7 +15,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MditAuroraSubtle } from "@/components/optimized-react-bits";
+import { GOOGLE_FORM_LINK } from "@/components/constant";
+import { useCountdown } from "@/contexts/countdown-context";
 import { useDevice } from "@/contexts/device-context";
+import { createWhatsAppLink } from "@/lib/contact-utils";
 
 const DynamicIcons = {
   Search: dynamic(() => import("lucide-react").then((mod) => mod.Search)),
@@ -51,9 +54,47 @@ const BlurFade = dynamic(
 
 const FrequentlyAskedQuestionsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  // Filter FAQs based on search term
+  const { hasStarted, timeLeft, isExpired, timeUntilRegistration } =
+    useCountdown();
+
+  // Define FAQ categories based on the actual category property
+  const faqCategories = [
+    {
+      id: "general",
+      title: "General Information",
+      icon: DynamicIcons.HelpCircle,
+      color: "bg-blue-500",
+      description: "Basic information about MDIT and datathon",
+    },
+    {
+      id: "registration",
+      title: "Registration",
+      icon: DynamicIcons.Users,
+      color: "bg-green-500",
+      description: "Team registration and payment process",
+    },
+    {
+      id: "competition",
+      title: "Competition Details",
+      icon: DynamicIcons.Trophy,
+      color: "bg-purple-500",
+      description: "Competition format, rules, and prizes",
+    },
+  ];
+
+  // Filter FAQs based on search term and selected category
   const filteredFAQs = FAQ.filter((faq) => {
+    // Category filter
+    const matchesCategory =
+      selectedCategory === "all" || faq.category === selectedCategory;
+
+    if (!matchesCategory) return false;
+
+    // Search filter
+    if (!searchTerm) return true;
+
     const searchLower = searchTerm.toLowerCase();
 
     // Search in question and answer
@@ -74,31 +115,10 @@ const FrequentlyAskedQuestionsPage = () => {
     return matchesQuestionOrAnswer || matchesList || matchesSubtext;
   });
 
-  // FAQ categories for easy navigation
-  const faqCategories = [
-    {
-      title: "General Information",
-      icon: DynamicIcons.HelpCircle,
-      keywords: ["what is"],
-      color: "bg-blue-100 text-blue-700 border-blue-200",
-    },
-    {
-      title: "Registration",
-      icon: DynamicIcons.Users,
-      keywords: ["registration"],
-      color: "bg-green-100 text-green-700 border-green-200",
-    },
-    {
-      title: "Competition Details",
-      icon: DynamicIcons.Trophy,
-      keywords: ["competition"],
-      color: "bg-purple-100 text-purple-700 border-purple-200",
-    },
-  ];
-
-  const handleCategoryFilter = (keywords: string[]) => {
-    const categoryTerms = keywords.join(" ");
-    setSearchTerm(categoryTerms);
+  // Get FAQ count for each category
+  const getCategoryCount = (categoryId: string) => {
+    if (categoryId === "all") return FAQ.length;
+    return FAQ.filter((faq) => faq.category === categoryId).length;
   };
 
   const clearSearch = () => {
@@ -209,104 +229,263 @@ const FrequentlyAskedQuestionsPage = () => {
         </div>
       </BlurFade>
 
-      {/* Category Filter */}
-      <div className="grid grid-cols-1 px-4 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12 max-w-7xl mx-auto">
-        {faqCategories.map((category, index) => (
-          <BlurFade key={index} inView delay={0.3 + index * 0.05}>
-            <Card
-              className={`cursor-pointer transition-all duration-200 hover:shadow-md hover:scale-105 ${category.color}`}
-              onClick={() => handleCategoryFilter(category.keywords)}
-            >
-              <CardContent className="p-4 text-center">
-                <category.icon className="h-8 w-8 mx-auto mb-2" />
-                <Text as="h4" className="font-semibold text-sm">
-                  {category.title}
+      {/* Category Filter Navigation */}
+      <div className="mb-12 px-4 max-w-7xl mx-auto">
+        <BlurFade inView delay={0.3}>
+          <Card className="mb-4">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <DynamicIcons.List className="h-5 w-5" />
+                Quick Navigation
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <button
+                  onClick={() => setSelectedCategory("all")}
+                  className={`p-4 rounded-lg border transition-all duration-200 hover:shadow-md ${
+                    selectedCategory === "all"
+                      ? "border-primary bg-primary/5"
+                      : "border-border hover:border-primary/50"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-gray-500 text-white">
+                      <DynamicIcons.FileText className="h-4 w-4" />
+                    </div>
+                    <div className="text-left">
+                      <Text as="h3" className="font-semibold text-sm">
+                        All Questions
+                      </Text>
+                      <Text as="p" className="text-xs text-muted-foreground">
+                        {getCategoryCount("all")} questions
+                      </Text>
+                    </div>
+                  </div>
+                </button>
+                {faqCategories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`p-4 rounded-lg border transition-all duration-200 hover:shadow-md ${
+                      selectedCategory === category.id
+                        ? "border-primary bg-primary/5"
+                        : "border-border hover:border-primary/50"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`p-2 rounded-full ${category.color} text-white`}
+                      >
+                        <category.icon className="h-4 w-4" />
+                      </div>
+                      <div className="text-left">
+                        <Text as="h3" className="font-semibold text-sm">
+                          {category.title}
+                        </Text>
+                        <Text as="p" className="text-xs text-muted-foreground">
+                          {getCategoryCount(category.id)} questions
+                        </Text>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <Button
+                  variant={selectedCategory === "all" ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedCategory("all")}
+                >
+                  Show All
+                </Button>
+                {faqCategories.map((category) => (
+                  <Button
+                    key={category.id}
+                    variant={
+                      selectedCategory === category.id ? "default" : "outline"
+                    }
+                    size="sm"
+                    onClick={() => setSelectedCategory(category.id)}
+                  >
+                    {category.title}
+                  </Button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </BlurFade>
+      </div>
+
+      {/* Results Summary */}
+      {(searchTerm || selectedCategory !== "all") && (
+        <BlurFade inView delay={0.35}>
+          <div className="mb-8 px-4 max-w-7xl mx-auto text-center">
+            <Card className="bg-muted/50">
+              <CardContent className="p-4">
+                <Text as="p" className="text-sm text-muted-foreground">
+                  {searchTerm && selectedCategory !== "all"
+                    ? `Found ${
+                        filteredFAQs.length
+                      } result(s) for "${searchTerm}" in ${
+                        faqCategories.find((c) => c.id === selectedCategory)
+                          ?.title
+                      }`
+                    : searchTerm
+                    ? `Found ${filteredFAQs.length} result(s) for "${searchTerm}"`
+                    : `Showing ${filteredFAQs.length} question(s) in ${
+                        faqCategories.find((c) => c.id === selectedCategory)
+                          ?.title
+                      }`}
                 </Text>
+                {(searchTerm || selectedCategory !== "all") && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setSearchTerm("");
+                      setSelectedCategory("all");
+                    }}
+                    className="mt-2"
+                  >
+                    Clear filters
+                  </Button>
+                )}
               </CardContent>
             </Card>
-          </BlurFade>
-        ))}
-      </div>
+          </div>
+        </BlurFade>
+      )}
 
       {/* FAQ Accordion */}
       <div className="pb-20 px-4">
         {filteredFAQs.length > 0 ? (
           <Accordion type="single" collapsible className="w-full">
-            {filteredFAQs.map((faq, index) => (
-              <BlurFade key={index} inView delay={0.15}>
-                <AccordionItem
-                  value={`item-${index}`}
-                  className="max-w-4xl mx-auto"
-                >
-                  <AccordionTrigger className="text-left">
-                    <Text as="h3" className="text-lg font-semibold pr-4">
-                      {faq.question}
-                    </Text>
-                  </AccordionTrigger>
-                  <AccordionContent className="pt-2">
-                    <div className="space-y-4">
-                      <Text as="p" className="leading-relaxed">
-                        {faq.answer}
+            {filteredFAQs.map((faq, index) => {
+              const categoryInfo = faqCategories.find(
+                (cat) => cat.id === faq.category
+              );
+
+              return (
+                <BlurFade key={index} inView delay={0.15}>
+                  <AccordionItem
+                    value={`item-${index}`}
+                    className="max-w-4xl mx-auto"
+                  >
+                    <AccordionTrigger className="text-left cursor-pointer">
+                      <Text as="h3" className="text-lg font-semibold">
+                        {faq.question}
                       </Text>
+                    </AccordionTrigger>
+                    <AccordionContent className="pt-2">
+                      <div className="space-y-4">
+                        <Text as="p" className="leading-relaxed">
+                          {faq.answer}
+                        </Text>
 
-                      {faq.list && (
-                        <div className="backdrop-blur-3xl bg-card rounded-lg p-4 border border-primary/20">
-                          <div className="flex items-center gap-2 mb-3">
-                            <DynamicIcons.List className="h-4 w-4 text-primary" />
-                            <Text
-                              as="h4"
-                              className="font-semibold text-primary text-sm"
-                            >
-                              Details:
-                            </Text>
-                          </div>
-                          <div className="space-y-3">
-                            {faq.list.map((item, itemIndex) => (
-                              <div
-                                key={itemIndex}
-                                className="flex items-start gap-3"
-                              >
-                                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/20 mt-0.5 flex-shrink-0">
-                                  <DynamicIcons.CheckCircle className="h-3 w-3 text-primary" />
-                                </div>
-                                <Text
-                                  as="p"
-                                  className="text-sm leading-relaxed"
-                                >
-                                  {item}
-                                </Text>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {faq.subtext && (
-                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                          <div className="flex items-start gap-3">
-                            <DynamicIcons.Info className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
-                            <div>
+                        {faq.list && (
+                          <div className="backdrop-blur-3xl bg-card rounded-lg p-4 border border-primary/20">
+                            <div className="flex items-center gap-2 mb-3">
+                              <DynamicIcons.List className="h-4 w-4 text-primary" />
                               <Text
                                 as="h4"
-                                className="font-semibold text-blue-800 dark:text-blue-300 text-sm mb-1"
+                                className="font-semibold text-primary text-sm"
                               >
-                                Important Note:
-                              </Text>
-                              <Text
-                                as="p"
-                                className="text-sm text-blue-700 dark:text-blue-300 leading-relaxed"
-                              >
-                                {faq.subtext}
+                                Details:
                               </Text>
                             </div>
+                            <div className="space-y-3">
+                              {faq.list.map((item, itemIndex) => (
+                                <div
+                                  key={itemIndex}
+                                  className="flex items-start gap-3"
+                                >
+                                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/20 mt-0.5 flex-shrink-0">
+                                    <DynamicIcons.CheckCircle className="h-3 w-3 text-primary" />
+                                  </div>
+                                  <Text
+                                    as="p"
+                                    className="text-sm leading-relaxed"
+                                  >
+                                    {item}
+                                  </Text>
+                                </div>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </BlurFade>
-            ))}
+                        )}
+
+                        {faq.subtext && (
+                          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+                            <div className="flex items-start gap-3">
+                              <DynamicIcons.Info className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                              <div>
+                                <Text
+                                  as="h4"
+                                  className="font-semibold text-blue-800 dark:text-blue-300 text-sm mb-1"
+                                >
+                                  Important Note:
+                                </Text>
+                                <Text
+                                  as="p"
+                                  className="text-sm text-blue-700 dark:text-blue-300 leading-relaxed"
+                                >
+                                  {faq.subtext}
+                                </Text>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {faq.contact &&
+                          faq.contact.length > 0 &&
+                          faq.contact.map((contact, index) => (
+                            <div
+                              key={index}
+                              className="p-4 border rounded-lg hover:border-green-200 transition-colors"
+                            >
+                              <div className="flex items-start justify-between gap-4">
+                                <div className="flex-1">
+                                  <Text
+                                    as="h4"
+                                    className="font-semibold text-green-700 mb-1"
+                                  >
+                                    {contact.name}
+                                  </Text>
+                                  <Text
+                                    as="p"
+                                    className="text-sm text-green-600 mb-2"
+                                  >
+                                    {contact.role}
+                                  </Text>
+                                  <Button
+                                    size="sm"
+                                    className="bg-green-600 hover:bg-green-700 text-white"
+                                    asChild
+                                  >
+                                    <Link
+                                      href={createWhatsAppLink(
+                                        contact.number,
+                                        contact.name,
+                                        contact.role
+                                      )}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      <DynamicIcons.MessageCircle className="h-4 w-4 mr-2" />
+                                      Chat on WhatsApp
+                                    </Link>
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </BlurFade>
+              );
+            })}
           </Accordion>
         ) : (
           <BlurFade inView delay={0.4}>
@@ -340,8 +519,8 @@ const FrequentlyAskedQuestionsPage = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 px-4 md:grid-cols-2 gap-6 my-20 max-w-7xl mx-auto">
-        {/* <BlurFade inView delay={0.5}>
+      <div className="grid grid-cols-1 px-4 md:grid-cols-3 gap-6 my-20 max-w-7xl mx-auto">
+        <BlurFade inView delay={0.5}>
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="mx-auto mb-2 p-3 bg-primary/10 rounded-full w-fit">
@@ -361,7 +540,7 @@ const FrequentlyAskedQuestionsPage = () => {
               </Button>
             </CardContent>
           </Card>
-        </BlurFade> */}
+        </BlurFade>
 
         <BlurFade inView delay={0.55}>
           <Card className="text-center hover:shadow-lg transition-shadow">
@@ -466,7 +645,15 @@ const FrequentlyAskedQuestionsPage = () => {
         <BlurFade inView delay={0.8}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
-              <Link href="/">Register Now</Link>
+              <Link
+                href={isExpired ? "#" : hasStarted ? GOOGLE_FORM_LINK : "#"}
+              >
+                {isExpired
+                  ? "Registration Closed"
+                  : hasStarted
+                  ? "Register Now"
+                  : "Registration Opening Soon"}
+              </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link href="/event-details">Learn More</Link>

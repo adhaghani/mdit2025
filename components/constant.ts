@@ -19,13 +19,27 @@ import {
 export const FAQ: FAQItem[] = [
   {
     question: "What is MDIT?",
+    category: "general",
     answer:
-      "Malaysia Data Innovation Talent (MDIT) is a prestigious national datathon competition organized by the Statistics Club (inStats), Faculty Computer and Mathematical Sciences, Universiti Teknologi MARA (UiTM), Shah Alam. This competition aims to cultivate data innovation skills among university students through real-world data challenges aligned with global sustainability goals.",
+      "The Malaysia Data Innovation Talent (MDIT) is a prestigious national datathon competition organised by the Statistics Club (inStats), Faculty of Computer and Mathematical Sciences, Universiti Teknologi MARA (UiTM), Shah Alam. This competition aims to cultivate data innovation skills among university students through real-world data challenges aligned with global sustainability goals.",
+  },
+  {
+    question: "What is a datathon?",
+    category: "general",
+    answer:
+      "A datathon is a competition in which participants work intensively with data to solve defined problems or uncover insights within a limited time frame.",
+  },
+  {
+    question: "What are the differences between a datathon and a hackathon?",
+    category: "general",
+    answer:
+      "A datathon focuses on analysing data to find solutions or insights, whereas a hackathon focuses on building functional products or prototypes through coding and design.",
   },
   {
     question:
       "Which Sustainable Development Goals (SDGs) does this competition focus on?",
     answer: "MDIT 2025 will focus on the following SDGs:",
+    category: "general",
     list: [
       "SDG 1 – No Poverty",
       "SDG 3 – Good Health and Well-being",
@@ -39,138 +53,174 @@ export const FAQ: FAQItem[] = [
   },
   {
     question: "Who can participate in the MDIT?",
+    category: "general",
     answer:
-      " The competition is open to all diploma and undergraduate students from both Public Universities (IPTA) and Private Universities (IPTS) within Malaysia.",
-  },
-  {
-    question: "How many team members are allowed?",
-    answer:
-      " Each team must consist of four (4) student members and one (1) lecturer as academic advisor to be eligible to participate in the competition.",
+      "The competition is open to all diploma and undergraduate students from both public universities (IPTA) and private universities (IPTS) within Malaysia.",
   },
   {
     question:
-      "How much is the registration fee for participating in the competition? ",
-    answer:
-      "Each team is required to pay a non-refundable entrance fee of RM 150.00.",
-  },
-  {
-    question: "Does each participant need to register individually?",
-    answer:
-      "No, only the team leader is required to register on behalf of the team. The registration form must include the details of all team members and the advisor.",
-  },
-  {
-    question: "When is the registration fee due?",
-    answer:
-      "The registration fee can only be paid after the team receives a confirmation email stating that their registration has been successfully approved. Payment should only be made after the team has received the official payment instruction email. Please note that registration will only be confirmed upon successful payment.",
-  },
-  {
-    question:
-      "Do all team members need to pay the registration fee individually?",
-    answer:
-      "Only the team leader needs to make the payment on behalf of the entire team.",
-  },
-  {
-    question: "What is the format of the competition?",
-    answer: " Each participating team is required to submit the following:",
-    list: [
-      "A video presentation (maximum duration will be stated in the guidelines)",
-      "A comprehensive report detailing their findings, methodology, and insights",
-      "A data dashboard to visualize their data solutions effectively",
-    ],
-  },
-  {
-    question: "Is there a submission deadline for the preliminary round?",
-    answer:
-      "Yes, all teams must submit their final work by the official deadline, which will be announced via WhatsApp group and our official platforms. Late submissions will not be accepted.",
-  },
-  {
-    question: "Are there any specific rules that participants must follow?",
-    answer:
-      "Participants are required to fully comply with the official rules and regulations as stated in the MDIT Rules and Regulations section.",
-  },
-  {
-    question: "Can teams withdraw from the competition?",
-    answer:
-      "Yes, teams may withdraw. However, they must notify the organizing committee in advance via official communication channels. Please note that the registration fee will not be refunded under any circumstances.",
-  },
-  {
-    question: "Will a certificate be provided?",
-    answer:
-      " Yes, all participants and advisors will receive a certificate of participation. Winners will receive additional certificates of achievement.",
-  },
-  {
-    question: "Can students from different universities form one team?",
+      "Are students or advisors from different universities allowed to form one team?",
+    category: "general",
     answer:
       "No, all team members and the advisor must be from the same university.",
   },
   {
-    question: "Are the datasets provided, or do we need to find our own?",
+    question: "Are datasets provided, or must participants find their own?",
+    category: "general",
     answer:
-      "Datasets will not be provided by the organizer. Teams will need to source their own datasets. However, they are encouraged to use reliable and credible sources and must provide proper citations.",
+      "Datasets will not be provided by the organiser. Teams must source their own datasets from reliable and credible sources and provide proper citations. Extra points will be awarded for using datasets from OpenDOSM.",
   },
   {
     question: "Can we use any programming language or software?",
+    category: "general",
     answer:
       "Yes, participants may use any programming language or software tools that support data analysis and dashboard creation. Common tools include Python, R, Excel, Power BI, and Tableau.",
   },
   {
     question: "Will training or workshops be provided before the competition?",
+    category: "general",
     answer:
-      "Yes, there will be pre-event workshops covering relevant topics such as data visualization, analysis techniques, and dashboard building. More details on this will be shared shortly.",
-  },
-  {
-    question: " How will the judging process work?",
-    answer: "Submissions will be evaluated based on criteria such as:",
-    list: [
-      "Relevance to the selected SDG(s)",
-      "Data accuracy and depth of analysis",
-      "Innovation and creativity of the solution",
-      "Effectiveness and clarity of the dashboard",
-      "Quality of the report and video presentation",
-    ],
-  },
-  {
-    question: "Can we change team members after registration?",
-    answer:
-      "No, once the team has been registered and approved, changes to team members are not allowed.",
+      "Yes, there will be pre-event workshops covering topics such as data visualisation, analysis techniques, and dashboard building. More details will be shared in due course.",
   },
   {
     question: "Can we use AI tools like ChatGPT during the competition?",
+    category: "general",
     answer:
-      "Yes, but with limitations. Teams must ensure originality and critical thinking in their submissions. Plagiarised or AI-generated content without proper human input may lead to disqualification.",
+      "Yes,  but  with  limitations.  Teams must ensure originality and critical thinking in their submissions.  Plagiarised  or  AI-generated  content  without  proper  human  input  may result in disqualification.",
   },
   {
-    question: "Will mentors or advisors be assigned during the competition?",
-    answer:
-      "No mentors will be assigned by the organiser. However, each team must have their own advisor (a lecturer from their university) to guide them throughout the competition.",
+    question: "Who can I contact for more information?",
+    category: "general",
+    answer: "You may contact the Management Bureau for inquiries:",
+    contact: [
+      {
+        name: "Muhammad Fiqri",
+        role: "Support",
+        number: "+60184727274",
+      },
+      {
+        name: "Amira Adriana",
+        role: "Support",
+        number: "+60192766323",
+      },
+    ],
   },
   {
-    question: "Will there be a live presentation?",
+    question: "How many team members are allowed?",
+    category: "registration",
     answer:
-      "Yes, only the Top 10 shortlisted teams will be invited to present their solutions during a live pitching session in front of a panel of expert judges. This session will be held physically. Further instructions will be shared with the selected teams.",
+      "Each team must consist of four (4) student members and one (1) lecturer as an academic advisor.",
+  },
+  {
+    question: "How much is the registration fee?",
+    category: "registration",
+    answer:
+      "Each team is required to pay a non-refundable entrance fee of RM150.00.",
+  },
+  {
+    question: "Does each participant need to register individually?",
+    category: "registration",
+    answer:
+      "No, only the team leader is required to register on behalf of the team. The registration form must include the details of all team members and the advisor.",
+  },
+  {
+    question: "When is the registration fee due?",
+    category: "registration",
+    answer:
+      "The registration fee must be paid only after the team receives a confirmation email stating that their registration has been successfully approved. Payment should be made only after receiving the official payment instruction email. Registration will only be confirmed upon successful payment.",
+  },
+  {
+    question:
+      "Do all team members need to pay the registration fee individually?",
+    category: "registration",
+    answer:
+      "No, only the team leader needs to make the payment on behalf of the entire team.",
+  },
+  {
+    question: "Can teams withdraw from the competition?",
+    category: "registration",
+    answer:
+      "Yes, teams may withdraw, but they must notify the organising committee in advance via official communication channels. Please note that the registration fee will not be refunded under any circumstances.",
+  },
+  {
+    question: "Can we change team members after registration?",
+    category: "registration",
+    answer:
+      "No, changes to team members are not allowed once registration is approved, unless exceptional circumstances are approved by the organising committee.",
   },
   {
     question: "Can the same university send more than one team?",
+    category: "registration",
     answer: "Yes, multiple teams from the same university are allowed.",
   },
   {
-    question: "What are the prizes for the winners?",
-    answer: "Attractive cash prizes await the top-performing teams.",
+    question: "Will advisors be assigned by the organiser?",
+    category: "registration",
+    answer:
+      "No, each team must find a lecturer from their own university to be their advisor.",
+  },
+  {
+    question: "What is the format of the competition?",
+    category: "competition",
+    answer: "Each team must submit: ",
     list: [
-      "Champion: RM3,500",
-      "1st Runner-up: RM2,500",
-      "2nd Runner-up: RM1,500",
+      "A video presentation (maximum duration as stated in the guidelines)",
+      "A comprehensive report detailing methodology, findings, and insights",
+      "A data dashboard to visualise their data solutions effectively",
+    ],
+  },
+  {
+    question: "Is there a submission deadline for the preliminary round?",
+    category: "competition",
+    answer:
+      "Yes, all teams must submit their final work by the official deadline, which will be announced via WhatsApp group and official platforms. Late submissions will not be accepted.",
+  },
+  {
+    question: "Are there specific rules that participants must follow?",
+    category: "competition",
+    answer:
+      "Yes, participants must comply with the official rules and regulations as stated in the MDIT Rules and Regulations section.",
+  },
+  {
+    question: "Will a certificate be provided?",
+    category: "competition",
+    answer:
+      "Yes, all participants and advisors will receive a certificate of participation. Winners will receive additional certificates of achievement.",
+  },
+  {
+    question: "Is it required to build a dashboard?",
+    category: "competition",
+    answer: "Yes, creating a dashboard is a mandatory part of the competition.",
+  },
+  {
+    question:
+      "Can I develop a prototype or application instead of a dashboard?",
+    category: "competition",
+    answer:
+      "Yes, you may create a prototype or application, but the dashboard must be developed first as it is the core deliverable.",
+  },
+  {
+    question: "Will there be a live presentation?",
+    category: "competition",
+    answer:
+      "Yes, only the top 10 shortlisted teams will be invited to present their solutions during a live pitching session in front of a panel of expert judges. This will be held physically, and further instructions will be provided to selected teams.",
+  },
+  {
+    question: "What are the prizes for the winners?",
+    category: "competition",
+
+    answer: "The prize for the winner are as follows:",
+    list: [
+      "🏆 Champion: RM3,500",
+      "🥈 1st Runner-up: RM2,500",
+      "🥉 2nd Runner-up: RM1,500",
     ],
   },
   {
     question: "Is this competition only open to statistics students?",
+    category: "competition",
     answer:
-      "No, it is open to all students regardless of their course or background. The competition does not require any prior knowledge in statistics, so anyone is welcome to join.",
-  },
-  {
-    question: "Who can I approach for more information?",
-    answer:
-      "You may contact the Management Bureau for any inquiries. visit the contact page.",
+      "No, it is open to all students regardless of their course or background. However, basic data analysis skills (such as using spreadsheets, simple visualisations, or dashboard tools) are expected in order to compete effectively.",
   },
 ];
 
@@ -608,11 +658,18 @@ export const COMPETITION_HIGHLIGHTS = [
   },
 ];
 
+interface contact {
+  name: string;
+  role: string;
+  number: string;
+}
 // FAQ interface for type safety
 interface FAQItem {
   question: string;
   answer: string;
+  category: string;
   list?: string[];
+  contact?: contact[];
   subtext?: string;
 }
 
