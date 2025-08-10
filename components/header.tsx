@@ -44,7 +44,7 @@ const Header = memo(() => {
 
   // Memoize button href to prevent recalculation
   const buttonHref = useMemo(() => {
-    return isExpired || !hasStarted ? "#" : "/register";
+    return isExpired || !hasStarted ? "#" : GOOGLE_FORM_LINK;
   }, [isExpired, hasStarted]);
 
   // Memoize button disabled state
