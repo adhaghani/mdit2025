@@ -98,42 +98,42 @@ const RulesRegulationPage = () => {
       title: "Eligibility & Team Formation",
       icon: DynamicIcons.Users,
       color: "bg-blue-500",
-      rules: [1, 2, 3],
+      rules: [1, 2, 3, 4],
     },
     {
       id: "registration",
       title: "Registration & Fees",
       icon: DynamicIcons.FileText,
       color: "bg-green-500",
-      rules: [4, 5, 6, 7, 8, 9],
+      rules: [5, 6, 7, 8],
     },
     {
       id: "development",
       title: "Development Guidelines",
       icon: DynamicIcons.Shield,
       color: "bg-purple-500",
-      rules: [10, 11, 12, 13, 14],
+      rules: [9, 10, 11, 12],
     },
     {
       id: "submission",
       title: "Submission Requirements",
       icon: DynamicIcons.Award,
       color: "bg-orange-500",
-      rules: [15, 16, 17, 18, 19],
+      rules: [13, 14, 15],
     },
     {
       id: "ethics",
       title: "Ethics & Conduct",
       icon: DynamicIcons.Eye,
       color: "bg-red-500",
-      rules: [20, 21, 22, 23, 24, 25],
+      rules: [16, 17, 18, 19, 20, 21, 22],
     },
     {
       id: "evaluation",
       title: "Evaluation & Final Events",
       icon: DynamicIcons.Calendar,
       color: "bg-indigo-500",
-      rules: [26, 27, 28, 29, 30],
+      rules: [23, 24],
     },
   ];
 
@@ -142,7 +142,7 @@ const RulesRegulationPage = () => {
       id: 1,
       title: "Eligibility",
       details: {
-        text: "Participation is open to Diploma and Undergraduate students from Public (IPTA) and Private (IPTS) Higher Education Institutions in Malaysia. All participants must be Malaysian citizens.",
+        text: "Participation is open to Diploma and Undergraduate students from Public (IPTA) and  Private  (IPTS)  Higher  Education  Institutions  in  Malaysia.  All  participants must be Malaysian citizens.",
         list: null,
       },
     },
@@ -156,6 +156,14 @@ const RulesRegulationPage = () => {
     },
     {
       id: 3,
+      title: "Team Member Changes",
+      details: {
+        text: "No team changes are allowed after the registration deadline unless approved by the organising committee under exceptional circumstances.",
+        list: null,
+      },
+    },
+    {
+      id: 4,
       title: "Supervisor Role",
       details: {
         text: "The supervising lecturer is expected to provide guidance and advisory support only, and not to be directly involved in the product development.",
@@ -163,143 +171,92 @@ const RulesRegulationPage = () => {
       },
     },
     {
-      id: 4,
+      id: 5,
       title: "Registration & Fees",
       details: {
-        text: "Registration must be completed through the official MDIT x DOSM 2025 portal. Each team is required to pay a non-refundable RM150 entry fee. ",
-        list: null,
-      },
-    },
-    {
-      id: 5,
-      title: "Official Receipt and Claim Procedures",
-      details: {
-        text: "The official receipt will be issued throughout the competition. It may be used by teams to claim the registration fee from their universities, subject to their internal procedures. Participants must manage their own claims with their universities, as the organizers will not provide assistance or take any responsibility. ",
+        text: "Registration must be completed through the official MDIT x DD 2025 portal. Each team is required to pay a non-refundable RM150 entry fee.",
         list: null,
       },
     },
     {
       id: 6,
-      title: "Mandatory WhatsApp Group Participation",
+      title: "Official Receipt and Claim Procedures",
       details: {
-        text: "Upon confirmation of registration, participants must join the official WhatsApp group ‘MDIT X DD 2025’ using the provided link. All official announcements and updates will be made through this group.",
+        text: "The official receipt will be issued throughout the competition. It may be used by teams to claim the registration fee from their universities, subject to their internal procedures. Participants must manage their own claims with their universities, as the organisers will not provide assistance or take any responsibility.",
         list: null,
       },
     },
     {
       id: 7,
-      title: "Mandatory Attendance",
+      title: "Mandatory WhatsApp Group Participation",
       details: {
-        text: "All participants are required to be present and actively involved in every session organized throughout the competition.",
+        text: "Upon confirmation of registration, participants must join the official WhatsApp group ‘PARTICIPANTS MDIT x DD 2025’ using the provided link. All official announcements and updates will be made through this group.",
         list: null,
       },
     },
     {
       id: 8,
-      title: "Briefing Attendance",
+      title: "Mandatory Attendance",
       details: {
-        text: "At least one representative from each team must attend the official briefing session(s) conducted by the organizer. Failure to attend may lead to disqualification.",
+        text: "All participants are required to be present and actively involved in every session organised throughout the competition.",
         list: null,
       },
     },
     {
       id: 9,
-      title: "Team Member Changes",
-      details: {
-        text: "No team changes are allowed after the registration deadline unless approved by the organizing committee under exceptional circumstances.",
-        list: null,
-      },
-    },
-    {
-      id: 10,
-      title: "Originality of Work ",
-      details: {
-        text: "The final product must be developed from scratch and must not be based on or bound to any existing intellectual property.",
-        list: null,
-      },
-    },
-    {
-      id: 11,
-      title: "Development Timeline ",
+      title: "Development Timeline",
       details: {
         text: "All projects must be completed within the competition’s specified timeframe. Late submissions will not be accepted or evaluated.",
         list: null,
       },
     },
     {
-      id: 12,
+      id: 10,
       title: "Data Sources",
       details: {
         text: "Participants must use open and publicly accessible datasets. The use of fabricated, simulated, or fictional data is strictly prohibited. All data must be authentic, reliable, and sourced from credible platforms. Recommended data sources include (but are not limited to):",
         list: [
-          {
-            source: "OpenDOSM (Department of Statistics Malaysia)",
-          },
-          {
-            source: "eStatistik",
-          },
-          {
-            source: "data.gov.my (Malaysian Government Open Data Portal)",
-          },
-          {
-            source: "World Bank Open Data",
-          },
-          {
-            source:
-              "Monthly Highlights and Statistics Dataset by Bank Negara Malaysia",
-          },
-          {
-            source: "UN Data",
-          },
+          "OpenDOSM (Department of Statistics Malaysia)",
+          "eStatistik",
+          "data.gov.my (Malaysian Government Open Data Portal)",
+          "World Bank Open Data",
+          "Monthly Highlights and Statistics Dataset by Bank Negara Malaysia",
+          "UN Data",
         ],
-        warning:
-          "The use of the Kaggle website is strictly prohibited throughout the duration of the competition.",
+        extra:
+          "Extra marks will be awarded for use of Malaysian official data (e.g., OpenDOSM, eStatistik, StatsDW IDL), subject to judging criteria.",
+      },
+    },
+    {
+      id: 11,
+      title: "Tools & Equipment",
+      details: {
+        text: "Participants  may  use  any  hardware  and software of their choice, but must provide and use their own ICT equipment throughout the competition.",
+        list: null,
+      },
+    },
+    {
+      id: 12,
+      title: "Originality and Use of Third-Party Materials",
+      details: {
+        text: "All submitted work must be the original work of the team. Teams may use third-party libraries, frameworks, pre-trained models, and openly licensed datasets as long as they clearly cite and list each external resource in the Project Report and reproducibility package, and also document how those resources were used and integrated. Submissions that copy, plagiarise, or otherwise use proprietary intellectual property without licence or attribution will be disqualified.",
+        list: null,
       },
     },
     {
       id: 13,
-      title: "Tools & Software",
-      details: {
-        text: "Participants are permitted to use any hardware and software of their choice in the development of their final product throughout the competition.",
-        list: null,
-      },
-    },
-    {
-      id: 14,
-      title: "Use of Equipment",
-      details: {
-        text: "Participants are required to use their own ICT hardware and software throughout the competition.",
-        list: null,
-      },
-    },
-    {
-      id: 15,
       title: "Required Submissions",
       details: {
         text: "Each team must submit:",
         list: [
-          {
-            source: "The developed product or application (source files)",
-          },
-          {
-            source: "A recorded presentation video",
-          },
-          {
-            source: "A project report (template provided by organizers)",
-          },
+          "A dashboard in PDF containing the source file (eg., .pbix, .xslm, etc.)",
+          "A recorded presentation video",
+          "A project report using the template provided by the organisers",
         ],
       },
     },
     {
-      id: 16,
-      title: "Data Submission Format",
-      details: {
-        text: "All datasets used must be uploaded in machine-readable formats (e.g., .csv, .xlsx) to the platform provided.",
-        list: null,
-      },
-    },
-    {
-      id: 17,
+      id: 14,
       title: "Final Submission",
       details: {
         text: "Once submitted, no changes or resubmissions are allowed. The final version will be evaluated as is.",
@@ -307,7 +264,7 @@ const RulesRegulationPage = () => {
       },
     },
     {
-      id: 18,
+      id: 15,
       title: "Dashboard Accessibility",
       details: {
         text: "The final product must be delivered in dashboard form and must remain accessible until the evaluation process is complete.",
@@ -315,15 +272,7 @@ const RulesRegulationPage = () => {
       },
     },
     {
-      id: 19,
-      title: "Bonus Points",
-      details: {
-        text: "Extra points will be awarded to teams that develop the product as a website or mobile application.",
-        list: null,
-      },
-    },
-    {
-      id: 20,
+      id: 16,
       title: "Ethical Data Use",
       details: {
         text: "Participants must not use any personally identifiable or confidential data without permission. Plagiarism or using copied content (e.g., dashboards) will result in disqualification.",
@@ -331,15 +280,23 @@ const RulesRegulationPage = () => {
       },
     },
     {
-      id: 21,
+      id: 17,
       title: "Intellectual Property Rights",
       details: {
-        text: "Participants retain full ownership of their projects. However, the organizer reserves non-exclusive rights to showcase, publish, or exhibit the project for promotional or educational use, with proper credit to the team.",
+        text: "Participants retain full ownership of their projects. However, the organisers reserve non-exclusive rights to showcase, publish, or exhibit the project for promotional or educational use, with proper credit to the team.",
         list: null,
       },
     },
     {
-      id: 22,
+      id: 18,
+      title: "Personal Data Protection",
+      details: {
+        text: "All personal data shared with the organisers will be securely stored and used only  according  to  competition  rules,  unless  explicit  consent  is given for other purposes.",
+        list: null,
+      },
+    },
+    {
+      id: 19,
       title: "Prohibition of Harmful Software",
       details: {
         text: "Submissions must be free from harmful elements such as viruses, trojans, spyware, or any code that could damage or disrupt systems.",
@@ -347,54 +304,31 @@ const RulesRegulationPage = () => {
       },
     },
     {
-      id: 23,
+      id: 20,
       title: "Inappropriate Content Prohibited",
       details: {
-        text: "Submissions containing offensive, violent, defamatory, or insulting content especially against the organizers or any unauthorized copyrighted material will be disqualified.",
+        text: "Submissions containing offensive, violent, defamatory, or insulting content especially against the organisers or any unauthorized copyrighted material will be disqualified.",
         list: null,
       },
     },
     {
-      id: 24,
-      title: "Violation of Rules ",
+      id: 21,
+      title: "Violation of Rules",
       details: {
         text: "The organizer reserves the right to disqualify or cancel any team’s entry if rules or submission requirements are violated.",
         list: null,
       },
     },
     {
-      id: 25,
+      id: 22,
       title: "Liability Disclaimer",
       details: {
-        text: "The organizer will not be held responsible for any incidents, health issues, damages, or losses incurred during participation.",
+        text: "The organisers will not be held responsible for any incidents, health issues, damages, or losses incurred during participation.",
         list: null,
       },
     },
     {
-      id: 26,
-      title: "Mandatory Attendance for Finalists",
-      details: {
-        text: "Only the top 10 finalist teams are required to attend:",
-        list: [
-          {
-            source: "Live Pitching: To Be Announced",
-          },
-          {
-            source: "Closing Ceremony: To Be Announced",
-          },
-        ],
-      },
-    },
-    {
-      id: 27,
-      title: "Finalists’ Responsibility for Expenses",
-      details: {
-        text: "Finalist teams are responsible for all related costs, including travel, accommodation, lodging, and parking.",
-        list: null,
-      },
-    },
-    {
-      id: 28,
+      id: 23,
       title: "Final Decision by Judges",
       details: {
         text: "All decisions by the judging panel, including the selection of winners, are final and cannot be appealed.",
@@ -402,18 +336,10 @@ const RulesRegulationPage = () => {
       },
     },
     {
-      id: 29,
+      id: 24,
       title: "E-Certificate Eligibility",
       details: {
-        text: "E-certificates of participation will be issued only to participants who submit their final products within the deadline. Certificates will be emailed after the competition ends.",
-        list: null,
-      },
-    },
-    {
-      id: 30,
-      title: "Personal Data Protection",
-      details: {
-        text: "All personal data shared with the organizers will be securely stored and used only according to competition rules, unless explicit consent is given for other purposes.",
+        text: "E-certificates of participation will be issued only to participants who submit their final  products  within  the  deadline.  Certificates  will  be  emailed  after  the competition ends.",
         list: null,
       },
     },
@@ -424,20 +350,26 @@ const RulesRegulationPage = () => {
       type: "warning",
       title: "Disqualification Criteria",
       content: [
-        "Failure to attend the official briefing session(s) without approval",
-        "Using Kaggle website or prohibited data sources",
-        "Using fabricated, simulated, or fictional data",
-        "Plagiarism or copying content from other sources (including dashboards)",
-        "Using personally identifiable or confidential data without permission",
-        "Submissions containing harmful software (viruses, trojans, spyware)",
-        "Inappropriate content (offensive, violent, defamatory, insulting)",
-        "Using unauthorized copyrighted material",
-        "Violation of any competition rules or submission requirements",
-        "Late submission beyond the specified deadline",
-        "Incomplete team registration or required documentation",
-        "Fraudulent information in registration or submissions",
-        "Team member changes after deadline without committee approval",
-        "Failure to maintain dashboard accessibility during evaluation period",
+        "Failure to attend mandatory sessions organised throughout the competition without prior approval from the organising committee",
+        "Failure to join the official WhatsApp group 'PARTICIPANTS MDIT x DD 2025' after registration confirmation",
+        "Using fabricated, simulated, or fictional data instead of authentic, publicly accessible datasets",
+        "Using personally identifiable or confidential data without proper permission",
+        "Plagiarism or copying content from other sources, including existing dashboards",
+        "Using proprietary intellectual property without proper licence or attribution",
+        "Failure to clearly cite and document third-party libraries, frameworks, pre-trained models, or datasets used",
+        "Late submission beyond the specified deadline (no extensions will be granted)",
+        "Incomplete submissions missing required components (dashboard PDF with source files, presentation video, or project report)",
+        "Submitting work that is not the original work of the team",
+        "Submissions containing harmful software elements such as viruses, trojans, spyware, or disruptive code",
+        "Submissions containing offensive, violent, defamatory, or insulting content, particularly against organisers",
+        "Using unauthorised copyrighted material without proper licence",
+        "Team member changes after the registration deadline without organising committee approval under exceptional circumstances",
+        "Failure to maintain dashboard accessibility during the evaluation period",
+        "Providing fraudulent information during registration or in submissions",
+        "Incomplete team registration or missing required documentation",
+        "Violation of any competition rules or submission requirements as outlined in the official guidelines",
+        "Failure to use own ICT equipment throughout the competition as required",
+        "Non-compliance with the mandatory team composition of four (4) students and one (1) supervising lecturer from the same university",
       ],
     },
     {
@@ -445,20 +377,20 @@ const RulesRegulationPage = () => {
       title: "Judging Criteria",
       content: [
         {
-          type: "Project Content",
+          type: "Part A: Project Content",
           weight: 60,
           details: [
             "Data Selection",
             "Introduction",
             "Literature Review",
             "Methodology & Data Analysis",
-            "Finding & Results",
+            "Findings & Results",
             "Conclusion",
             "Originality & Commercial Value",
           ],
         },
         {
-          type: "Project Presentation",
+          type: "Part B: Project Presentation",
           weight: 40,
           details: [
             "Quality of Presentation",
@@ -470,6 +402,27 @@ const RulesRegulationPage = () => {
           ],
         },
       ],
+    },
+  ];
+
+  const SpecialAwardCategories = [
+    {
+      award: "Pitching Excellence Award",
+      type: "individual",
+      details:
+        "Awarded to the individual who delivers the most effective and engaging presentation, demonstrating clarity, confidence, good structure, strong audience connection, and appropriate pacing.",
+    },
+    {
+      award: "Critical Thinking & Defence Award",
+      type: "Team",
+      details:
+        "Recognises the team that shows excellent knowledge of their project, works well together, responds confidently to questions, handles feedback positively, and defends their ideas with strong logic and reasoning.",
+    },
+    {
+      award: "Innovation Excellence Award",
+      type: "Team",
+      details:
+        "Honours the team that showcases the most original and innovative ideas, with clear data organisation, impactful visual design, practical applications, and potential for scalability.",
     },
   ];
 
@@ -587,7 +540,9 @@ const RulesRegulationPage = () => {
                           {category.title}
                         </Text>
                         <Text as="p" className="text-xs text-muted-foreground">
-                          {category.rules.length} rules
+                          {category.id === "awards"
+                            ? `${SpecialAwardCategories.length} awards`
+                            : `${category.rules.length} rules`}
                         </Text>
                       </div>
                     </div>
@@ -708,29 +663,29 @@ const RulesRegulationPage = () => {
                                     >
                                       <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
                                       <Text as="p" className="text-sm">
-                                        {item.source}
+                                        {item}
                                       </Text>
                                     </div>
                                   ))}
                                 </div>
                               )}
 
-                              {rule.details.warning && (
-                                <div className="mt-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                              {rule.details.extra && (
+                                <div className="mt-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
                                   <div className="flex items-start gap-2">
-                                    <DynamicIcons.AlertTriangle className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
+                                    <DynamicIcons.CheckCircle className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
                                     <div>
                                       <Text
                                         as="h4"
-                                        className="font-semibold text-red-700 dark:text-red-400 mb-2"
+                                        className="font-semibold text-blue-700 dark:text-blue-400 mb-2"
                                       >
-                                        Important Warning
+                                        Additional Information
                                       </Text>
                                       <Text
                                         as="p"
-                                        className="text-red-600 dark:text-red-300 text-sm"
+                                        className="text-blue-600 dark:text-blue-300 text-sm"
                                       >
-                                        {rule.details.warning}
+                                        {rule.details.extra}
                                       </Text>
                                     </div>
                                   </div>
@@ -844,7 +799,8 @@ const RulesRegulationPage = () => {
                   as="p"
                   className="text-sm text-blue-600/80 dark:text-blue-400/80"
                 >
-                  Comprehensive evaluation framework with weighted scoring
+                  Each team will be evaluated by a panel of expert judges.
+                  Scoring will be based on the following key criteria.
                 </Text>
               </CardHeader>
               <CardContent>
@@ -939,8 +895,125 @@ const RulesRegulationPage = () => {
         </div>
       </div>
 
+      {/* Special Awards Section */}
+      <div className="my-20 px-4 max-w-7xl mx-auto">
+        <BlurFade inView delay={0.6}>
+          <div className="text-center mb-12">
+            <Text as="h2" className="text-3xl font-bold mb-4">
+              Special Awards
+            </Text>
+            <Text
+              as="p"
+              className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            >
+              In addition to the main competition prizes, exceptional teams and
+              individuals can earn recognition through these special award
+              categories
+            </Text>
+          </div>
+        </BlurFade>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {SpecialAwardCategories.map((award, index) => {
+            // Define color schemes based on award type
+            let colorScheme;
+            if (award.award === "Pitching Excellence Award") {
+              colorScheme = {
+                cardBg: "bg-gradient-to-br from-purple-50 to-purple-100",
+                border: "border-purple-200",
+                iconBg: "bg-gradient-to-br from-purple-400 to-purple-600",
+                badgeBg: "bg-purple-100 dark:bg-purple-900/50",
+                badgeText: "text-purple-700 dark:text-purple-300",
+                titleText: "text-purple-700 dark:text-purple-400",
+                contentText: "text-purple-800/80 dark:text-purple-800/80",
+                iconText: "text-purple-600 dark:text-purple-400",
+              };
+            } else if (award.award === "Critical Thinking & Defence Award") {
+              colorScheme = {
+                cardBg: "bg-gradient-to-br from-green-50 to-emerald-100",
+                border: "border-green-200",
+                iconBg: "bg-gradient-to-br from-green-400 to-emerald-600",
+                badgeBg: "bg-green-100 dark:bg-green-900/50",
+                badgeText: "text-green-700 dark:text-green-300",
+                titleText: "text-green-700 dark:text-green-400",
+                contentText: "text-green-800/80 dark:text-green-800/80",
+                iconText: "text-green-600 dark:text-green-400",
+              };
+            } else {
+              // Innovation Excellence Award
+              colorScheme = {
+                cardBg: "bg-gradient-to-br from-indigo-50 to-blue-100",
+                border: "border-indigo-200",
+                iconBg: "bg-gradient-to-br from-indigo-400 to-blue-600",
+                badgeBg: "bg-blue-100 dark:bg-blue-900/50",
+                badgeText: "text-blue-700 dark:text-blue-300",
+                titleText: "text-blue-700 dark:text-blue-400",
+                contentText: "text-blue-800/80 dark:text-blue-800/80",
+                iconText: "text-blue-600 dark:text-blue-400",
+              };
+            }
+
+            return (
+              <BlurFade key={index} inView delay={0.7 + index * 0.1}>
+                <Card
+                  className={`h-full transition-all duration-200 hover:shadow-lg ${colorScheme.cardBg} ${colorScheme.border} dark:from-opacity-20 dark:to-opacity-10`}
+                >
+                  <CardHeader className="pb-4">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className={`p-2 rounded-lg ${colorScheme.iconBg}`}>
+                        <DynamicIcons.Award className="h-6 w-6 text-white" />
+                      </div>
+                      <Badge
+                        variant="secondary"
+                        className={`${colorScheme.badgeBg} ${colorScheme.badgeText}`}
+                      >
+                        {award.type}
+                      </Badge>
+                    </div>
+                    <CardTitle className={`text-xl ${colorScheme.titleText}`}>
+                      {award.award}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Text
+                      as="p"
+                      className={`text-sm leading-relaxed ${colorScheme.contentText}`}
+                    >
+                      {award.details}
+                    </Text>
+                  </CardContent>
+                </Card>
+              </BlurFade>
+            );
+          })}
+        </div>
+
+        <BlurFade inView delay={1.0}>
+          <div className="mt-8 p-6 rounded-lg bg-gradient-to-r from-purple-50 via-green-50 to-blue-50 dark:from-purple-900/30 dark:via-green-900/30 dark:to-blue-900/30 border border-purple-200 dark:border-purple-800">
+            <div className="flex items-center gap-3 mb-3">
+              <DynamicIcons.Award className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+              <Text
+                as="h4"
+                className="font-semibold text-purple-800 dark:text-purple-300"
+              >
+                Award Recognition
+              </Text>
+            </div>
+            <Text
+              as="p"
+              className="text-sm text-purple-800/80 dark:text-purple-200/80"
+            >
+              Special award winners will receive cash prize of RM200 and
+              recognition during the final presentation ceremony. These awards
+              are separate from the main competition prizes and celebrate
+              specific excellence areas in the competition.
+            </Text>
+          </div>
+        </BlurFade>
+      </div>
+
       {/* Download Section - Enhanced */}
-      {/* <div>
+      <div>
         <div className="max-w-7xl mx-auto px-4">
           <BlurFade inView delay={0.6} className="">
             <div className="text-center mb-8">
@@ -982,7 +1055,7 @@ const RulesRegulationPage = () => {
             </Button>
           </BlurFade>
         </div>
-      </div> */}
+      </div>
       {/* Timeline Reminder - Enhanced */}
       <div className="px-4 max-w-7xl mx-auto">
         <BlurFade
