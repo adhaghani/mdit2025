@@ -38,11 +38,6 @@ export const FAQ: FAQItem[] = [
       "Participants are expected to design data-driven solutions that support and address issues within these six SDGs.",
   },
   {
-    question: "Who can participate in MDIT 2025?",
-    answer:
-      "MDIT 2025 is open to all university students currently enrolled in Malaysian institutions. This includes both undergraduate and postgraduate students. Teams must consist of 3-4 members, all from the same university.",
-  },
-  {
     question: "Who can participate in the MDIT?",
     answer:
       " The competition is open to all diploma and undergraduate students from both Public Universities (IPTA) and Private Universities (IPTS) within Malaysia.",
