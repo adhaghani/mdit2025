@@ -595,7 +595,7 @@ const Page = memo(() => {
         phase: "Preliminary Round",
         date: "8-21 September, 2025",
         description:
-          "Project development, report submission, and online video presentation.",
+          "Dashboard development, report submission, and online video presentation.",
         icon: DynamicIcons.LightbulbIcon,
         status: "upcoming",
       },

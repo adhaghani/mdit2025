@@ -585,7 +585,7 @@ export const COMPETITION_HIGHLIGHTS = [
     icon: BrainIcon,
     title: "Real-World Datasets",
     description:
-      "Opportunity to push yourself to work with open data provided by DOSM such as OpenDOSM, e-Statistik, StatsDW IDL facility.",
+      "Opportunity to push yourself to work with open data provided by DOSM such as OpenDOSM, eStatistik, StatsDW IDL facility.",
     color: " text-blue-600 dark:text-blue-400",
     bgColor: " bg-blue-50 dark:bg-blue-900/30",
   },
