@@ -1127,7 +1127,7 @@ const Page = memo(() => {
                       className="text-3xl lg:text-4xl font-black text-purple-600 mb-3 group-hover:text-purple-500 transition-colors duration-300"
                     >
                       <NumberFlow
-                        value={0}
+                        value={1}
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
@@ -1155,7 +1155,7 @@ const Page = memo(() => {
                       className="text-3xl lg:text-4xl font-black text-blue-600 mb-3 group-hover:text-blue-500 transition-colors duration-300"
                     >
                       <NumberFlow
-                        value={0}
+                        value={1}
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
@@ -1183,7 +1183,7 @@ const Page = memo(() => {
                       className="text-3xl lg:text-4xl font-black text-emerald-600 mb-3 group-hover:text-emerald-500 transition-colors duration-300"
                     >
                       <NumberFlow
-                        value={0}
+                        value={4}
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
@@ -1246,14 +1246,14 @@ const Page = memo(() => {
                     <div className="w-full bg-muted/50 rounded-full h-4 mb-4 overflow-hidden shadow-inner">
                       <div
                         className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 h-4 rounded-full transition-all duration-1000 relative overflow-hidden"
-                        style={{ width: "0%" }}
+                        style={{ width: "0.833%" }}
                       >
                         {/* Animated shine effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-pulse"></div>
                       </div>
                     </div>
                     <Text as="p" className="text-base font-medium">
-                      0 out of 120 slots filled
+                      1 out of 120 slots filled
                     </Text>
                   </div>
                 </CardContent>
