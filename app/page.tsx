@@ -1267,7 +1267,7 @@ const Page = memo(() => {
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-full border border-primary/20">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <Text as="p" styleVariant="muted" className="text-sm">
-                  Last updated: 28 July 2025 at 16:43 GMT+8
+                  Last updated: 11 August 2025 at 20:36 GMT+8
                 </Text>
               </div>
             </div>
