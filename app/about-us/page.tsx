@@ -205,13 +205,13 @@ const AboutUsPage = () => {
       {
         name: "Nur Ain Adriana Binti Zulfiqar",
         role: "Judging & Scoring Bureau Member",
-        designation: "Third Year Statistics Student, UiTM Shah Alam",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/JM2.png",
       },
       {
         name: "Siti Nurfarhah Binti Zahari",
         role: "Judging Bureau & Scoring Member",
-        designation: "Third Year Statistics Student, UiTM Shah Alam",
+        designation: "Statistics Student, UiTM Shah Alam",
         image: "/team/JM3.png",
       },
     ],
@@ -347,7 +347,7 @@ const AboutUsPage = () => {
     {
       year: "2024",
       team: "NanoGuardian",
-      university: "Taylors University",
+      university: "Taylor's University",
     },
     {
       year: "2023",
@@ -720,7 +720,7 @@ const AboutUsPage = () => {
                       Industry Mentorship Programs
                     </Text>
                     <Text as="p" className="text-sm text-muted-foreground">
-                      Connecting students with data science professionals
+                      Connecting students with data science professionals.
                     </Text>
                   </div>
                 </div>
@@ -732,7 +732,7 @@ const AboutUsPage = () => {
                     </Text>
                     <Text as="p" className="text-sm text-muted-foreground">
                       Advanced training in statistical software and
-                      methodologies
+                      methodologies.
                     </Text>
                   </div>
                 </div>
@@ -744,7 +744,7 @@ const AboutUsPage = () => {
                     </Text>
                     <Text as="p" className="text-sm text-muted-foreground">
                       Facilitating joint research projects with government
-                      agencies
+                      agencies.
                     </Text>
                   </div>
                 </div>
