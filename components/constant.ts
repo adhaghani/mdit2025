@@ -228,8 +228,8 @@ export const PROGRAM_TIMELINE = [
   {
     icon: DoorOpenIcon,
     date: new Date(2025, 7, 10),
-    event: "Registration Open",
-    details: "Registration for MDIT X DOSM Datathon 2025 Officially Open.",
+    event: "Registration Opens",
+    details: "Registration for MDIT X DOSM Datathon 2025 Officially Opens.",
     type: "milestone", // milestone, workshop, event, deadline
     hasDetails: false,
     extendedDetails: {
@@ -386,7 +386,7 @@ export const PROGRAM_TIMELINE = [
     icon: AlignJustifyIcon,
     date: new Date(2025, 8, 21),
     event: "Evaluation Period Begins",
-    details: "Shortlisting of group begin.",
+    details: "Shortlisting of group begins.",
     type: "milestone",
     hasDetails: false,
     extendedDetails: {
@@ -412,7 +412,7 @@ export const PROGRAM_TIMELINE = [
       time: "6:00 PM GMT+8",
       location: "Online Announcement",
       description:
-        "The top 10 finalist teams are announced and will be invited to present their solutions live to the expert panel during the final presentation session.",
+        "The top 10 finalists teams are announced and will be invited to present their solutions live to the expert panel during the final presentation session.",
       requirements: [
         "Official notification to finalists",
         "Final presentation guidelines",
@@ -425,7 +425,7 @@ export const PROGRAM_TIMELINE = [
     date: new Date(2025, 9, 17),
     event: "Final Pitching",
     details:
-      "Top 10 finalist will present their pitches live to expert judges.",
+      "Top 10 finalists will present their pitches live to expert judges.",
     type: "event",
     hasDetails: false,
     extendedDetails: {

@@ -150,7 +150,7 @@ const RulesRegulationPage = () => {
       id: 2,
       title: "Team Composition",
       details: {
-        text: "Each team must consist of FOUR (4) students from the same university and ONE (1) supervising lecturer.",
+        text: "Each team must consists of FOUR (4) students from the same university and ONE (1) supervising lecturer.",
         list: null,
       },
     },

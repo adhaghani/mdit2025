@@ -283,7 +283,7 @@ const ContactPage = () => {
             styleVariant="muted"
             className="text-center mb-12 max-w-2xl mx-auto"
           >
-            Stay updated with the latest news, behind-the-scenes content, and
+            Stay updated with the latest news, behind-the-scene contents, and
             highlights from MDIT 2025. Connect with us on social media for
             real-time updates and community engagement.
           </Text>
