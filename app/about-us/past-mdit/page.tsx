@@ -54,7 +54,7 @@ const PastMDITPage = () => {
       prizePool: "RM9,600",
       winner: {
         team: "NanoGuardian",
-        university: "Taylors University",
+        university: "Taylor's University",
       },
       runnerUp: {
         team: "4Cast",
