@@ -1127,7 +1127,7 @@ const Page = memo(() => {
                       className="text-3xl lg:text-4xl font-black text-purple-600 mb-3 group-hover:text-purple-500 transition-colors duration-300"
                     >
                       <NumberFlow
-                        value={16}
+                        value={18}
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
@@ -1183,7 +1183,7 @@ const Page = memo(() => {
                       className="text-3xl lg:text-4xl font-black text-emerald-600 mb-3 group-hover:text-emerald-500 transition-colors duration-300"
                     >
                       <NumberFlow
-                        value={64}
+                        value={72}
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
@@ -1246,14 +1246,14 @@ const Page = memo(() => {
                     <div className="w-full bg-muted/50 rounded-full h-4 mb-4 overflow-hidden shadow-inner">
                       <div
                         className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 h-4 rounded-full transition-all duration-1000 relative overflow-hidden"
-                        style={{ width: "13.33%" }}
+                        style={{ width: "15%" }}
                       >
                         {/* Animated shine effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-pulse"></div>
                       </div>
                     </div>
                     <Text as="p" className="text-base font-medium">
-                      16 out of 120 slots filled
+                      18 out of 120 slots filled
                     </Text>
                   </div>
                 </CardContent>
@@ -1267,7 +1267,7 @@ const Page = memo(() => {
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-full border border-primary/20">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <Text as="p" styleVariant="muted" className="text-sm">
-                  Last updated: 18 August 08:45 GMT+8
+                  Last updated: 18 August 22:05 GMT+8
                 </Text>
               </div>
             </div>
