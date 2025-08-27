@@ -1253,7 +1253,7 @@ const Page = memo(() => {
                       </div>
                     </div>
                     <Text as="p" className="text-base font-medium">
-                      46 out of 120 slots filled
+                      55 out of 120 slots filled
                     </Text>
                   </div>
                 </CardContent>
