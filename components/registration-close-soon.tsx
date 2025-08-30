@@ -84,7 +84,7 @@ const RegistrationClosingSoonBanner = () => {
                       ? "🚨 LAST CHANCE!"
                       : isUrgent
                       ? "⚠️ Registration Closing Soon!"
-                      : "⏰ Registration has been extended, register now!."}
+                      : "⏰ Registration has been extended, register now!"}
                   </Text>
 
                   <div className="flex items-center gap-2 text-xs sm:text-sm">
