@@ -6,7 +6,7 @@ import { useStartCountdown } from "@/hooks/useStartCountdown";
 // Centralized dates for the competition
 const COMPETITION_DATES = {
   REGISTRATION_START: "2025-08-10T10:00:00+08:00", // August 10, 2025, 10.00 AM GMT+8
-  COMPETITION_START: "2025-08-30T00:00:00+08:00", // August 30, 2025
+  COMPETITION_START: "2025-09-05T23:59:00+08:00", // August 30, 2025
 } as const;
 
 interface CountdownContextType {
