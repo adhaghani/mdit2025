@@ -369,7 +369,7 @@ const EventDetailsPage = () => {
                       <DynamicIcons.AwardIcon className="h-6 w-6 text-white" />
                     </div>
                     <CardTitle className="text-indigo-800 text-lg font-bold">
-                      Innovation Excellence
+                      AI Driven Innovation Award
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="text-center pb-6">
@@ -383,7 +383,8 @@ const EventDetailsPage = () => {
                       as="p"
                       className="text-indigo-600 text-sm leading-relaxed"
                     >
-                      💡 Most creative and innovative solution approach
+                      💡 Outstanding application of AI in solving real-world
+                      data challenges
                     </Text>
                   </CardContent>
                 </Card>
