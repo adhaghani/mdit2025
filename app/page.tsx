@@ -1211,7 +1211,13 @@ const Page = memo(() => {
                       className="text-3xl lg:text-4xl font-black text-amber-600 mb-3 group-hover:text-amber-500 transition-colors duration-300"
                     >
                       <NumberFlow
-                        value={timeLeft.days}
+                        value={
+                          timeLeft.days > 0
+                            ? timeLeft.days
+                            : timeLeft.hours > 0
+                            ? timeLeft.hours
+                            : timeLeft.minutes
+                        }
                         format={{ minimumIntegerDigits: 1 }}
                       />
                     </Text>
@@ -1219,7 +1225,11 @@ const Page = memo(() => {
                       as="p"
                       className="text-sm font-medium group-hover:text-foreground/90 transition-colors duration-300"
                     >
-                      Days until registration closes
+                      {timeLeft.days > 0
+                        ? "Days until registration closes"
+                        : timeLeft.hours > 0
+                        ? "Hours until registration closes"
+                        : "Minutes until registration closes"}
                     </Text>
                   </CardContent>
                 </Card>

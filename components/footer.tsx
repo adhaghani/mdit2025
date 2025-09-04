@@ -250,7 +250,9 @@ const Footer = () => {
                               className="flex items-center gap-2 w-full"
                               disabled={isExpired}
                             >
-                              Register your team
+                              {isExpired
+                                ? "Registration Closed"
+                                : "Register your team"}
                               <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                             </Button>
                           </DialogTrigger>
@@ -260,7 +262,7 @@ const Footer = () => {
                             </Text>
                             <QRCode
                               className="max-w-[200px] mx-auto"
-                              data={GOOGLE_FORM_LINK}
+                              data={isExpired ? GOOGLE_FORM_LINK : "#"}
                               robustness="Q"
                             />
                             <Text as="p" className="text-center my-4">
@@ -272,7 +274,10 @@ const Footer = () => {
                                 className="w-full justify-center gap-2 font-semibold"
                                 asChild
                               >
-                                <Link href={GOOGLE_FORM_LINK} target="_blank">
+                                <Link
+                                  href={isExpired ? GOOGLE_FORM_LINK : "#"}
+                                  target="_blank"
+                                >
                                   Register Now
                                 </Link>
                               </Button>

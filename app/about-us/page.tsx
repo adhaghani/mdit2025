@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useCountdown } from "@/contexts/countdown-context";
 import { Threads } from "@/components/optimized-react-bits";
 import SpotlightCard from "@/components/react-bits/Components/SpotlightCard/SpotlightCard";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -46,6 +46,8 @@ const AboutUsPage = () => {
     shouldReducePerformance,
     isLoading: deviceLoading,
   } = useDevice();
+
+  const { hasStarted, isExpired } = useCountdown();
 
   // Team members data organized by bureau
   const teamByBureau = {
@@ -771,8 +773,10 @@ const AboutUsPage = () => {
           </BlurFade>
           <BlurFade inView delay={0.2}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href="/event-details">Register Your Team</Link>
+              <Button disabled={isExpired} size="lg" asChild>
+                <Link href={isExpired ? "#" : "/event-details"}>
+                  {isExpired ? "Registration Closed" : "Register Your Team"}
+                </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="/contact">
