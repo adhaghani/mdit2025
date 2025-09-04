@@ -280,7 +280,7 @@ const EventDetailsPage = () => {
                       as="h3"
                       className="text-2xl font-bold text-blue-700 mb-3"
                     >
-                      RM 500 <span className="text-sm font-normal">each</span>
+                      RM 300 <span className="text-sm font-normal">each</span>
                     </Text>
                     <Text as="p" className="text-blue-600 text-sm">
                       🏅 Finalist Certificates + Recognition
