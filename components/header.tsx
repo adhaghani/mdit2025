@@ -167,7 +167,6 @@ const Header = memo(() => {
               <ModeToggle />
             </NavigationMenuItem> */}
               <NavigationMenuItem>
-                {/* <Link href={buttonHref}> */}
                 {isButtonDisabled ? (
                   <Button
                     size="sm"
@@ -213,9 +212,13 @@ const Header = memo(() => {
                     </DialogContent>
                   </Dialog>
                 )}
-
-                {/* </Link> */}
               </NavigationMenuItem>
+              {/* TODO: ACTIVATE WHEN REQUIRED */}
+              {/* <NavigationMenuItem asChild>
+                <Button asChild>
+                  <Link href="/redeem-licence">Redeem Licence</Link>
+                </Button>
+              </NavigationMenuItem> */}
             </NavigationMenuList>
           </NavigationMenu>
 
@@ -318,6 +321,11 @@ const Header = memo(() => {
 
                     <div className="pt-4 px-2">
                       <div className="border-t pt-4">
+                        <Button asChild className="block w-full">
+                          <Link href="/redeem-licence" className="block w-full">
+                            Redeem Licence
+                          </Link>
+                        </Button>
                         <Link className="block w-full" href={buttonHref}>
                           <Button
                             size="lg"
