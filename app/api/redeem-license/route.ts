@@ -12,7 +12,9 @@ function isValidDomain(request: NextRequest): boolean {
   const origin = request.headers.get("origin");
   const referer = request.headers.get("referer");
 
-  const validDomainPattern = /^https:\/\/([a-zA-Z0-9-]+\.)*mdit2025\.my$/;
+  // Updated pattern to properly handle subdomains like staging.mdit2025.my
+  const validDomainPattern =
+    /^https:\/\/(www\.)?([a-zA-Z0-9-]+\.)?mdit2025\.my$/;
 
   if (origin && validDomainPattern.test(origin)) {
     return true;

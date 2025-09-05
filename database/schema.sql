@@ -24,9 +24,9 @@ CREATE POLICY "Domain restricted access" ON license_redemption
     USING (
         CASE 
             WHEN current_setting('request.headers', true)::json->>'origin' IS NOT NULL THEN
-                current_setting('request.headers', true)::json->>'origin' ~ '^https://([a-zA-Z0-9-]+\.)*mdit2025\.my$'
+                current_setting('request.headers', true)::json->>'origin' ~ '^https://(www\.)?([a-zA-Z0-9-]+\.)?mdit2025\.my$'
             WHEN current_setting('request.headers', true)::json->>'referer' IS NOT NULL THEN
-                current_setting('request.headers', true)::json->>'referer' ~ '^https://([a-zA-Z0-9-]+\.)*mdit2025\.my'
+                current_setting('request.headers', true)::json->>'referer' ~ '^https://(www\.)?([a-zA-Z0-9-]+\.)?mdit2025\.my'
             ELSE false
         END
     );
@@ -54,8 +54,8 @@ BEGIN
     
     -- Domain validation
     IF NOT (
-        (v_origin IS NOT NULL AND v_origin ~ '^https://([a-zA-Z0-9-]+\.)*mdit2025\.my$') OR
-        (v_referer IS NOT NULL AND v_referer ~ '^https://([a-zA-Z0-9-]+\.)*mdit2025\.my')
+        (v_origin IS NOT NULL AND v_origin ~ '^https://(www\.)?([a-zA-Z0-9-]+\.)?mdit2025\.my$') OR
+        (v_referer IS NOT NULL AND v_referer ~ '^https://(www\.)?([a-zA-Z0-9-]+\.)?mdit2025\.my')
     ) THEN
         RETURN json_build_object(
             'success', false,
