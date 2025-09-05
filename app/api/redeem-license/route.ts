@@ -12,34 +12,80 @@ function isValidDomain(request: NextRequest): boolean {
   const origin = request.headers.get("origin");
   const referer = request.headers.get("referer");
 
-  // Updated pattern to properly handle subdomains like staging.mdit2025.my
-  const validDomainPattern =
-    /^https:\/\/(www\.)?([a-zA-Z0-9-]+\.)?mdit2025\.my$/;
+  // Debug logging (remove in production)
+  console.log("Domain validation debug:");
+  console.log("Origin:", origin);
+  console.log("Referer:", referer);
 
-  if (origin && validDomainPattern.test(origin)) {
+  // List of allowed domains
+  const allowedDomains = [
+    "https://mdit2025.my",
+    "https://www.mdit2025.my",
+    "https://staging.mdit2025.my",
+    "https://dev.mdit2025.my",
+    "https://api.mdit2025.my",
+  ];
+
+  // Check origin header
+  if (origin && allowedDomains.includes(origin)) {
+    console.log("Origin validation: PASSED");
     return true;
   }
 
-  if (
-    referer &&
-    referer.startsWith("https://") &&
-    validDomainPattern.test(new URL(referer).origin)
-  ) {
+  // Check referer header
+  if (referer) {
+    try {
+      const refererUrl = new URL(referer);
+      const refererOrigin = `${refererUrl.protocol}//${refererUrl.host}`;
+      console.log("Referer origin:", refererOrigin);
+
+      if (allowedDomains.includes(refererOrigin)) {
+        console.log("Referer validation: PASSED");
+        return true;
+      }
+    } catch (error) {
+      console.log("Error parsing referer URL:", error);
+    }
+  }
+
+  // Alternative regex pattern as fallback
+  const validDomainPattern =
+    /^https:\/\/(www\.|staging\.|dev\.|api\.)?mdit2025\.my$/;
+
+  if (origin && validDomainPattern.test(origin)) {
+    console.log("Origin regex validation: PASSED");
     return true;
+  }
+
+  if (referer) {
+    try {
+      const refererOrigin = new URL(referer).origin;
+      if (validDomainPattern.test(refererOrigin)) {
+        console.log("Referer regex validation: PASSED");
+        return true;
+      }
+    } catch (error) {
+      console.log("Error in referer regex validation:", error);
+    }
   }
 
   // Allow localhost for development
   if (process.env.NODE_ENV === "development") {
     if (origin?.includes("localhost") || referer?.includes("localhost")) {
+      console.log("Localhost validation: PASSED");
       return true;
     }
   }
 
+  console.log("Domain validation: FAILED");
   return false;
 }
 
 export async function POST(request: NextRequest) {
   try {
+    // Get origin for CORS headers
+    const origin = request.headers.get("origin") || "https://www.mdit2025.my";
+
     // Domain validation
     if (!isValidDomain(request)) {
       return NextResponse.json(
@@ -50,7 +96,7 @@ export async function POST(request: NextRequest) {
         {
           status: 403,
           headers: {
-            "Access-Control-Allow-Origin": "https://www.mdit2025.my",
+            "Access-Control-Allow-Origin": origin,
             "Access-Control-Allow-Methods": "POST",
             "Access-Control-Allow-Headers": "Content-Type, Authorization",
           },
@@ -69,7 +115,14 @@ export async function POST(request: NextRequest) {
           success: false,
           error: "Invalid IC number format. Please use XXXXXX-XX-XXXX format.",
         },
-        { status: 400 }
+        {
+          status: 400,
+          headers: {
+            "Access-Control-Allow-Origin": origin,
+            "Access-Control-Allow-Methods": "POST",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          },
+        }
       );
     }
 
@@ -85,13 +138,20 @@ export async function POST(request: NextRequest) {
           success: false,
           error: "Database error occurred. Please try again later.",
         },
-        { status: 500 }
+        {
+          status: 500,
+          headers: {
+            "Access-Control-Allow-Origin": origin,
+            "Access-Control-Allow-Methods": "POST",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          },
+        }
       );
     }
 
     return NextResponse.json(data, {
       headers: {
-        "Access-Control-Allow-Origin": "https://www.mdit2025.my",
+        "Access-Control-Allow-Origin": origin,
         "Access-Control-Allow-Methods": "POST",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },
@@ -103,13 +163,22 @@ export async function POST(request: NextRequest) {
         success: false,
         error: "An unexpected error occurred. Please try again later.",
       },
-      { status: 500 }
+      {
+        status: 500,
+        headers: {
+          "Access-Control-Allow-Origin": origin,
+          "Access-Control-Allow-Methods": "POST",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      }
     );
   }
 }
 
 // Handle OPTIONS request for CORS
 export async function OPTIONS(request: NextRequest) {
+  const origin = request.headers.get("origin") || "https://www.mdit2025.my";
+
   if (!isValidDomain(request)) {
     return new NextResponse(null, { status: 403 });
   }
@@ -117,7 +186,7 @@ export async function OPTIONS(request: NextRequest) {
   return new NextResponse(null, {
     status: 200,
     headers: {
-      "Access-Control-Allow-Origin": "https://www.mdit2025.my",
+      "Access-Control-Allow-Origin": origin,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
       "Access-Control-Max-Age": "86400",
