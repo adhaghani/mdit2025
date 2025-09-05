@@ -534,8 +534,8 @@ export const FOOTER_QUICK_LINK = [
     href: "/rules-regulation",
   },
   {
-    title: "Redeem License Key",
-    href: "/redeem-license",
+    title: "Redeem Licence Key",
+    href: "/redeem-licence",
   },
   {
     title: "FAQ",
@@ -781,7 +781,6 @@ export const ORGANIZERS: Organizer[] = [
     height: 120,
     className: "w-24 h-24 sm:w-24 sm:h-24",
   },
-
   {
     name: "inStats UiTM Shah Alam",
     logo: "/instats.svg",

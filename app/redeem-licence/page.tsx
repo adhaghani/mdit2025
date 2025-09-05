@@ -258,12 +258,12 @@ const page = () => {
         <div className="text-center space-y-4 px-4 py-32 lg:py-48 pb-24 lg:pb-12 max-w-4xl mx-auto">
           <BlurFade inView delay={0.1}>
             <Text as="h1" className="text-primary">
-              Redeem Workshop License
+              Redeem Workshop Licence
             </Text>
           </BlurFade>
           <BlurFade inView delay={0.15}>
             <Text as="p" className="text-xl">
-              Thank you for attending the workshop! To find your license key,
+              Thank you for attending the workshop! To find your licence key,
               please enter your IC Number.
             </Text>
           </BlurFade>
@@ -324,7 +324,7 @@ const page = () => {
                             />
                           </FormControl>
                           <FormDescription className="text-left">
-                            Please enter your IC Number to retrieve your license
+                            Please enter your IC Number to retrieve your licence
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
@@ -338,7 +338,7 @@ const page = () => {
                       {isLoading ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Retrieving license...
+                          Retrieving licence...
                         </>
                       ) : isBlocked ? (
                         <>
@@ -348,7 +348,7 @@ const page = () => {
                       ) : attemptsLeft <= 0 ? (
                         "No attempts remaining"
                       ) : (
-                        "Get your license key"
+                        "Get your licence key"
                       )}
                     </Button>
                   </form>
@@ -368,8 +368,8 @@ const page = () => {
                 </div>
                 <CardTitle className="text-green-800 dark:text-green-200">
                   {licenseData.already_redeemed
-                    ? "License Key Retrieved"
-                    : "License Key Redeemed Successfully!"}
+                    ? "Licence Key Retrieved"
+                    : "Licence Key Redeemed Successfully!"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -380,14 +380,14 @@ const page = () => {
                       className="text-blue-800 dark:text-blue-200 text-sm"
                     >
                       <AlertCircle className="inline h-4 w-4 mr-2" />
-                      This license key has been previously redeemed.
+                      This licence key has been previously redeemed.
                     </Text>
                   </div>
                 )}
 
                 <div className="space-y-2">
                   <Text as="p" className="text-sm font-medium">
-                    Your License Key:
+                    Your Licence Key:
                   </Text>
                   <div className="flex items-center space-x-2">
                     <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
@@ -405,7 +405,7 @@ const page = () => {
 
                 <div className="space-y-3 pt-4">
                   <Text as="p" className="text-sm text-muted-foreground">
-                    Please save this license key securely. You will need it to
+                    Please save this licence key securely. You will need it to
                     activate your software.
                   </Text>
 
@@ -415,7 +415,7 @@ const page = () => {
                       variant={"secondary"}
                       className="flex-1"
                     >
-                      Redeem Another License
+                      Redeem Another Licence
                     </Button>
                   </div>
                 </div>
@@ -433,7 +433,7 @@ const page = () => {
                   <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400" />
                 </div>
                 <CardTitle className="text-red-800 dark:text-red-200">
-                  Unable to Retrieve License
+                  Unable to Retrieve Licence
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-center">
@@ -472,10 +472,10 @@ const page = () => {
                         Data Collection and Use
                       </Text>
                       <Text as="p" className="text-sm">
-                        The IC Number was received during the registration
+                        Your IC Number was collected during the registration
                         process. This information is used to verify your
-                        workshop attendance and provide you with the appropriate
-                        software license.
+                        workshop attendance and to provide you with the
+                        appropriate software licence.
                       </Text>
                     </div>
 
@@ -486,7 +486,7 @@ const page = () => {
                       <Text as="p" className="text-sm">
                         Your personal information is encrypted and stored
                         securely. We implement industry-standard security
-                        measures to protect your data from unauthorized access.
+                        measures to protect your data from unauthorised access.
                       </Text>
                     </div>
 
@@ -497,19 +497,20 @@ const page = () => {
                       <Text as="p" className="text-sm">
                         We do not share, sell, or distribute your personal
                         information to third parties. Your data is used
-                        exclusively for MDIT 2025 workshop-related purposes.
+                        exclusively for purposes related to the MDIT x DOSM
+                        Datathon 2025 workshop.
                       </Text>
                     </div>
 
                     <div>
                       <Text as="h4" className="font-semibold mb-2">
-                        License Key Usage
+                        Licence Key Usage
                       </Text>
                       <Text as="p" className="text-sm">
-                        The license key provided is for use in MDIT x DOSM Datathon 2025 only and is
-                        tied to your workshop attendance. Sharing or
-                        distributing the license key is prohibited and may
-                        result in license revocation.
+                        The licence key provided is for use in the MDIT x DOSM
+                        Datathon 2025 only and is tied to your workshop
+                        attendance. Sharing or distributing the licence key is
+                        prohibited and may result in its revocation.
                       </Text>
                     </div>
 
@@ -518,7 +519,7 @@ const page = () => {
                         Contact Information
                       </Text>
                       <Text as="p" className="text-sm">
-                        If you have any questions about these terms or need
+                        If you have any questions about these terms or require
                         support, please contact us at mditxdd2025@gmail.com.
                       </Text>
                     </div>
