@@ -7,6 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Text } from "@/components/ui/text";
+import { MditAuroraSubtle } from "@/components/optimized-react-bits";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
@@ -15,7 +16,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from "@/components/animate-ui/radix/dialog";
 import {
   Form,
@@ -26,8 +26,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { CheckCircle, Copy, AlertCircle, Loader2 } from "lucide-react";
+import { CheckCircle, Copy, AlertCircle, Loader2, X } from "lucide-react";
 import { toast } from "sonner";
+import { useDevice } from "@/contexts/device-context";
+import Image from "next/image";
 
 const formSchema = z.object({
   icNumber: z
@@ -45,9 +47,68 @@ interface LicenseResponse {
   error?: string;
 }
 
+const MAX_ATTEMPTS = 5;
+const COOLDOWN_MINUTES = 15;
+
 const page = () => {
   const [licenseData, setLicenseData] = useState<LicenseResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [attemptsLeft, setAttemptsLeft] = useState<number>(MAX_ATTEMPTS);
+  const [isBlocked, setIsBlocked] = useState<boolean>(false);
+  const [blockEndTime, setBlockEndTime] = useState<number | null>(null);
+  const [cooldownRemaining, setCooldownRemaining] = useState<number>(0);
+
+  // Initialize rate limiting from localStorage
+  React.useEffect(() => {
+    const storedAttempts = localStorage.getItem("license-attempts-left");
+    const storedBlockEnd = localStorage.getItem("license-block-end");
+
+    if (storedBlockEnd) {
+      const blockEndTime = parseInt(storedBlockEnd);
+      if (Date.now() < blockEndTime) {
+        setIsBlocked(true);
+        setBlockEndTime(blockEndTime);
+        setAttemptsLeft(0);
+      } else {
+        // Block expired, reset attempts
+        localStorage.removeItem("license-block-end");
+        localStorage.removeItem("license-attempts-left");
+        setAttemptsLeft(MAX_ATTEMPTS);
+      }
+    } else if (storedAttempts) {
+      setAttemptsLeft(parseInt(storedAttempts));
+    }
+  }, []);
+
+  // Cooldown timer effect
+  React.useEffect(() => {
+    if (isBlocked && blockEndTime) {
+      const interval = setInterval(() => {
+        const remaining = Math.max(
+          0,
+          Math.ceil((blockEndTime - Date.now()) / 1000)
+        );
+        setCooldownRemaining(remaining);
+
+        if (remaining <= 0) {
+          setIsBlocked(false);
+          setBlockEndTime(null);
+          setAttemptsLeft(MAX_ATTEMPTS);
+          localStorage.removeItem("license-block-end");
+          localStorage.removeItem("license-attempts-left");
+          clearInterval(interval);
+        }
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isBlocked, blockEndTime]);
+
+  const formatTime = (seconds: number): string => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+  };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -61,6 +122,19 @@ const page = () => {
     setLicenseData(null);
 
     try {
+      // Check if user is blocked
+      if (isBlocked || attemptsLeft <= 0) {
+        toast.error(
+          isBlocked
+            ? `Too many attempts. Please wait ${formatTime(
+                cooldownRemaining
+              )} before trying again.`
+            : "You have exceeded the maximum number of attempts. Please try again later."
+        );
+        setIsLoading(false);
+        return;
+      }
+
       const response = await fetch("/api/redeem-license", {
         method: "POST",
         headers: {
@@ -78,16 +152,61 @@ const page = () => {
             ? "License key retrieved successfully!"
             : "License key redeemed successfully!"
         );
+        // Reset attempts on success
+        setAttemptsLeft(MAX_ATTEMPTS);
+        localStorage.removeItem("license-attempts-left");
       } else {
-        toast.error(result.error || "Failed to retrieve license key");
+        // Decrement attempts on failure
+        const newAttemptsLeft = attemptsLeft - 1;
+        setAttemptsLeft(newAttemptsLeft);
+        localStorage.setItem(
+          "license-attempts-left",
+          newAttemptsLeft.toString()
+        );
+
+        // Block user if no attempts left
+        if (newAttemptsLeft <= 0) {
+          const blockEnd = Date.now() + COOLDOWN_MINUTES * 60 * 1000;
+          setIsBlocked(true);
+          setBlockEndTime(blockEnd);
+          localStorage.setItem("license-block-end", blockEnd.toString());
+          toast.error(
+            `Too many failed attempts. You are blocked for ${COOLDOWN_MINUTES} minutes.`
+          );
+        } else {
+          toast.error(
+            `${
+              result.error || "Failed to retrieve license key"
+            } (${newAttemptsLeft} attempts remaining)`
+          );
+        }
       }
     } catch (error) {
       console.error("Error:", error);
+
+      // Decrement attempts on network error too
+      const newAttemptsLeft = attemptsLeft - 1;
+      setAttemptsLeft(newAttemptsLeft);
+      localStorage.setItem("license-attempts-left", newAttemptsLeft.toString());
+
       setLicenseData({
         success: false,
         error: "Network error. Please check your connection and try again.",
       });
-      toast.error("Network error occurred");
+
+      if (newAttemptsLeft <= 0) {
+        const blockEnd = Date.now() + COOLDOWN_MINUTES * 60 * 1000;
+        setIsBlocked(true);
+        setBlockEndTime(blockEnd);
+        localStorage.setItem("license-block-end", blockEnd.toString());
+        toast.error(
+          `Network error. You are blocked for ${COOLDOWN_MINUTES} minutes due to too many attempts.`
+        );
+      } else {
+        toast.error(
+          `Network error occurred (${newAttemptsLeft} attempts remaining)`
+        );
+      }
     } finally {
       setIsLoading(false);
     }
@@ -109,11 +228,34 @@ const page = () => {
     setLicenseData(null);
   };
 
+  const {
+    isWebGLSupported,
+    shouldReducePerformance,
+    isLoading: deviceLoading,
+  } = useDevice();
+
   return (
     <>
+      {!deviceLoading && shouldReducePerformance ? (
+        <>
+          <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
+            <Image
+              src={"/assets/bg-gradients/13.png"}
+              alt="Background Gradient"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover object-left !overflow-visible"
+            />
+          </div>
+        </>
+      ) : isWebGLSupported ? (
+        <div className="absolute w-full h-[300px] hidden lg:block sm:h-[500px]">
+          <MditAuroraSubtle />
+        </div>
+      ) : null}
       <div className="max-w-4xl mx-auto text-center space-y-6">
         {/* HEADER REDEEM */}
-        <div className="text-center space-y-4 px-4 py-32 lg:py-48 max-w-4xl mx-auto">
+        <div className="text-center space-y-4 px-4 py-32 lg:py-48 pb-24 lg:pb-12 max-w-4xl mx-auto">
           <BlurFade inView delay={0.1}>
             <Text as="h1" className="text-primary">
               Redeem Workshop License
@@ -133,6 +275,34 @@ const page = () => {
             <Card className="max-w-md mx-auto">
               <CardHeader>
                 <CardTitle>Enter Your IC Number</CardTitle>
+                {/* Attempts indicator */}
+                {attemptsLeft < MAX_ATTEMPTS && !isBlocked && (
+                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <span>Attempts remaining: {attemptsLeft}</span>
+                    {attemptsLeft <= 2 && (
+                      <div className="flex items-center text-amber-600 dark:text-amber-400">
+                        <AlertCircle className="h-3 w-3 mr-1" />
+                        <span className="text-xs">Few attempts left</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+                {/* Blocked indicator */}
+                {isBlocked && (
+                  <div className="mt-2 p-3 bg-red-50 dark:bg-red-950 rounded-lg border border-red-200 dark:border-red-800">
+                    <div className="flex items-center text-red-800 dark:text-red-200 text-sm">
+                      <X className="h-4 w-4 mr-2" />
+                      <div>
+                        <div className="font-medium">
+                          Access temporarily blocked
+                        </div>
+                        <div className="text-xs text-left mt-1">
+                          Try again in: {formatTime(cooldownRemaining)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </CardHeader>
               <CardContent>
                 <Form {...form}>
@@ -150,7 +320,7 @@ const page = () => {
                             <Input
                               placeholder="XXXXXX-XX-XXXX"
                               {...field}
-                              disabled={isLoading}
+                              disabled={isLoading || isBlocked}
                             />
                           </FormControl>
                           <FormDescription className="text-left">
@@ -163,13 +333,20 @@ const page = () => {
                     <Button
                       type="submit"
                       className="w-full"
-                      disabled={isLoading}
+                      disabled={isLoading || isBlocked || attemptsLeft <= 0}
                     >
                       {isLoading ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                           Retrieving license...
                         </>
+                      ) : isBlocked ? (
+                        <>
+                          <X className="mr-2 h-4 w-4" />
+                          Blocked - Try again in {formatTime(cooldownRemaining)}
+                        </>
+                      ) : attemptsLeft <= 0 ? (
+                        "No attempts remaining"
                       ) : (
                         "Get your license key"
                       )}
@@ -213,14 +390,13 @@ const page = () => {
                     Your License Key:
                   </Text>
                   <div className="flex items-center space-x-2">
-                    <div className="flex-1 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg border font-mono text-sm break-all">
+                    <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
                       {licenseData.license_key}
                     </div>
                     <Button
-                      variant="outline"
-                      size="sm"
+                      size="icon"
                       onClick={copyLicenseKey}
-                      className="flex-shrink-0"
+                      className="flex-shrink-0 bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
                     >
                       <Copy className="h-4 w-4" />
                     </Button>
@@ -235,8 +411,8 @@ const page = () => {
 
                   <div className="flex gap-2">
                     <Button
-                      variant="outline"
                       onClick={resetForm}
+                      variant={"secondary"}
                       className="flex-1"
                     >
                       Redeem Another License
@@ -296,10 +472,10 @@ const page = () => {
                         Data Collection and Use
                       </Text>
                       <Text as="p" className="text-sm">
-                        We collect your IC number solely for the purpose of
-                        license key redemption. This information is used to
-                        verify your workshop attendance and provide you with the
-                        appropriate software license.
+                        The IC Number was received during the registration
+                        process. This information is used to verify your
+                        workshop attendance and provide you with the appropriate
+                        software license.
                       </Text>
                     </div>
 
@@ -330,7 +506,7 @@ const page = () => {
                         License Key Usage
                       </Text>
                       <Text as="p" className="text-sm">
-                        The license key provided is for personal use only and is
+                        The license key provided is for use in MDIT x DOSM Datathon 2025 only and is
                         tied to your workshop attendance. Sharing or
                         distributing the license key is prohibited and may
                         result in license revocation.

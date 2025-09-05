@@ -534,6 +534,10 @@ export const FOOTER_QUICK_LINK = [
     href: "/rules-regulation",
   },
   {
+    title: "Redeem License Key",
+    href: "/redeem-license",
+  },
+  {
     title: "FAQ",
     href: "/frequently-asked-questions",
   },
