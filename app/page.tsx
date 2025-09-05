@@ -1473,7 +1473,7 @@ const Page = memo(() => {
                           <SponsorDialog key={index} sponsor={sponsor}>
                             <div className="group relative p-3 cursor-pointer">
                               <div className="absolute inset-1 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-                              <div className="relative bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
+                              <div className="relative bg-white dark:bg-gray-900 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
                                 <Image
                                   src={sponsor.logo}
                                   alt={sponsor.logoAlt}

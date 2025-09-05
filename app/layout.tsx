@@ -9,6 +9,7 @@ import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/next";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import RegistrationClosingSoonBanner from "@/components/registration-close-soon";
+import { Toaster } from "sonner";
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
@@ -160,6 +161,7 @@ export default function RootLayout({
               <RegistrationClosingSoonBanner />
               <main className="mx-auto w-full">{children}</main>
               <Footer />
+              <Toaster richColors position="top-right" />
             </CountdownProvider>
           </DeviceProvider>
         </ThemeProvider>
