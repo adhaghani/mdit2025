@@ -12,11 +12,6 @@ function isValidDomain(request: NextRequest): boolean {
   const origin = request.headers.get("origin");
   const referer = request.headers.get("referer");
 
-  // Debug logging (remove in production)
-  console.log("Domain validation debug:");
-  console.log("Origin:", origin);
-  console.log("Referer:", referer);
-
   // List of allowed domains
   const allowedDomains = [
     "https://mdit2025.my",
@@ -28,56 +23,28 @@ function isValidDomain(request: NextRequest): boolean {
 
   // Check origin header
   if (origin && allowedDomains.includes(origin)) {
-    console.log("Origin validation: PASSED");
     return true;
   }
 
   // Check referer header
   if (referer) {
     try {
-      const refererUrl = new URL(referer);
-      const refererOrigin = `${refererUrl.protocol}//${refererUrl.host}`;
-      console.log("Referer origin:", refererOrigin);
-
-      if (allowedDomains.includes(refererOrigin)) {
-        console.log("Referer validation: PASSED");
-        return true;
-      }
-    } catch (error) {
-      console.log("Error parsing referer URL:", error);
-    }
-  }
-
-  // Alternative regex pattern as fallback
-  const validDomainPattern =
-    /^https:\/\/(www\.|staging\.|dev\.|api\.)?mdit2025\.my$/;
-
-  if (origin && validDomainPattern.test(origin)) {
-    console.log("Origin regex validation: PASSED");
-    return true;
-  }
-
-  if (referer) {
-    try {
       const refererOrigin = new URL(referer).origin;
-      if (validDomainPattern.test(refererOrigin)) {
-        console.log("Referer regex validation: PASSED");
+      if (allowedDomains.includes(refererOrigin)) {
         return true;
       }
     } catch (error) {
-      console.log("Error in referer regex validation:", error);
+      // Invalid referer URL
     }
   }
 
   // Allow localhost for development
   if (process.env.NODE_ENV === "development") {
     if (origin?.includes("localhost") || referer?.includes("localhost")) {
-      console.log("Localhost validation: PASSED");
       return true;
     }
   }
 
-  console.log("Domain validation: FAILED");
   return false;
 }
 
