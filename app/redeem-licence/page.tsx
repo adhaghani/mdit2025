@@ -209,7 +209,7 @@ const page = () => {
                 )}
 
                 <div className="space-y-2">
-                  <Text as="label" className="text-sm font-medium">
+                  <Text as="p" className="text-sm font-medium">
                     Your License Key:
                   </Text>
                   <div className="flex items-center space-x-2">
