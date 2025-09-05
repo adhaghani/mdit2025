@@ -729,7 +729,9 @@ const Page = memo(() => {
             <BlurFade inView delay={0.25}>
               <div className="mt-12 mb-8">
                 <Text as="h3" className="mb-6">
-                  {hasStarted
+                  {isExpired
+                    ? "Registration has closed."
+                    : hasStarted
                     ? "Registration Currently open! it will close in:"
                     : "Registration Opens In:"}
                 </Text>
