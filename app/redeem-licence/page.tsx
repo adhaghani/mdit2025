@@ -32,12 +32,14 @@ import {
   AlertCircle,
   Loader2,
   X,
-  EyeOff,
-  Eye,
   ExternalLink,
   Globe,
   GraduationCap,
   Play,
+  User,
+  Lock,
+  Shield,
+  CheckCircle2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useDevice } from "@/contexts/device-context";
@@ -391,95 +393,161 @@ const page = () => {
         {credentialData?.success && (
           <>
             <BlurFade inView delay={0.3}>
-              <Card className="max-w-2xl mx-auto border-green-200 bg-green-50 dark:bg-green-950 dark:border-green-800">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
-                    <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
+              <Card className="max-w-2xl mx-auto border-green-200 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950 dark:via-emerald-950 dark:to-teal-950 dark:border-green-800 shadow-lg">
+                <CardHeader className="text-center pb-4">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900 dark:to-emerald-900 shadow-lg">
+                    <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
                   </div>
-                  <CardTitle className="text-green-800 dark:text-green-200">
+                  <CardTitle className="text-green-800 dark:text-green-200 text-xl">
                     {credentialData.already_redeemed
-                      ? "Credentials Retrieved"
-                      : "Credentials Redeemed Successfully!"}
+                      ? "🎉 Credentials Retrieved"
+                      : "🎉 Credentials Redeemed Successfully!"}
                   </CardTitle>
+                  <Text
+                    as="p"
+                    className="text-green-700 dark:text-green-300 text-sm mt-2"
+                  >
+                    Your workshop access is now ready
+                  </Text>
                 </CardHeader>
-                <CardContent className="space-y-4">
+
+                <CardContent className="space-y-6">
                   {credentialData.already_redeemed && (
-                    <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
-                      <Text
-                        as="p"
-                        className="text-blue-800 dark:text-blue-200 text-sm"
-                      >
-                        <AlertCircle className="inline h-4 w-4 mr-2" />
-                        These credentials have been previously redeemed.
-                      </Text>
+                    <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 rounded-xl border border-blue-200 dark:border-blue-800">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0 p-2 bg-blue-100 dark:bg-blue-900 rounded-full mr-3">
+                          <AlertCircle className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                        </div>
+                        <Text
+                          as="p"
+                          className="text-blue-800 dark:text-blue-200 text-sm"
+                        >
+                          <span className="font-medium">
+                            Previously Retrieved:
+                          </span>{" "}
+                          These credentials have been accessed before.
+                        </Text>
+                      </div>
                     </div>
                   )}
 
-                  <div className="space-y-4">
-                    <Text as="p" className="text-sm font-medium">
-                      Your Login Credentials:
-                    </Text>
-
-                    {/* Username */}
-                    <div className="space-y-2">
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-green-100 dark:bg-green-900 rounded-full">
+                        <Shield className="h-5 w-5 text-green-600 dark:text-green-400" />
+                      </div>
                       <Text
                         as="p"
-                        className="text-xs font-medium text-muted-foreground"
+                        className="text-lg font-semibold text-green-800 dark:text-green-200"
                       >
-                        Username:
+                        Your Secure Login Credentials
                       </Text>
-                      <div className="flex items-center gap-1 space-x-2">
-                        <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
-                          {credentialData.username}
+                    </div>
+
+                    {/* Username Credential */}
+                    <div className="group relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 rounded-xl opacity-50"></div>
+                      <div className="relative p-4 border border-blue-200 dark:border-blue-800 rounded-xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                            <User className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                          </div>
+                          <Text
+                            as="p"
+                            className="text-sm font-semibold text-blue-800 dark:text-blue-200 uppercase tracking-wide"
+                          >
+                            Username
+                          </Text>
                         </div>
-                        <Button
-                          className="bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
-                          size={"icon"}
-                          onClick={copyUsernameCredentials}
-                        >
-                          <Copy className="h-4 w-4" />
-                        </Button>
+                        <div className="flex items-center gap-3">
+                          <div className="flex-1 group">
+                            <div className="relative">
+                              <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 text-blue-900 dark:text-blue-100 rounded-lg border border-blue-200 dark:border-blue-700 font-mono text-base font-medium break-all transition-all duration-200 group-hover:shadow-md">
+                                {credentialData.username}
+                              </div>
+                            </div>
+                          </div>
+                          <Button
+                            onClick={copyUsernameCredentials}
+                            size="sm"
+                            className="bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all duration-200 px-4 py-2"
+                          >
+                            <Copy className="h-4 w-4 mr-2" />
+                            Copy
+                          </Button>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Password */}
-                    <div className="space-y-2">
-                      <Text
-                        as="p"
-                        className="text-xs font-medium text-muted-foreground"
-                      >
-                        Password:
-                      </Text>
-                      <div className="flex items-center gap-1 space-x-2">
-                        <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
-                          {credentialData.password}
+                    {/* Password Credential */}
+                    <div className="group relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-violet-100 dark:from-purple-900 dark:to-violet-900 rounded-xl opacity-50"></div>
+                      <div className="relative p-4 border border-purple-200 dark:border-purple-800 rounded-xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
+                            <Lock className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                          </div>
+                          <Text
+                            as="p"
+                            className="text-sm font-semibold text-purple-800 dark:text-purple-200 uppercase tracking-wide"
+                          >
+                            Password
+                          </Text>
                         </div>
-                        <Button
-                          className="bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
-                          size={"icon"}
-                          onClick={copyPasswordCredentials}
-                        >
-                          <Copy className="h-4 w-4" />
-                        </Button>
+                        <div className="flex items-center gap-3">
+                          <div className="flex-1 group">
+                            <div className="relative">
+                              <div className="p-3 bg-gradient-to-r from-purple-50 to-violet-50 dark:from-purple-950 dark:to-violet-950 text-purple-900 dark:text-purple-100 rounded-lg border border-purple-200 dark:border-purple-700 font-mono text-base font-medium break-all transition-all duration-200 group-hover:shadow-md">
+                                {credentialData.password}
+                              </div>
+                            </div>
+                          </div>
+                          <Button
+                            onClick={copyPasswordCredentials}
+                            size="sm"
+                            className="bg-purple-600 hover:bg-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-200 px-4 py-2"
+                          >
+                            <Copy className="h-4 w-4 mr-2" />
+                            Copy
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-3 pt-4">
-                    <Text as="p" className="text-sm text-muted-foreground">
-                      Please save these credentials securely. You will need them
-                      to access the workshop platform.
-                    </Text>
-
-                    <div className="flex gap-2">
-                      <Button
-                        onClick={resetForm}
-                        variant={"secondary"}
-                        className="flex-1"
-                      >
-                        Redeem Another Set of Credentials
-                      </Button>
+                  {/* Security Notice */}
+                  <div className="p-4 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950 dark:to-orange-950 rounded-xl border border-amber-200 dark:border-amber-800">
+                    <div className="flex items-start gap-3">
+                      <div className="flex-shrink-0 p-2 bg-amber-100 dark:bg-amber-900 rounded-full">
+                        <Shield className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <div>
+                        <Text
+                          as="p"
+                          className="text-amber-800 dark:text-amber-200 text-sm font-medium mb-1"
+                        >
+                          Security Reminder
+                        </Text>
+                        <Text
+                          as="p"
+                          className="text-amber-700 dark:text-amber-300 text-xs"
+                        >
+                          Keep these credentials secure and don't share them.
+                          You'll need both to access the workshop platform.
+                        </Text>
+                      </div>
                     </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-green-200 dark:border-green-800">
+                    <Button
+                      onClick={resetForm}
+                      variant="outline"
+                      className="w-full border-green-300 text-green-700 hover:bg-green-50 dark:border-green-700 dark:text-green-300 dark:hover:bg-green-950"
+                    >
+                      <CheckCircle2 className="h-4 w-4 mr-2" />
+                      Redeem Another Set of Credentials
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
