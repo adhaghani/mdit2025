@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Call Supabase function with domain headers
-    const { data, error } = await supabase.rpc("get_license_key", {
+    const { data, error } = await supabase.rpc("get_user_credentials", {
       p_ic_number: icNumber,
     });
 

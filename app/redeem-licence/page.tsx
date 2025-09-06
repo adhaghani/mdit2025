@@ -40,9 +40,10 @@ const formSchema = z.object({
     }),
 });
 
-interface LicenseResponse {
+interface CredentialResponse {
   success: boolean;
-  license_key?: string;
+  username?: string;
+  password?: string;
   already_redeemed?: boolean;
   error?: string;
 }
@@ -51,7 +52,8 @@ const MAX_ATTEMPTS = 5;
 const COOLDOWN_MINUTES = 15;
 
 const page = () => {
-  const [licenseData, setLicenseData] = useState<LicenseResponse | null>(null);
+  const [credentialData, setCredentialData] =
+    useState<CredentialResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [attemptsLeft, setAttemptsLeft] = useState<number>(MAX_ATTEMPTS);
   const [isBlocked, setIsBlocked] = useState<boolean>(false);
@@ -119,7 +121,7 @@ const page = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
-    setLicenseData(null);
+    setCredentialData(null);
 
     try {
       // Check if user is blocked
@@ -143,14 +145,14 @@ const page = () => {
         body: JSON.stringify({ icNumber: data.icNumber }),
       });
 
-      const result: LicenseResponse = await response.json();
-      setLicenseData(result);
+      const result: CredentialResponse = await response.json();
+      setCredentialData(result);
 
       if (result.success) {
         toast.success(
           result.already_redeemed
-            ? "License key retrieved successfully!"
-            : "License key redeemed successfully!"
+            ? "User credentials retrieved successfully!"
+            : "User credentials redeemed successfully!"
         );
         // Reset attempts on success
         setAttemptsLeft(MAX_ATTEMPTS);
@@ -176,7 +178,7 @@ const page = () => {
         } else {
           toast.error(
             `${
-              result.error || "Failed to retrieve license key"
+              result.error || "Failed to retrieve user credentials"
             } (${newAttemptsLeft} attempts remaining)`
           );
         }
@@ -189,7 +191,7 @@ const page = () => {
       setAttemptsLeft(newAttemptsLeft);
       localStorage.setItem("license-attempts-left", newAttemptsLeft.toString());
 
-      setLicenseData({
+      setCredentialData({
         success: false,
         error: "Network error. Please check your connection and try again.",
       });
@@ -212,20 +214,31 @@ const page = () => {
     }
   };
 
-  const copyLicenseKey = async () => {
-    if (licenseData?.license_key) {
+  const copyUsernameCredentials = async () => {
+    if (credentialData?.username) {
       try {
-        await navigator.clipboard.writeText(licenseData.license_key);
-        toast.success("License key copied to clipboard!");
+        await navigator.clipboard.writeText(credentialData.username);
+        toast.success("Username copied to clipboard!");
       } catch (error) {
-        toast.error("Failed to copy license key");
+        toast.error("Failed to copy username");
+      }
+    }
+  };
+
+  const copyPasswordCredentials = async () => {
+    if (credentialData?.password) {
+      try {
+        await navigator.clipboard.writeText(credentialData.password);
+        toast.success("Password copied to clipboard!");
+      } catch (error) {
+        toast.error("Failed to copy password");
       }
     }
   };
 
   const resetForm = () => {
     form.reset();
-    setLicenseData(null);
+    setCredentialData(null);
   };
 
   const {
@@ -236,6 +249,7 @@ const page = () => {
 
   return (
     <>
+      {/* User Interafce */}
       {!deviceLoading && shouldReducePerformance ? (
         <>
           <div className="absolute left-0 -top-1/2 lg:-left-128 w-screen lg:w-auto lg:h-[1200px] h-auto rotate-180 overflow-hidden -z-10 pointer-events-none">
@@ -253,24 +267,25 @@ const page = () => {
           <MditAuroraSubtle />
         </div>
       ) : null}
+      {/* Page Content */}
       <div className="max-w-4xl mx-auto text-center space-y-6">
         {/* HEADER REDEEM */}
         <div className="text-center space-y-4 px-4 py-32 lg:py-48 pb-24 lg:pb-12 max-w-4xl mx-auto">
           <BlurFade inView delay={0.1}>
             <Text as="h1" className="text-primary">
-              Redeem Workshop Licence
+              Redeem Workshop Credentials
             </Text>
           </BlurFade>
           <BlurFade inView delay={0.15}>
             <Text as="p" className="text-xl">
-              Thank you for attending the workshop! To find your licence key,
-              please enter your IC Number.
+              Thank you for attending the workshop! To find your login
+              credentials, please enter your IC Number.
             </Text>
           </BlurFade>
         </div>
 
         {/* FORM SECTION */}
-        {!licenseData?.success && (
+        {!credentialData?.success && (
           <BlurFade inView delay={0.2}>
             <Card className="max-w-md mx-auto">
               <CardHeader>
@@ -324,7 +339,8 @@ const page = () => {
                             />
                           </FormControl>
                           <FormDescription className="text-left">
-                            Please enter your IC Number to retrieve your licence
+                            Please enter your IC Number to retrieve your
+                            credentials
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
@@ -338,7 +354,7 @@ const page = () => {
                       {isLoading ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Retrieving licence...
+                          Retrieving credentials...
                         </>
                       ) : isBlocked ? (
                         <>
@@ -348,7 +364,7 @@ const page = () => {
                       ) : attemptsLeft <= 0 ? (
                         "No attempts remaining"
                       ) : (
-                        "Get your licence key"
+                        "Get your credentials"
                       )}
                     </Button>
                   </form>
@@ -359,7 +375,7 @@ const page = () => {
         )}
 
         {/* SUCCESS RESULT */}
-        {licenseData?.success && (
+        {credentialData?.success && (
           <BlurFade inView delay={0.3}>
             <Card className="max-w-2xl mx-auto border-green-200 bg-green-50 dark:bg-green-950 dark:border-green-800">
               <CardHeader className="text-center">
@@ -367,46 +383,78 @@ const page = () => {
                   <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
                 </div>
                 <CardTitle className="text-green-800 dark:text-green-200">
-                  {licenseData.already_redeemed
-                    ? "Licence Key Retrieved"
-                    : "Licence Key Redeemed Successfully!"}
+                  {credentialData.already_redeemed
+                    ? "Credentials Retrieved"
+                    : "Credentials Redeemed Successfully!"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {licenseData.already_redeemed && (
+                {credentialData.already_redeemed && (
                   <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
                     <Text
                       as="p"
                       className="text-blue-800 dark:text-blue-200 text-sm"
                     >
                       <AlertCircle className="inline h-4 w-4 mr-2" />
-                      This licence key has been previously redeemed.
+                      These credentials have been previously redeemed.
                     </Text>
                   </div>
                 )}
 
-                <div className="space-y-2">
+                <div className="space-y-4">
                   <Text as="p" className="text-sm font-medium">
-                    Your Licence Key:
+                    Your Login Credentials:
                   </Text>
-                  <div className="flex items-center space-x-2">
-                    <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
-                      {licenseData.license_key}
-                    </div>
-                    <Button
-                      size="icon"
-                      onClick={copyLicenseKey}
-                      className="flex-shrink-0 bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
+
+                  {/* Username */}
+                  <div className="space-y-2">
+                    <Text
+                      as="p"
+                      className="text-xs font-medium text-muted-foreground"
                     >
-                      <Copy className="h-4 w-4" />
-                    </Button>
+                      Username:
+                    </Text>
+                    <div className="flex items-center gap-1 space-x-2">
+                      <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
+                        {credentialData.username}
+                      </div>
+                      <Button
+                        className="bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
+                        size={"icon"}
+                        onClick={copyUsernameCredentials}
+                      >
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Password */}
+                  <div className="space-y-2">
+                    <Text
+                      as="p"
+                      className="text-xs font-medium text-muted-foreground"
+                    >
+                      Password:
+                    </Text>
+                    <div className="flex items-center gap-1 space-x-2">
+                      <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
+                        {credentialData.password}
+                      </div>
+                      <Button
+                        className="bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
+                        size={"icon"}
+                        onClick={copyPasswordCredentials}
+                      >
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
 
                 <div className="space-y-3 pt-4">
                   <Text as="p" className="text-sm text-muted-foreground">
-                    Please save this licence key securely. You will need it to
-                    activate your software.
+                    Please save these credentials securely. You will need them
+                    to access the workshop platform.
                   </Text>
 
                   <div className="flex gap-2">
@@ -415,7 +463,7 @@ const page = () => {
                       variant={"secondary"}
                       className="flex-1"
                     >
-                      Redeem Another Licence
+                      Redeem Another Set of Credentials
                     </Button>
                   </div>
                 </div>
@@ -425,7 +473,7 @@ const page = () => {
         )}
 
         {/* ERROR RESULT */}
-        {licenseData && !licenseData.success && (
+        {credentialData && !credentialData.success && (
           <BlurFade inView delay={0.3}>
             <Card className="max-w-2xl mx-auto border-red-200 bg-red-50 dark:bg-red-950 dark:border-red-800">
               <CardHeader className="text-center">
@@ -433,12 +481,12 @@ const page = () => {
                   <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400" />
                 </div>
                 <CardTitle className="text-red-800 dark:text-red-200">
-                  Unable to Retrieve Licence
+                  Unable to Retrieve Credentials
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-center">
                 <Text as="p" className="text-red-700 dark:text-red-300">
-                  {licenseData.error}
+                  {credentialData.error}
                 </Text>
 
                 <Button variant="outline" onClick={resetForm}>

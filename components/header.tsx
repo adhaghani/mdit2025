@@ -12,7 +12,6 @@ import {
 } from "@/components/animate-ui/radix/sheet";
 import { MoreHorizontalIcon } from "lucide-react";
 import { useCountdown } from "@/contexts/countdown-context";
-import { QRCode } from "@/components/ui/shadcn-io/qr-code";
 import { GOOGLE_FORM_LINK } from "./constant";
 import Image from "next/image";
 import { Text } from "@/components/ui/text";
@@ -26,11 +25,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "./animate-ui/radix/dialog";
 
 const Header = memo(() => {
   const { hasStarted, isExpired } = useCountdown();
@@ -166,7 +160,7 @@ const Header = memo(() => {
               {/* <NavigationMenuItem>
               <ModeToggle />
             </NavigationMenuItem> */}
-              <NavigationMenuItem>
+              {/* <NavigationMenuItem>
                 {isButtonDisabled ? (
                   <Button
                     size="sm"
@@ -212,13 +206,13 @@ const Header = memo(() => {
                     </DialogContent>
                   </Dialog>
                 )}
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
               {/* TODO: ACTIVATE WHEN REQUIRED */}
-              {/* <NavigationMenuItem asChild>
+              <NavigationMenuItem asChild>
                 <Button asChild>
                   <Link href="/redeem-licence">Redeem Licence</Link>
                 </Button>
-              </NavigationMenuItem> */}
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
 
