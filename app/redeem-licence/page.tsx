@@ -301,7 +301,7 @@ const page = () => {
 
         {/* FORM SECTION */}
         {!credentialData?.success && (
-          <BlurFade inView delay={0.2}>
+          <BlurFade inView delay={0.2} className="px-4">
             <Card className="max-w-md mx-auto">
               <CardHeader>
                 <CardTitle>Enter Your IC Number</CardTitle>
@@ -392,8 +392,8 @@ const page = () => {
         {/* SUCCESS RESULT */}
         {credentialData?.success && (
           <>
-            <BlurFade inView delay={0.3}>
-              <Card className="max-w-2xl mx-auto border-green-200 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950 dark:via-emerald-950 dark:to-teal-950 dark:border-green-800 shadow-lg">
+            <BlurFade inView delay={0.3} className="px-4">
+              <Card className="max-w-2xl mx-auto">
                 <CardHeader className="text-center pb-4">
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900 dark:to-emerald-900 shadow-lg">
                     <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
@@ -459,7 +459,7 @@ const page = () => {
                             Username
                           </Text>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="flex flex-col sm:flex-row items-center gap-3">
                           <div className="flex-1 group">
                             <div className="relative">
                               <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 text-blue-900 dark:text-blue-100 rounded-lg border border-blue-200 dark:border-blue-700 font-mono text-base font-medium break-all transition-all duration-200 group-hover:shadow-md">
@@ -481,7 +481,6 @@ const page = () => {
 
                     {/* Password Credential */}
                     <div className="group relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-violet-100 dark:from-purple-900 dark:to-violet-900 rounded-xl opacity-50"></div>
                       <div className="relative p-4 border border-purple-200 dark:border-purple-800 rounded-xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
                         <div className="flex items-center gap-3 mb-3">
                           <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
@@ -494,7 +493,7 @@ const page = () => {
                             Password
                           </Text>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="flex flex-col sm:flex-row items-center gap-3">
                           <div className="flex-1 group">
                             <div className="relative">
                               <div className="p-3 bg-gradient-to-r from-purple-50 to-violet-50 dark:from-purple-950 dark:to-violet-950 text-purple-900 dark:text-purple-100 rounded-lg border border-purple-200 dark:border-purple-700 font-mono text-base font-medium break-all transition-all duration-200 group-hover:shadow-md">
@@ -539,13 +538,13 @@ const page = () => {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-green-200 dark:border-green-800">
+                  <div className="pt-4 border-t">
                     <Button
                       onClick={resetForm}
                       variant="outline"
                       className="w-full border-green-300 text-green-700 hover:bg-green-50 dark:border-green-700 dark:text-green-300 dark:hover:bg-green-950"
                     >
-                      <CheckCircle2 className="h-4 w-4 mr-2" />
+                      <CheckCircle2 className="h-4 w-4 mr-2 hiddem sm:block" />
                       Redeem Another Set of Credentials
                     </Button>
                   </div>
@@ -554,7 +553,7 @@ const page = () => {
             </BlurFade>
 
             {/* Enhanced Cards Section */}
-            <BlurFade inView delay={0.4}>
+            <BlurFade inView delay={0.4} className="px-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                 {/* Environment Link Card */}
                 <Card className="group hover:shadow-lg transition-all duration-300 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 dark:border-blue-800">
@@ -649,7 +648,7 @@ const page = () => {
 
         {/* ERROR RESULT */}
         {credentialData && !credentialData.success && (
-          <BlurFade inView delay={0.3}>
+          <BlurFade inView delay={0.3} className="px-4">
             <Card className="max-w-2xl mx-auto border-red-200 bg-red-50 dark:bg-red-950 dark:border-red-800">
               <CardHeader className="text-center">
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-100 dark:bg-red-900">
@@ -673,7 +672,7 @@ const page = () => {
         )}
 
         {/* DISCLAIMER SECTION */}
-        <BlurFade inView delay={0.4}>
+        <BlurFade inView delay={0.4} className="px-4">
           <div className="max-w-2xl mx-auto space-y-4">
             <Text as="p" styleVariant="muted" className="text-center">
               Your data is secured and will not be shared with any third
@@ -727,12 +726,12 @@ const page = () => {
 
                     <div>
                       <Text as="h4" className="font-semibold mb-2">
-                        Licence Key Usage
+                        Credential Usage
                       </Text>
                       <Text as="p" className="text-sm">
-                        The licence key provided is for use in the MDIT x DOSM
+                        The credential provided is for use in the MDIT x DOSM
                         Datathon 2025 only and is tied to your workshop
-                        attendance. Sharing or distributing the licence key is
+                        attendance. Sharing or distributing the credential is
                         prohibited and may result in its revocation.
                       </Text>
                     </div>
