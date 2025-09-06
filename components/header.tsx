@@ -1,6 +1,6 @@
 "use client";
 
-import React, { memo, useMemo } from "react";
+import React, { memo } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,8 +11,6 @@ import {
   SheetTrigger,
 } from "@/components/animate-ui/radix/sheet";
 import { MoreHorizontalIcon } from "lucide-react";
-import { useCountdown } from "@/contexts/countdown-context";
-import { GOOGLE_FORM_LINK } from "./constant";
 import Image from "next/image";
 import { Text } from "@/components/ui/text";
 // import { ModeToggle } from "./mode-toggle";
@@ -27,25 +25,6 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const Header = memo(() => {
-  const { hasStarted, isExpired } = useCountdown();
-
-  // Memoize button text to prevent recalculation
-  const buttonText = useMemo(() => {
-    if (isExpired) return "Registration Closed";
-    if (hasStarted) return "Register Now";
-    return "Coming Soon";
-  }, [isExpired, hasStarted]);
-
-  // Memoize button href to prevent recalculation
-  const buttonHref = useMemo(() => {
-    return isExpired || !hasStarted ? "#" : GOOGLE_FORM_LINK;
-  }, [isExpired, hasStarted]);
-
-  // Memoize button disabled state
-  const isButtonDisabled = useMemo(() => {
-    return isExpired || !hasStarted;
-  }, [isExpired, hasStarted]);
-
   return (
     <>
       <header className="max-w-7xl z-50 h-14 fixed top-4 left-[50%] translate-x-[-50%] w-full lg:mx-auto px-4">
@@ -315,20 +294,11 @@ const Header = memo(() => {
 
                     <div className="pt-4 px-2">
                       <div className="border-t pt-4">
-                        <Button asChild className="block w-full">
+                        <Button asChild size={"lg"} className="block w-full">
                           <Link href="/redeem-licence" className="block w-full">
                             Redeem Licence
                           </Link>
                         </Button>
-                        <Link className="block w-full" href={buttonHref}>
-                          <Button
-                            size="lg"
-                            className="w-full justify-center gap-2 font-semibold"
-                            disabled={isButtonDisabled}
-                          >
-                            {buttonText}
-                          </Button>
-                        </Link>
                       </div>
                     </div>
                   </div>
@@ -338,17 +308,6 @@ const Header = memo(() => {
             {/* <div className="flex">
             <ModeToggle />
           </div> */}
-            <div className="hidden sm:flex">
-              <Link href={buttonHref}>
-                <Button
-                  size="sm"
-                  className="flex items-center gap-2"
-                  disabled={isButtonDisabled}
-                >
-                  {buttonText}
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
       </header>
