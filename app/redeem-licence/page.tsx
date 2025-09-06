@@ -26,7 +26,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { CheckCircle, Copy, AlertCircle, Loader2, X } from "lucide-react";
+import {
+  CheckCircle,
+  Copy,
+  AlertCircle,
+  Loader2,
+  X,
+  EyeOff,
+  Eye,
+} from "lucide-react";
 import { toast } from "sonner";
 import { useDevice } from "@/contexts/device-context";
 import Image from "next/image";
@@ -55,6 +63,7 @@ const page = () => {
   const [credentialData, setCredentialData] =
     useState<CredentialResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [revealPassword, setRevealPassword] = useState<boolean>(false);
   const [attemptsLeft, setAttemptsLeft] = useState<number>(MAX_ATTEMPTS);
   const [isBlocked, setIsBlocked] = useState<boolean>(false);
   const [blockEndTime, setBlockEndTime] = useState<number | null>(null);
@@ -228,6 +237,7 @@ const page = () => {
   const copyPasswordCredentials = async () => {
     if (credentialData?.password) {
       try {
+        setRevealPassword(false);
         await navigator.clipboard.writeText(credentialData.password);
         toast.success("Password copied to clipboard!");
       } catch (error) {
@@ -238,6 +248,7 @@ const page = () => {
 
   const resetForm = () => {
     form.reset();
+    setRevealPassword(false);
     setCredentialData(null);
   };
 
@@ -438,7 +449,20 @@ const page = () => {
                     </Text>
                     <div className="flex items-center gap-1 space-x-2">
                       <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
-                        {credentialData.password}
+                        {revealPassword ? credentialData.password : "••••••••"}
+                        <Button size={"icon"}>
+                          {revealPassword ? (
+                            <EyeOff
+                              className="h-4 w-4"
+                              onClick={() => setRevealPassword(false)}
+                            />
+                          ) : (
+                            <Eye
+                              className="h-4 w-4"
+                              onClick={() => setRevealPassword(true)}
+                            />
+                          )}
+                        </Button>
                       </div>
                       <Button
                         className="bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
