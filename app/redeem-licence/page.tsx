@@ -34,10 +34,15 @@ import {
   X,
   EyeOff,
   Eye,
+  ExternalLink,
+  Globe,
+  GraduationCap,
+  Play,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useDevice } from "@/contexts/device-context";
 import Image from "next/image";
+import Link from "next/link";
 
 const formSchema = z.object({
   icNumber: z
@@ -63,7 +68,6 @@ const page = () => {
   const [credentialData, setCredentialData] =
     useState<CredentialResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [revealPassword, setRevealPassword] = useState<boolean>(false);
   const [attemptsLeft, setAttemptsLeft] = useState<number>(MAX_ATTEMPTS);
   const [isBlocked, setIsBlocked] = useState<boolean>(false);
   const [blockEndTime, setBlockEndTime] = useState<number | null>(null);
@@ -237,7 +241,6 @@ const page = () => {
   const copyPasswordCredentials = async () => {
     if (credentialData?.password) {
       try {
-        setRevealPassword(false);
         await navigator.clipboard.writeText(credentialData.password);
         toast.success("Password copied to clipboard!");
       } catch (error) {
@@ -248,7 +251,6 @@ const page = () => {
 
   const resetForm = () => {
     form.reset();
-    setRevealPassword(false);
     setCredentialData(null);
   };
 
@@ -387,113 +389,194 @@ const page = () => {
 
         {/* SUCCESS RESULT */}
         {credentialData?.success && (
-          <BlurFade inView delay={0.3}>
-            <Card className="max-w-2xl mx-auto border-green-200 bg-green-50 dark:bg-green-950 dark:border-green-800">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
-                  <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
-                </div>
-                <CardTitle className="text-green-800 dark:text-green-200">
-                  {credentialData.already_redeemed
-                    ? "Credentials Retrieved"
-                    : "Credentials Redeemed Successfully!"}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {credentialData.already_redeemed && (
-                  <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
-                    <Text
-                      as="p"
-                      className="text-blue-800 dark:text-blue-200 text-sm"
-                    >
-                      <AlertCircle className="inline h-4 w-4 mr-2" />
-                      These credentials have been previously redeemed.
-                    </Text>
+          <>
+            <BlurFade inView delay={0.3}>
+              <Card className="max-w-2xl mx-auto border-green-200 bg-green-50 dark:bg-green-950 dark:border-green-800">
+                <CardHeader className="text-center">
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
+                    <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
                   </div>
-                )}
-
-                <div className="space-y-4">
-                  <Text as="p" className="text-sm font-medium">
-                    Your Login Credentials:
-                  </Text>
-
-                  {/* Username */}
-                  <div className="space-y-2">
-                    <Text
-                      as="p"
-                      className="text-xs font-medium text-muted-foreground"
-                    >
-                      Username:
-                    </Text>
-                    <div className="flex items-center gap-1 space-x-2">
-                      <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
-                        {credentialData.username}
-                      </div>
-                      <Button
-                        className="bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
-                        size={"icon"}
-                        onClick={copyUsernameCredentials}
+                  <CardTitle className="text-green-800 dark:text-green-200">
+                    {credentialData.already_redeemed
+                      ? "Credentials Retrieved"
+                      : "Credentials Redeemed Successfully!"}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {credentialData.already_redeemed && (
+                    <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <Text
+                        as="p"
+                        className="text-blue-800 dark:text-blue-200 text-sm"
                       >
-                        <Copy className="h-4 w-4" />
-                      </Button>
+                        <AlertCircle className="inline h-4 w-4 mr-2" />
+                        These credentials have been previously redeemed.
+                      </Text>
                     </div>
-                  </div>
+                  )}
 
-                  {/* Password */}
-                  <div className="space-y-2">
-                    <Text
-                      as="p"
-                      className="text-xs font-medium text-muted-foreground"
-                    >
-                      Password:
+                  <div className="space-y-4">
+                    <Text as="p" className="text-sm font-medium">
+                      Your Login Credentials:
                     </Text>
-                    <div className="flex items-center gap-1 space-x-2">
-                      <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
-                        {revealPassword ? credentialData.password : "••••••••"}
-                        <Button size={"icon"}>
-                          {revealPassword ? (
-                            <EyeOff
-                              className="h-4 w-4"
-                              onClick={() => setRevealPassword(false)}
-                            />
-                          ) : (
-                            <Eye
-                              className="h-4 w-4"
-                              onClick={() => setRevealPassword(true)}
-                            />
-                          )}
+
+                    {/* Username */}
+                    <div className="space-y-2">
+                      <Text
+                        as="p"
+                        className="text-xs font-medium text-muted-foreground"
+                      >
+                        Username:
+                      </Text>
+                      <div className="flex items-center gap-1 space-x-2">
+                        <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
+                          {credentialData.username}
+                        </div>
+                        <Button
+                          className="bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
+                          size={"icon"}
+                          onClick={copyUsernameCredentials}
+                        >
+                          <Copy className="h-4 w-4" />
                         </Button>
                       </div>
-                      <Button
-                        className="bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
-                        size={"icon"}
-                        onClick={copyPasswordCredentials}
+                    </div>
+
+                    {/* Password */}
+                    <div className="space-y-2">
+                      <Text
+                        as="p"
+                        className="text-xs font-medium text-muted-foreground"
                       >
-                        <Copy className="h-4 w-4" />
+                        Password:
+                      </Text>
+                      <div className="flex items-center gap-1 space-x-2">
+                        <div className="flex-1 p-2 bg-green-100 text-green-800 rounded-lg border font-mono text-sm break-all">
+                          {credentialData.password}
+                        </div>
+                        <Button
+                          className="bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900"
+                          size={"icon"}
+                          onClick={copyPasswordCredentials}
+                        >
+                          <Copy className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 pt-4">
+                    <Text as="p" className="text-sm text-muted-foreground">
+                      Please save these credentials securely. You will need them
+                      to access the workshop platform.
+                    </Text>
+
+                    <div className="flex gap-2">
+                      <Button
+                        onClick={resetForm}
+                        variant={"secondary"}
+                        className="flex-1"
+                      >
+                        Redeem Another Set of Credentials
                       </Button>
                     </div>
                   </div>
-                </div>
+                </CardContent>
+              </Card>
+            </BlurFade>
 
-                <div className="space-y-3 pt-4">
-                  <Text as="p" className="text-sm text-muted-foreground">
-                    Please save these credentials securely. You will need them
-                    to access the workshop platform.
-                  </Text>
-
-                  <div className="flex gap-2">
-                    <Button
-                      onClick={resetForm}
-                      variant={"secondary"}
-                      className="flex-1"
+            {/* Enhanced Cards Section */}
+            <BlurFade inView delay={0.4}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                {/* Environment Link Card */}
+                <Card className="group hover:shadow-lg transition-all duration-300 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 dark:border-blue-800">
+                  <CardHeader className="text-center pb-3">
+                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900 group-hover:bg-blue-200 dark:group-hover:bg-blue-800 transition-colors">
+                      <Globe className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <CardTitle className="text-blue-800 dark:text-blue-200 text-lg">
+                      Workshop Environment
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center space-y-3">
+                    <Text
+                      as="p"
+                      className="text-sm text-blue-700 dark:text-blue-300"
                     >
-                      Redeem Another Set of Credentials
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </BlurFade>
+                      Access the MicroStrategy workshop environment to start
+                      your data analytics journey.
+                    </Text>
+                    <Link
+                      href="https://autotrial.microstrategy.com/MicroStrategyLibrary/"
+                      target="_blank"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors group"
+                    >
+                      <span>Launch Environment</span>
+                      <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                    </Link>
+                  </CardContent>
+                </Card>
+
+                {/* Academic Program Card */}
+                <Card className="group hover:shadow-lg transition-all duration-300 border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950 dark:to-green-950 dark:border-emerald-800">
+                  <CardHeader className="text-center pb-3">
+                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900 group-hover:bg-emerald-200 dark:group-hover:bg-emerald-800 transition-colors">
+                      <GraduationCap className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+                    </div>
+                    <CardTitle className="text-emerald-800 dark:text-emerald-200 text-lg">
+                      Academic Program
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center space-y-3">
+                    <Text
+                      as="p"
+                      className="text-sm text-emerald-700 dark:text-emerald-300"
+                    >
+                      Students with valid school email can join the academic
+                      program for extended access.
+                    </Text>
+                    <Link
+                      href="https://www.strategysoftware.com/education/academic-program"
+                      target="_blank"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium transition-colors group"
+                    >
+                      <span>Join Program</span>
+                      <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                    </Link>
+                  </CardContent>
+                </Card>
+
+                {/* Tutorial Videos Card */}
+                <Card className="group hover:shadow-lg transition-all duration-300 border-purple-200 bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950 dark:to-violet-950 dark:border-purple-800">
+                  <CardHeader className="text-center pb-3">
+                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900 group-hover:bg-purple-200 dark:group-hover:bg-purple-800 transition-colors">
+                      <Play className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                    </div>
+                    <CardTitle className="text-purple-800 dark:text-purple-200 text-lg">
+                      Tutorial Videos
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center space-y-3">
+                    <Text
+                      as="p"
+                      className="text-sm text-purple-700 dark:text-purple-300"
+                    >
+                      Free comprehensive tutorials to help you master the
+                      platform and tools.
+                    </Text>
+                    <Link
+                      href="https://www.strategysoftware.com/video/strategy-tutorials"
+                      target="_blank"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors group"
+                    >
+                      <span>Watch Tutorials</span>
+                      <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </BlurFade>
+          </>
         )}
 
         {/* ERROR RESULT */}
