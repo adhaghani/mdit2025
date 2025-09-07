@@ -918,8 +918,8 @@ export const MEDIA_PARTNERS: MediaPartner[] = [
 export const GOOGLE_FORM_LINK = "https://bit.ly/MDITxDD_2025";
 
 export const EVENT_DATA = {
-  Expected_Team: "80+",
+  Expected_Team: "93",
   Total_Prize_Pool: "RM 9,600",
-  Universities: "10+",
+  Universities: "24",
   Competition_Days: "43",
 };

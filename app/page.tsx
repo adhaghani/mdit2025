@@ -725,57 +725,87 @@ const Page = memo(() => {
               </Text>
             </BlurFade>
 
-            {/* Countdown Timer */}
+            {/* Registration Closed Message */}
             <BlurFade inView delay={0.25}>
               <div className="mt-12 mb-8">
-                <Text as="h3" className="mb-6">
-                  {isExpired
-                    ? "Registration has closed."
-                    : hasStarted
-                    ? "Registration Currently open! it will close in:"
-                    : "Registration Opens In:"}
-                </Text>
-                <div className="flex items-center justify-center gap-4 md:gap-6">
-                  {countdownValues.map((item) => (
-                    <CountdownCard
-                      key={item.label}
-                      value={item.value}
-                      label={item.label}
-                    />
-                  ))}
-                </div>
-              </div>
-            </BlurFade>
+                <div className="max-w-3xl mx-auto text-center space-y-6">
+                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-950 dark:to-emerald-950 rounded-full border border-green-200 dark:border-green-800">
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <Text
+                      as="p"
+                      className="text-green-800 dark:text-green-200 font-medium"
+                    >
+                      Registration Closed
+                    </Text>
+                  </div>
 
-            {/* Call to Action Buttons */}
-            <BlurFade inView delay={0.3}>
-              <div className="flex flex-col sm:flex-row px-4 gap-4 justify-center mt-8">
-                <Button
-                  size="lg"
-                  disabled={!hasStarted || isExpired}
-                  className="text-lg px-8 py-6"
-                  asChild
-                >
-                  {buttonState.disabled ? (
-                    <Link href={buttonState.href}>{buttonState.text}</Link>
-                  ) : (
-                    <Link href={buttonState.href}>
-                      {buttonState.text}
-                      <DynamicIcons.ArrowRightIcon className="ml-2 h-5 w-5" />
-                    </Link>
-                  )}
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-8 py-6"
-                  asChild
-                >
-                  <Link href="/event-details">
-                    Learn More
-                    <DynamicIcons.ChevronRightIcon className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
+                  <Text as="h3" className="text-2xl md:text-3xl font-bold ">
+                    🎉
+                    <span className="bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                      Congratulations to All Registered Teams!
+                    </span>
+                  </Text>
+
+                  <Text
+                    as="p"
+                    className="text-lg text-muted-foreground leading-relaxed"
+                  >
+                    Thank you to all{" "}
+                    <span className="font-semibold text-primary">93 teams</span>{" "}
+                    from{" "}
+                    <span className="font-semibold text-purple-600">
+                      24 universities
+                    </span>{" "}
+                    across Malaysia for registering in MDIT x DOSM Datathon
+                    2025. Your enthusiasm and passion for data science
+                    innovation is truly inspiring!
+                  </Text>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto mt-8">
+                    <div className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 rounded-xl border border-blue-200 dark:border-blue-800">
+                      <Text
+                        as="h4"
+                        className="text-2xl font-bold text-blue-600 dark:text-blue-400"
+                      >
+                        93
+                      </Text>
+                      <Text
+                        as="p"
+                        className="text-sm text-blue-700 dark:text-blue-300"
+                      >
+                        Teams Registered
+                      </Text>
+                    </div>
+                    <div className="p-4 bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950 dark:to-violet-950 rounded-xl border border-purple-200 dark:border-purple-800">
+                      <Text
+                        as="h4"
+                        className="text-2xl font-bold text-purple-600 dark:text-purple-400"
+                      >
+                        24
+                      </Text>
+                      <Text
+                        as="p"
+                        className="text-sm text-purple-700 dark:text-purple-300"
+                      >
+                        Universities
+                      </Text>
+                    </div>
+                    <div className="p-4 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950 dark:to-green-950 rounded-xl border border-emerald-200 dark:border-emerald-800">
+                      <Text
+                        as="h4"
+                        className="text-2xl font-bold text-emerald-600 dark:text-emerald-400"
+                      >
+                        372
+                      </Text>
+                      <Text
+                        as="p"
+                        className="text-sm text-emerald-700 dark:text-emerald-300"
+                      >
+                        Participants
+                      </Text>
+                    </div>
+                  </div>
+                </div>
               </div>
             </BlurFade>
           </div>
@@ -1112,7 +1142,7 @@ const Page = memo(() => {
 
           {/* Main Statistics Grid */}
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
               <BlurFade inView delay={0.2}>
                 <Card className="group relative h-full text-center bg-gradient-to-br from-primary/10 via-purple-500/5 to-primary/10 border-2 border-primary/20 hover:border-primary/40 hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
                   {/* Animated background */}
@@ -1198,44 +1228,6 @@ const Page = memo(() => {
                   </CardContent>
                 </Card>
               </BlurFade>
-
-              <BlurFade inView delay={0.35}>
-                <Card className="group relative h-full text-center bg-gradient-to-br from-amber-500/10 via-yellow-500/5 to-amber-500/10 border-2 border-amber-500/20 hover:border-amber-500/40 hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/20 to-yellow-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-
-                  <CardContent className="relative p-8 z-10">
-                    <div className="mx-auto mb-6 p-4 bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-900/40 dark:to-amber-800/40 rounded-2xl w-fit shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                      <DynamicIcons.TrophyIcon className="h-8 w-8 text-amber-600 group-hover:text-amber-500 transition-colors duration-300" />
-                    </div>
-                    <Text
-                      as="h3"
-                      className="text-3xl lg:text-4xl font-black text-amber-600 mb-3 group-hover:text-amber-500 transition-colors duration-300"
-                    >
-                      <NumberFlow
-                        value={
-                          timeLeft.days > 0
-                            ? timeLeft.days
-                            : timeLeft.hours > 0
-                            ? timeLeft.hours
-                            : timeLeft.minutes
-                        }
-                        format={{ minimumIntegerDigits: 1 }}
-                      />
-                    </Text>
-                    <Text
-                      as="p"
-                      className="text-sm font-medium group-hover:text-foreground/90 transition-colors duration-300"
-                    >
-                      {timeLeft.days > 0
-                        ? "Days until registration closes"
-                        : timeLeft.hours > 0
-                        ? "Hours until registration closes"
-                        : "Minutes until registration closes"}
-                    </Text>
-                  </CardContent>
-                </Card>
-              </BlurFade>
             </div>
           </div>
 
@@ -1253,37 +1245,25 @@ const Page = memo(() => {
                       as="h4"
                       className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent mb-4"
                     >
-                      Registration progress
+                      Registration Progress
                     </Text>
                     <div className="w-full bg-muted/50 rounded-full h-4 mb-4 overflow-hidden shadow-inner">
                       <div
                         className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 h-4 rounded-full transition-all duration-1000 relative overflow-hidden"
-                        style={{ width: "77.5%" }}
+                        style={{ width: "100%" }}
                       >
                         {/* Animated shine effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-pulse"></div>
                       </div>
                     </div>
                     <Text as="p" className="text-base font-medium">
-                      93 out of 120 slots filled
+                      93 total participating teams
                     </Text>
                   </div>
                 </CardContent>
               </Card>
             </BlurFade>
           </div>
-
-          {/* Real-time Update Notice */}
-          <BlurFade inView delay={0.6}>
-            <div className="text-center mt-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-full border border-primary/20">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <Text as="p" styleVariant="muted" className="text-sm">
-                  Last updated: 6 September 0713 GMT+8
-                </Text>
-              </div>
-            </div>
-          </BlurFade>
         </div>
       </div>
 
@@ -1707,63 +1687,6 @@ const Page = memo(() => {
                 </Button>
               </div>
             </div>
-          </div>
-        </BlurFade>
-      </div>
-
-      {/* Registration Section */}
-      <div id="register" className="my-20 px-4 py-20 bg-primary/10 rounded-lg">
-        <BlurFade inView delay={0.1}>
-          <Text as="h2" className="text-center mb-6">
-            Ready to register?
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.15}>
-          <Text
-            as="p"
-            styleVariant="muted"
-            className="text-center mb-8 max-w-2xl mx-auto relative z-10"
-          >
-            Don&apos;t miss this opportunity to be part of Malaysia&apos;s most
-            prestigious data science competition. Register your team now and
-            start your journey toward data excellence!
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.2}>
-          <div className="text-center space-y-6 relative z-10">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                disabled={!hasStarted || isExpired}
-                className="text-lg px-8 py-6"
-                asChild
-              >
-                <Link
-                  href={isExpired ? "#" : hasStarted ? GOOGLE_FORM_LINK : "#"}
-                >
-                  {isExpired
-                    ? "Registration Closed"
-                    : hasStarted
-                    ? "Register Now"
-                    : "Registration Opening Soon"}
-                  <DynamicIcons.ArrowRightIcon className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6"
-                asChild
-              >
-                <Link href="/frequently-asked-questions">
-                  Have Questions? View FAQ
-                </Link>
-              </Button>
-            </div>
-            <Text as="p" className="text-sm text-muted-foreground">
-              Registration deadline: August 30, 2025 • Limited slots available
-            </Text>
           </div>
         </BlurFade>
       </div>

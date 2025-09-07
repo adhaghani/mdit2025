@@ -628,39 +628,6 @@ const FrequentlyAskedQuestionsPage = () => {
           </CardContent>
         </Card>
       </BlurFade>
-
-      {/* Call to Action */}
-      <div className="text-center px-4 py-20">
-        <BlurFade inView delay={0.7}>
-          <Text as="h2" className="mb-4">
-            Ready to Join MDIT 2025?
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.75}>
-          <Text as="p" className="mb-6 max-w-2xl mx-auto">
-            Now that you have all the information you need, it is time to
-            register your team and start your data innovation journey!
-          </Text>
-        </BlurFade>
-        <BlurFade inView delay={0.8}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
-              <Link
-                href={isExpired ? "#" : hasStarted ? GOOGLE_FORM_LINK : "#"}
-              >
-                {isExpired
-                  ? "Registration Closed"
-                  : hasStarted
-                  ? "Register Now"
-                  : "Registration Opening Soon"}
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/event-details">Learn More</Link>
-            </Button>
-          </div>
-        </BlurFade>
-      </div>
     </>
   );
 };

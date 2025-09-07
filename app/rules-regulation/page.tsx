@@ -419,10 +419,10 @@ const RulesRegulationPage = () => {
         "Recognises the team that shows excellent knowledge of their project, works well together, responds confidently to questions, handles feedback positively, and defends their ideas with strong logic and reasoning.",
     },
     {
-      award: "Innovation Excellence Award",
+      award: "AI Driven Innovation Award",
       type: "Team",
       details:
-        "Honours the team that showcases the most original and innovative ideas, with clear data organisation, impactful visual design, practical applications, and potential for scalability.",
+        "Honours the team that showcases outstanding application of AI in solving real-world data challenges.",
     },
   ];
 

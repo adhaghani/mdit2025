@@ -1068,51 +1068,6 @@ const EventDetailsPage = () => {
           </BlurFade>
         )}
       </div>
-
-      {/* Call to Action */}
-      {isExpired ? (
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center  max-w-7xl py-20 bg-secondary/20 rounded-lg">
-            <BlurFade inView delay={0.1}>
-              <Text as="h2" className="mb-4">
-                Ready to Showcase Your Data Skills?
-              </Text>
-            </BlurFade>
-            <BlurFade inView delay={0.15}>
-              <Text
-                as="p"
-                styleVariant="muted"
-                className="mb-8 max-w-2xl mx-auto"
-              >
-                Join hundreds of talented students from across Malaysia in this
-                prestigious data innovation competition. Register your team
-                today and start your journey towards data excellence!
-              </Text>
-            </BlurFade>
-            <BlurFade inView delay={0.2}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" disabled={isExpired || hasStarted} asChild>
-                  <Link
-                    href={isExpired ? "#" : hasStarted ? GOOGLE_FORM_LINK : "#"}
-                  >
-                    {isExpired
-                      ? "Registration Closed"
-                      : hasStarted
-                      ? "Register Now"
-                      : "Coming Soon"}
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <Link href="/rules-regulation">View Competition Rules</Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <Link href="/frequently-asked-questions">View FAQ</Link>
-                </Button>
-              </div>
-            </BlurFade>
-          </div>
-        </div>
-      ) : null}
     </>
   );
 };
