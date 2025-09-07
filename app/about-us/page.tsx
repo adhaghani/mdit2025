@@ -755,39 +755,6 @@ const AboutUsPage = () => {
           </BlurFade>
         </div>
       </div>
-
-      {/* Call to Action */}
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="bg-gradient-to-r from-primary/5 to-primary/10 text-center  rounded-lg  py-20">
-          <BlurFade inView delay={0.1}>
-            <Text as="h2" className="mb-4 font-mono">
-              Ready to Be Part of Our Story?
-            </Text>
-          </BlurFade>
-          <BlurFade inView delay={0.15}>
-            <Text as="p" className="mb-6 max-w-2xl mx-auto">
-              Join MDIT 2025 and contribute to Malaysia&apos;s data innovation
-              journey. Together, we can build a data-driven future that benefits
-              all Malaysians.
-            </Text>
-          </BlurFade>
-          <BlurFade inView delay={0.2}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button disabled={isExpired} size="lg" asChild>
-                <Link href={isExpired ? "#" : "/event-details"}>
-                  {isExpired ? "Registration Closed" : "Register Your Team"}
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="/contact">
-                  <DynamicIcons.UsersIcon className="h-5 w-5 mr-2" />
-                  Contact Us
-                </Link>
-              </Button>
-            </div>
-          </BlurFade>
-        </div>
-      </div>
     </>
   );
 };
