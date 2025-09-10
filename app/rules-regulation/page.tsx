@@ -424,43 +424,56 @@ const RulesRegulationPage = () => {
           details: [
             {
               category: "Quality of Presentation",
-              points: "7%",
+              points: "15%",
               description:
-                "Clarity, confidence, and effectiveness of presentation delivery",
+                "Clarity, confidence, and effectiveness of presentation delivery.",
             },
             {
               category: "Subject Knowledge",
-              points: "7%",
+              points: "20%",
               description:
-                "Depth of understanding and mastery of project content",
+                "Depth of understanding and mastery of project content.",
             },
             {
               category: "Ability to Answer Questions",
-              points: "7%",
-              description: "Ability to answer questions and defend methodology",
+              points: "20%",
+              description:
+                "Ability to answer questions and defend methodology.",
             },
             {
               category: "Teamwork Effort",
-              points: "7%",
-              description: "Originality and potential real-world application",
+              points: "10%",
+              description:
+                "members contribution during Q&A and presentation, showing collaboration and unity.",
             },
             {
               category: "Creativity and Innovation",
-              points: "7%",
-              description: "Effective use of allocated presentation time",
+              points: "10%",
+              description: "Originality and potential real-world application.",
             },
             {
               category: "Time Management",
-              points: "7%",
-              description: "Effective use of allocated presentation time",
+              points: "10%",
+              description: "Effective use of allocated presentation time.",
             },
             {
               category: "Presentation Content",
-              points: "7%",
-              description: "Effective use of allocated presentation time",
+              points: "15%",
+              description:
+                "Clear Presentation, narrative and flow are seamless.",
             },
           ],
-          totalPoints: "Total: 100 points",
+          totalPoints: "Total: 100%",
+        },
+      ],
+      links: [
+        {
+          label: "View Scoring Rubric (Preliminary Round)",
+          url: "https://drive.google.com/file/d/1XmqGQKTkE6zsA66dhxxAZ3HOK83I6f8H/view",
+        },
+        {
+          label: "View Live Pitching Scoring Rubric (Final Round)",
+          url: "https://drive.google.com/file/d/1FbXyk5MyOdz9EEM-4V-ZSJR-FLkcSO3R/view",
         },
       ],
     },
@@ -957,6 +970,26 @@ const RulesRegulationPage = () => {
                           </div>
                         </div>
                       ))}
+                    {Array.isArray(importantNotes[1].links) && (
+                      <div className="mt-4 space-y-3">
+                        {importantNotes[1].links.map((link, linkIndex) => (
+                          <Button
+                            asChild
+                            key={linkIndex}
+                            className="flex items-center"
+                            size={"lg"}
+                          >
+                            <Link
+                              href={link.url}
+                              target="_blank"
+                              className="text-blue-600 hover:underline"
+                            >
+                              {link.label}
+                            </Link>
+                          </Button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </ScrollArea>
               </CardContent>
