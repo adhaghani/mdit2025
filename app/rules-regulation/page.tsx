@@ -374,32 +374,93 @@ const RulesRegulationPage = () => {
     },
     {
       type: "info",
-      title: "Judging Criteria",
+      title: "Scoring Rubric",
       content: [
         {
-          type: "Part A: Project Content",
-          weight: 60,
+          type: "Preliminary Round Scoring Rubric",
+          weight: "For all participants",
           details: [
-            "Data Selection",
-            "Introduction",
-            "Literature Review",
-            "Methodology & Data Analysis",
-            "Findings & Results",
-            "Conclusion",
-            "Originality & Commercial Value",
+            {
+              category: "Methodology",
+              points: "25%",
+              description: "Strong Methodology, focused and aligned with SDGs.",
+            },
+            {
+              category: "Data Quality and Analysis",
+              points: "25%",
+              description:
+                "up-to-date data, multiple types of data, strong integration, produce new and significant insights.",
+            },
+            {
+              category: "Dashboard/Final Output Presentation",
+              points: "20%",
+              description:
+                "interactive, creative and professional dashboard. User friendly and fully functional.",
+            },
+            {
+              category: "Impact and Commercial Potential",
+              points: "15%",
+              description:
+                "clear commercial/social value, can be implemented and scalable and major impact.",
+            },
+            {
+              category: "Creativity",
+              points: "15%",
+              description:
+                "very creative, clear innovation and has a unique and effective 'wow factor'.",
+            },
+            {
+              category: "Use of Tools & Technology",
+              points: "up to +10 marks",
+              description:
+                "integration of AI/ML, use of python in programming, use of official data provided by DOSM and others.",
+            },
           ],
+          totalPoints: "Total: 100%",
         },
         {
-          type: "Part B: Project Presentation",
-          weight: 40,
+          type: "Live Pitching Scoring Rubric",
+          weight: "For finalists only",
           details: [
-            "Quality of Presentation",
-            "Subject Knowledge",
-            "Ability to Answer Questions",
-            "Teamwork & Collaboration",
-            "Creativity & Innovation",
-            "Time Management",
+            {
+              category: "Quality of Presentation",
+              points: "7%",
+              description:
+                "Clarity, confidence, and effectiveness of presentation delivery",
+            },
+            {
+              category: "Subject Knowledge",
+              points: "7%",
+              description:
+                "Depth of understanding and mastery of project content",
+            },
+            {
+              category: "Ability to Answer Questions",
+              points: "7%",
+              description: "Ability to answer questions and defend methodology",
+            },
+            {
+              category: "Teamwork Effort",
+              points: "7%",
+              description: "Originality and potential real-world application",
+            },
+            {
+              category: "Creativity and Innovation",
+              points: "7%",
+              description: "Effective use of allocated presentation time",
+            },
+            {
+              category: "Time Management",
+              points: "7%",
+              description: "Effective use of allocated presentation time",
+            },
+            {
+              category: "Presentation Content",
+              points: "7%",
+              description: "Effective use of allocated presentation time",
+            },
           ],
+          totalPoints: "Total: 100 points",
         },
       ],
     },
@@ -804,8 +865,8 @@ const RulesRegulationPage = () => {
                 </Text>
               </CardHeader>
               <CardContent>
-                <ScrollArea className="h-80 pr-4">
-                  <div className="space-y-6">
+                <ScrollArea className="h-96 pr-4">
+                  <div className="space-y-8">
                     {Array.isArray(importantNotes[1].content) &&
                       importantNotes[1].content.every(
                         (item) => typeof item === "object"
@@ -813,80 +874,89 @@ const RulesRegulationPage = () => {
                       (
                         importantNotes[1].content as Array<{
                           type: string;
-                          weight: number;
-                          details: string[];
+                          weight: string;
+                          details: Array<{
+                            category: string;
+                            points: string;
+                            description: string;
+                          }>;
+                          totalPoints: string;
                         }>
-                      ).map((category, categoryIndex) => (
-                        <div key={categoryIndex} className="group">
-                          <div className="flex items-center gap-3 mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-900/20">
-                            <div className="flex items-center gap-2">
-                              {categoryIndex === 0 ? (
-                                <DynamicIcons.BarChart className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                      ).map((scoringRound, roundIndex) => (
+                        <div key={roundIndex} className="group">
+                          <div className="flex items-center gap-3 mb-4 p-4 rounded-lg bg-gradient-to-r from-blue-50/70 to-indigo-50/70 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200/50 dark:border-blue-800/30">
+                            <div className="flex items-center gap-3">
+                              {roundIndex === 0 ? (
+                                <div className="p-2 bg-blue-100 dark:bg-blue-900/50 rounded-lg">
+                                  <DynamicIcons.BarChart className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                                </div>
                               ) : (
-                                <DynamicIcons.Presentation className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                                <div className="p-2 bg-purple-100 dark:bg-purple-900/50 rounded-lg">
+                                  <DynamicIcons.Presentation className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                                </div>
                               )}
-                              <Text
-                                as="h4"
-                                className="font-semibold text-blue-800 dark:text-blue-300"
-                              >
-                                {category.type}
-                              </Text>
+                              <div>
+                                <Text
+                                  as="h4"
+                                  className="font-bold text-lg text-blue-800 dark:text-blue-300"
+                                >
+                                  {scoringRound.type}
+                                </Text>
+                                <Text
+                                  as="p"
+                                  className="text-sm text-blue-600/70 dark:text-blue-400/70"
+                                >
+                                  {scoringRound.weight}
+                                </Text>
+                              </div>
                             </div>
-                            <Badge
-                              variant="secondary"
-                              className="ml-auto bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300"
-                            >
-                              {category.weight}%
-                            </Badge>
                           </div>
 
-                          <div className="ml-4 space-y-2">
-                            {category.details.map(
-                              (detail: string, detailIndex: number) => (
+                          <div className="ml-4 space-y-3 mb-4">
+                            {scoringRound.details.map(
+                              (criterion, criterionIndex) => (
                                 <div
-                                  key={detailIndex}
-                                  className="flex items-center gap-3"
+                                  key={criterionIndex}
+                                  className="flex items-start gap-3 p-3 rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-colors"
                                 >
-                                  <div className="w-2 h-2 rounded-full bg-blue-400 dark:bg-blue-500 flex-shrink-0" />
-                                  <Text as="p" className="text-sm">
-                                    {detail}
-                                  </Text>
+                                  <div className="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                                  <div className="flex-1">
+                                    <div className="flex items-center justify-between mb-1">
+                                      <Text
+                                        as="p"
+                                        className="font-semibold text-gray-900 dark:text-gray-100"
+                                      >
+                                        {criterion.category}
+                                      </Text>
+                                      <Badge
+                                        variant="outline"
+                                        className="text-xs bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-700"
+                                      >
+                                        {criterion.points}
+                                      </Badge>
+                                    </div>
+                                    <Text
+                                      as="p"
+                                      className="text-sm text-gray-600 dark:text-gray-400"
+                                    >
+                                      {criterion.description}
+                                    </Text>
+                                  </div>
                                 </div>
                               )
                             )}
                           </div>
+
+                          <div className="ml-4 p-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg border border-green-200/50 dark:border-green-800/30">
+                            <Text
+                              as="p"
+                              className="font-bold text-green-800 dark:text-green-300 text-center"
+                            >
+                              {scoringRound.totalPoints}
+                            </Text>
+                          </div>
                         </div>
                       ))}
-
-                    <div className="mt-6 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border border-blue-200 dark:border-blue-800">
-                      <div className="flex items-center gap-2 mb-2">
-                        <DynamicIcons.TrendingUp className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                        <Text
-                          as="h4"
-                          className="font-semibold text-blue-800 dark:text-blue-300 text-sm"
-                        >
-                          Scoring Distribution
-                        </Text>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <Text as="p" className="text-xs">
-                            Project Content
-                          </Text>
-                          <Text as="p" className="text-xs font-medium">
-                            60%
-                          </Text>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <Text as="p" className="text-xs">
-                            Project Presentation
-                          </Text>
-                          <Text as="p" className="text-xs font-medium">
-                            40%
-                          </Text>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </ScrollArea>
               </CardContent>
@@ -1018,14 +1088,15 @@ const RulesRegulationPage = () => {
           <BlurFade inView delay={0.6} className="">
             <div className="text-center mb-8">
               <Text as="h2" className="text-3xl font-bold mb-4">
-                Download Complete Guidelines
+                Download MDIT x DD 2025 Booklet
               </Text>
               <Text
                 as="p"
                 className="text-lg text-muted-foreground max-w-2xl mx-auto"
               >
-                Get the comprehensive PDF version of all rules, regulations, and
-                guidelines for your reference.
+                Download the MDIT x DD 2025 Booklet for key info on timelines,
+                rules, submissions, guidelines, and prizes. 🏆 Your guide to
+                victory starts here!
               </Text>
             </div>
           </BlurFade>
@@ -1039,16 +1110,10 @@ const RulesRegulationPage = () => {
               <DynamicIcons.Download className="h-8 w-8 text-primary" />
             </div>
             <Text as="h3" className="text-center font-semibold mb-2">
-              Official Rules PDF
-            </Text>
-            <Text
-              as="p"
-              className="text-center text-sm text-muted-foreground mb-4"
-            >
-              Complete documentation including all 30 rules and regulations
+              Official MDIT x DD 2025 Booklet
             </Text>
             <Button size="lg" className="w-full" asChild>
-              <Link href="/assets/documents/MDIT_2025_RULES_AND_REGULATIONS.pdf">
+              <Link href="/assets/documents/MDIT_X_DD_2025_Booklet.pdf">
                 <DynamicIcons.Download className="h-4 w-4 mr-2" />
                 Download PDF
               </Link>
@@ -1100,7 +1165,7 @@ const RulesRegulationPage = () => {
                   </div>
                   <Badge className="mb-2">Phase 2</Badge>
                   <Text as="h4" className="font-semibold text-primary mb-1">
-                    Competition Period
+                    Preliminary Round
                   </Text>
                   <Text as="p" className="text-lg font-medium">
                     6 September - 21 September, 2025
@@ -1115,7 +1180,7 @@ const RulesRegulationPage = () => {
                   </div>
                   <Badge className="mb-2">Phase 3</Badge>
                   <Text as="h4" className="font-semibold text-primary mb-1">
-                    Final Presentation
+                    Final Round
                   </Text>
                   <Text as="p" className="text-lg font-medium">
                     17 October, 2025
