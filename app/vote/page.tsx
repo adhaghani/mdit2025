@@ -146,6 +146,14 @@ const VotingPage = () => {
     }
   }, [isBlocked, blockEndTime]);
 
+  // Check if guest has already voted on component mount
+  React.useEffect(() => {
+    const hasBrowserVoted = localStorage.getItem("mdit-has-voted");
+    if (hasBrowserVoted === "true") {
+      toast.error("You have already submitted your votes.");
+    }
+  }, []);
+
   const onLoginSubmit = async (data: z.infer<typeof formSchema>) => {
     if (isBlocked) {
       toast.error(
@@ -171,6 +179,8 @@ const VotingPage = () => {
       setVotingData(result);
 
       if (result.success) {
+        localStorage.setItem("mdit-has-voted", "true");
+
         if (result.has_voted) {
           toast.error("You have already submitted your votes.");
         } else {
@@ -358,7 +368,7 @@ const VotingPage = () => {
       </BlurFade>
       <BlurFade delay={0.35} className="w-full max-w-md mx-auto">
         <Card className="w-full max-w-md mx-auto mt-6 bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
-          <CardContent className="pt-6">
+          <CardContent>
             <div className="flex items-start gap-3">
               <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
               <div className="space-y-2">

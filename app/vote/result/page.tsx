@@ -246,7 +246,7 @@ const VoteResult = () => {
         <div className="min-h-screen flex items-center justify-center px-4">
           <BlurFade inView delay={0.1}>
             <Card className="max-w-md mx-auto">
-              <CardContent className="pt-6 text-center">
+              <CardContent className="text-center">
                 <Loader2 className="h-12 w-12 animate-spin mx-auto mb-4 text-primary" />
                 <Text as="h3" className="font-semibold mb-2">
                   Loading Results
@@ -506,20 +506,20 @@ const VoteResult = () => {
                                   style={{ width: `${percentage}%` }}
                                 />
 
-                                <div className="relative flex items-center gap-4">
+                                <div className="relative flex flex-col md:flex-row md:items-center gap-4">
                                   {/* Rank Badge */}
-                                  <div className="flex-shrink-0 w-12 text-center">
+                                  <div className="flex-shrink-0 w-12 md:text-center">
                                     {getRankBadge(index)}
                                   </div>
 
                                   {/* Photo (if available) */}
                                   {result.photo_url && (
-                                    <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-muted border-2 border-background">
+                                    <div className="relative w-24 lg:w-28 rounded-lg overflow-hidden bg-muted border-2 border-background">
                                       <Image
                                         src={result.photo_url}
                                         alt={result.nominee_name}
-                                        width={48}
-                                        height={48}
+                                        width={120}
+                                        height={120}
                                         className="object-cover"
                                       />
                                     </div>
@@ -543,49 +543,52 @@ const VoteResult = () => {
                                     )}
                                   </div>
 
-                                  {/* University Logo */}
-                                  {result.university_logo && (
-                                    <div className="relative w-8 h-8 flex-shrink-0">
-                                      <Image
-                                        src={result.university_logo}
-                                        alt="University Logo"
-                                        width={32}
-                                        height={32}
-                                        className="object-contain"
-                                      />
-                                    </div>
-                                  )}
+                                  <div className="flex item-center gap-4 w-full md:w-auto justify-between md:justify-end">
+                                    {/* University Logo */}
+                                    {result.university_logo && (
+                                      <div className="relative">
+                                        <Image
+                                          src={result.university_logo}
+                                          alt="University Logo"
+                                          width={60}
+                                          height={30}
+                                          className="object-contain"
+                                        />
+                                      </div>
+                                    )}
 
-                                  {/* Vote Count */}
-                                  <div className="flex-shrink-0 text-right">
-                                    <div className="flex flex-col items-end gap-1">
-                                      <Badge
-                                        variant={
-                                          index < 3 ? "default" : "outline"
-                                        }
-                                        className="text-lg px-3 py-1"
+                                    {/* Vote Count */}
+                                    <div className="flex-shrink-0 text-right">
+                                      <div className="flex flex-col items-end gap-1">
+                                        <Badge
+                                          variant={
+                                            index < 3 ? "default" : "outline"
+                                          }
+                                          className="text-lg px-3 py-1"
+                                        >
+                                          {result.vote_count} vote
+                                          {result.vote_count !== 1 ? "s" : ""}
+                                        </Badge>
+                                        {result.participant_votes !==
+                                          undefined &&
+                                          result.guest_votes !== undefined && (
+                                            <div className="flex gap-2 text-xs">
+                                              <span className="text-blue-600 dark:text-blue-400">
+                                                👥 {result.participant_votes}
+                                              </span>
+                                              <span className="text-purple-600 dark:text-purple-400">
+                                                🌐 {result.guest_votes}
+                                              </span>
+                                            </div>
+                                          )}
+                                      </div>
+                                      <Text
+                                        as="p"
+                                        className="text-xs text-muted-foreground mt-1"
                                       >
-                                        {result.vote_count} vote
-                                        {result.vote_count !== 1 ? "s" : ""}
-                                      </Badge>
-                                      {result.participant_votes !== undefined &&
-                                        result.guest_votes !== undefined && (
-                                          <div className="flex gap-2 text-xs">
-                                            <span className="text-blue-600 dark:text-blue-400">
-                                              👥 {result.participant_votes}
-                                            </span>
-                                            <span className="text-purple-600 dark:text-purple-400">
-                                              🌐 {result.guest_votes}
-                                            </span>
-                                          </div>
-                                        )}
+                                        {percentage.toFixed(1)}%
+                                      </Text>
                                     </div>
-                                    <Text
-                                      as="p"
-                                      className="text-xs text-muted-foreground mt-1"
-                                    >
-                                      {percentage.toFixed(1)}%
-                                    </Text>
                                   </div>
                                 </div>
                               </div>
@@ -610,7 +613,7 @@ const VoteResult = () => {
         <BlurFade inView delay={0.6}>
           <div className="space-y-4">
             <Card className="bg-purple-50 dark:bg-purple-950 border-purple-200 dark:border-purple-800">
-              <CardContent className="pt-6">
+              <CardContent>
                 <div className="flex items-start gap-3">
                   <Users className="h-5 w-5 text-purple-600 dark:text-purple-400 mt-0.5 flex-shrink-0" />
                   <div>
@@ -629,7 +632,7 @@ const VoteResult = () => {
             </Card>
 
             <Card className="bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
-              <CardContent className="pt-6">
+              <CardContent>
                 <div className="flex items-start gap-3">
                   <TrendingUp className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
                   <div>
