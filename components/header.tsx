@@ -189,7 +189,7 @@ const Header = memo(() => {
               {/* TODO: ACTIVATE WHEN REQUIRED */}
               <NavigationMenuItem asChild>
                 <Button asChild>
-                  <Link href="/redeem-licence">Redeem licence</Link>
+                  <Link href="/vote">Vote</Link>
                 </Button>
               </NavigationMenuItem>
             </NavigationMenuList>
@@ -295,8 +295,8 @@ const Header = memo(() => {
                     <div className="pt-4 px-2">
                       <div className="border-t pt-4">
                         <Button asChild size={"lg"} className="block w-full">
-                          <Link href="/redeem-licence" className="block w-full">
-                            Redeem licence
+                          <Link href="/vote" className="block w-full">
+                            Vote
                           </Link>
                         </Button>
                       </div>
