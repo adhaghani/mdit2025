@@ -118,17 +118,19 @@ const VoteResult = () => {
           })),
         };
 
-        // Calculate percentages for each category
+        // Calculate percentages for each category based on total votes in that category
         Object.keys(categoryResults).forEach((category) => {
           const results = categoryResults[category as keyof CategoryResults];
-          const totalVotes = results.reduce(
+          const totalVotesInCategory = results.reduce(
             (sum, item) => sum + item.vote_count,
             0
           );
 
           results.forEach((item) => {
             item.vote_percentage =
-              totalVotes > 0 ? (item.vote_count / totalVotes) * 100 : 0;
+              totalVotesInCategory > 0
+                ? (item.vote_count / totalVotesInCategory) * 100
+                : 0;
           });
         });
 
@@ -482,11 +484,6 @@ const VoteResult = () => {
                       <div className="space-y-3">
                         {categoryResults.length > 0 ? (
                           categoryResults.map((result, index) => {
-                            const maxVotes =
-                              categoryResults[0]?.vote_count || 1;
-                            const percentage =
-                              (result.vote_count / maxVotes) * 100;
-
                             return (
                               <div
                                 key={result.nominee_id}
@@ -503,7 +500,9 @@ const VoteResult = () => {
                                 {/* Progress Bar Background */}
                                 <div
                                   className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent rounded-lg transition-all duration-500"
-                                  style={{ width: `${percentage}%` }}
+                                  style={{
+                                    width: `${result.vote_percentage}%`,
+                                  }}
                                 />
 
                                 <div className="relative flex flex-col md:flex-row md:items-center gap-4">
@@ -586,7 +585,7 @@ const VoteResult = () => {
                                         as="p"
                                         className="text-xs text-muted-foreground mt-1"
                                       >
-                                        {percentage.toFixed(1)}%
+                                        {result.vote_percentage.toFixed(1)}%
                                       </Text>
                                     </div>
                                   </div>

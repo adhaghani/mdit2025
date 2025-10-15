@@ -838,7 +838,7 @@ const Page = memo(() => {
             </Text>
             <Text as="p" className="text-lg leading-relaxed text-center">
               Organised in collaboration with the Department of Statistics
-              Malaysia (DOSM) and Statistics Association (inStats) at UiTM Shah
+              Malaysia (DOSM) and Statistics Association (in  ) at UiTM Shah
               Alam, this competition encourages participants to utilize official
               government datasets alongside other open data sources to develop
               innovative, data-driven solutions that address real-world national
@@ -1113,160 +1113,6 @@ const Page = memo(() => {
         </div>
       </div>
 
-      {/* Current Statistics Section */}
-      <div className="py-20 rounded-lg px-4 max-w-7xl mx-auto my-20 relative overflow-hidden">
-        {/* Background decorative elements */}
-
-        <div className="relative z-10">
-          <BlurFade inView delay={0.1}>
-            <div className="text-center mb-12 space-y-4">
-              <Text
-                as="h2"
-                className="text-4xl md:text-5xl font-mono font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent"
-              >
-                MDIT 2025 Current Statistics
-              </Text>
-              <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto rounded-full"></div>
-            </div>
-          </BlurFade>
-          <BlurFade inView delay={0.15}>
-            <Text
-              as="p"
-              styleVariant="muted"
-              className="text-center text-lg mb-16 max-w-3xl mx-auto leading-relaxed"
-            >
-              Live statistics showing the growing participation and excitement
-              for MDIT 2025 across Malaysian universities.
-            </Text>
-          </BlurFade>
-
-          {/* Main Statistics Grid */}
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
-              <BlurFade inView delay={0.2}>
-                <Card className="group relative h-full text-center bg-gradient-to-br from-primary/10 via-purple-500/5 to-primary/10 border-2 border-primary/20 hover:border-primary/40 hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
-                  {/* Animated background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-
-                  <CardContent className="relative p-8 z-10">
-                    <div className="mx-auto mb-6 p-4 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40 rounded-2xl w-fit shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                      <DynamicIcons.Users2Icon className="h-8 w-8 text-purple-600 group-hover:text-purple-500 transition-colors duration-300" />
-                    </div>
-                    <Text
-                      as="h3"
-                      className="text-3xl lg:text-4xl font-black text-purple-600 mb-3 group-hover:text-purple-500 transition-colors duration-300"
-                    >
-                      <NumberFlow
-                        value={93}
-                        format={{ minimumIntegerDigits: 1 }}
-                      />
-                    </Text>
-                    <Text
-                      as="p"
-                      className="text-sm font-medium group-hover:text-foreground/90 transition-colors duration-300"
-                    >
-                      Teams registered
-                    </Text>
-                  </CardContent>
-                </Card>
-              </BlurFade>
-
-              <BlurFade inView delay={0.25}>
-                <Card className="group relative h-full text-center bg-gradient-to-br from-blue-500/10 via-primary/5 to-blue-500/10 border-2 border-blue-500/20 hover:border-blue-500/40 hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-
-                  <CardContent className="relative p-8 z-10">
-                    <div className="mx-auto mb-6 p-4 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 rounded-2xl w-fit shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                      <DynamicIcons.BookOpenIcon className="h-8 w-8 text-blue-600 group-hover:text-blue-500 transition-colors duration-300" />
-                    </div>
-                    <Text
-                      as="h3"
-                      className="text-3xl lg:text-4xl font-black text-blue-600 mb-3 group-hover:text-blue-500 transition-colors duration-300"
-                    >
-                      <NumberFlow
-                        value={24}
-                        format={{ minimumIntegerDigits: 1 }}
-                      />
-                    </Text>
-                    <Text
-                      as="p"
-                      className="text-sm font-medium group-hover:text-foreground/90 transition-colors duration-300"
-                    >
-                      Universities participating
-                    </Text>
-                  </CardContent>
-                </Card>
-              </BlurFade>
-
-              <BlurFade inView delay={0.3}>
-                <Card className="group relative h-full text-center bg-gradient-to-br from-emerald-500/10 via-green-500/5 to-emerald-500/10 border-2 border-emerald-500/20 hover:border-emerald-500/40 hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-emerald-500/20 to-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-
-                  <CardContent className="relative p-8 z-10">
-                    <div className="mx-auto mb-6 p-4 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900/40 dark:to-emerald-800/40 rounded-2xl w-fit shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                      <DynamicIcons.UsersIcon className="h-8 w-8 text-emerald-600 group-hover:text-emerald-500 transition-colors duration-300" />
-                    </div>
-                    <Text
-                      as="h3"
-                      className="text-3xl lg:text-4xl font-black text-emerald-600 mb-3 group-hover:text-emerald-500 transition-colors duration-300"
-                    >
-                      <NumberFlow
-                        value={372}
-                        format={{ minimumIntegerDigits: 1 }}
-                      />
-                    </Text>
-                    <Text
-                      as="p"
-                      className="text-sm font-medium group-hover:text-foreground/90 transition-colors duration-300"
-                    >
-                      Total participants
-                    </Text>
-                  </CardContent>
-                </Card>
-              </BlurFade>
-            </div>
-          </div>
-
-          {/* Registration Progress Card */}
-          <div className="grid grid-cols-1 gap-6 max-w-5xl mx-auto mt-12">
-            <BlurFade inView delay={0.4}>
-              <Card className="group relative text-center hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 border-2 border-primary/20 hover:border-primary/40 overflow-hidden">
-                {/* Enhanced background effects */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-
-                <CardContent className="relative p-8 z-10">
-                  <div className="mb-6">
-                    <Text
-                      as="h4"
-                      className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent mb-4"
-                    >
-                      Registration Progress
-                    </Text>
-                    <div className="w-full bg-muted/50 rounded-full h-4 mb-4 overflow-hidden shadow-inner">
-                      <div
-                        className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 h-4 rounded-full transition-all duration-1000 relative overflow-hidden"
-                        style={{ width: "100%" }}
-                      >
-                        {/* Animated shine effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-pulse"></div>
-                      </div>
-                    </div>
-                    <Text as="p" className="text-base font-medium">
-                      93 total participating teams
-                    </Text>
-                  </div>
-                </CardContent>
-              </Card>
-            </BlurFade>
-          </div>
-        </div>
-      </div>
-
       <div className="absolute right-0 lg:-right-32 w-screen lg:w-auto lg:h-[600px] overflow-hidden pointer-events-none">
         <Image
           src={"/assets/bg-gradients/9.png"}
@@ -1430,7 +1276,7 @@ const Page = memo(() => {
         </BlurFade>
 
         {/* Sponsors & Media Partners Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-12">
+        <div className="grid grid-cols-1 gap-24 lg:gap-12">
           {/* Official Sponsors */}
           <BlurFade inView delay={0.4}>
             <div className="h-full">
@@ -1441,27 +1287,24 @@ const Page = memo(() => {
                 >
                   Official Sponsors
                 </Text>
-                <Text as="p" className="text-sm">
-                  Supporting innovation and excellence in data science
-                </Text>
               </div>
               <div className="bg-gradient-to-br from-purple-50/50 to-purple-100/50 dark:from-purple-900/10 dark:to-purple-800/10 rounded-2xl p-12 border border-purple-200/50 dark:border-purple-800/30 h-full min-h-[300px] flex items-center justify-center overflow-visible">
                 {OFFICIAL_SPONSORS.length > 0 ? (
                   <>
                     <TooltipProvider delayDuration={0}>
                       {/* Desktop View */}
-                      <div className="hidden md:flex flex-wrap items-center justify-center gap-8">
+                      <div className="hidden md:flex flex-wrap items-center justify-center gap-4">
                         {OFFICIAL_SPONSORS.map((sponsor, index) => (
                           <SponsorDialog key={index} sponsor={sponsor}>
                             <div className="group relative p-3 cursor-pointer">
                               <div className="absolute inset-1 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-                              <div className="relative bg-white dark:bg-gray-900 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
+                              <div className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
                                 <Image
                                   src={sponsor.logo}
                                   alt={sponsor.logoAlt}
                                   width={sponsor.width}
                                   height={sponsor.height}
-                                  className={`${sponsor.className} transition-transform duration-300 group-hover:scale-105`}
+                                  className={`${sponsor.className} rounded-lg transition-transform duration-300 group-hover:scale-105`}
                                   loading="lazy"
                                 />
                               </div>
@@ -1488,13 +1331,13 @@ const Page = memo(() => {
                                 <SponsorDialog sponsor={sponsor}>
                                   <div className="group relative p-2 cursor-pointer">
                                     <div className="absolute inset-1 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-                                    <div className="relative bg-white dark:bg-gray-900 p-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
+                                    <div className="relative bg-white dark:bg-gray-800 p-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-purple-300 overflow-hidden">
                                       <Image
                                         src={sponsor.logo}
                                         alt={sponsor.logoAlt}
                                         width={sponsor.width}
                                         height={sponsor.height}
-                                        className={`${sponsor.className} transition-transform duration-300 group-hover:scale-105 mx-auto`}
+                                        className={`${sponsor.className} rounded-lg transition-transform duration-300 group-hover:scale-105 mx-auto`}
                                         loading="lazy"
                                       />
                                     </div>
@@ -1544,12 +1387,9 @@ const Page = memo(() => {
           {/* Media Partners */}
           <BlurFade inView delay={0.5}>
             <div className="h-full">
-              <div className="text-center mb-6">
+              <div className="text-center my-6">
                 <Text as="h3" className="text-2xl font-bold text-blue-600 mb-2">
                   Media Partners
-                </Text>
-                <Text as="p" className="text-sm">
-                  Spreading awareness and connecting communities
                 </Text>
               </div>
               <div className="bg-gradient-to-br from-blue-50/50 to-blue-100/50 dark:from-blue-900/10 dark:to-blue-800/10 rounded-2xl p-12 border border-blue-200/50 dark:border-blue-800/30 h-full min-h-[300px] flex items-center justify-center overflow-visible">
@@ -1557,65 +1397,77 @@ const Page = memo(() => {
                   {MEDIA_PARTNERS.length > 0 ? (
                     <>
                       {/* Desktop View */}
-                      <div className="hidden md:flex flex-wrap items-center justify-center gap-8">
+                      <div className="hidden md:flex flex-wrap items-center justify-center gap-4">
                         {MEDIA_PARTNERS.map((partner, index) => (
-                          <Tooltip key={index}>
-                            <TooltipTrigger>
-                              <div className="group relative p-3">
-                                <div className="absolute inset-1 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-                                <div className="relative bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-blue-300 overflow-hidden">
+                          <div className="group relative p-3">
+                            <div className="absolute inset-1 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                            <div className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-blue-300 overflow-hidden">
+                              <Image
+                                src={partner.logo}
+                                alt={partner.logoAlt}
+                                width={partner.width}
+                                height={partner.height}
+                                className={`${partner.className} rounded-lg transition-transform duration-300 group-hover:scale-105`}
+                                loading="lazy"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Mobile Marquee View */}
+                      <div className="md:hidden w-full relative">
+                        <Suspense
+                          fallback={
+                            <div className="h-32 bg-muted/50 rounded-lg animate-pulse" />
+                          }
+                        >
+                          <Marquee className="flex gap-4" pauseOnHover>
+                            {MEDIA_PARTNERS.map((partner, index) => (
+                              <div
+                                key={index}
+                                className="group relative p-2 mx-2"
+                              >
+                                <div className="relative bg-white dark:bg-gray-800 p-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-blue-300 overflow-hidden w-32">
                                   <Image
                                     src={partner.logo}
                                     alt={partner.logoAlt}
                                     width={partner.width}
                                     height={partner.height}
-                                    className={`${partner.className} transition-transform duration-300 group-hover:scale-105`}
+                                    className={`${partner.className} transition-transform duration-300 group-hover:scale-105 mx-auto`}
                                     loading="lazy"
                                   />
                                 </div>
                               </div>
-                            </TooltipTrigger>
-                            <TooltipContent side="bottom" arrow>
-                              <p>{partner.name}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        ))}
-                      </div>
-
-                      {/* Mobile Carousel View */}
-                      <div className="md:hidden w-full">
-                        <Carousel
-                          className="w-full max-w-sm mx-auto"
-                          opts={{
-                            align: "start",
-                            loop: true,
-                          }}
-                        >
-                          <CarouselContent className="-ml-2 md:-ml-4">
-                            {MEDIA_PARTNERS.map((partner, index) => (
-                              <CarouselItem
-                                key={index}
-                                className="pl-2 md:pl-4 basis-1/2"
-                              >
-                                <div className="group relative p-2">
-                                  <div className="absolute inset-1 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-                                  <div className="relative bg-white dark:bg-gray-900 p-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-blue-300 overflow-hidden">
-                                    <Image
-                                      src={partner.logo}
-                                      alt={partner.logoAlt}
-                                      width={partner.width}
-                                      height={partner.height}
-                                      className={`${partner.className} transition-transform duration-300 group-hover:scale-105 mx-auto`}
-                                      loading="lazy"
-                                    />
-                                  </div>
-                                </div>
-                              </CarouselItem>
                             ))}
-                          </CarouselContent>
-                          <CarouselPrevious />
-                          <CarouselNext />
-                        </Carousel>
+                          </Marquee>
+                        </Suspense>
+                        <Suspense
+                          fallback={
+                            <div className="h-32 bg-muted/50 rounded-lg animate-pulse" />
+                          }
+                        >
+                          <Marquee reverse className="flex gap-4" pauseOnHover>
+                            {MEDIA_PARTNERS.map((partner, index) => (
+                              <div
+                                key={index}
+                                className="group relative p-2 mx-2"
+                              >
+                                <div className="relative bg-white dark:bg-gray-800 p-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-white/20 hover:border-blue-300 overflow-hidden w-32">
+                                  <Image
+                                    src={partner.logo}
+                                    alt={partner.logoAlt}
+                                    width={partner.width}
+                                    height={partner.height}
+                                    className={`${partner.className} transition-transform duration-300 group-hover:scale-105 mx-auto`}
+                                    loading="lazy"
+                                  />
+                                </div>
+                              </div>
+                            ))}
+                          </Marquee>
+                        </Suspense>
+                        {/* Gradient mask for seamless fade effect */}
                       </div>
                     </>
                   ) : (
@@ -1651,44 +1503,6 @@ const Page = memo(() => {
             </div>
           </BlurFade>
         </div>
-
-        {/* Partnership Call to Action */}
-        <BlurFade inView delay={0.6}>
-          <div className="mt-32 text-center">
-            <div className="bg-gradient-to-r from-primary/10 via-purple-500/10 to-blue-500/10 rounded-2xl p-8 border border-primary/20">
-              <Text
-                as="h3"
-                className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
-              >
-                Join our partnership network
-              </Text>
-              <Text
-                as="p"
-                styleVariant="muted"
-                className="mb-6 max-w-2xl mx-auto"
-              >
-                Interested in partnering with MDIT 2025? We welcome
-                collaborations with organisations that share our commitment to
-                advancing data science education and innovation in Malaysia.
-              </Text>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-primary to-purple-600"
-                  asChild
-                >
-                  <Link href="/contact">
-                    Become a Partner
-                    <DynamicIcons.ArrowRightIcon className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <Link href="/about-us">Learn More About Us</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </BlurFade>
       </div>
 
       <div className="absolute left-0 lg:-left-32 w-screen lg:w-auto lg:h-[1200px] h-auto -z-10 overflow-hidden pointer-events-none">

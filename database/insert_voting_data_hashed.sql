@@ -219,7 +219,7 @@ SELECT 'PART039', (encrypt_participant_ic('030801-01-0186')).encrypted_ic, encry
 
 -- Team 1: HanyCodes - Select first 2 participants
 INSERT INTO eligible_presenters (participant_id, team_id) VALUES
-('PART001', 'TEAM001'), -- HUDA LIYANA BINTI MOHD RAPINI
+('PART003', 'TEAM001'), -- NURUL NABILA BINTI MOHD RAJIL
 ('PART002', 'TEAM001'); -- ANIS SURAYA BINTI LATIP
 
 -- Team 2: Kopi O (1) - Select first 2 participants
@@ -235,12 +235,12 @@ INSERT INTO eligible_presenters (participant_id, team_id) VALUES
 -- Team 4: TechnologyKu - Select first 2 participants
 INSERT INTO eligible_presenters (participant_id, team_id) VALUES
 ('PART012', 'TEAM004'), -- AQILAH MAISARAH BINTI AZIZI
-('PART013', 'TEAM004'); -- ALMIRA DAMIA BINTI SYAHNIZAM
+('PART015', 'TEAM004'); -- MUHAMMAD DANISH AIMAN HARISS BIN ROSLI
 
 -- Team 5: 123 - Select first 2 participants
 INSERT INTO eligible_presenters (participant_id, team_id) VALUES
-('PART016', 'TEAM005'), -- VOON SZE KAI
-('PART017', 'TEAM005'); -- LEE THONG
+('PART018', 'TEAM005'), -- CHA CI EN
+('PART016', 'TEAM005'); -- VOON SZE KAI
 
 -- Team 6: Ctrl Alt Win - Select first 2 participants
 INSERT INTO eligible_presenters (participant_id, team_id) VALUES
@@ -249,13 +249,13 @@ INSERT INTO eligible_presenters (participant_id, team_id) VALUES
 
 -- Team 7: CrashOut - Select first 2 participants
 INSERT INTO eligible_presenters (participant_id, team_id) VALUES
-('PART024', 'TEAM007'), -- MOHAMED FAHD HARIS BIN SHAIFUL NIZAM
+('PART027', 'TEAM007'), -- ARIANNA BINTI AINURIZAM
 ('PART025', 'TEAM007'); -- CHENG HSIU FUNG
 
 -- Team 8: DANG WANGI - Select first 2 participants
 INSERT INTO eligible_presenters (participant_id, team_id) VALUES
 ('PART028', 'TEAM008'), -- ABDUL HAFIZ BIN MOHD NOOR AZMAN
-('PART029', 'TEAM008'); -- NUR FARAH BINTI AHMAD NAZRI
+('PART030', 'TEAM008'); -- NURLISA NABHIA BINTI ROSLAN
 
 -- Team 9: Oversized Minions - Select first 2 participants
 INSERT INTO eligible_presenters (participant_id, team_id) VALUES
@@ -264,8 +264,7 @@ INSERT INTO eligible_presenters (participant_id, team_id) VALUES
 
 -- Team 10: OptiVida - Select first 2 participants
 INSERT INTO eligible_presenters (participant_id, team_id) VALUES
-('PART036', 'TEAM010'), -- FIEZAL IRFAN BIN KAMALROL HADI
-('PART037', 'TEAM010'); -- NURADILA BT MUHAMAD ZAIMI
+('PART036', 'TEAM010'); -- FIEZAL IRFAN BIN KAMALROL HADI
 
 -- ============================================================================
 -- VERIFICATION QUERIES FOR ELIGIBLE PRESENTERS
@@ -295,3 +294,25 @@ SELECT
 FROM eligible_presenters 
 GROUP BY team_id 
 HAVING COUNT(*) > 2;
+
+INSERT INTO all_participants (ic_number_encrypted, participant_name_encrypted, ic_number_hash, has_claimed_certificate)
+SELECT 
+    (SELECT encrypted_ic FROM encrypt_participant_ic('040201-10-1075')),
+    encrypt_participant_name('AHMAD ADHA BIN MOHD GHANI'),
+    (SELECT ic_hash FROM encrypt_participant_ic('040201-10-1075')),
+    false;
+
+WITH participant_data AS (
+    SELECT participant_id, ic_number_hash
+    FROM all_participants
+    ORDER BY created_at
+)
+INSERT INTO certificates (certificate_id, certificate_url, issued_at, claimed_at)
+SELECT 
+    participant_id,
+    'https://tbykawedwakotdtiuarl.storage.supabase.co/storage/v1/s3/object/public/certificates/certificate_001.pdf',
+    NOW(),
+    NULL
+FROM participant_data
+WHERE ic_number_hash = (SELECT ic_hash FROM encrypt_participant_ic('040201-10-1075'))
+LIMIT 1;

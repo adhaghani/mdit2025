@@ -66,6 +66,7 @@ export interface Organizer {
 
 export interface Sponsor {
   logo: string;
+  logoLight?: string;
   logoAlt: string;
   name: string;
   width: number;
@@ -75,6 +76,7 @@ export interface Sponsor {
 
 export interface MediaPartner {
   logo: string;
+  logoLight?: string;
   logoAlt: string;
   name: string;
   width: number;

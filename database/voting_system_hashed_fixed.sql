@@ -58,6 +58,27 @@ CREATE TABLE eligible_presenters (
     UNIQUE(participant_id) -- Each participant can only be eligible once
 );
 
+-- Create certificates table for each participant
+CREATE TABLE certificates (
+    certificate_id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    -- need to refer ALL participant instead of top 40 participants
+    -- participant_id VARCHAR(10) NOT NULL REFERENCES participants(participant_id) ON DELETE CASCADE,
+    certificate_url TEXT NOT NULL,
+    issued_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    claimed_at TIMESTAMP WITH TIME ZONE -- NULL if not claimed
+);
+
+-- create all participant table to track who has claimed certificates
+CREATE TABLE all_participants (
+    participant_id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    ic_number_encrypted BYTEA NOT NULL,
+    participant_name_encrypted BYTEA NOT NULL,
+    ic_number_hash TEXT NOT NULL UNIQUE,
+    has_Claimed_certificate BOOLEAN DEFAULT FALSE
+);
+
+
+
 -- Create indexes for better performance
 CREATE INDEX idx_participants_ic_hash ON participants(ic_number_hash);
 CREATE INDEX idx_participants_team ON participants(team_id);
@@ -70,6 +91,8 @@ CREATE INDEX idx_guest_votes_category ON guest_votes(vote_category);
 CREATE INDEX idx_guest_votes_nominee ON guest_votes(nominee_id);
 CREATE INDEX idx_eligible_presenters_participant ON eligible_presenters(participant_id);
 CREATE INDEX idx_eligible_presenters_team ON eligible_presenters(team_id);
+CREATE INDEX idx_certificates_participant ON certificates(certificate_id);
+CREATE INDEX idx_all_participants_ic_hash ON all_participants(ic_number_hash);
 
 -- ============================================================================
 -- HASHING HELPER FUNCTIONS
@@ -102,6 +125,124 @@ EXCEPTION WHEN OTHERS THEN
     RETURN 'DECRYPTION_ERROR';
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- ============================================================================
+-- CLAIM CERTIFICATE FUNCTIONS
+-- ============================================================================
+
+-- Function to claim certificate by participant IC
+CREATE OR REPLACE FUNCTION claim_certificate(p_ic_number TEXT)
+RETURNS JSON AS $$
+DECLARE
+    v_ic_hash TEXT;
+    v_all_participant all_participants;
+    v_certificate certificates;
+    v_participant_name TEXT;
+    v_origin TEXT;
+BEGIN
+    -- Get origin from request headers for domain validation
+    BEGIN
+        v_origin := current_setting('request.headers', true)::json->>'origin';
+    EXCEPTION WHEN OTHERS THEN
+        v_origin := NULL;
+    END;
+    
+    -- Domain validation
+    IF v_origin NOT IN (
+        'https://mdit2025.my',
+        'https://www.mdit2025.my',
+        'https://staging.mdit2025.my',
+        'https://dev.mdit2025.my'
+    ) AND COALESCE(v_origin, '') NOT LIKE '%localhost%' THEN
+        RETURN json_build_object(
+            'success', false,
+            'error', 'Access denied: Invalid domain'
+        );
+    END IF;
+    
+    -- Generate hash for IC lookup
+    v_ic_hash := encode(digest(p_ic_number || get_encryption_key(), 'sha256'), 'hex');
+    
+    -- Find participant by IC hash in all_participants table
+    SELECT * INTO v_all_participant
+    FROM all_participants 
+    WHERE ic_number_hash = v_ic_hash;
+    
+    -- Check if participant exists
+    IF v_all_participant IS NULL THEN
+        RETURN json_build_object(
+            'success', false,
+            'error', 'Participant not found. Please verify your IC number.'
+        );
+    END IF;
+    
+    -- Check if participant has already claimed certificate
+    IF v_all_participant.has_claimed_certificate THEN
+        -- Get the certificate URL they already claimed
+        SELECT * INTO v_certificate
+        FROM certificates 
+        WHERE certificate_id = v_all_participant.participant_id
+        AND claimed_at IS NOT NULL;
+        
+        RETURN json_build_object(
+            'success', false,
+            'error', 'You have already claimed your certificate.',
+            'has_claimed', true,
+            'certificate_url', v_certificate.certificate_url
+        );
+    END IF;
+    
+    -- Decrypt participant name
+    BEGIN
+        v_participant_name := pgp_sym_decrypt(v_all_participant.participant_name_encrypted, get_encryption_key());
+    EXCEPTION WHEN OTHERS THEN
+        v_participant_name := 'Name Unavailable';
+    END;
+    
+    -- Get the certificate for this participant
+    -- Note: Certificates should be pre-generated and stored in Supabase Storage
+    -- The certificate_url should reference the Supabase Storage bucket path
+    SELECT * INTO v_certificate
+    FROM certificates 
+    WHERE certificate_id = v_all_participant.participant_id;
+    
+    -- Check if certificate exists
+    IF v_certificate IS NULL THEN
+        RETURN json_build_object(
+            'success', false,
+            'error', 'Certificate not found. Please contact the organizers.'
+        );
+    END IF;
+    
+    -- Mark certificate as claimed
+    UPDATE certificates 
+    SET claimed_at = NOW()
+    WHERE certificate_id = v_all_participant.participant_id;
+    
+    -- Mark participant as claimed
+    UPDATE all_participants 
+    SET has_claimed_certificate = true
+    WHERE participant_id = v_all_participant.participant_id;
+    
+    RETURN json_build_object(
+        'success', true,
+        'message', 'Certificate claimed successfully!',
+        'data', json_build_object(
+            'participant_name', v_participant_name,
+            'certificate_url', v_certificate.certificate_url,
+            'claimed_at', NOW()
+        )
+    );
+    
+EXCEPTION WHEN OTHERS THEN
+    RETURN json_build_object(
+        'success', false,
+        'error', 'An error occurred while claiming your certificate',
+        'details', SQLERRM
+    );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
 
 -- ============================================================================
 -- VOTING SYSTEM FUNCTIONS
@@ -890,6 +1031,7 @@ GRANT EXECUTE ON FUNCTION get_voting_results() TO authenticated;
 GRANT EXECUTE ON FUNCTION encrypt_participant_ic(TEXT) TO authenticated;
 GRANT EXECUTE ON FUNCTION encrypt_participant_name(TEXT) TO authenticated;
 GRANT EXECUTE ON FUNCTION encrypt_guest_email(TEXT) TO authenticated;
+GRANT EXECUTE ON FUNCTION claim_certificate(TEXT) TO anon;
 -- Admin functions for eligible presenters
 GRANT EXECUTE ON FUNCTION add_eligible_presenter(TEXT, TEXT) TO authenticated;
 GRANT EXECUTE ON FUNCTION remove_eligible_presenter(TEXT) TO authenticated;
