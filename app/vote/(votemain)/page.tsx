@@ -900,6 +900,14 @@ const VotingPage = () => {
             </Button>
           </div>
         </BlurFade>
+        <BlurFade>
+          <Text as="p" styleVariant="muted">
+            Note: You may encounter delays while submitting the vote, Please be
+            patient. If it shows a database error, try waiting for a few minutes
+            before filling the form again. Thank you for your understanding and
+            support for the MDIT x DD 2025.
+          </Text>
+        </BlurFade>
       </div>
     );
   };
