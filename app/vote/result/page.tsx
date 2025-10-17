@@ -9,6 +9,8 @@ import { MditAuroraSubtle } from "@/components/optimized-react-bits";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import {
   Trophy,
   Users,
@@ -65,6 +67,7 @@ const VoteResult = () => {
   const [statistics, setStatistics] = useState<VotingStatistics | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [autoRefresh, setAutoRefresh] = useState(true);
 
   const {
     isWebGLSupported,
@@ -150,10 +153,12 @@ const VoteResult = () => {
 
   useEffect(() => {
     fetchResults();
-    // Auto-refresh every 30 seconds
-    const interval = setInterval(fetchResults, 30000);
-    return () => clearInterval(interval);
-  }, []);
+    // Auto-refresh every 30 seconds only if autoRefresh is enabled
+    if (autoRefresh) {
+      const interval = setInterval(fetchResults, 30000);
+      return () => clearInterval(interval);
+    }
+  }, [autoRefresh]);
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -410,7 +415,7 @@ const VoteResult = () => {
 
         {/* Refresh Button and Last Updated */}
         <BlurFade inView delay={0.3}>
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               {lastUpdated && (
                 <>
@@ -421,25 +426,50 @@ const VoteResult = () => {
                 </>
               )}
             </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={fetchResults}
-              disabled={isLoading}
-              className="gap-2"
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  Refreshing...
-                </>
-              ) : (
-                <>
-                  <RefreshCw className="h-4 w-4" />
-                  Refresh Results
-                </>
-              )}
-            </Button>
+            <div className="flex items-center gap-4">
+              {/* Auto-refresh Toggle */}
+              <div className="flex items-center space-x-2">
+                <Switch
+                  id="auto-refresh"
+                  checked={autoRefresh}
+                  onCheckedChange={(checked: boolean) => {
+                    setAutoRefresh(checked);
+                    toast.info(
+                      checked
+                        ? "Auto-refresh enabled (every 30s)"
+                        : "Auto-refresh disabled"
+                    );
+                  }}
+                />
+                <Label
+                  htmlFor="auto-refresh"
+                  className="text-sm font-medium cursor-pointer"
+                >
+                  Auto-refresh
+                </Label>
+              </div>
+
+              {/* Manual Refresh Button */}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={fetchResults}
+                disabled={isLoading}
+                className="gap-2"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Refreshing...
+                  </>
+                ) : (
+                  <>
+                    <RefreshCw className="h-4 w-4" />
+                    Refresh
+                  </>
+                )}
+              </Button>
+            </div>
           </div>
         </BlurFade>
 

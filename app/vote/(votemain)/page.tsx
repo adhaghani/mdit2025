@@ -33,6 +33,7 @@ import {
 import { toast } from "sonner";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const formSchema = z.object({
   icNumber: z
@@ -365,6 +366,13 @@ const VotingPage = () => {
             </Form>
           </CardContent>
         </Card>
+      </BlurFade>
+      <BlurFade delay={0.3} className="w-full max-w-md mx-auto mt-6">
+        <Text as="p">
+          <Link href="/vote/guest" className="underline">
+            Vote as a guest
+          </Link>
+        </Text>
       </BlurFade>
       <BlurFade delay={0.35} className="w-full max-w-md mx-auto">
         <Card className="w-full max-w-md mx-auto mt-6 bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
